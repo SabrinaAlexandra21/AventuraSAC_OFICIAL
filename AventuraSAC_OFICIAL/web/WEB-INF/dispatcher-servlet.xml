@@ -22,7 +22,9 @@
                 <prop key="clientes.htm">clienteController</prop>
                 <prop key="nuevocliente.htm">clienteController</prop>
                 <prop key="editarcliente.htm">clienteController</prop>
-                
+                <prop key="empleados.htm">empleadoController</prop>
+                <prop key="nuevoempleado.htm">empleadoController</prop>
+                <prop key="editarempleado.htm">empleadoController</prop>
                 
             </props>
         </property>
@@ -42,6 +44,9 @@
     
     <bean name="clienteController"
           class="controller.ClienteController" />
+    
+    <bean name="empleadoController"
+          class="controller.EmpleadoController" />
     
 
 </beans>
