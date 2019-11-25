@@ -8,6 +8,7 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -68,6 +69,25 @@ public class ClienteController {
         
         repo.create(c);
         
-        return new ModelAndView("redirect:/ListarClientes.htm");
+        return new ModelAndView("redirect:/clientes.htm");
+    }
+    
+    @RequestMapping(value = "editarcliente.htm", method = RequestMethod.GET)
+    public ModelAndView EditarCliente(HttpServletRequest request) {
+        int id = Integer.parseInt(request.getParameter("id"));
+        modelo.entities.Cliente obj = repo.findCliente(id);
+
+        ModelAndView mv = new ModelAndView();
+        mv.addObject("cliente", obj);
+        mv.setViewName("editarcliente");
+        return mv;
+        
+    }
+    
+    @RequestMapping(value = "editarcliente.htm", method = RequestMethod.POST)
+    public ModelAndView EditarCliente(@ModelAttribute("cliente") modelo.entities.Cliente c) throws Exception {
+        repo.edit(c);
+
+        return new ModelAndView("redirect:/clientes.htm");
     }
 }

@@ -21,6 +21,8 @@
                 <prop key="index.htm">indexController</prop>
                 <prop key="clientes.htm">clienteController</prop>
                 <prop key="nuevocliente.htm">clienteController</prop>
+                <prop key="editarcliente.htm">clienteController</prop>
+                
                 
             </props>
         </property>

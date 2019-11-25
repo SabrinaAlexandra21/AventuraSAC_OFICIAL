@@ -38,8 +38,12 @@
                             <form:input path="direccion" cssClass="form-control"  />
                         </div>
                         <div class="form-group">
-                            <label for="telefono">Teléfono</label>
+                            <label for="telefono">Teléfono:</label>
                             <form:input path="telefono" cssClass="form-control"  />
+                        </div>
+                        <div class="form-group">
+                            <label for="broker">Broker:</label>
+                            <form:input path="broker" cssClass="form-control"  />
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
