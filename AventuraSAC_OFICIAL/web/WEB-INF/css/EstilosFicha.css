@@ -1,0 +1,185 @@
+
+body{
+	 background: linear-gradient(to bottom, #6699ff 0%, #99ffcc 100%);
+}
+
+#contenedor1{
+	bottom:680px;
+}
+
+#Contenedorlogo{
+	background-color: #F5F7FA ;
+		position: 	absolute;
+		margin: 0px 0px 0px 60px;	
+		height: 350px;
+		border-color: #aaaaaa;
+		left: 180px;
+}
+
+#Contenedorlogo2{
+	height: 150px;
+}
+
+#imagen{
+	left:50px;
+}
+
+#container {
+	margin: 0px 50px;
+	height: 300px; /*Ancho*/
+	width: 1600px;/*Largoo*/
+	opacity: 0.97;
+	position: 	absolute;	
+	bottom: 40px;
+}
+
+
+#logo h1{
+	margin: 35px 0px 30px 0px;
+	height: 210px;
+	position: relative;
+  	left: 20px;
+  	bottom: 30px;
+
+}
+
+#escritos {
+	margin: 80px 0px;
+	position: relative;
+	right: 180px;
+	top:120px;
+}
+
+#fieldset {
+
+	margin: 50px 60px;
+	padding: 20px 40px;
+	text-align: center;
+	position: relative;
+	right: : 250px;
+	top:90px;
+}
+
+#fieldset input{
+
+	width: 10px;
+	height: 25px;
+}
+
+
+#fieldset h3{
+
+	margin: 10px 10px;
+}
+
+#ngui {
+
+	margin: 0px 25px;
+	text-align: center;
+}
+
+
+#fecha{
+	position: relative;
+	bottom:230px;
+	left:835px;
+}
+
+#fecha input{
+	height: 45px;
+	width: 250px;
+	margin: 0px -35px ;
+
+}
+
+
+#main{
+	margin: -430px 80px;
+	width: 1235px;/*Largoo*/
+	position: 	absolute;
+	top:130px;	
+	left:180px;
+}
+
+#main2{
+		position: 	absolute;
+		margin: 0px 0px 0px 60px;	
+		height: 1420px;
+		border-color: #aaaaaa;
+}
+
+#main3{
+	height: 1400px;
+}
+
+#fieldset1 {
+	margin: 0px 0px 0px 0px;
+	padding: 0px 70px;
+	height: 270px; /*Ancho*/
+	width: 1000px;/*Largoo*/
+	text-align: left;
+	font-family: 'Libre Baskerville', serif;
+}
+
+
+#fila1 input {
+	margin: 20px 0px;
+	width: 250px;
+	height: 40px;
+}
+
+#fila2 input {
+	margin: 20px 0px;
+	width: 250px;
+	height: 40px;
+}
+
+
+#fieldset2 {
+	margin: 0px 0px 0px 350px;
+	padding: 0px 30px;
+	height: 185px; /*Ancho*/
+	width: 280px;/*Largoo*/
+	text-align: left;
+	font-family: 'Libre Baskerville', serif;
+}
+
+#fila3{
+	margin: -20px 3px 0px 0px;
+}
+#fila4{
+	margin: 0px 3px 0px 0px;
+}
+
+#fieldset2 label{
+	margin: 0px 50px 0px 0px;
+	width: 190px;
+}
+
+#fieldset2 select{
+	margin: 3px 50px;
+	padding: 0px 11px;
+	width: 150px;
+	height: 30px;
+}
+
+
+#fieldset3 {
+	margin: 0px 0px 0px 400px;
+	padding: 0px 17px;
+	height: 210px; /*Ancho*/
+	width: 320px;/*Largoo*/
+	text-align: left;
+	font-family: 'Libre Baskerville', serif;
+}
+
+#fieldset3 input{
+	padding: 10px 97px;
+	width: 160px;
+	height: 30px;
+}
+
+#fieldset3 button{
+	margin: 0px 0px 0px 5px;
+	width: 260px;
+}
