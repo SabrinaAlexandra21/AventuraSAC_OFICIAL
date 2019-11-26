@@ -1,14 +1,32 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package controller;
+
+
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
+import model.controllers.ClienteJpaController;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Sabrina Bv
  */
 public class CotizacionController {
+
+
+    private EntityManager em;
+    private EntityManagerFactory emf;
+    private ClienteJpaController repo;
     
+    public CotizacionController() {
+        em = getEntityManager();
+        repo = new ClienteJpaController(emf);
+    }
+
+    private EntityManager getEntityManager() {
+        
+        if (emf == null) {
+            emf = Persistence.createEntityManagerFactory("AventuraSAC_OFICIALPU");
+        }
+        return emf.createEntityManager();
+    }
 }
