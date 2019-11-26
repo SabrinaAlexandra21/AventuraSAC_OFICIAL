@@ -1,6 +1,7 @@
 
 package controller;
 
+import java.awt.geom.Area;
 import model.controllers.EmpleadoJpaController;
 import modelo.entities.Empleado;
 import java.util.ArrayList;
@@ -10,8 +11,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
+import model.controllers.AreasJpaController;
 import model.controllers.CargoJpaController;
 import model.controllers.EmpleadoJpaController;
+import modelo.entities.Areas;
 import modelo.entities.Cargo;
 import modelo.entities.Empleado;
 import org.springframework.stereotype.Controller;
@@ -29,11 +32,13 @@ public class EmpleadoController {
     private EntityManagerFactory emf;
     private EmpleadoJpaController repo;
     private CargoJpaController repo1;
+    private AreasJpaController repo2;
     
      public EmpleadoController() {
         em = getEntityManager();
         repo = new EmpleadoJpaController(emf);
         repo1 = new CargoJpaController(emf);
+        repo2 = new AreasJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -67,9 +72,13 @@ public class EmpleadoController {
         
         List<Cargo> cargos =  repo1.findCargoEntities();
         
+        List<Areas> areas = repo2.findAreasEntities();
+        
         ModelAndView mv = new ModelAndView();
         
         model.addAttribute("listaCargo", cargos);
+        
+        model.addAttribute("lista", areas);
         
         mv.addObject("empleado", new Empleado());
         
@@ -90,13 +99,19 @@ public class EmpleadoController {
     }
     
     @RequestMapping(value = "editarempleado.htm", method = RequestMethod.GET)
+    
     public ModelAndView EditarEmpleado(HttpServletRequest request) {
+        
         int id = Integer.parseInt(request.getParameter("id"));
+        
         modelo.entities.Empleado obj = repo.findEmpleado(id);
 
         ModelAndView mv = new ModelAndView();
+        
         mv.addObject("empleado", obj);
+        
         mv.setViewName("editarempleado");
+        
         return mv;
         
     }
