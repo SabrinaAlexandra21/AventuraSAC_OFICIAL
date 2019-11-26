@@ -16,26 +16,33 @@
         <div class="container md-8">
             <div class="card">
                 <div class="card-header">
-                    <h2>Nuevo Empleado</h2>
+                    <h2>Editar Empleado</h2>
                 </div>
                 <div class="card-body">
                     <form:form method="post" modelAttribute="empleado">
+                        
+                        <form:hidden path="idEmpleado" value="${empleado.idEmpleado}"/>
+                        
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <form:input path="dni" cssClass="form-control" placeholder="Ingresar DNI"/>
+                            <form:input path="dni" cssClass="form-control" value="${empleado.dni}"/>
                         </div>
+                        
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <form:input path="nombre" cssClass="form-control" placeholder="Ingresar nombre"/>
+                            <form:input path="nombre" cssClass="form-control" value="${empleado.nombre}"/>
                         </div>
+                        
                         <div class="form-group">
                             <label for="apellidoPaterno">Apellido Paterno:</label>
-                            <form:input path="apellidoPaterno" cssClass="form-control"  placeholder="Ingresar apellido paterno"/>
+                            <form:input path="apellidoPaterno" cssClass="form-control"  value="${empleado.apellidoPaterno}"/>
                         </div>
+                        
                         <div class="form-group">
                             <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control"  placeholder="Ingresar apellido materno"/>
+                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}" />
                         </div>
+                        
                         <div>
                             <label for="idArea">Cargo:</label><br>
                             <select path="idArea" id="idArea">
@@ -44,6 +51,7 @@
                                 </c:forEach>
                             </select > 
                         </div>
+                        
                         <br>
                         <div>
                             <label for="idCargo">Cargo:</label><br>
@@ -53,21 +61,26 @@
                                 </c:forEach>
                             </select > 
                         </div>
+                        
                         <br>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control" placeholder="Ingresar número de teléfono"/>
+                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}"/>
                         </div>
+                        
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
-                            <form:input path="usuario" cssClass="form-control" placeholder="Ingresar nombre de usuario"/>
+                            <form:input path="usuario" cssClass="form-control"  value="${empleado.usuario}"/>
                         </div>
+                        
                         <div class="form-group">
                             <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" placeholder="*********" />
+                            <form:password path="clave" cssClass="form-control" value="${empleado.clave}" />
                         </div>
+                        
                         <input type="submit" class="btn btn-primary"  value="Registrar">
                         <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
+                        
                     </form:form>
                 </div>
             </div>
