@@ -34,7 +34,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="item" items="${empleado}">
+                            <c:forEach var="item" items="${empleados}">
                                 <tr>
                                     <th scope="row">${item.idEmpleado}</th>
                                     <td>${item.dni}</td>
