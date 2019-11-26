@@ -6,9 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link rel="stylesheet" href="/css/main.css" />
-        <link rel="stylesheet" href="/css/EstilosOrdenCompra2.css">
-
+        <link href="../css/main.css" rel="stylesheet" />
+        <link href="../css/EstilosOrdenCompra2.css" rel="stylesheet" />
     </head>
     <body>
         <header id="header">
