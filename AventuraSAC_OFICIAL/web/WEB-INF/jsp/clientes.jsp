@@ -29,8 +29,7 @@
                                 <th scope="col">Teléfono</th>
                                 <th scope="col">Correo</th>
                                 <th scope="col">Broker</th>
-                                <th scope="col">Usuario</th>
-                                <th scope="col">Contraseña</th>
+                                
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
@@ -45,8 +44,7 @@
                                     <td>${item.telefono}</td>
                                     <td>${item.correo}</td>
                                     <td>${item.broker}</td>
-                                    <td>${item.usuario}</td>
-                                    <td>${item.clave}</td>
+                                    
                                     <td><a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button">Editar</a> 
                                         <input type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning" value="Eliminar"/>
                                 </tr>
@@ -58,6 +56,15 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function eliminar(id) {
+                if (confirm("¿Desea eliminar el cliente?")) {
+                    window.location.href = "eliminarcliente.htm?id=" + id;
+                    return true;
+                }
+                return false;
+            }
+        </script>
     </body>
 </html>
 

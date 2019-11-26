@@ -4,14 +4,18 @@ package controller;
 import model.controllers.EmpleadoJpaController;
 import modelo.entities.Empleado;
 import java.util.ArrayList;
+import static java.util.Collections.list;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
+import model.controllers.CargoJpaController;
 import model.controllers.EmpleadoJpaController;
+import modelo.entities.Cargo;
 import modelo.entities.Empleado;
 import org.springframework.stereotype.Controller;
+import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -24,10 +28,12 @@ public class EmpleadoController {
     private EntityManager em;
     private EntityManagerFactory emf;
     private EmpleadoJpaController repo;
+    private CargoJpaController repo1;
     
      public EmpleadoController() {
         em = getEntityManager();
         repo = new EmpleadoJpaController(emf);
+        repo1 = new CargoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -56,10 +62,19 @@ public class EmpleadoController {
     }
     
     @RequestMapping(value = "nuevoempleado.htm", method = RequestMethod.GET)
+    
     public ModelAndView NuevoEmpleado(Model model) {
+        
+        List<Cargo> cargos =  repo1.findCargoEntities();
+        
         ModelAndView mv = new ModelAndView();
-        model.addAttribute("empleado", new Empleado());
+        
+        model.addAttribute("listaCargo", cargos);
+        
+        mv.addObject("empleado", new Empleado());
+        
         mv.setViewName("nuevoempleado");
+        
         return mv;
     }
     

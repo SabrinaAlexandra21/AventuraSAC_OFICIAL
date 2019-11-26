@@ -18,19 +18,23 @@
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <prop key="index.htm">indexController</prop>
+                
                 <prop key="clientes.htm">clienteController</prop>
                 <prop key="nuevocliente.htm">clienteController</prop>
                 <prop key="editarcliente.htm">clienteController</prop>
                 <prop key="eliminarcliente.htm">clienteController</prop>
+                
                 <prop key="empleados.htm">empleadoController</prop>
                 <prop key="nuevoempleado.htm">empleadoController</prop>
                 <prop key="editarempleado.htm">empleadoController</prop>
                 <prop key="eliminarempleado.htm">empleadoController</prop>
-                <prop key="proveedor.htm">proveedorController</prop>
+                
+                <prop key="proveedores.htm">proveedorController</prop>
                 <prop key="nuevoproveedor.htm">proveedorController</prop>
                 <prop key="editarproveedor.htm">proveedorController</prop>
                 <prop key="eliminarproveedor.htm">proveedorController</prop>
+                
+                
                 
             </props>
         </property>
@@ -57,5 +61,9 @@
     <bean name="proveedorController"
           class="controller.ProveedorController" />
     
-
+    <bean name="areaController"
+          class="controller.AreaController" />
+          
+    <bean name="cargoController"
+          class="controller.CargoController" />
 </beans>

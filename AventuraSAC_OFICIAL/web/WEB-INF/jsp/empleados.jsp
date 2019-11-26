@@ -14,38 +14,40 @@
         <div class="container md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3>Proveedores</h3>
+                    <h3>Empleados</h3>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-primary" href="nuevoproveedor.htm" role="button">Nuevo</a>
+                    <a class="btn btn-primary" href="nuevoempleado.htm" role="button">Nuevo</a>
                     <table class="table">
                         <thead>
                             <tr>
                                 <th scope="col">ID</th>
-                                <th scope="col">Razón Social</th>
-                                <th scope="col">RUC</th>
-                                <th scope="col">Distrito</th>
-                                <th scope="col">Dirección</th>
-                                <th scope="col">Contacto</th>
+                                <th scope="col">DNI</th>
+                                <th scope="col">Nombre</th>
+                                <th scope="col">Apellido Paterno</th>
+                                <th scope="col">Apellido Materno</th>
+                                <th scope="col">Cargo</th>
+                                <th scope="col">Área</th>
                                 <th scope="col">Teléfono</th>
-                                <th scope="col">Correo</th>
+                                <th scope="col">Acciones</th>
                                 
                             </tr>
                         </thead>
                         <tbody>
-                            <c:forEach var="item" items="${proveedor}">
+                            <c:forEach var="item" items="${empleado}">
                                 <tr>
-                                    <th scope="row">${item.idProveedor}</th>
-                                    <td>${item.razonSocial}</td>
-                                    <td>${item.ruc}</td>
-                                    <td>${item.idDistrito}</td>
-                                    <td>${item.direccion}</td>
-                                    <td>${item.contacto}</td>
+                                    <th scope="row">${item.idEmpleado}</th>
+                                    <td>${item.dni}</td>
+                                    <td>${item.nombre}</td>
+                                    <td>${item.apellidoPaterno}</td>
+                                    <td>${item.apellidoMaterno}</td>
+                                    <td>${item.idArea}</td>
+                                    <td>${item.idCargo}</td>
                                     <td>${item.telefono}</td>
-                                    <td>${item.correo}</td>
+                                  
                                     
-                                    <td><a href="editarcliente.htm?id=${item.idProveedor}" class="btn btn-info" role="button">Editar</a> 
-                                        <input type="button" onclick="eliminar('${item.idProveedor}')" class="btn btn-warning" value="Eliminar"/>
+                                    <td><a href="editarempleado.htm?id=${item.idEmpleado}" class="btn btn-info" role="button">Editar</a> 
+                                        <input type="button" onclick="eliminar('${item.idEmpleado}')" class="btn btn-warning" value="Eliminar"/>
                                 </tr>
                             </c:forEach>
                         </tbody>
@@ -55,6 +57,15 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function eliminar(id) {
+                if (confirm("¿Desea eliminar al empleado?")) {
+                    window.location.href = "eliminarempleado.htm?id=" + id;
+                    return true;
+                }
+                return false;
+            }
+        </script>
     </body>
 </html>
 

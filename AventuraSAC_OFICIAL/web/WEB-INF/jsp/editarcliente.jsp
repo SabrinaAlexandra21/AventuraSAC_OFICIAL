@@ -63,7 +63,7 @@
                             <label for="clave">Clave:</label>
                             <form:password path="clave" cssClass="form-control" value="${cliente.clave}" />
                         </div>
-                        <input type="submit" class="btn btn-primary"  value="Registrar">
+                        
                         <a class="btn btn-secondary" href="clientes.htm" role="button">Guardar</a>
                         </form:form>
                     </div>
