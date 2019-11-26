@@ -36,6 +36,7 @@
                             <label for="apellidoMaterno">Apellido Materno:</label>
                             <form:input path="apellidoMaterno" cssClass="form-control"  />
                         </div>
+                    
 
                         <div>
                             <label for="idCargo">Cargo:</label>
