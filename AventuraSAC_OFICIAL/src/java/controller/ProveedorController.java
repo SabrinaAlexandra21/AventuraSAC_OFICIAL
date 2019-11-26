@@ -10,6 +10,7 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import model.controllers.ProveedorJpaController;
+import model.controllers.exceptions.NonexistentEntityException;
 import modelo.entities.Proveedor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -91,6 +92,17 @@ public class ProveedorController {
     @RequestMapping(value = "editarproveedor.htm", method = RequestMethod.POST)
     public ModelAndView EditarProveedor(@ModelAttribute("proveedor") modelo.entities.Proveedor c) throws Exception {
         repo.edit(c);
+
+        return new ModelAndView("redirect:/proveedores.htm");
+    }
+    
+    @RequestMapping(value = "eliminarproveedor.htm")
+     
+    public ModelAndView EliminarCliente(HttpServletRequest request) throws NonexistentEntityException {
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        repo.destroy(id);
 
         return new ModelAndView("redirect:/proveedores.htm");
     }

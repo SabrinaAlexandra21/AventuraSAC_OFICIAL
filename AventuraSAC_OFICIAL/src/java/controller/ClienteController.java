@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import model.controllers.exceptions.NonexistentEntityException;
 
 @Controller
 public class ClienteController {
@@ -54,10 +55,15 @@ public class ClienteController {
     }
     
     @RequestMapping(value = "nuevocliente.htm", method = RequestMethod.GET)
+    
     public ModelAndView NuevoCliente(Model model) {
+        
         ModelAndView mv = new ModelAndView();
+        
         model.addAttribute("cliente", new Cliente());
+        
         mv.setViewName("nuevocliente");
+        
         return mv;
     }
     
@@ -73,21 +79,41 @@ public class ClienteController {
     }
     
     @RequestMapping(value = "editarcliente.htm", method = RequestMethod.GET)
+    
     public ModelAndView EditarCliente(HttpServletRequest request) {
+        
         int id = Integer.parseInt(request.getParameter("id"));
+        
         modelo.entities.Cliente obj = repo.findCliente(id);
 
         ModelAndView mv = new ModelAndView();
+        
         mv.addObject("cliente", obj);
+        
         mv.setViewName("editarcliente");
+        
         return mv;
         
     }
     
     @RequestMapping(value = "editarcliente.htm", method = RequestMethod.POST)
+    
     public ModelAndView EditarCliente(@ModelAttribute("cliente") modelo.entities.Cliente c) throws Exception {
+        
         repo.edit(c);
 
         return new ModelAndView("redirect:/clientes.htm");
     }
+    
+     @RequestMapping(value = "eliminarcliente.htm")
+     
+    public ModelAndView EliminarCliente(HttpServletRequest request) throws NonexistentEntityException {
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        repo.destroy(id);
+
+        return new ModelAndView("redirect:/clientes.htm");
+    }
+
 }
