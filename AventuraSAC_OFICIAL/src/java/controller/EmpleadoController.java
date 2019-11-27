@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import model.controllers.AreasJpaController;
 import model.controllers.CargoJpaController;
 import model.controllers.EmpleadoJpaController;
+import model.controllers.exceptions.NonexistentEntityException;
 import modelo.entities.Areas;
 import modelo.entities.Cargo;
 import modelo.entities.Empleado;
@@ -117,8 +118,19 @@ public class EmpleadoController {
     }
     
     @RequestMapping(value = "editarempleado.htm", method = RequestMethod.POST)
+    
     public ModelAndView EditarEmpleado(@ModelAttribute("empleado") modelo.entities.Empleado c) throws Exception {
+        
         repo.edit(c);
+
+        return new ModelAndView("redirect:/empleados.htm");
+    }
+    
+     public ModelAndView EliminarEmpleado(HttpServletRequest request) throws NonexistentEntityException {
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        repo.destroy(id);
 
         return new ModelAndView("redirect:/empleados.htm");
     }
