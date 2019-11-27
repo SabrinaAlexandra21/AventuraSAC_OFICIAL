@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "empleado")
@@ -31,8 +33,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Empleado.findByNombre", query = "SELECT e FROM Empleado e WHERE e.nombre = :nombre")
     , @NamedQuery(name = "Empleado.findByApellidoPaterno", query = "SELECT e FROM Empleado e WHERE e.apellidoPaterno = :apellidoPaterno")
     , @NamedQuery(name = "Empleado.findByApellidoMaterno", query = "SELECT e FROM Empleado e WHERE e.apellidoMaterno = :apellidoMaterno")
-    , @NamedQuery(name = "Empleado.findByIdArea", query = "SELECT e FROM Empleado e WHERE e.idArea = :idArea")
-    , @NamedQuery(name = "Empleado.findByIdCargo", query = "SELECT e FROM Empleado e WHERE e.idCargo = :idCargo")
     , @NamedQuery(name = "Empleado.findByTelefono", query = "SELECT e FROM Empleado e WHERE e.telefono = :telefono")
     , @NamedQuery(name = "Empleado.findByUsuario", query = "SELECT e FROM Empleado e WHERE e.usuario = :usuario")
     , @NamedQuery(name = "Empleado.findByClave", query = "SELECT e FROM Empleado e WHERE e.clave = :clave")})
@@ -55,10 +55,6 @@ public class Empleado implements Serializable {
     @Basic(optional = false)
     @Column(name = "ApellidoMaterno")
     private String apellidoMaterno;
-    @Column(name = "idArea")
-    private Integer idArea;
-    @Column(name = "idCargo")
-    private Integer idCargo;
     @Basic(optional = false)
     @Column(name = "Telefono")
     private String telefono;
@@ -68,6 +64,12 @@ public class Empleado implements Serializable {
     @Basic(optional = false)
     @Column(name = "Clave")
     private String clave;
+    @JoinColumn(name = "idCargo", referencedColumnName = "idCargo")
+    @ManyToOne
+    private Cargo idCargo;
+    @JoinColumn(name = "idArea", referencedColumnName = "idArea")
+    @ManyToOne
+    private Area idArea;
 
     public Empleado() {
     }
@@ -126,22 +128,6 @@ public class Empleado implements Serializable {
         this.apellidoMaterno = apellidoMaterno;
     }
 
-    public Integer getIdArea() {
-        return idArea;
-    }
-
-    public void setIdArea(Integer idArea) {
-        this.idArea = idArea;
-    }
-
-    public Integer getIdCargo() {
-        return idCargo;
-    }
-
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
-    }
-
     public String getTelefono() {
         return telefono;
     }
@@ -164,6 +150,22 @@ public class Empleado implements Serializable {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public Cargo getIdCargo() {
+        return idCargo;
+    }
+
+    public void setIdCargo(Cargo idCargo) {
+        this.idCargo = idCargo;
+    }
+
+    public Area getIdArea() {
+        return idArea;
+    }
+
+    public void setIdArea(Area idArea) {
+        this.idArea = idArea;
     }
 
     @Override

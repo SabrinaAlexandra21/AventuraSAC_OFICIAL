@@ -16,15 +16,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import model.controllers.exceptions.NonexistentEntityException;
-import modelo.entities.Cargo;
+import modelo.entities.Area;
 
 /**
  *
  * @author Administrador
  */
-public class CargoJpaController implements Serializable {
+public class AreaJpaController implements Serializable {
 
-    public CargoJpaController(EntityManagerFactory emf) {
+    public AreaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,28 +33,28 @@ public class CargoJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Cargo cargo) {
-        if (cargo.getEmpleadoList() == null) {
-            cargo.setEmpleadoList(new ArrayList<Empleado>());
+    public void create(Area area) {
+        if (area.getEmpleadoList() == null) {
+            area.setEmpleadoList(new ArrayList<Empleado>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             List<Empleado> attachedEmpleadoList = new ArrayList<Empleado>();
-            for (Empleado empleadoListEmpleadoToAttach : cargo.getEmpleadoList()) {
+            for (Empleado empleadoListEmpleadoToAttach : area.getEmpleadoList()) {
                 empleadoListEmpleadoToAttach = em.getReference(empleadoListEmpleadoToAttach.getClass(), empleadoListEmpleadoToAttach.getIdEmpleado());
                 attachedEmpleadoList.add(empleadoListEmpleadoToAttach);
             }
-            cargo.setEmpleadoList(attachedEmpleadoList);
-            em.persist(cargo);
-            for (Empleado empleadoListEmpleado : cargo.getEmpleadoList()) {
-                Cargo oldIdCargoOfEmpleadoListEmpleado = empleadoListEmpleado.getIdCargo();
-                empleadoListEmpleado.setIdCargo(cargo);
+            area.setEmpleadoList(attachedEmpleadoList);
+            em.persist(area);
+            for (Empleado empleadoListEmpleado : area.getEmpleadoList()) {
+                Area oldIdAreaOfEmpleadoListEmpleado = empleadoListEmpleado.getIdArea();
+                empleadoListEmpleado.setIdArea(area);
                 empleadoListEmpleado = em.merge(empleadoListEmpleado);
-                if (oldIdCargoOfEmpleadoListEmpleado != null) {
-                    oldIdCargoOfEmpleadoListEmpleado.getEmpleadoList().remove(empleadoListEmpleado);
-                    oldIdCargoOfEmpleadoListEmpleado = em.merge(oldIdCargoOfEmpleadoListEmpleado);
+                if (oldIdAreaOfEmpleadoListEmpleado != null) {
+                    oldIdAreaOfEmpleadoListEmpleado.getEmpleadoList().remove(empleadoListEmpleado);
+                    oldIdAreaOfEmpleadoListEmpleado = em.merge(oldIdAreaOfEmpleadoListEmpleado);
                 }
             }
             em.getTransaction().commit();
@@ -65,36 +65,36 @@ public class CargoJpaController implements Serializable {
         }
     }
 
-    public void edit(Cargo cargo) throws NonexistentEntityException, Exception {
+    public void edit(Area area) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cargo persistentCargo = em.find(Cargo.class, cargo.getIdCargo());
-            List<Empleado> empleadoListOld = persistentCargo.getEmpleadoList();
-            List<Empleado> empleadoListNew = cargo.getEmpleadoList();
+            Area persistentArea = em.find(Area.class, area.getIdArea());
+            List<Empleado> empleadoListOld = persistentArea.getEmpleadoList();
+            List<Empleado> empleadoListNew = area.getEmpleadoList();
             List<Empleado> attachedEmpleadoListNew = new ArrayList<Empleado>();
             for (Empleado empleadoListNewEmpleadoToAttach : empleadoListNew) {
                 empleadoListNewEmpleadoToAttach = em.getReference(empleadoListNewEmpleadoToAttach.getClass(), empleadoListNewEmpleadoToAttach.getIdEmpleado());
                 attachedEmpleadoListNew.add(empleadoListNewEmpleadoToAttach);
             }
             empleadoListNew = attachedEmpleadoListNew;
-            cargo.setEmpleadoList(empleadoListNew);
-            cargo = em.merge(cargo);
+            area.setEmpleadoList(empleadoListNew);
+            area = em.merge(area);
             for (Empleado empleadoListOldEmpleado : empleadoListOld) {
                 if (!empleadoListNew.contains(empleadoListOldEmpleado)) {
-                    empleadoListOldEmpleado.setIdCargo(null);
+                    empleadoListOldEmpleado.setIdArea(null);
                     empleadoListOldEmpleado = em.merge(empleadoListOldEmpleado);
                 }
             }
             for (Empleado empleadoListNewEmpleado : empleadoListNew) {
                 if (!empleadoListOld.contains(empleadoListNewEmpleado)) {
-                    Cargo oldIdCargoOfEmpleadoListNewEmpleado = empleadoListNewEmpleado.getIdCargo();
-                    empleadoListNewEmpleado.setIdCargo(cargo);
+                    Area oldIdAreaOfEmpleadoListNewEmpleado = empleadoListNewEmpleado.getIdArea();
+                    empleadoListNewEmpleado.setIdArea(area);
                     empleadoListNewEmpleado = em.merge(empleadoListNewEmpleado);
-                    if (oldIdCargoOfEmpleadoListNewEmpleado != null && !oldIdCargoOfEmpleadoListNewEmpleado.equals(cargo)) {
-                        oldIdCargoOfEmpleadoListNewEmpleado.getEmpleadoList().remove(empleadoListNewEmpleado);
-                        oldIdCargoOfEmpleadoListNewEmpleado = em.merge(oldIdCargoOfEmpleadoListNewEmpleado);
+                    if (oldIdAreaOfEmpleadoListNewEmpleado != null && !oldIdAreaOfEmpleadoListNewEmpleado.equals(area)) {
+                        oldIdAreaOfEmpleadoListNewEmpleado.getEmpleadoList().remove(empleadoListNewEmpleado);
+                        oldIdAreaOfEmpleadoListNewEmpleado = em.merge(oldIdAreaOfEmpleadoListNewEmpleado);
                     }
                 }
             }
@@ -102,9 +102,9 @@ public class CargoJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = cargo.getIdCargo();
-                if (findCargo(id) == null) {
-                    throw new NonexistentEntityException("The cargo with id " + id + " no longer exists.");
+                Integer id = area.getIdArea();
+                if (findArea(id) == null) {
+                    throw new NonexistentEntityException("The area with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -120,19 +120,19 @@ public class CargoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Cargo cargo;
+            Area area;
             try {
-                cargo = em.getReference(Cargo.class, id);
-                cargo.getIdCargo();
+                area = em.getReference(Area.class, id);
+                area.getIdArea();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The cargo with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The area with id " + id + " no longer exists.", enfe);
             }
-            List<Empleado> empleadoList = cargo.getEmpleadoList();
+            List<Empleado> empleadoList = area.getEmpleadoList();
             for (Empleado empleadoListEmpleado : empleadoList) {
-                empleadoListEmpleado.setIdCargo(null);
+                empleadoListEmpleado.setIdArea(null);
                 empleadoListEmpleado = em.merge(empleadoListEmpleado);
             }
-            em.remove(cargo);
+            em.remove(area);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -141,19 +141,19 @@ public class CargoJpaController implements Serializable {
         }
     }
 
-    public List<Cargo> findCargoEntities() {
-        return findCargoEntities(true, -1, -1);
+    public List<Area> findAreaEntities() {
+        return findAreaEntities(true, -1, -1);
     }
 
-    public List<Cargo> findCargoEntities(int maxResults, int firstResult) {
-        return findCargoEntities(false, maxResults, firstResult);
+    public List<Area> findAreaEntities(int maxResults, int firstResult) {
+        return findAreaEntities(false, maxResults, firstResult);
     }
 
-    private List<Cargo> findCargoEntities(boolean all, int maxResults, int firstResult) {
+    private List<Area> findAreaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Cargo.class));
+            cq.select(cq.from(Area.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -165,20 +165,20 @@ public class CargoJpaController implements Serializable {
         }
     }
 
-    public Cargo findCargo(Integer id) {
+    public Area findArea(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Cargo.class, id);
+            return em.find(Area.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getCargoCount() {
+    public int getAreaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Cargo> rt = cq.from(Cargo.class);
+            Root<Area> rt = cq.from(Area.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

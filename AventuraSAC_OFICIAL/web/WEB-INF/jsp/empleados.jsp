@@ -41,11 +41,9 @@
                                     <td>${item.nombre}</td>
                                     <td>${item.apellidoPaterno}</td>
                                     <td>${item.apellidoMaterno}</td>
-                                    <td>${item.idArea}</td>
-                                    <td>${item.idCargo}</td>
+                                    <td>${item.idArea.detalle}</td>
+                                    <td>${item.idCargo.detalle}</td>
                                     <td>${item.telefono}</td>
-                                  
-                                    
                                     <td><a href="editarempleado.htm?id=${item.idEmpleado}" class="btn btn-info" role="button">Editar</a> 
                                         <input type="button" onclick="eliminar('${item.idEmpleado}')" class="btn btn-warning" value="Eliminar"/>
                                 </tr>

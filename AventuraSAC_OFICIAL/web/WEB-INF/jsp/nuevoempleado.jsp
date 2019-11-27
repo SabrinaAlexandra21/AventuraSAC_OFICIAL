@@ -37,21 +37,21 @@
                             <form:input path="apellidoMaterno" cssClass="form-control"  placeholder="Ingresar apellido materno"/>
                         </div>
                         <div>
-                            <label for="idArea">Cargo:</label><br>
-                            <select path="idArea" id="idArea">
+                            <label for="idArea">Área</label><br>
+                            <form:select path="idArea.idArea" id="idArea">
                                 <c:forEach items="${lista}" var="x">
                                     <option value="${x.idArea}">${x.detalle}</option>
                                 </c:forEach>
-                            </select > 
+                            </form:select>
                         </div>
                         <br>
                         <div>
                             <label for="idCargo">Cargo:</label><br>
-                            <select path="idCargo" id="idCargo">
+                            <form:select path="idCargo.idCargo" id="idCargo">
                                 <c:forEach items="${listaCargo}" var="x">
                                     <option value="${x.idCargo}">${x.detalle}</option>
                                 </c:forEach>
-                            </select > 
+                            </form:select>
                         </div>
                         <br>
                         <div class="form-group">

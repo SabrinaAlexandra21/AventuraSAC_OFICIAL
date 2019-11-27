@@ -25,38 +25,38 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrador
  */
 @Entity
-@Table(name = "cargo")
+@Table(name = "areas")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Cargo.findAll", query = "SELECT c FROM Cargo c")
-    , @NamedQuery(name = "Cargo.findByIdCargo", query = "SELECT c FROM Cargo c WHERE c.idCargo = :idCargo")
-    , @NamedQuery(name = "Cargo.findByDetalle", query = "SELECT c FROM Cargo c WHERE c.detalle = :detalle")})
-public class Cargo implements Serializable {
+    @NamedQuery(name = "Area.findAll", query = "SELECT a FROM Area a")
+    , @NamedQuery(name = "Area.findByIdArea", query = "SELECT a FROM Area a WHERE a.idArea = :idArea")
+    , @NamedQuery(name = "Area.findByDetalle", query = "SELECT a FROM Area a WHERE a.detalle = :detalle")})
+public class Area implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idCargo")
-    private Integer idCargo;
+    @Column(name = "idArea")
+    private Integer idArea;
     @Column(name = "Detalle")
     private String detalle;
-    @OneToMany(mappedBy = "idCargo")
+    @OneToMany(mappedBy = "idArea")
     private List<Empleado> empleadoList;
 
-    public Cargo() {
+    public Area() {
     }
 
-    public Cargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public Area(Integer idArea) {
+        this.idArea = idArea;
     }
 
-    public Integer getIdCargo() {
-        return idCargo;
+    public Integer getIdArea() {
+        return idArea;
     }
 
-    public void setIdCargo(Integer idCargo) {
-        this.idCargo = idCargo;
+    public void setIdArea(Integer idArea) {
+        this.idArea = idArea;
     }
 
     public String getDetalle() {
@@ -79,18 +79,18 @@ public class Cargo implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idCargo != null ? idCargo.hashCode() : 0);
+        hash += (idArea != null ? idArea.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Cargo)) {
+        if (!(object instanceof Area)) {
             return false;
         }
-        Cargo other = (Cargo) object;
-        if ((this.idCargo == null && other.idCargo != null) || (this.idCargo != null && !this.idCargo.equals(other.idCargo))) {
+        Area other = (Area) object;
+        if ((this.idArea == null && other.idArea != null) || (this.idArea != null && !this.idArea.equals(other.idArea))) {
             return false;
         }
         return true;
@@ -98,7 +98,7 @@ public class Cargo implements Serializable {
 
     @Override
     public String toString() {
-        return "modelo.entities.Cargo[ idCargo=" + idCargo + " ]";
+        return "modelo.entities.Area[ idArea=" + idArea + " ]";
     }
     
 }

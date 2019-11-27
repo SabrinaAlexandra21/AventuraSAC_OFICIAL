@@ -14,11 +14,13 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.controllers.exceptions.NonexistentEntityException;
+import modelo.entities.Cargo;
+import modelo.entities.Area;
 import modelo.entities.Empleado;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 public class EmpleadoJpaController implements Serializable {
 
@@ -36,7 +38,25 @@ public class EmpleadoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Cargo idCargo = empleado.getIdCargo();
+            if (idCargo != null) {
+                idCargo = em.getReference(idCargo.getClass(), idCargo.getIdCargo());
+                empleado.setIdCargo(idCargo);
+            }
+            Area idArea = empleado.getIdArea();
+            if (idArea != null) {
+                idArea = em.getReference(idArea.getClass(), idArea.getIdArea());
+                empleado.setIdArea(idArea);
+            }
             em.persist(empleado);
+            if (idCargo != null) {
+                idCargo.getEmpleadoList().add(empleado);
+                idCargo = em.merge(idCargo);
+            }
+            if (idArea != null) {
+                idArea.getEmpleadoList().add(empleado);
+                idArea = em.merge(idArea);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -50,7 +70,36 @@ public class EmpleadoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Empleado persistentEmpleado = em.find(Empleado.class, empleado.getIdEmpleado());
+            Cargo idCargoOld = persistentEmpleado.getIdCargo();
+            Cargo idCargoNew = empleado.getIdCargo();
+            Area idAreaOld = persistentEmpleado.getIdArea();
+            Area idAreaNew = empleado.getIdArea();
+            if (idCargoNew != null) {
+                idCargoNew = em.getReference(idCargoNew.getClass(), idCargoNew.getIdCargo());
+                empleado.setIdCargo(idCargoNew);
+            }
+            if (idAreaNew != null) {
+                idAreaNew = em.getReference(idAreaNew.getClass(), idAreaNew.getIdArea());
+                empleado.setIdArea(idAreaNew);
+            }
             empleado = em.merge(empleado);
+            if (idCargoOld != null && !idCargoOld.equals(idCargoNew)) {
+                idCargoOld.getEmpleadoList().remove(empleado);
+                idCargoOld = em.merge(idCargoOld);
+            }
+            if (idCargoNew != null && !idCargoNew.equals(idCargoOld)) {
+                idCargoNew.getEmpleadoList().add(empleado);
+                idCargoNew = em.merge(idCargoNew);
+            }
+            if (idAreaOld != null && !idAreaOld.equals(idAreaNew)) {
+                idAreaOld.getEmpleadoList().remove(empleado);
+                idAreaOld = em.merge(idAreaOld);
+            }
+            if (idAreaNew != null && !idAreaNew.equals(idAreaOld)) {
+                idAreaNew.getEmpleadoList().add(empleado);
+                idAreaNew = em.merge(idAreaNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -79,6 +128,16 @@ public class EmpleadoJpaController implements Serializable {
                 empleado.getIdEmpleado();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The empleado with id " + id + " no longer exists.", enfe);
+            }
+            Cargo idCargo = empleado.getIdCargo();
+            if (idCargo != null) {
+                idCargo.getEmpleadoList().remove(empleado);
+                idCargo = em.merge(idCargo);
+            }
+            Area idArea = empleado.getIdArea();
+            if (idArea != null) {
+                idArea.getEmpleadoList().remove(empleado);
+                idArea = em.merge(idArea);
             }
             em.remove(empleado);
             em.getTransaction().commit();
