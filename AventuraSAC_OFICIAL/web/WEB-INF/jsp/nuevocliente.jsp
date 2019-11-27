@@ -28,9 +28,13 @@
                             <label for="ruc">RUC:</label>
                             <form:input path="ruc" cssClass="form-control" />
                         </div>
-                        <div class="form-group">
-                            <label for="idDistrito">Distrito:</label>
-                            <form:input path="idDistrito" cssClass="form-control"  />
+                        <div>
+                            <label for="idDistrito">Distrito:</label><br>
+                            <form:select path="idDistrito.idDistrito" id="idDistrito">
+                                <c:forEach items="${listaDistrito}" var="x">
+                                    <option value="${x.idDistrito}">${x.detalle}</option>
+                                </c:forEach>
+                            </form:select>
                         </div>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>

@@ -14,11 +14,12 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.controllers.exceptions.NonexistentEntityException;
+import modelo.entities.Distrito;
 import modelo.entities.Proveedor;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 public class ProveedorJpaController implements Serializable {
 
@@ -36,7 +37,16 @@ public class ProveedorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Distrito idDistrito = proveedor.getIdDistrito();
+            if (idDistrito != null) {
+                idDistrito = em.getReference(idDistrito.getClass(), idDistrito.getIdDistrito());
+                proveedor.setIdDistrito(idDistrito);
+            }
             em.persist(proveedor);
+            if (idDistrito != null) {
+                idDistrito.getProveedorList().add(proveedor);
+                idDistrito = em.merge(idDistrito);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -50,7 +60,22 @@ public class ProveedorJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Proveedor persistentProveedor = em.find(Proveedor.class, proveedor.getIdProveedor());
+            Distrito idDistritoOld = persistentProveedor.getIdDistrito();
+            Distrito idDistritoNew = proveedor.getIdDistrito();
+            if (idDistritoNew != null) {
+                idDistritoNew = em.getReference(idDistritoNew.getClass(), idDistritoNew.getIdDistrito());
+                proveedor.setIdDistrito(idDistritoNew);
+            }
             proveedor = em.merge(proveedor);
+            if (idDistritoOld != null && !idDistritoOld.equals(idDistritoNew)) {
+                idDistritoOld.getProveedorList().remove(proveedor);
+                idDistritoOld = em.merge(idDistritoOld);
+            }
+            if (idDistritoNew != null && !idDistritoNew.equals(idDistritoOld)) {
+                idDistritoNew.getProveedorList().add(proveedor);
+                idDistritoNew = em.merge(idDistritoNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -79,6 +104,11 @@ public class ProveedorJpaController implements Serializable {
                 proveedor.getIdProveedor();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The proveedor with id " + id + " no longer exists.", enfe);
+            }
+            Distrito idDistrito = proveedor.getIdDistrito();
+            if (idDistrito != null) {
+                idDistrito.getProveedorList().remove(proveedor);
+                idDistrito = em.merge(idDistrito);
             }
             em.remove(proveedor);
             em.getTransaction().commit();

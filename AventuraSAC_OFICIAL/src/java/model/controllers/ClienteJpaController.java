@@ -15,10 +15,11 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.controllers.exceptions.NonexistentEntityException;
 import modelo.entities.Cliente;
+import modelo.entities.Distrito;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 public class ClienteJpaController implements Serializable {
 
@@ -36,7 +37,16 @@ public class ClienteJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Distrito idDistrito = cliente.getIdDistrito();
+            if (idDistrito != null) {
+                idDistrito = em.getReference(idDistrito.getClass(), idDistrito.getIdDistrito());
+                cliente.setIdDistrito(idDistrito);
+            }
             em.persist(cliente);
+            if (idDistrito != null) {
+                idDistrito.getClienteList().add(cliente);
+                idDistrito = em.merge(idDistrito);
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -50,7 +60,22 @@ public class ClienteJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Cliente persistentCliente = em.find(Cliente.class, cliente.getIdCliente());
+            Distrito idDistritoOld = persistentCliente.getIdDistrito();
+            Distrito idDistritoNew = cliente.getIdDistrito();
+            if (idDistritoNew != null) {
+                idDistritoNew = em.getReference(idDistritoNew.getClass(), idDistritoNew.getIdDistrito());
+                cliente.setIdDistrito(idDistritoNew);
+            }
             cliente = em.merge(cliente);
+            if (idDistritoOld != null && !idDistritoOld.equals(idDistritoNew)) {
+                idDistritoOld.getClienteList().remove(cliente);
+                idDistritoOld = em.merge(idDistritoOld);
+            }
+            if (idDistritoNew != null && !idDistritoNew.equals(idDistritoOld)) {
+                idDistritoNew.getClienteList().add(cliente);
+                idDistritoNew = em.merge(idDistritoNew);
+            }
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -79,6 +104,11 @@ public class ClienteJpaController implements Serializable {
                 cliente.getIdCliente();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The cliente with id " + id + " no longer exists.", enfe);
+            }
+            Distrito idDistrito = cliente.getIdDistrito();
+            if (idDistrito != null) {
+                idDistrito.getClienteList().remove(cliente);
+                idDistrito = em.merge(idDistrito);
             }
             em.remove(cliente);
             em.getTransaction().commit();

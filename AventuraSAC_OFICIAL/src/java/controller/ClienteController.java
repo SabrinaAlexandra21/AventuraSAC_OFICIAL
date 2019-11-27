@@ -9,6 +9,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
+import model.controllers.DistritoJpaController;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,6 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import model.controllers.exceptions.NonexistentEntityException;
+import modelo.entities.Distrito;
 
 @Controller
 public class ClienteController {
@@ -23,10 +25,12 @@ public class ClienteController {
     private EntityManager em;
     private EntityManagerFactory emf;
     private ClienteJpaController repo;
+    private DistritoJpaController repo1;
     
     public ClienteController() {
         em = getEntityManager();
         repo = new ClienteJpaController(emf);
+        repo1 = new DistritoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -60,14 +64,16 @@ public class ClienteController {
         
         ModelAndView mv = new ModelAndView();
         
+        List<Distrito> distritos = repo1.findDistritoEntities();
+
+        mv.addObject("listaDistrito", distritos);
+        
         model.addAttribute("cliente", new Cliente());
         
         mv.setViewName("nuevocliente");
         
         return mv;
     }
-    
-    
     
     @RequestMapping(value = "nuevocliente.htm", method = RequestMethod.POST)
     

@@ -39,7 +39,7 @@
                                     <th scope="row">${item.idCliente}</th>
                                     <td>${item.razonSocial}</td>
                                     <td>${item.ruc}</td>
-                                    <td>${item.idDistrito}</td>
+                                    <td>${item.idDistrito.detalle}</td>
                                     <td>${item.direccion}</td>
                                     <td>${item.telefono}</td>
                                     <td>${item.correo}</td>

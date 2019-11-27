@@ -10,6 +10,7 @@
     <class>modelo.entities.Areas</class>
     <class>modelo.entities.Cargo</class>
     <class>modelo.entities.Area</class>
+    <class>modelo.entities.Distrito</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Aventura?zeroDateTimeBehavior=convertToNull"/>

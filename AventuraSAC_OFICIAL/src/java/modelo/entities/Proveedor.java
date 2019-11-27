@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "proveedor")
@@ -29,7 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Proveedor.findByIdProveedor", query = "SELECT p FROM Proveedor p WHERE p.idProveedor = :idProveedor")
     , @NamedQuery(name = "Proveedor.findByRazonSocial", query = "SELECT p FROM Proveedor p WHERE p.razonSocial = :razonSocial")
     , @NamedQuery(name = "Proveedor.findByRuc", query = "SELECT p FROM Proveedor p WHERE p.ruc = :ruc")
-    , @NamedQuery(name = "Proveedor.findByIdDistrito", query = "SELECT p FROM Proveedor p WHERE p.idDistrito = :idDistrito")
     , @NamedQuery(name = "Proveedor.findByDireccion", query = "SELECT p FROM Proveedor p WHERE p.direccion = :direccion")
     , @NamedQuery(name = "Proveedor.findByContacto", query = "SELECT p FROM Proveedor p WHERE p.contacto = :contacto")
     , @NamedQuery(name = "Proveedor.findByTelefono", query = "SELECT p FROM Proveedor p WHERE p.telefono = :telefono")
@@ -47,8 +48,6 @@ public class Proveedor implements Serializable {
     private String razonSocial;
     @Column(name = "RUC")
     private String ruc;
-    @Column(name = "idDistrito")
-    private Integer idDistrito;
     @Basic(optional = false)
     @Column(name = "Direccion")
     private String direccion;
@@ -60,6 +59,9 @@ public class Proveedor implements Serializable {
     @Basic(optional = false)
     @Column(name = "Correo")
     private String correo;
+    @JoinColumn(name = "idDistrito", referencedColumnName = "idDistrito")
+    @ManyToOne
+    private Distrito idDistrito;
 
     public Proveedor() {
     }
@@ -100,14 +102,6 @@ public class Proveedor implements Serializable {
         this.ruc = ruc;
     }
 
-    public Integer getIdDistrito() {
-        return idDistrito;
-    }
-
-    public void setIdDistrito(Integer idDistrito) {
-        this.idDistrito = idDistrito;
-    }
-
     public String getDireccion() {
         return direccion;
     }
@@ -138,6 +132,14 @@ public class Proveedor implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    public Distrito getIdDistrito() {
+        return idDistrito;
+    }
+
+    public void setIdDistrito(Distrito idDistrito) {
+        this.idDistrito = idDistrito;
     }
 
     @Override

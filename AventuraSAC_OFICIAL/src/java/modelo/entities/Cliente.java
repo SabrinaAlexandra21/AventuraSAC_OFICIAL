@@ -12,6 +12,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
@@ -19,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "cliente")
@@ -29,7 +31,6 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "Cliente.findByIdCliente", query = "SELECT c FROM Cliente c WHERE c.idCliente = :idCliente")
     , @NamedQuery(name = "Cliente.findByRazonSocial", query = "SELECT c FROM Cliente c WHERE c.razonSocial = :razonSocial")
     , @NamedQuery(name = "Cliente.findByRuc", query = "SELECT c FROM Cliente c WHERE c.ruc = :ruc")
-    , @NamedQuery(name = "Cliente.findByIdDistrito", query = "SELECT c FROM Cliente c WHERE c.idDistrito = :idDistrito")
     , @NamedQuery(name = "Cliente.findByDireccion", query = "SELECT c FROM Cliente c WHERE c.direccion = :direccion")
     , @NamedQuery(name = "Cliente.findByTelefono", query = "SELECT c FROM Cliente c WHERE c.telefono = :telefono")
     , @NamedQuery(name = "Cliente.findByCorreo", query = "SELECT c FROM Cliente c WHERE c.correo = :correo")
@@ -49,8 +50,6 @@ public class Cliente implements Serializable {
     private String razonSocial;
     @Column(name = "RUC")
     private String ruc;
-    @Column(name = "idDistrito")
-    private Integer idDistrito;
     @Basic(optional = false)
     @Column(name = "Direccion")
     private String direccion;
@@ -69,6 +68,9 @@ public class Cliente implements Serializable {
     @Basic(optional = false)
     @Column(name = "Clave")
     private String clave;
+    @JoinColumn(name = "idDistrito", referencedColumnName = "idDistrito")
+    @ManyToOne
+    private Distrito idDistrito;
 
     public Cliente() {
     }
@@ -110,14 +112,6 @@ public class Cliente implements Serializable {
 
     public void setRuc(String ruc) {
         this.ruc = ruc;
-    }
-
-    public Integer getIdDistrito() {
-        return idDistrito;
-    }
-
-    public void setIdDistrito(Integer idDistrito) {
-        this.idDistrito = idDistrito;
     }
 
     public String getDireccion() {
@@ -166,6 +160,14 @@ public class Cliente implements Serializable {
 
     public void setClave(String clave) {
         this.clave = clave;
+    }
+
+    public Distrito getIdDistrito() {
+        return idDistrito;
+    }
+
+    public void setIdDistrito(Distrito idDistrito) {
+        this.idDistrito = idDistrito;
     }
 
     @Override

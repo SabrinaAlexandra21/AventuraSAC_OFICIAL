@@ -80,7 +80,7 @@ public class EmpleadoController {
         
         mv.addObject("lista", areas);
         
-        mv.addObject("empleado", new Empleado());
+        model.addAttribute("empleado", new Empleado());
         
         mv.setViewName("nuevoempleado");
         
