@@ -75,6 +75,10 @@
                             <fieldset id="fieldset1" style="border:2px solid gray">
                                 <legend><h5><STRONG>Ingresar datos de la Prenda</STRONG></h5></legend>
                                 <div class="row" id="fila1">
+                                    <div class="col-sm-4">		
+                                        <label for="idFicha">ID Ficha Técnica:</label>
+                                        <input type="text" name="idFicha" placeholder="Ingresar ID">
+                                    </div>
                                     <div class="col-sm-4">
                                         <label for="descripcion">Descripción:</label>
                                         <input type="text" name="descripcion" placeholder="Ingresar descripción">
@@ -83,19 +87,19 @@
                                         <label for="modelo">Modelo:</label>
                                         <input type="text" name="modelo" placeholder="Ingresar modelo">
                                     </div>
-                                    <div class="col-sm-4">		
-                                        <label for="lavado">Lavado:</label>
-                                        <input type="text" name="lavado" placeholder="Ingresar lavado">
-                                    </div>
                                 </div>
                                 <div class="row" id="fila2">
-                                    <div class="col-sm-6">		
+                                    <div class="col-sm-4">		
                                         <label for="tela">Tela:</label>
                                         <input type="text" name="tela" placeholder="Ingresar tela">
                                     </div>
-                                    <div class="col-sm-6">		
+                                    <div class="col-sm-4">		
                                         <label for="hilo">Hilo:</label>
                                         <input type="text" name="tela" placeholder="Ingresar hilo">
+                                    </div>
+                                    <div class="col-sm-4">		
+                                        <label for="lavado">Lavado:</label>
+                                        <input type="text" name="lavado" placeholder="Ingresar lavado">
                                     </div>
                                 </div>
                             </fieldset>
@@ -183,19 +187,22 @@
                                         </tr>
                                     </tbody>
                                 </table>
-                                <div class="row" id="filaEtiqueta">
-                                    <div class="col-sm-4">
-                                        <label for="etiqueta">Etiqueta:</label>
-                                        <input type="text" name="etiqueta" placeholder="Ingresar etiqueta">
-                                    </div>
+                            </div>
+                            <div class="row" id="ultimafila">
+                                <div class="col" id="filaEtiqueta">
+                                    <label for="etiqueta">Etiqueta:</label>
+                                    <input type="text" name="etiqueta" placeholder="Ingresar etiqueta">
+                                </div>
+                                <div class="col" id="filaEmpaque">
+                                    <label for="empaque">Empaque:</label>
+                                    <input type="text" name="empaque" placeholder="Ingresar empaque">
                                 </div>
                             </div>
                         </div>
                     </div>
                 </section>
-                </fieldset>
+            </div>
         </form>
     </body>
 </html>
-
 

@@ -58,28 +58,25 @@
                             <fieldset id="fieldset1" style="border: 1px solid gray">
                                 <legend><strong>Ingresar datos</strong></legend>
                                 <div class="row" id="fila1">
-                                    <div class="col-sm-4">
-                                        <label for="Fecha">Fecha de inicio del traslado:</label>
+                                    <div class="col-sm-3">
+                                        <label for="Fecha">ID Guia Remisión:</label>
                                         <input type="text" name="Fecha" placeholder="Ingresar Fecha">
                                     </div>
-                                    <div class="col-sm-4">
+                                    <div class="col-sm-3">
+                                        <label for="Fecha">Fecha de Emisión:</label>
+                                        <input type="text" name="Fecha" placeholder="Ingresar Fecha">
+                                    </div>
+                                    <div class="col-sm-3">
                                         <label for="Partida">Punto Partida:</label>
                                         <input type="text" name="Partida" placeholder="Ingresar punto partida">
                                     </div>
-                                    <div class="col-sm-4">		
+                                    <div class="col-sm-3">		
                                         <label for="Destinatario">Destinatario:</label>
                                         <input type="text" name="Destinatario" placeholder="Ingresar destinatario">
                                     </div>
-                                </div>
-
-                                <div class="row" id="fila2">
-                                    <div class="col-sm-4">
-                                        <label for="Llegada">Punto Llegada:</label>
-                                        <input type="text" name="Llegada" placeholder="Ingresar punto llegada">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="RUC">RUC:</label>
-                                        <input type="text"  name="RUC" placeholder="Ingresar RUC">
+                                    <div class="col-sm-3">		
+                                        <label for="Destinatario">Destinatario:</label>
+                                        <input type="text" name="Destinatario" placeholder="Ingresar destinatario">
                                     </div>
                                 </div>
                             </fieldset>
@@ -90,66 +87,16 @@
                                 <legend><strong>Ingresar datos</strong></legend>
                                 <div class="row" id="fila3">
                                     <div class="col-sm-4">
-                                        <label for="Modelo" >RUC:</label>
-                                        <input type="text" name="Modelo" placeholder="Ingresar modelo">
+                                        <label for="rucTransporte" >RUC Transporte:</label>
+                                        <input type="text" name="rucTransporte" placeholder="Ingresar RUC">
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="Chofer">Chofer:</label>
-                                        <input type="text" name="Chofer" placeholder="Ingresar chofer">
+                                        <label for="nomChofer">Nombre de Chofer:</label>
+                                        <input type="text" name="nomChofer" placeholder="Ingresar nombre ">
                                     </div>
                                     <div class="col-sm-4">		
                                         <label for="Marca">Marca:</label>
                                         <input type="text" name="Marca" placeholder="Ingresar marca">
-                                    </div>
-                                </div>
-
-                                <div class="row" id="fila4">
-                                    <div class="col-sm-4">
-                                        <label for="Placa">Placa:</label>
-                                        <input type="text" name="Placa" placeholder="Ingresar placa">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="licencia" >Licencia de conducir:</label>
-                                        <input type="text" name="licencia" placeholder="Ingresar el N° licencia">
-                                    </div>
-                                </div>
-                            </fieldset>
-
-                            <hr style="border: 1px solid gray">
-
-                            <fieldset id="fieldset3" style="border: 1px solid gray">
-                                <legend><strong>Ingresar Datos</strong></legend>
-                                <div class="row" id="fila5">
-                                    <div class="col-sm-3">
-                                        <label for="IdPedido" >Id Ficha:</label>
-                                        <input type="text" name="IdPedido" id="idpedido" placeholder="Ingresar ID">	
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="descripcion" >Descripción:</label>
-                                        <input type="text" name="descripcion" id="descripcion" placeholder="Ingresar descripción">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="Cantidad">Cantidad:</label>
-                                        <input type="text" name="Cantidad" id="cantidad" placeholder="Ingresar cantidad">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="modelo" >Modelo:</label>
-                                        <input type="text" name="modelo" id="modelo" placeholder="Ingresar modelo">
-                                    </div>
-                                </div>
-
-                                <div class="row" id="fila6">
-                                    <div class="col-sm-3">
-                                        <label for="Placa">Placa:</label>
-                                        <input type="text" name="Placa" placeholder="Ingresar placa">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="licencia" >Licencia:</label>
-                                        <input type="text" name="licencia" placeholder="Ingresar el N° licencia">
-                                    </div>
-                                    <div class="col-sm-3">
-                                        <label for="modelo" >Modelo:</label>
-                                        <input type="text" name="modelo" id="modelo" placeholder="Ingresar modelo">
                                     </div>
                                 </div>
                             </fieldset>
