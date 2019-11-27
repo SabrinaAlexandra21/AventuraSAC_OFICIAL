@@ -2,7 +2,7 @@
 package controller;
 
 import model.controllers.ClienteJpaController;
-import modelo.entities.Cliente;
+import model.entities.Cliente;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -17,7 +17,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import model.controllers.exceptions.NonexistentEntityException;
-import modelo.entities.Distrito;
+import model.entities.Distrito;
 
 @Controller
 public class ClienteController {
@@ -90,7 +90,7 @@ public class ClienteController {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        modelo.entities.Cliente obj = repo.findCliente(id);
+        model.entities.Cliente obj = repo.findCliente(id);
 
         ModelAndView mv = new ModelAndView();
         
@@ -104,7 +104,7 @@ public class ClienteController {
     
     @RequestMapping(value = "editarcliente.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarCliente(@ModelAttribute("cliente") modelo.entities.Cliente c) throws Exception {
+    public ModelAndView EditarCliente(@ModelAttribute("cliente") model.entities.Cliente c) throws Exception {
         
         repo.edit(c);
 
