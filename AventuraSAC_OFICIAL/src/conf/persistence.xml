@@ -5,20 +5,24 @@
     <class>modelo.entities.Cliente</class>
     <class>modelo.entities.Proveedor</class>
     <class>modelo.entities.Empleado</class>
+    <class>modelo.entities.Cotizacion</class>
+    <class>modelo.entities.DetalleCotización</class>
     <class>modelo.entities.Areas</class>
     <class>modelo.entities.Cargo</class>
     <class>modelo.entities.Area</class>
     <class>modelo.entities.Distrito</class>
-    <class>modelo.entities.Cotizacion</class>
-    <class>modelo.entities.Pedido</class>
-    <class>model.entities.Cliente</class>
-    <class>model.entities.Areas</class>
-    <class>model.entities.Cotizacion</class>
-    <class>model.entities.Pedido</class>
-    <class>model.entities.Distrito</class>
     <class>model.entities.Proveedor</class>
-    <class>model.entities.Cargo</class>
+    <class>model.entities.CotizacionDetalle</class>
+    <class>model.entities.PedidoDetalle</class>
+    <class>model.entities.Cotizacion</class>
+    <class>model.entities.Cliente</class>
     <class>model.entities.Empleado</class>
+    <class>model.entities.Fichatecnica</class>
+    <class>model.entities.Pedido</class>
+    <class>model.entities.Cargo</class>
+    <class>model.entities.Tipotela</class>
+    <class>model.entities.Distrito</class>
+    <class>model.entities.Areas</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Aventura?zeroDateTimeBehavior=convertToNull"/>
