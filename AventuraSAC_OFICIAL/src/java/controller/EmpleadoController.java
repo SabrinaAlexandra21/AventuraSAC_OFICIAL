@@ -71,15 +71,15 @@ public class EmpleadoController {
     
     public ModelAndView NuevoEmpleado(Model model) {
         
+        ModelAndView mv = new ModelAndView();
+        
         List<Cargo> cargos =  repo1.findCargoEntities();
         
         List<Areas> areas = repo2.findAreasEntities();
+
+        mv.addObject("listaCargo", cargos);
         
-        ModelAndView mv = new ModelAndView();
-        
-        model.addAttribute("listaCargo", cargos);
-        
-        model.addAttribute("lista", areas);
+        mv.addObject("lista", areas);
         
         mv.addObject("empleado", new Empleado());
         
@@ -125,6 +125,8 @@ public class EmpleadoController {
 
         return new ModelAndView("redirect:/empleados.htm");
     }
+    
+    @RequestMapping(value = "eliminarempleado.htm")
     
      public ModelAndView EliminarEmpleado(HttpServletRequest request) throws NonexistentEntityException {
         
