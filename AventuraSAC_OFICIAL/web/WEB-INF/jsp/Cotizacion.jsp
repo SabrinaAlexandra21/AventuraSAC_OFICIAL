@@ -6,8 +6,8 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="../css/main.css" rel="stylesheet"/>
-        <link href="../css/EstilosCotizacion.css" rel="stylesheet"/>
+        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
+        <link href="../css/EstilosCotizacion.css" rel="stylesheet" type="text/css"/>
 
     </head>
     <body>
@@ -23,16 +23,16 @@
                     <div id="Contenedorlogo" class="inner" style="border:9px double">
                         <div id="Contenedorlogo2" class="content">
                             <div class="row">
-                                <div class="col-sm-3" id="imagen">
-                                    <h1><img src="images/aventura.png"></h1>
+                                <div class="col" id="imagen">
+                                    <h1><img src="images/LogoAventura.png"></h1>
                                 </div> 
-                                <div class="col-sm-3" id="escritos">
+                                <div class="col" id="escritos">
                                     <center>
                                         <p>Cal. Mercaderes Nro. 164 Dpto. 203</p>
                                         <p>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</p>
                                     </center>
                                 </div>
-                                <div class="col-sm-3">
+                                <div class="col">
                                     <fieldset style="border:1px solid black" id="fieldset">
                                         <h3> R.U.C. N° 20111807958 </h3>
                                         <H3><strong>Cotizacíón</strong></H3>
@@ -52,31 +52,70 @@
                             <fieldset id="fieldset1" style="border: 1px solid gray">
                                 <legend>Ingresar datos</legend>
                                 <div class="row" id="fila1">
-                                    <div class="col-sm-4">
-                                        <label for="idCotizacion">ID Cotización:</label>
-                                        <input type="text" name="idCotizacion" placeholder="Ingresar ID">
+                                    <div class="col-sm-3">
+                                        <label for="Codigo">Código:</label>
+                                        <input type="text" name="codigo" placeholder="Ingresar código">
                                     </div>
-                                    <div class="col-sm-4">
-                                        <label for="idPedido">ID Pedido:</label>
-                                        <input type="text" name="idPedido"  placeholder="Ingresar ID">
+                                    <div class="col-sm-3">
+                                        <label for="razon">Razón Social:</label>
+                                        <input type="text" name="razon"  placeholder="Ingresar razón social">
                                     </div>
-                                    <div class="col-sm-4">		
-                                        <label for="fecEmision">FechaEmision</label>
+                                    <div class="col-sm-3">      
+                                        <label for="RUC">RUC:</label>
+                                        <input type="text" name="RUC" placeholder="Ingresar RUC">
+                                    </div>
+                                    <div class="col-sm-3">      
+                                        <label for="fecEmision">Fecha de Emision:</label>
                                         <input type="text" name="fecEmision" placeholder="Ingresar fecha">
                                     </div>
                                 </div>
 
+                                <div class="row" id="fila2">
+                                    <div class="col-sm-4">
+                                        <label for="direccion">Dirección:</label>
+                                        <input type="text" name="direccion" size="38" placeholder="Ingresar dirección">
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="telefono">Teléfono:</label>
+                                        <input type="text" name="telefono" size="38" placeholder="Ingresar teléfono">
+                                    </div>
+                                    <div class="col-sm-4">      
+                                        <label for="correo">Correo:</label>
+                                        <input type="email" name="correo" size="38" placeholder="name@example.com">
+                                    </div>
+                                </div>
                             </fieldset>
-
                             <br>
-
-                            <hr style="border: 1px solid gray"><!--Aqui esta la linea-->
 
                             <div class="row" id="titulodescripcion">
                                 <div class="col-2"></div>
                                 <div class="col-3"></div>
                                 <div class="col-4"><h3><STRONG>Descripción</STRONG></h3></div>
                             </div>
+
+
+
+                            <table id="tabla">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+
+                            </table>
 
                             <div class="row">
 
@@ -85,12 +124,6 @@
 
                                         <legend><strong>Ingresar Datos</strong></legend>
 
-                                        <div class="row" id="fila5">
-                                            <div class="row" class="col-sm-3">
-                                                <label for="subtotal" >Subtotal:</label>
-                                                <input type="text" name="subtotal" id="Subotal" placeholder="Subtotal">
-                                            </div>
-                                        </div>
                                         <div class="row" id="fila6">
                                             <div class="row" class="col-sm-3">
                                                 <label for="importe" >Importe:</label>
@@ -114,21 +147,21 @@
                                 </div>
                             </div>
 
-                                <fieldset id="fieldset4" style="border: 1px solid gray">
-                                    <legend>¿Qué acción desea realizar?</legend>
-                                    <div class="row" id="fila8">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                                    </div>
-                                </fieldset>
-                            </div>
+                            <fieldset id="fieldset4" style="border: 1px solid gray">
+                                <legend>¿Qué acción desea realizar?</legend>
+                                <div class="row" id="fila8">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
+                                </div>
+                            </fieldset>
                             <p><STRONG>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Se tiene que pagar el 50% como adelanto inicial</STRONG></p><!--Letra negrita-->
                         </div>
                     </div>
-                </section>
             </div>
+        </section>
+    </div>
 
-        </form>
-    </body>
+</form>
+</body>
 </html>
 

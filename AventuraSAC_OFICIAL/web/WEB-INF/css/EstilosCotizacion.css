@@ -3,12 +3,15 @@ body{
 	 background: linear-gradient(to bottom, #6699ff 0%, #99ffcc 100%);
 	}
 
-
+h1 img{
+	margin:60px 100px;
+	height: 120px;
+}
 
 #Contenedorlogo{
 	background-color: #F5F7FA ;
 	position: 	absolute;
-	margin: -630px 0px 0px 60px;	
+	margin: -630px 0px 0px 220px;	
 	height: 350px;
 	border-color: #aaaaaa;
 	left: 180px;
@@ -19,13 +22,13 @@ body{
 }
 
 #imagen{
-	left:50px;
+	left:80px;
 }
 
 #container {
 	margin: 0px 50px;
 	height: 300px; /*Ancho*/
-	width: 1600px;/*Largoo*/
+	width: 1090px;/*Largoo*/
 	opacity: 0.97;
 	position: 	absolute;	
 	bottom: 40px;
@@ -42,7 +45,7 @@ body{
 }
 
 #escritos {
-	margin: 80px 0px;
+	margin: 80px -330px;
 	position: relative;
 	right: 180px;
 	top:120px;
@@ -50,18 +53,19 @@ body{
 
 #fieldset {
 
-	margin: 50px 60px;
+	margin: 50px 130px;
 	padding: 20px 40px;
 	text-align: center;
 	position: relative;
-	right:250px;
-	top:90px;
+	left: 70px;
+	top:40px;
 }
 
 #fieldset input{
 
 	width: 10px;
 	height: 25px;
+
 }
 
 
@@ -77,46 +81,34 @@ body{
 }
 
 
-#fecha{
-	position: relative;
-	bottom:230px;
-	left:835px;
-}
-
-#fecha input{
-	height: 45px;
-	width: 250px;
-	margin: 0px -35px ;
-
-}
-
 #main{
 	margin: -520px 0px;
 	width: 1450px;/*Largoo*/
 	position: 	absolute;
 	top:290px;	
-	left:180px;
+	left:150px;
 }
 
 #main2{
 		position: 	absolute;
 		margin: 0px 0px 0px 60px;	
-		height: 1000px;
+		height: 900px;
+		width: 1500px;
 		border-color: #aaaaaa;
 }
 
 #main3{
-	height: 980px;
+	height: 880px;
 }
 
 #fieldset1 {
-	margin: 0px 0px 0px 120px;
-	padding: 0px 30px;
-	height: 250px; /*Ancho*/
-	width: 930px;/*Largoo*/
+	margin: 0px 0px 0px -27px;
+	padding: 20px 60px;
+	height: 300px; /*Ancho*/
+	width: 1278px;/*Largoo*/
 	text-align: left;
 	font-family: 'Libre Baskerville', serif;
-	right: 230px;
+	right: 100px;
 }
 
 
@@ -124,60 +116,45 @@ body{
 	margin: 20px 0px;
 	width: 250px;
 	height: 40px;
+	background-color: #ffcccc;
 }
 
+
+#fila2{
+	margin:0px 0px 0px 80px;
+}
 #fila2 input {
 	margin: 20px 0px;
 	width: 250px;
 	height: 40px;
+	background-color: #ffcccc;
 }
 
-#fieldset2 {
-	margin: 0px 0px 0px 170px;
-	padding: 0px 20px;
-	height: 250px; /*Ancho*/
-	width: 920px;/*Largoo*/
-	text-align: left;
-	font-family: 'Libre Baskerville', serif;
-}
-
-#fila3 label{
-
-	width: 90px;
-	margin: 10px 0px 0px 0px;
-
-}
-
-#fila3 input{
-
-	width: 180px;
-	height: 45px;
-
-}
-
-#fila4 textarea{
-	width: 875px;
-	height: 70px;
-}
-
-#col1 fieldset{
-	position: relative;
-	right: 190px;
-}
 
 #col2 fieldset{
 	position: relative;
-  	left: 440px;
-    bottom: 225px;
+  	left: 490px;
+    top:10px;
 }
 
+#tabla th{
+	text-align: center;
+	background-color: #ffcccc;
+}
 
+table,th  {
+	border: 1px solid black;
+}
+
+table,td  {
+	border: 1px solid black;
+}
 
 #fieldset3 {
-	margin: 0px 0px 0px 480px;
+	margin: 0px 0px 0px 30px;
 	padding: 0px 20px;
-	height: 210px; /*Ancho*/
-	width: 280px;/*Largoo*/
+	height: 205px; /*Ancho*/
+	width: 260px;/*Largoo*/
 	text-align: left;
 	font-family: 'Libre Baskerville', serif;
 }
@@ -192,6 +169,7 @@ body{
 	margin: 10px 10px;
 	width: 110px;
 	height: 35px;
+	background-color: #ffcccc;
 }
 
 #parrafofinal {
@@ -200,7 +178,7 @@ body{
 
 #fieldset4 {
 
-	margin: -180px 0px 0px 970px;
+	margin: -100px 0px 0px 970px;
 	padding: 5px 51px;
 	height: 120px; /*Ancho*/
 	width: 260px;/*Largoo*/
@@ -212,6 +190,7 @@ body{
 	margin: 0px 0px 0px 5px;
 	padding: 0px 10px;
 	height: 45px;
+	background-color: #ffcccc;
 
 }
 
