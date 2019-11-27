@@ -41,12 +41,6 @@
                                         </div>
                                     </fieldset>
                                 </div>
-                                <div class="form-group row" id=fecha>
-                                    <label class="col-sm-2 col-form-label">Fecha:</label>
-                                    <div class="col-sm-3">
-                                        <input type="text" class="form-control"  placeholder="Ingresar fecha">
-                                    </div>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -59,33 +53,19 @@
                                 <legend>Ingresar datos</legend>
                                 <div class="row" id="fila1">
                                     <div class="col-sm-4">
-                                        <label for="Codigo">Código:</label>
-                                        <input type="text" name="codigo" placeholder="Ingresar código">
+                                        <label for="idCotizacion">ID Cotización:</label>
+                                        <input type="text" name="idCotizacion" placeholder="Ingresar ID">
                                     </div>
                                     <div class="col-sm-4">
-                                        <label for="razon">Razón Social:</label>
-                                        <input type="text" name="razon"  placeholder="Ingresar razón social">
+                                        <label for="idPedido">ID Pedido:</label>
+                                        <input type="text" name="idPedido"  placeholder="Ingresar ID">
                                     </div>
                                     <div class="col-sm-4">		
-                                        <label for="RUC">RUC:</label>
-                                        <input type="text" name="RUC" placeholder="Ingresar RUC">
+                                        <label for="fecEmision">FechaEmision</label>
+                                        <input type="text" name="fecEmision" placeholder="Ingresar fecha">
                                     </div>
                                 </div>
 
-                                <div class="row" id="fila2">
-                                    <div class="col-sm-4">
-                                        <label for="direccion">Dirección:</label>
-                                        <input type="text" name="direccion" size="38" placeholder="Ingresar dirección">
-                                    </div>
-                                    <div class="col-sm-4">
-                                        <label for="telefono">Teléfono:</label>
-                                        <input type="text" name="telefono" size="38" placeholder="Ingresar teléfono">
-                                    </div>
-                                    <div class="col-sm-4">		
-                                        <label for="correo">Correo:</label>
-                                        <input type="email" name="correo" size="38" placeholder="name@example.com">
-                                    </div>
-                                </div>
                             </fieldset>
 
                             <br>
@@ -99,36 +79,6 @@
                             </div>
 
                             <div class="row">
-                                <div class="col-sm-3" id="col1">
-                                    <fieldset id="fieldset2" style="border: 1px solid gray">
-                                        <legend><strong>Ingresar Datos</strong></legend>
-                                        <div class="row" id="fila3">
-                                            <div class="col-sm-3">
-                                                <label for="IdPedido" >Id Ficha:</label>
-                                                <input type="text" name="IdPedido" id="idpedido" placeholder="Ingresar ID">	
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <label for="modelo" >Modelo:</label>
-                                                <input type="text" name="modelo" id="descripcion" placeholder="Ingresar modelo">
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <label for="Cantidad">Cantidad:</label>
-                                                <input type="text" name="Cantidad" id="cantidad" placeholder="Ingresar cantidad">
-                                            </div>
-                                            <div class="col-sm-3">
-                                                <label for="modelo" >Precio:</label>
-                                                <input type="text" name="modelo" id="modelo" placeholder="Ingresar precio">  
-                                            </div>
-                                        </div>
-
-                                        <div class="row" id="fila4">
-                                            <div class="col-sm-3">
-                                                <label for="descripcion" >Descripcion:</label>
-                                                <p><textarea name="descripcion" placeholder="Ingresar descripción..."></textarea></p>
-                                            </div>
-                                        </div>
-                                    </fieldset>
-                                </div>
 
                                 <div class="col-sm-3" id="col2">
                                     <fieldset id="fieldset3" style="border: 1px solid gray">
@@ -137,17 +87,23 @@
 
                                         <div class="row" id="fila5">
                                             <div class="row" class="col-sm-3">
+                                                <label for="subtotal" >Subtotal:</label>
+                                                <input type="text" name="subtotal" id="Subotal" placeholder="Subtotal">
+                                            </div>
+                                        </div>
+                                        <div class="row" id="fila6">
+                                            <div class="row" class="col-sm-3">
+                                                <label for="importe" >Importe:</label>
+                                                <input type="text" name="importe" id="Subotal" placeholder="Importe">
+                                            </div>
+                                        </div>
+                                        <div class="row" id="fila7">
+                                            <div class="row" class="col-sm-3">
                                                 <label for="igv" >IGV:</label>
                                                 <input type="text" name="igv" id="igv" placeholder="IGV">
                                             </div>	
                                         </div>
-                                        <div class="row" id="fila6">
-                                            <div class="row" class="col-sm-3">
-                                                <label for="subtotal" >Subtotal:</label>
-                                                <input type="text" name="subtotal" id="Subotal" placeholder="Subtotal">
-                                            </div>	
-                                        </div>
-                                        <div class="row" id="fila7">
+                                        <div class="row" id="fila8">
                                             <div class="row" class="col-sm-3">
                                                 <label for="total" >Total:</label>
                                                 <input type="text" name="total" id="total" placeholder="Total">
@@ -156,6 +112,7 @@
                                     </fieldset>
 
                                 </div>
+                            </div>
 
                                 <fieldset id="fieldset4" style="border: 1px solid gray">
                                     <legend>¿Qué acción desea realizar?</legend>
