@@ -1,4 +1,3 @@
-
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -17,55 +16,51 @@
         <div class="container md-8">
             <div class="card">
                 <div class="card-header">
-                    <h2>Nuevo Cliente</h2>
+                    <h2>Nuevo Proveedor</h2>
                 </div>
                 <div class="card-body">
-                    <form:form method="post" modelAttribute="cliente">
+                    <form:form method="post" modelAttribute="proveedor">
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" />
+                            <form:input path="razonSocial" cssClass="form-control" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc" cssClass="form-control" />
+                            <form:input path="ruc" cssClass="form-control" required="required"/>
                         </div>
                         <div>
                             <label for="idDistrito">Distrito:</label><br>
-                            <form:select path="idDistrito.idDistrito" id="idDistrito">
-                                <c:forEach items="${listaDistrito}" var="x">
+                            <form:select path="idDistrito.idDistrito" id="idDistrito" >
+                                <c:forEach items="${listarDistrito}" var="x">
                                     <option value="${x.idDistrito}">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
                         </div>
+                        <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion" cssClass="form-control"  />
+                            <form:input path="direccion" cssClass="form-control" required="required"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="contacto">Contacto:</label>
+                            <form:input path="contacto" cssClass="form-control" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"  />
+                            <form:input path="telefono" cssClass="form-control" required="required"/>
                         </div>
-                        <div class="form-group">
-                            <label for="broker">Broker:</label>
-                            <form:input path="broker" cssClass="form-control"  />
-                        </div>
+                        
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control"  />
+                            <form:input path="correo" cssClass="form-control"  required="required"/>
                         </div>
-                        <div class="form-group">
-                            <label for="usuario">Usuario:</label>
-                            <form:input path="usuario" cssClass="form-control"  />
-                        </div>
-                        <div class="form-group">
-                            <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" placeholder="*********" />
-                        </div>
+                        
                         <input type="submit" class="btn btn-primary"  value="Registrar">
-                        <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                        <a class="btn btn-secondary" href="proveedores.htm" role="button">Regresar</a>
                     </form:form>
                 </div>
             </div>
         </div>
     </body>
 </html>
+

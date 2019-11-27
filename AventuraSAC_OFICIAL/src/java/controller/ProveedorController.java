@@ -9,8 +9,10 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
+import model.controllers.DistritoJpaController;
 import model.controllers.ProveedorJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
+import modelo.entities.Distrito;
 import modelo.entities.Proveedor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -27,6 +29,7 @@ public class ProveedorController {
     private EntityManager em;
     private EntityManagerFactory emf;
     private ProveedorJpaController repo;
+    private DistritoJpaController repo1;
     
      public ProveedorController() {
         em = getEntityManager();
@@ -59,10 +62,19 @@ public class ProveedorController {
     }
     
     @RequestMapping(value = "nuevoproveedor.htm", method = RequestMethod.GET)
+    
     public ModelAndView NuevoProveedor(Model model) {
+        
         ModelAndView mv = new ModelAndView();
+        
+        List<Distrito> distritos = repo1.findDistritoEntities();
+
+        mv.addObject("listarDistrito", distritos);
+        
         model.addAttribute("proveedor", new Proveedor());
+        
         mv.setViewName("nuevoproveedor");
+        
         return mv;
     }
     
@@ -78,19 +90,27 @@ public class ProveedorController {
     }
     
     @RequestMapping(value = "editarproveedor.htm", method = RequestMethod.GET)
+    
     public ModelAndView EditarProveedor(HttpServletRequest request) {
+        
         int id = Integer.parseInt(request.getParameter("id"));
+        
         modelo.entities.Proveedor obj = repo.findProveedor(id);
 
         ModelAndView mv = new ModelAndView();
+        
         mv.addObject("proveedor", obj);
+        
         mv.setViewName("editarproveedor");
+        
         return mv;
         
     }
     
     @RequestMapping(value = "editarproveedor.htm", method = RequestMethod.POST)
+    
     public ModelAndView EditarProveedor(@ModelAttribute("proveedor") modelo.entities.Proveedor c) throws Exception {
+        
         repo.edit(c);
 
         return new ModelAndView("redirect:/proveedores.htm");
@@ -98,7 +118,7 @@ public class ProveedorController {
     
     @RequestMapping(value = "eliminarproveedor.htm")
      
-    public ModelAndView EliminarCliente(HttpServletRequest request) throws NonexistentEntityException {
+    public ModelAndView EliminarProveedor(HttpServletRequest request) throws NonexistentEntityException {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
