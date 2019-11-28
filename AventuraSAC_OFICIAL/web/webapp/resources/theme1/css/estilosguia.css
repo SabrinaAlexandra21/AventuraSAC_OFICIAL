@@ -1,0 +1,208 @@
+
+body{
+	 background: linear-gradient(to bottom, #6699ff 0%, #99ffcc 100%);
+	}
+
+
+
+#Contenedorlogo{
+	background-color: #F5F7FA ;
+	position: 	absolute;
+	margin: -630px 0px 0px 60px;	
+	height: 350px;
+	border-color: #aaaaaa;
+	left: 180px;
+}
+
+#Contenedorlogo2{
+	height: 150px;
+}
+
+#imagen{
+	left:50px;
+}
+
+#container {
+	margin: 0px 50px;
+	height: 300px; /*Ancho*/
+	width: 1600px;/*Largoo*/
+	opacity: 0.97;
+	position: 	absolute;	
+	bottom: 40px;
+}
+
+
+#logo h1{
+	margin: 35px 0px 30px 0px;
+	height: 210px;
+	position: relative;
+  	left: 20px;
+  	bottom: 30px;
+
+}
+
+#escritos {
+	margin: 80px 0px;
+	position: relative;
+	right: 180px;
+	top:120px;
+}
+
+#fieldset {
+
+	margin: 50px 60px;
+	padding: 20px 40px;
+	text-align: center;
+	position: relative;
+	right: : 250px;
+	top:90px;
+}
+
+#fieldset input{
+
+	width: 10px;
+	height: 25px;
+}
+
+
+#fieldset h3{
+
+	margin: 10px 10px;
+}
+
+#ngui {
+
+	margin: 0px 25px;
+	text-align: center;
+}
+
+
+#fecha{
+	position: relative;
+	bottom:230px;
+	left:835px;
+}
+
+#fecha input{
+	height: 45px;
+	width: 250px;
+	margin: 0px -35px ;
+
+}
+
+
+#main{
+	margin: -520px 0px;
+	width: 1450px;/*Largoo*/
+	position: 	absolute;
+	top:290px;	
+	left:180px;
+}
+
+#main2{
+		position: 	absolute;
+		margin: 0px 0px 0px 60px;	
+		height: 1000px;
+		border-color: #aaaaaa;
+}
+
+#main3{
+	height: 980px;
+}
+
+
+#fieldset1 {
+	margin: 0px 0px 0px 120px;
+	padding: 0px 30px;
+	height: 250px; /*Ancho*/
+	width: 920px;/*Largoo*/
+	text-align: left;
+	font-family: 'Libre Baskerville', serif;
+
+}
+
+#fila1 input {
+	margin: 20px 0px;
+	width: 250px;
+	height: 40px;
+}
+
+#fila2 input {
+	margin: 20px 0px;
+	padding: 0px 10px;
+	width: 250px;
+	height: 40px;
+}
+
+#fieldset2 {
+	margin: 0px 0px 0px 210px;
+	padding: 0px 30px;
+	height: 250px; /*Ancho*/
+	width: 720px;/*Largoo*/
+	text-align: left;
+	font-family: 'Libre Baskerville', serif;
+
+
+}
+
+#fila3 label{
+
+	width: 120px;
+	margin: 10px 0px 0px 0px;
+
+}
+#fila3 input {
+	margin: 20px 0px;
+	width: 180px;
+	height: 45px;
+}
+
+
+#fila4 label{
+	margin: 0px 12px;
+}
+#fila4 input {
+	margin: 0px 12px;
+	padding: 0px 20px;
+	width: 250px;
+	height: 50px;
+}
+
+
+
+#fieldset3 {
+	margin: 0px 0px 0px 110px;
+	padding: 0px 20px;
+	height: 250px; /*Ancho*/
+	width: 960px;/*Largoo*/
+	text-align: left;
+	font-family: 'Libre Baskerville', serif;
+}
+
+#fila5 label{
+
+	width: 120px;
+	margin: 10px 0px 0px 0px;
+
+}
+
+#fila5 input{
+
+	width: 190px;
+	margin: 10px 0px 0px 0px;
+
+}
+
+#fila6 label{
+
+	width: 120px;
+	margin: 10px 0px 0px 70px;
+
+}
+
+#fila6 input{
+
+	width: 190px;
+	margin: 10px 0px 0px 60px;
+
+}

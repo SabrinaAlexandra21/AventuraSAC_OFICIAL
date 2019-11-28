@@ -72,10 +72,7 @@
                                         <label for="Destinatario">Destinatario:</label>
                                         <input type="text" name="Destinatario" placeholder="Ingresar destinatario">
                                     </div>
-                                    <div class="col-sm-3">		
-                                        <label for="Destinatario">Destinatario:</label>
-                                        <input type="text" name="Destinatario" placeholder="Ingresar destinatario">
-                                    </div>
+                                    
                                 </div>
                             </fieldset>
 

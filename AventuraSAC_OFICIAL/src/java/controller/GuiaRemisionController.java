@@ -50,7 +50,7 @@ public class GuiaRemisionController  {
 
         model.addAttribute("guiaremision", new Guiaremision());/*Guiaremision es la clase osea la entidad*/
         
-        mv.setViewName("Guiaremision");
+        mv.setViewName("GuiaRemision");
         
         return mv;
     }

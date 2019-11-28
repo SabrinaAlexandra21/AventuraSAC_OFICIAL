@@ -39,6 +39,7 @@
 			border-radius: 50%;
 			border: 2px solid white;
                         background: white;
+                        background-image: url();
 		}
 		.form_container {
 			margin-top: 100px;
