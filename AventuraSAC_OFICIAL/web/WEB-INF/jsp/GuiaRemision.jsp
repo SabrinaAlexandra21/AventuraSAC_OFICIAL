@@ -62,17 +62,16 @@
                                         <label for="Fecha">Fecha de Emisión:</label>
                                         <input type="text" name="Fecha" placeholder="Ingresar Fecha">
                                     </div>
-                                    <div class="col-sm-4">
-                                        <label for="Partida">Punto Partida:</label>
-                                        <input type="text" name="Partida" placeholder="Ingresar punto partida">
-                                    </div>
                                 </div>
                                 <div class="row" id="fila2">
-                                    <div class="col-sm-3">		
+                                    <div class="col-sm-3">	
+                                        <label for="Partida">Punto Partida:</label>
+                                        <input type="text" name="Partida" placeholder="Ingresar punto partida">
+                                    </div>	
+                                    <div class="col-sm-3">  
                                         <label for="Destinatario">Destinatario:</label>
                                         <input type="text" name="Destinatario" placeholder="Ingresar destinatario">
                                     </div>
-                                    
                                 </div>
                             </fieldset>
 
@@ -121,8 +120,16 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-
                             </table>
+
+
+                            <fieldset id="fieldset4" style="border: 1px solid gray">
+                                <legend>¿Qué acción desea realizar?</legend>
+                                <div class="row" id="fila8">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </section>
