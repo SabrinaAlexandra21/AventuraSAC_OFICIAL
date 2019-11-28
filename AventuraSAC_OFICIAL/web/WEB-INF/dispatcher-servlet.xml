@@ -45,6 +45,7 @@
                 <prop key="Cotizacion.htm">cotizacionController</prop>
                 
                 <prop key="login.htm">loginController</prop>
+                <prop key="menu.htm">loginController</prop>
                  
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 

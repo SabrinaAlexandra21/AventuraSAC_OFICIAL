@@ -1,5 +1,7 @@
 @import url(font-awesome.min.css);
 @import url("https://fonts.googleapis.com/css?family=Raleway:200,300,400,500,600");
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,300);
+
 /*
 	Industrious by TEMPLATED
 	templated.co @templatedco
@@ -560,6 +562,8 @@ ol {
   padding-left: 1.25rem; }
   ol li {
     padding-left: 0.25rem; }
+
+
 
 ul {
   list-style: disc;
@@ -2758,7 +2762,7 @@ body {
   #menu > ul {
     margin: 0 0 1rem 0; }
     #menu > ul.links {
-      list-style: none;
+      list-style: disc outside none;
       padding: 0; }
       #menu > ul.links > li {
         padding: 0; }

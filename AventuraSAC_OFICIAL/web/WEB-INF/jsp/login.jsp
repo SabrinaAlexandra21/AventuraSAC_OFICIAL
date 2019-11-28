@@ -6,15 +6,14 @@
 <head>
  
 	<title>Aventura S.A.C.</title>
-	<link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous" />
+	 <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/es.css" />" rel="stylesheet">
-        
+        <link href="<c:url value="webapp/resources/theme1/images" />" rel="stylesheet">
+        <link href="https://mdbootstrap.com/docs/jquery/content/icons-list/" rel="stylesheet">
+  
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP" scrossorigin="anonymous">
-</head>
+        
+	</head>
 
 <!--Coded with love by Mutiullah Samim-->
 <body id="cuerpo">
@@ -23,15 +22,15 @@
 			<div class="user_card">
 				<div class="d-flex justify-content-center">
 					<div class="brand_logo_container">
-						
-                                                <img src="../images/logo.PNG" class="brand_logo" alt=""/>
+					
+                                                <img src="webapp/resources/theme1/images/aventura.png"  class="brand_logo" alt=""/>
 					</div>
 				</div>
 				<div class="d-flex justify-content-center form_container">
 					<form>
 						<div class="input-group mb-3">
 							<div class="input-group-append">
-								<span class="input-group-text"><i class="fas fa-user"></i></span>
+								<span class="input-group-text"><i class="fas fa-user-check"></i></span>
 							</div>
 							<input type="text" name="txtusuario" class="form-control input_user" value="" placeholder="username">
 						</div>

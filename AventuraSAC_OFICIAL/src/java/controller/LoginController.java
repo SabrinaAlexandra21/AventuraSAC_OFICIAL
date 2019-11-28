@@ -51,11 +51,11 @@ public class LoginController {
         return mv;
     }
     
-    @RequestMapping("menu")
+    @RequestMapping("menu.htm")
     
     public ModelAndView getMain(){
         ModelAndView  mv = new ModelAndView();
-        mv.setViewName("menu");
+        mv.setViewName("MenuTrabajador");
         return mv;
     }
     
