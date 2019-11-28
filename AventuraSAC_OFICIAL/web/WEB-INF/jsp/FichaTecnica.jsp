@@ -185,7 +185,7 @@
                                     <input type="text" name="empaque" placeholder="Ingresar empaque">
                                 </div>
                             </div>
-                            
+
                             <br>
                             <table id="tabla">
                                 <tr id="col1">
@@ -201,14 +201,14 @@
                                     <td></td>
                                 </tr>
                             </table>
-                            
+
                             <fieldset id="fieldset4" style="border: 1px solid gray">
-                                    <legend>¿Qué acción desea realizar?</legend>
-                                    <div class="row" id="fila8">
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
-                                        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
-                                    </div>
-                                </fieldset>
+                                <legend>¿Qué acción desea realizar?</legend>
+                                <div class="row" id="fila8">
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
+                                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
+                                </div>
+                            </fieldset>
                         </div>
                     </div>
                 </section>
@@ -217,4 +217,3 @@
     </body>
 </html>
 
-	

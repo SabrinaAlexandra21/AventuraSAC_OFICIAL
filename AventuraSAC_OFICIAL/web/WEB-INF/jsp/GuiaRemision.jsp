@@ -20,7 +20,7 @@
         </header>
         <form>
             <div id="container">
-               <section id="Contenedor1" class="wrapper" >
+                <section id="Contenedor1" class="wrapper" >
                     <div id="Contenedorlogo" class="inner" style="border:9px double">
                         <div id="Contenedorlogo2" class="content">
                             <div class="row">
@@ -101,7 +101,7 @@
 
                             <br>
 
-                             <table id="tabla">
+                            <table id="tabla">
                                 <tr id="col1">
                                     <th>ID Detalle Guía Remisión</th>
                                     <th>ID Guía Remisión</th>
