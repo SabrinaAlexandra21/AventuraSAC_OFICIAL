@@ -14,7 +14,6 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
-        <link href="<c:url value="webapp/resources/theme1/images" />" rel="stylesheet">
     </head>
     <body class="is-preload">
 
@@ -50,11 +49,11 @@
         <!-- Banner -->
         <section id="banner">
             <div class="inner">
-                <h1>BIENVENIDO "Nombre"</h1>
+                <h1>BIENVENIDO ${usuario.apellidoPaterno}</h1>
                 <p>Estas en Aventura S.A.C. una de las empresas lideres en confección<br />
                     a nivel nacional, con la garantia de materiales y acabados de calidad.</p>
             </div>
-            <video autoplay loop muted playsinline src="images/banner.mp4"></video>
+            <video autoplay loop muted playsinline src="webapp/resources/theme1/images/banner.mp4"></video>
         </section>
 
         <!-- Highlights -->
@@ -78,7 +77,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuAlmacen.html" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+                                <a href="MenuAlmacen.htm" class="icon fa-floppy-o"><span class="label">Icon</span></a>
                                 <h2>ALMACEN</h2>
                             </header>
                             <p>Control del almacén.</p>
@@ -108,7 +107,7 @@
                     </blockquote>
                     <div class="author">
                         <div class="image">
-                            <img src="images/pic01.jpg" alt="" />
+                            <img src="webapp/resources/theme1/images/pic01.jpg" alt="" />
                         </div>
                         <p class="credit">- <strong>Juanita</strong> <span>Jefa Logistica</span></p>
                     </div>
@@ -121,7 +120,7 @@
                     </blockquote>
                     <div class="author">
                         <div class="image">
-                            <img src="images/pic03.jpg" alt="" />
+                            <img src="webapp/resources/theme1/images/pic03.jpg" alt="" />
                         </div>
                         <p class="credit">- <strong>Pepito</strong> <span>CEO - Aventura S.A.C.</span></p>
                     </div>
@@ -134,7 +133,7 @@
                     </blockquote>
                     <div class="author">
                         <div class="image">
-                            <img src="images/pic02.jpg" alt="" />
+                            <img src="webapp/resources/theme1/images/pic02.jpg" alt="" />
                         </div>
                         <p class="credit">- <strong>Juanito</strong> <span>Jefe de Producción.</span></p>
                     </div>
@@ -183,11 +182,13 @@
 </footer>
 
 <!-- Scripts -->
-<script src="assets/js/jquery.min.js"></script>
-<script src="assets/js/browser.min.js"></script>
-<script src="assets/js/breakpoints.min.js"></script>
-<script src="assets/js/util.js"></script>
-<script src="assets/js/main.js"></script>
+<script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
+<script src="<c:url value="webapp/resources/theme1/js/breakpoints.min.js" />"></script>
+<!--script src="../webapp/resources/theme1/js/browser.min.js"></script-->
+<!--<script src="../webapp/resources/theme1/js/breakpoints.min.js"></script>-->
+<script src="<c:url value="webapp/resources/theme1/js/util.js" />"></script>
+<script src="<c:url value="webapp/resources/theme1/js/main.js" />"></script>
+
 
 </body>
 </html>
