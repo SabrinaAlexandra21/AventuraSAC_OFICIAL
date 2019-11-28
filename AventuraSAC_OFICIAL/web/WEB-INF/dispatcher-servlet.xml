@@ -37,7 +37,8 @@
                 
                 <prop key="Cotizacion.htm">cotizacionController</prop>
                 
-                
+                <prop key="login.htm">loginController</prop>
+                 
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 
             </props>
@@ -70,5 +71,8 @@
     
     <bean name="guiaremisionController"
           class="controller.GuiaRemisionController" />
+    
+    <bean name="loginController"
+          class="controller.LoginController" />
     
 </beans>

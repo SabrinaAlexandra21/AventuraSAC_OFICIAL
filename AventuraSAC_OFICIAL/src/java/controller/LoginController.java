@@ -34,6 +34,15 @@ public class LoginController {
         return emf.createEntityManager();
     }
     
+    
+    @RequestMapping("login.htm")
+    
+    public ModelAndView Login(){
+        ModelAndView  mv = new ModelAndView();
+        mv.setViewName("login");
+        return mv;
+    }
+    
     @RequestMapping("error")
     
     public ModelAndView getError(){
