@@ -36,7 +36,7 @@
                                 <div class="col">
                                     <fieldset style="border:1px solid black" id="fieldset">
                                         <h3> R.U.C. N° 20111807958 </h3>
-                                        <H3><strong>Guía Remisión</strong></H3>
+                                        <H3><strong>Guía de Remisión</strong></H3>
                                         <div class="row" id="ngui">
                                             N° &nbsp;&nbsp;&nbsp;<input type="text" name="nroguia">&nbsp;-&nbsp;0000041
                                         </div>
