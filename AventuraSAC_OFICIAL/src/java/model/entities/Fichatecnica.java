@@ -60,11 +60,11 @@ public class Fichatecnica implements Serializable {
     @Basic(optional = false)
     @Column(name = "Empaque")
     private String empaque;
+    @OneToMany(mappedBy = "idFicha")
+    private List<PedidoDetalle> pedidoDetalleList;
     @JoinColumn(name = "idTipo", referencedColumnName = "idTipo")
     @ManyToOne
     private Tipotela idTipo;
-    @OneToMany(mappedBy = "idFicha")
-    private List<PedidoDetalle> pedidoDetalleList;
 
     public Fichatecnica() {
     }
@@ -130,14 +130,6 @@ public class Fichatecnica implements Serializable {
         this.empaque = empaque;
     }
 
-    public Tipotela getIdTipo() {
-        return idTipo;
-    }
-
-    public void setIdTipo(Tipotela idTipo) {
-        this.idTipo = idTipo;
-    }
-
     @XmlTransient
     public List<PedidoDetalle> getPedidoDetalleList() {
         return pedidoDetalleList;
@@ -145,6 +137,14 @@ public class Fichatecnica implements Serializable {
 
     public void setPedidoDetalleList(List<PedidoDetalle> pedidoDetalleList) {
         this.pedidoDetalleList = pedidoDetalleList;
+    }
+
+    public Tipotela getIdTipo() {
+        return idTipo;
+    }
+
+    public void setIdTipo(Tipotela idTipo) {
+        this.idTipo = idTipo;
     }
 
     @Override

@@ -35,7 +35,7 @@ public class CotizacionController {
     
     public CotizacionController() {
         em = getEntityManager();
-        repo = new ClienteJpaController(emf);
+        repo3 = new CotizacionJpaController(emf);
     }
 
     private EntityManager getEntityManager() {

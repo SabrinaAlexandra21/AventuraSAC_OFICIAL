@@ -23,12 +23,14 @@
     <class>model.entities.Tipotela</class>
     <class>model.entities.Distrito</class>
     <class>model.entities.Areas</class>
+    <class>model.entities.Guiaremision</class>
+    <class>model.entities.GuiaremisionDetalle</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Aventura?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="root"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
-      <property name="javax.persistence.jdbc.password" value=""/>
+      <property name="javax.persistence.jdbc.password" value="12345678"/>
     </properties>
   </persistence-unit>
 </persistence>

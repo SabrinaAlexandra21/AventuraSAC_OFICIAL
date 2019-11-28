@@ -38,6 +38,7 @@
                 <prop key="Cotizacion.htm">cotizacionController</prop>
                 
                 
+                <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 
             </props>
         </property>
@@ -66,5 +67,8 @@
     
     <bean name="cotizacionController"
           class="controller.CotizacionController" />
+    
+    <bean name="guiaremisionController"
+          class="controller.GuiaRemisionController" />
     
 </beans>

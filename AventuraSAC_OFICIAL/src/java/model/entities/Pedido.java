@@ -49,12 +49,14 @@ public class Pedido implements Serializable {
     @Column(name = "FechaEntrega")
     private String fechaEntrega;
     @OneToMany(mappedBy = "idPedido")
+    private List<GuiaremisionDetalle> guiaremisionDetalleList;
+    @OneToMany(mappedBy = "idPedido")
+    private List<PedidoDetalle> pedidoDetalleList;
+    @OneToMany(mappedBy = "idPedido")
     private List<Cotizacion> cotizacionList;
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne
     private Cliente idCliente;
-    @OneToMany(mappedBy = "idPedido")
-    private List<PedidoDetalle> pedidoDetalleList;
 
     public Pedido() {
     }
@@ -94,6 +96,24 @@ public class Pedido implements Serializable {
     }
 
     @XmlTransient
+    public List<GuiaremisionDetalle> getGuiaremisionDetalleList() {
+        return guiaremisionDetalleList;
+    }
+
+    public void setGuiaremisionDetalleList(List<GuiaremisionDetalle> guiaremisionDetalleList) {
+        this.guiaremisionDetalleList = guiaremisionDetalleList;
+    }
+
+    @XmlTransient
+    public List<PedidoDetalle> getPedidoDetalleList() {
+        return pedidoDetalleList;
+    }
+
+    public void setPedidoDetalleList(List<PedidoDetalle> pedidoDetalleList) {
+        this.pedidoDetalleList = pedidoDetalleList;
+    }
+
+    @XmlTransient
     public List<Cotizacion> getCotizacionList() {
         return cotizacionList;
     }
@@ -108,15 +128,6 @@ public class Pedido implements Serializable {
 
     public void setIdCliente(Cliente idCliente) {
         this.idCliente = idCliente;
-    }
-
-    @XmlTransient
-    public List<PedidoDetalle> getPedidoDetalleList() {
-        return pedidoDetalleList;
-    }
-
-    public void setPedidoDetalleList(List<PedidoDetalle> pedidoDetalleList) {
-        this.pedidoDetalleList = pedidoDetalleList;
     }
 
     @Override
