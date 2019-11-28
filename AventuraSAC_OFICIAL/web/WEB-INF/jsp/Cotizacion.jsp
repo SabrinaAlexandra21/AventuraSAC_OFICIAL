@@ -1,3 +1,6 @@
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -7,8 +10,8 @@
         <meta name="description" content="" />
         <meta name="keywords" content="" />
         <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/EstilosCotizacion.css" rel="stylesheet" type="text/css"/>
-
+        <link href="../css/EstilosCotizacion.css" rel="stylesheet" />
+        <link href="../css/main.css" rel="stylesheet" type="text/css"/>
     </head>
     <body>
         <header id="header">
@@ -17,7 +20,7 @@
                 <a href="#menu">Menu</a>
             </nav>
         </header>
-        <form>
+        <form method="post" modelAtproveedortribute="cotizacion">
             <div id="container">
                 <section id="Contenedor1" class="wrapper" >
                     <div id="Contenedorlogo" class="inner" style="border:9px double">

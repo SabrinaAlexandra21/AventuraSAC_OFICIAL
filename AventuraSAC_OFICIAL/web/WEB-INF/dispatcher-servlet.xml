@@ -35,6 +35,8 @@
                 <prop key="editarproveedor.htm">proveedorController</prop>
                 <prop key="eliminarproveedor.htm">proveedorController</prop>
                 
+                <prop key="Cotizacion.htm">cotizacionController</prop>
+                
                 
                 
             </props>
@@ -62,5 +64,7 @@
     <bean name="proveedorController"
           class="controller.ProveedorController" />
     
+    <bean name="cotizacionController"
+          class="controller.CotizacionController" />
     
 </beans>

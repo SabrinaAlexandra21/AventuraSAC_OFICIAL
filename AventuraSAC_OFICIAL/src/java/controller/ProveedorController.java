@@ -2,7 +2,7 @@
 package controller;
 
 import model.controllers.ProveedorJpaController;
-import modelo.entities.Proveedor;
+import model.entities.Proveedor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -12,8 +12,8 @@ import javax.servlet.http.HttpServletRequest;
 import model.controllers.DistritoJpaController;
 import model.controllers.ProveedorJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
-import modelo.entities.Distrito;
-import modelo.entities.Proveedor;
+import model.entities.Distrito;
+import model.entities.Proveedor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -95,7 +95,7 @@ public class ProveedorController {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        modelo.entities.Proveedor obj = repo.findProveedor(id);
+        model.entities.Proveedor obj = repo.findProveedor(id);
 
         ModelAndView mv = new ModelAndView();
         
@@ -109,7 +109,7 @@ public class ProveedorController {
     
     @RequestMapping(value = "editarproveedor.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarProveedor(@ModelAttribute("proveedor") modelo.entities.Proveedor c) throws Exception {
+    public ModelAndView EditarProveedor(@ModelAttribute("proveedor") model.entities.Proveedor c) throws Exception {
         
         repo.edit(c);
 

@@ -9,6 +9,13 @@ import model.controllers.CotizacionJpaController;
 import model.controllers.PedidoJpaController;
 import model.controllers.CotizacionDetalleJpaController;
 import model.controllers.PedidoDetalleJpaController;
+import model.entities.Cliente;
+import model.entities.Cotizacion;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 
 
 /**
@@ -38,4 +45,27 @@ public class CotizacionController {
         }
         return emf.createEntityManager();
     }
+    
+    @RequestMapping(value = "Cotizacion.htm", method = RequestMethod.GET)
+    
+    public ModelAndView NuevoCotizacion(Model model) {
+        
+        ModelAndView mv = new ModelAndView();
+
+        model.addAttribute("cotizacion", new Cotizacion());
+        
+        mv.setViewName("Cotizacion");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "Cotizacion.htm", method = RequestMethod.POST)
+    
+    public ModelAndView NuevoCliente(@ModelAttribute("cotizacion") Cliente c) throws Exception{
+        
+        repo.create(c);
+        
+        return new ModelAndView("redirect:/menu.htm");
+    }
+    
 }

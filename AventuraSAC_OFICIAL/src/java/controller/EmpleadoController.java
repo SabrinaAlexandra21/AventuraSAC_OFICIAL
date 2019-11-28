@@ -2,7 +2,7 @@
 package controller;
 
 import model.controllers.EmpleadoJpaController;
-import modelo.entities.Empleado;
+import model.entities.Empleado;
 import java.util.ArrayList;
 import static java.util.Collections.list;
 import java.util.List;
@@ -10,13 +10,13 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
-import model.controllers.AreaJpaController;
+import model.controllers.AreasJpaController;
 import model.controllers.CargoJpaController;
 import model.controllers.EmpleadoJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
-import modelo.entities.Area;
-import modelo.entities.Cargo;
-import modelo.entities.Empleado;
+import model.entities.Areas;
+import model.entities.Cargo;
+import model.entities.Empleado;
 import org.springframework.stereotype.Controller;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.request;
 import org.springframework.ui.Model;
@@ -32,13 +32,13 @@ public class EmpleadoController {
     private EntityManagerFactory emf;
     private EmpleadoJpaController repo;
     private CargoJpaController repo1;
-    private AreaJpaController repo2;
+    private AreasJpaController repo2;
     
      public EmpleadoController() {
         em = getEntityManager();
         repo = new EmpleadoJpaController(emf);
         repo1 = new CargoJpaController(emf);
-        repo2 = new AreaJpaController(emf);
+        repo2 = new AreasJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -74,7 +74,7 @@ public class EmpleadoController {
         
         List<Cargo> cargos =  repo1.findCargoEntities();
         
-        List<Area> areas = repo2.findAreaEntities();
+        List<Areas> areas = repo2.findAreasEntities();
 
         mv.addObject("listaCargo", cargos);
         
@@ -104,7 +104,7 @@ public class EmpleadoController {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        modelo.entities.Empleado obj = repo.findEmpleado(id);
+        model.entities.Empleado obj = repo.findEmpleado(id);
 
         ModelAndView mv = new ModelAndView();
         
@@ -118,7 +118,7 @@ public class EmpleadoController {
     
     @RequestMapping(value = "editarempleado.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarEmpleado(@ModelAttribute("empleado") modelo.entities.Empleado c) throws Exception {
+    public ModelAndView EditarEmpleado(@ModelAttribute("empleado") model.entities.Empleado c) throws Exception {
         
         repo.edit(c);
 
