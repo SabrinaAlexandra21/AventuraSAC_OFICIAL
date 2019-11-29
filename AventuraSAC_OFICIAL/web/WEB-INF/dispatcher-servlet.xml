@@ -57,14 +57,6 @@
             </props>
         </property>
     </bean>
-    
-    <bean
-        class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping"/>
-    
-    <bean name="simpleServletHandlerAdapter"
-          class="org.springframework.web.servlet.handler.SimpleServletHandlerAdapter" />
-    <bean
-        class="org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter"/>
 
     <bean id="viewResolver"
           class="org.springframework.web.servlet.view.InternalResourceViewResolver"

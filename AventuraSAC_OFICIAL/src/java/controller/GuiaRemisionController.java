@@ -8,6 +8,7 @@ import model.controllers.GuiaremisionDetalleJpaController;
 import model.controllers.GuiaremisionJpaController;
 import model.controllers.PedidoJpaController;
 import model.entities.Guiaremision;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
  *
  * @author Sabrina Bv
  */
+@Controller
 public class GuiaRemisionController  {
 
 

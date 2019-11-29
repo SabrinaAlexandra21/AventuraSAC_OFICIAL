@@ -12,20 +12,14 @@ import model.controllers.CotizacionDetalleJpaController;
 import model.controllers.PedidoDetalleJpaController;
 import model.entities.Cliente;
 import model.entities.Cotizacion;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
-import org.springframework.web.servlet.handler.SimpleServletHandlerAdapter;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
-import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
-
-/**
- *
- * @author Sabrina Bv
- */
+@Controller
 public class CotizacionController {
 
 
