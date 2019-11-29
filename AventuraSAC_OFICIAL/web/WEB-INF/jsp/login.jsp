@@ -19,7 +19,7 @@
                     <div class="d-flex justify-content-center">
                         <div class="brand_logo_container">
 
-                            <img src="webapp/resources/theme1/images/aventura.png"  class="brand_logo" alt=""/>
+                            <img src="webapp/resources/theme1/images/logo.PNG"  class="brand_logo" alt=""/>
                         </div>
                     </div>
                     <div class="d-flex justify-content-center form_container">

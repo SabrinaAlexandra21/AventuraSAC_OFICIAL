@@ -17,7 +17,7 @@
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: white;
+			background: #17a2b8;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -32,26 +32,26 @@
 		.brand_logo_container {
 			position: absolute;
 			height: 170px;
-			width: 170px;
+			width: 230px;
 			top: -75px;
-			border-radius: 50%;
-			background: #60a3bc;
+			border-radius: 20%;
+			background: #632432;
 			padding: 10px;
 			text-align: center;
 		}
 		.brand_logo {
 			height: 150px;
-			width: 150px;
-			border-radius: 25%;
+			width: 210px;
+			border-radius: 20%;
 			border: 2px solid white;
-                        background: white;
+                        background: #632432;
 		}
 		.form_container {
 			margin-top: 100px;
 		}
 		.login_btn {
 			width: 100%;
-			background: #c0392b !important;
+			background: #632432 !important;
 			color: white !important;
 		}
 		.login_btn:focus {
@@ -62,7 +62,7 @@
 			padding: 0 2rem;
 		}
 		.input-group-text {
-			background: #c0392b !important;
+			background: #632432 !important;
 			color: white !important;
 			border: 0 !important;
 			border-radius: 0.25rem 0 0 0.25rem !important;
