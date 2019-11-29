@@ -49,6 +49,9 @@
                 <prop key="validar.htm">loginController</prop>
                 <prop key="menu.htm">loginController</prop>
                 <prop key="menucliente.htm">loginController</prop>
+                <prop key="menualmacen.htm">loginController</prop>
+                <prop key="menuventas.htm">loginController</prop>
+                <prop key="menulogistica.htm">loginController</prop>
                  
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 

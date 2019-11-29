@@ -28,21 +28,8 @@
         <!-- Nav -->
         <nav id="menu">
             <ul class="links">
-                <li><a href="index.html">Home</a></li>
-                <li><a href="QuienesSomos.html">Quienes Somos</a></li>
-                <li><a href="#">Mantenimientos</a>
-                    <ul>
-                        <li>
-                            <a href="empleados.htm">Empleados</a>
-                        </li>
-                        <li>
-                            <a href="clientes.htm">Cliente</a>
-                        </li>
-                        <li>
-                            <a href="proveedores.htm">Proveedor</a>
-                        </li>
-                    </ul>
-                </li>
+                <li><a href="menucliente.htm">Home</a></li>
+                <li><a href="quienessomos.htm">Quienes Somos</a></li>
             </ul>
         </nav>
 
@@ -53,7 +40,7 @@
                 <p>Estas en Aventura S.A.C. una de las empresas lideres en confección<br />
                     a nivel nacional, con la garantia de materiales y acabados de calidad.</p>
             </div>
-            <video autoplay loop muted playsinline src="webapp/resources/theme1/images/images/banner.mp4"></video>
+            <video autoplay loop muted playsinline src="webapp/resources/theme1/images/banner.mp4"></video>
         </section>
 
         <!-- Highlights -->
@@ -103,13 +90,13 @@
             <section>
                 <div class="content">
                     <blockquote>
-                        <p>Ni idea de que ponerle 1.</p>
+                        <p>"La creatividad solo es la inteligencia divirtiendose".</p>
                     </blockquote>
                     <div class="author">
                         <div class="image">
-                            <img src="webapp/resources/theme1/images/images/pic01.jpg" alt="" />
+                            <img src="webapp/resources/theme1/images/pic01.jpg" alt="" />
                         </div>
-                        <p class="credit">- <strong>Juanita</strong> <span>Jefa Logistica</span></p>
+                        <p class="credit">- <strong>Ricardo Espinoza</strong> <span>CEO Aventura</span></p>
                     </div>
                 </div>
             </section>
@@ -120,7 +107,7 @@
                     </blockquote>
                     <div class="author">
                         <div class="image">
-                            <img src="webapp/resources/theme1/images/images/pic03.jpg" alt="" />
+                            <img src="webapp/resources/theme1/images/pic03.jpg" alt="" />
                         </div>
                         <p class="credit">- <strong>Pepito</strong> <span>CEO - Aventura S.A.C.</span></p>
                     </div>
@@ -133,7 +120,7 @@
                     </blockquote>
                     <div class="author">
                         <div class="image">
-                            <img src="webapp/resources/theme1/images/images/pic02.jpg" alt="" />
+                            <img src="webapp/resources/theme1/images/pic02.jpg" alt="" />
                         </div>
                         <p class="credit">- <strong>Juanito</strong> <span>Jefe de Producción.</span></p>
                     </div>
@@ -162,7 +149,7 @@
                         margin-left: -120px;
                     }
                 </style>
-                <img id="yo" src="webapp/resources/theme1/images/images/aventura2.png">
+                <img id="yo" src="webapp/resources/theme1/images/logo.png">
             </section>
             <section>
                 <h4>Contáctanos:</h4>
@@ -170,7 +157,7 @@
                     <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
                     <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
                     <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-                    <li><a href="#"><i class="icon fa-github">&nbsp;</i>Github</a></li>
+                    
                 </ul>
             </section>
         </div>

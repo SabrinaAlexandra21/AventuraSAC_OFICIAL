@@ -2,6 +2,8 @@
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
+
+
 <html>
     <head>
         <title>Menu Principal Trabajador</title>
@@ -15,7 +17,7 @@
 
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="menulogistica.htm">Aventura S.A.C.</a>
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
@@ -24,21 +26,8 @@
         <!-- Nav -->
         <nav id="menu">
             <ul class="links">
-                <li><a href="menu.htm">Home</a></li>
+                <li><a href="menulogistica.htm">Home</a></li>
                 <li><a href="quienessomos.htm">Quienes Somos</a></li>
-                <li><a href="#">Mantenimientos</a>
-                    <ul>
-                        <li>
-                            <a href="empleados.htm">Empleados</a>
-                        </li>
-                        <li>
-                            <a href="clientes.htm">Cliente</a>
-                        </li>
-                        <li>
-                            <a href="proveedores.htm">Proveedor</a>
-                        </li>
-                    </ul>
-                <li>
             </ul>
         </nav>
 
@@ -56,36 +45,36 @@
         <section class="wrapper">
             <div class="inner">
                 <header class="special">
-                    <h2>Herramientas de Trabajo</h2>
-                    <p>A continuacion elije tu area de trabajo para poder acceder a las herramientas de éste.</p>
+                    <h1>AREA DE LOGISTICA</color></h1>
+                    <p> </p>
                 </header>
                 <div class="highlights">
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuVentas.html" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-                                <h2>VENTAS</h2>
+                                <a href="#" class="icon fa-list"><span class="label">Icon</span></a>
+                                <h2>PEDIDOS</h2>
                             </header>
-                            <p>Gestion de ventas.</p>								
+                            <p>Lista los pedidos con toda la informacion , adicionalmente podras generar su respectiva cotizacion con esta herramienta.</p>								
+                        </div>
+                    </section>
+                    <section>
+                        <div class="content">
+                            <header>
+                                <a href="#" class="icon fa-file"><span class="label">Icon</span></a>
+                                <h2>GENERAR ORDEN DE COMPRA</h2>
+                            </header>
+                            <p>Elabora la orden de compra para poder hacer el pedido al proveedor.</p>								
                         </div>
                     </section>
 
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuAlmacen.htm" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-                                <h2>ALMACEN</h2>
+                                <a href="#" class="icon fa-money"><span class="label">Icon</span></a>
+                                <h2>PAGOS</h2>
                             </header>
-                            <p>Control del almacén.</p>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="content">
-                            <header>
-                                <a href="MenuLogistica.html" class="icon fa-line-chart"><span class="label">Icon</span></a>
-                                <h2>LOGISTICA</h2>
-                            </header>
-                            <p>Gestion de Adquisición.</p>
+                            <p>Visualiza los boucher de los clientes con sus respectivos pedidos. </p>
                         </div>
                     </section>
 
@@ -99,7 +88,7 @@
             <section>
                 <div class="content">
                     <blockquote>
-                       <p>"La creatividad solo es la inteligencia divirtiendose".</p>
+                        <p>"La creatividad solo es la inteligencia divirtiendose".</p>
                     </blockquote>
                     <div class="author">
                         <div class="image">
@@ -158,8 +147,7 @@
                         margin-left: -120px;
                     }
                 </style>
-                <img id="yo" src="webapp/resources/theme1/images/logo.png" alt=""/>
-               
+                <img id="yo" src="webapp/resources/theme1/images/logo.png">
             </section>
             <section>
                 <h4>Contáctanos:</h4>
@@ -167,7 +155,6 @@
                     <li><a href="#"><i class="icon fa-twitter">&nbsp;</i>Twitter</a></li>
                     <li><a href="#"><i class="icon fa-facebook">&nbsp;</i>Facebook</a></li>
                     <li><a href="#"><i class="icon fa-instagram">&nbsp;</i>Instagram</a></li>
-                  
                 </ul>
             </section>
         </div>
@@ -178,11 +165,11 @@
 </footer>
 
 <!-- Scripts -->
+<script src="<c:url value="webapp/resources/theme1/js/browser.min.js"/>"></script>
 <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/breakpoints.min.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/util.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/main.js" />"></script>
-
 
 </body>
 </html>

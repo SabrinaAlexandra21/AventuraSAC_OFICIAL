@@ -71,6 +71,39 @@ public class LoginController {
         
         return mv;
     }
+    
+    @RequestMapping("menualmacen.htm")
+
+    public ModelAndView MenuAlmacen() {
+        
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("MenuAlmacen");
+        
+        return mv;
+    }
+    
+    @RequestMapping("menuventas.htm")
+
+    public ModelAndView MenuVentas() {
+        
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("MenuVentas");
+        
+        return mv;
+    }
+    
+    @RequestMapping("menulogistica.htm")
+
+    public ModelAndView MenuLogistica() {
+        
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("MenuLogistica");
+        
+        return mv;
+    }
 
     @RequestMapping(value = "validar.htm", method = RequestMethod.POST)
 

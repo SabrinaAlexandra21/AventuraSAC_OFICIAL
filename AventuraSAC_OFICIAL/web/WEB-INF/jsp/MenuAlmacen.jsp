@@ -15,7 +15,7 @@
 
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="menualmacen.htm">Aventura S.A.C.</a>
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
@@ -24,21 +24,8 @@
         <!-- Nav -->
         <nav id="menu">
             <ul class="links">
-                <li><a href="menu.htm">Home</a></li>
+                <li><a href="menualmacen.htm">Home</a></li>
                 <li><a href="quienessomos.htm">Quienes Somos</a></li>
-                <li><a href="#">Mantenimientos</a>
-                    <ul>
-                        <li>
-                            <a href="empleados.htm">Empleados</a>
-                        </li>
-                        <li>
-                            <a href="clientes.htm">Cliente</a>
-                        </li>
-                        <li>
-                            <a href="proveedores.htm">Proveedor</a>
-                        </li>
-                    </ul>
-                <li>
             </ul>
         </nav>
 
@@ -56,37 +43,37 @@
         <section class="wrapper">
             <div class="inner">
                 <header class="special">
-                    <h2>Herramientas de Trabajo</h2>
-                    <p>A continuacion elije tu area de trabajo para poder acceder a las herramientas de éste.</p>
+                    <h1>AREA DE ALMACEN</color></h1>
+                    <p> </p>
                 </header>
                 <div class="highlights">
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuVentas.html" class="icon fa-vcard-o"><span class="label">Icon</span></a>
-                                <h2>VENTAS</h2>
+                                <a href="#" class="icon fa-laptop"><span class="label">Icon</span></a>
+                                <h2>REGISTRAR ENTRADAS Y SALIDAS</h2>
                             </header>
-                            <p>Gestion de ventas.</p>								
+                            <p>Añade al registro cada vez que ingresa o retiran materiales.</p>								
                         </div>
                     </section>
+                    <section>
+                        <div class="content">
+                            <header>
+                                <a href="#" class="icon fa-list-alt"><span class="label">Icon</span></a>
+                                <h2>LISTA ALMACEN</h2>
+                            </header>
+                            <p>Lista de la materia prima, insumos y pedidos que ingresaron. </p>
+                        </div>
+                    </section>
+                    <section>
+                        <div class="content">
+                            <header>
+                                <a href="#" class="icon fa-file"><span class="label">Icon</span></a>
+                                <h2>GENERAR GUIA DE REMISION</h2>
+                            </header>
+                            <p>Elabora la guia de remision por cada pedido que sale del almacen.</p>								
+                        </div>
 
-                    <section>
-                        <div class="content">
-                            <header>
-                                <a href="MenuAlmacen.htm" class="icon fa-floppy-o"><span class="label">Icon</span></a>
-                                <h2>ALMACEN</h2>
-                            </header>
-                            <p>Control del almacén.</p>
-                        </div>
-                    </section>
-                    <section>
-                        <div class="content">
-                            <header>
-                                <a href="MenuLogistica.html" class="icon fa-line-chart"><span class="label">Icon</span></a>
-                                <h2>LOGISTICA</h2>
-                            </header>
-                            <p>Gestion de Adquisición.</p>
-                        </div>
                     </section>
 
                 </div>
@@ -158,8 +145,7 @@
                         margin-left: -120px;
                     }
                 </style>
-                <img id="yo" src="webapp/resources/theme1/images/logo.png" alt=""/>
-               
+                <img id="yo" src="webapp/resources/theme1/images/logo.png">
             </section>
             <section>
                 <h4>Contáctanos:</h4>
@@ -178,11 +164,11 @@
 </footer>
 
 <!-- Scripts -->
+<script src="<c:url value="webapp/resources/theme1/js/browser.min.js"/>"></script>
 <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/breakpoints.min.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/util.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/main.js" />"></script>
-
 
 </body>
 </html>
