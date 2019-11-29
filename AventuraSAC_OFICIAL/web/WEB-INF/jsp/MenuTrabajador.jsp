@@ -33,13 +33,13 @@
                 <li><a href="#">Mantenimientos</a>
                     <ul>
                         <li>
-                            <a href="empleados.jsp">Empleados</a>
+                            <a href="empleados.htm">Empleados</a>
                         </li>
                         <li>
-                            <a href="clientes.jsp">Cliente</a>
+                            <a href="clientes.htm">Cliente</a>
                         </li>
                         <li>
-                            <a href="proveedores.jsp">Proveedor</a>
+                            <a href="proveedores.htm">Proveedor</a>
                         </li>
                     </ul>
                 <li>
@@ -184,8 +184,6 @@
 <!-- Scripts -->
 <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/breakpoints.min.js" />"></script>
-<!--script src="../webapp/resources/theme1/js/browser.min.js"></script-->
-<!--<script src="../webapp/resources/theme1/js/breakpoints.min.js"></script>-->
 <script src="<c:url value="webapp/resources/theme1/js/util.js" />"></script>
 <script src="<c:url value="webapp/resources/theme1/js/main.js" />"></script>
 

@@ -42,30 +42,29 @@ public class LoginController {
     @RequestMapping("login.htm")
 
     public ModelAndView Login() {
+        
         ModelAndView mv = new ModelAndView();
+        
         mv.setViewName("login");
-        return mv;
-    }
-
-    @RequestMapping("error")
-
-    public ModelAndView getError() {
-        ModelAndView mv = new ModelAndView();
-        mv.setViewName("error");
+        
         return mv;
     }
 
     @RequestMapping("menu.htm")
 
-    public ModelAndView getMain() {
+    public ModelAndView Menu() {
+        
         ModelAndView mv = new ModelAndView();
+        
         mv.setViewName("MenuTrabajador");
+        
         return mv;
     }
 
     @RequestMapping(value = "validar.htm", method = RequestMethod.POST)
 
     public ModelAndView getValidaLogin(HttpServletRequest request, HttpServletResponse response) {
+        
         ModelAndView mv = new ModelAndView();
 
         String usuario = request.getParameter("txtusuario");
@@ -97,6 +96,10 @@ public class LoginController {
         if (encontrado == false) {
             request.setAttribute("mensaje", "No se encuentran los datos");
             mv.setViewName("login");
+        }
+        else 
+        {
+            
         }
 
         return mv;
