@@ -99,7 +99,7 @@
             <section>
                 <div class="content">
                     <blockquote>
-                        <p>Ni idea de que ponerle 2.</p>
+                        <p>Ni idea de que ponerle :'v 2.</p>
                     </blockquote>
                     <div class="author">
                         <div class="image">
