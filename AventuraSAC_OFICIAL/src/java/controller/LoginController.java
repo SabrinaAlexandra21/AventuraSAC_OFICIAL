@@ -60,6 +60,17 @@ public class LoginController {
         
         return mv;
     }
+    
+    @RequestMapping("menucliente.htm")
+
+    public ModelAndView MenuCliente() {
+        
+        ModelAndView mv = new ModelAndView();
+        
+        mv.setViewName("MenuCliente");
+        
+        return mv;
+    }
 
     @RequestMapping(value = "validar.htm", method = RequestMethod.POST)
 
