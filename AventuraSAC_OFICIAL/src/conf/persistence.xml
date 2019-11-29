@@ -25,6 +25,9 @@
     <class>model.entities.Areas</class>
     <class>model.entities.Guiaremision</class>
     <class>model.entities.GuiaremisionDetalle</class>
+    <class>model.entities.Insumohilo</class>
+    <class>model.entities.OrdencompraDetalle</class>
+    <class>model.entities.Ordencompra</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Aventura?zeroDateTimeBehavior=convertToNull"/>

@@ -4,7 +4,16 @@ package controller;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import model.controllers.ClienteJpaController;
+import model.controllers.InsumohiloJpaController;
+import model.controllers.OrdencompraDetalleJpaController;
+import model.controllers.OrdencompraJpaController;
+import model.entities.Ordencompra;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+
 
 /**
  *
@@ -15,11 +24,13 @@ public class OrdenCompraController  {
 
     private EntityManager em;
     private EntityManagerFactory emf;
-    private ClienteJpaController repo;
+    private OrdencompraJpaController repo;
+    private OrdencompraDetalleJpaController repo1;
+    private InsumohiloJpaController repo2;
     
     public OrdenCompraController() {
         em = getEntityManager();
-        repo = new ClienteJpaController(emf);
+        repo = new OrdencompraJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -29,4 +40,26 @@ public class OrdenCompraController  {
         }
         return emf.createEntityManager();
     }
+    @RequestMapping(value = "OrdenCompra.htm", method = RequestMethod.GET)
+    
+    public ModelAndView NuevaOrdenCompra(Model model) {
+        
+        ModelAndView mv = new ModelAndView();
+
+        model.addAttribute("ordencompra", new Ordencompra());/*Guiaremision es la clase osea la entidad*/
+        
+        mv.setViewName("OrdenCompra");
+        
+        return mv;
+    }
+    
+    @RequestMapping(value = "OrdenCompra.htm", method = RequestMethod.POST)
+    
+    public ModelAndView NuevaFichaTecnica(@ModelAttribute("ordencompra") Ordencompra o) throws Exception{
+        
+        repo.create(o);
+        
+        return new ModelAndView("redirect:/menu.htm");
+    }
+    
 }
