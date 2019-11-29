@@ -4,10 +4,9 @@ package controller;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import model.controllers.ClienteJpaController;
-import model.controllers.CotizacionJpaController;
 import model.controllers.GuiaremisionDetalleJpaController;
 import model.controllers.GuiaremisionJpaController;
+import model.controllers.PedidoJpaController;
 import model.entities.Guiaremision;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -24,7 +23,7 @@ public class GuiaRemisionController  {
 
     private EntityManager em;
     private EntityManagerFactory emf;
-    private CotizacionJpaController repo;
+    private PedidoJpaController repo;
     private GuiaremisionJpaController repo1;
     private GuiaremisionDetalleJpaController repo2;
    /*No olvidar que faltan algunos*/

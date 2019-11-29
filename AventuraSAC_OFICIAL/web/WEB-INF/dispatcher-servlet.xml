@@ -50,6 +50,7 @@
                  
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 
+                <prop key="FichaTecnica.htm">fichatecnicaController</prop>
             </props>
         </property>
     </bean>
@@ -88,5 +89,6 @@
     <bean name="loginController"
           class="controller.LoginController" />
     
-    
+    <bean name="fichatecnicaController"
+          class="controller.FichaTecnicaController" />
 </beans>
