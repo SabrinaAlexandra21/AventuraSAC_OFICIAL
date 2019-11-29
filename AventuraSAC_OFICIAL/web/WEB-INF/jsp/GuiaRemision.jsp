@@ -1,3 +1,6 @@
+<!------ Include the above in your HEAD tag ---------->
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE HTML>
 <html>
     <head>
@@ -6,8 +9,9 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="assets/css/main.css" rel="stylesheet"/>
-        <link href="assets/css/estilosguia.css" rel="stylesheet"/>
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/estilosguia.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet" />
 
 
     </head>

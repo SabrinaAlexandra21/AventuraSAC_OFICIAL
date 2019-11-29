@@ -9,9 +9,10 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
         <meta name="keywords" content="" />
-        <link href="../css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-        <link href="../css/EstilosCotizacion.css" rel="stylesheet" />
-        <link href="../css/main.css" rel="stylesheet" type="text/css"/>
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/EstilosCotizacion.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet" />
+        
     </head>
     <body>
         <header id="header">
