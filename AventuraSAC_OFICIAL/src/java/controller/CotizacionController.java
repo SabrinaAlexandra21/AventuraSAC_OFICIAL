@@ -1,6 +1,7 @@
 package controller;
 
 
+import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -16,6 +17,9 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.handler.SimpleServletHandlerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter;
+import org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerMapping;
 
 
 /**
@@ -51,8 +55,10 @@ public class CotizacionController {
     public ModelAndView NuevoCotizacion(Model model) {
         
         ModelAndView mv = new ModelAndView();
+        
+        List<Cotizacion> cotizacion = repo3.findCotizacionEntities();
 
-        model.addAttribute("cotizacion", new Cotizacion());
+        mv.addObject("cotizacion", new Cotizacion());
         
         mv.setViewName("Cotizacion");
         
