@@ -8,7 +8,11 @@
         <title>Aventura S.A.C.</title>
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/es.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
         <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
+        
+        
+        
     </head>
 
     <!--Coded with love by Mutiullah Samim-->
