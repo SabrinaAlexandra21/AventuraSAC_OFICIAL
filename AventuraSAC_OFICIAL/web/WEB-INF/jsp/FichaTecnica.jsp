@@ -14,7 +14,6 @@
         
     </head>
     <body>
-        <!-- Header -->
         <header id="header">
             <a class="logo" href="index.html">Aventura S.A.C.</a>
             <nav>
@@ -22,16 +21,6 @@
             </nav>
         </header>
 
-        <!-- Nav 
-                <nav id="menu">
-                        <ul class="links">
-                                <li><a href="index.html">Home</a></li>
-                                <li><a href="elements.html">Empleados</a></li>
-                                <li><a href="generic.html">Clientes</a></li>
-                        </ul>
-                </nav>
-
-        -->
 
         <!-- Heading -->
         <form id="fondo">
