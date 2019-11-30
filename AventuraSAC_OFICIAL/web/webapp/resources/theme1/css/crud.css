@@ -1,4 +1,6 @@
 
+
+
 #bodys {
     margin: 0;
     padding: 0;
@@ -9,19 +11,33 @@
 
 
 #carta  {
-    height: 650px;
-    width: 1200px;
-    margin: 90px auto;
-    margin-left: -40px;
+    height: 100%;
+    width: 100%;
+    margin: 9% auto;
     margin-bottom: auto;
     background: #F5F7FA;
     position: relative;
     display: flex;
     justify-content: center;
     flex-direction: column;
-    padding: 10px;
+    padding: 1%;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 5px;
+    border-radius: 1.5%;
+}
+
+.card-header h3{
+    
+    font-family: Arial;
+}
+
+.btn-warning {
+    width: 50%;
+    background: #632432 !important;
+    color: red !important;
+}
+.login_btn:focus {
+    box-shadow: none !important;
+    outline: 0px !important;
 }

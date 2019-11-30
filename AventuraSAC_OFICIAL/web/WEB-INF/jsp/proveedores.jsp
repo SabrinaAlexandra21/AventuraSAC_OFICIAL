@@ -5,14 +5,19 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous" />
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
     </head>
-    <body>
+    <body id="bodys">
+        <header id="header">
+            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <nav>
+                <a href="#menu">Menu</a>
+            </nav>
+        </header>
         <div class="container md-8">
-            <div class="card">
+            <div class="card" id="carta">
                 <div class="card-header">
                     <h3>Proveedores</h3>
                 </div>

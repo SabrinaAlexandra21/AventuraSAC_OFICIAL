@@ -9,6 +9,7 @@
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
+
     </head>
     <body id="bodys">
         <header id="header">
@@ -51,7 +52,7 @@
                                     <td>${item.correo}</td>
                                     <td>${item.broker}</td>
                                     
-                                    <td><a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button">Editar</a> 
+                                    <td><a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
                                         <input type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning" value="Eliminar"/>
                                 </tr>
                             </c:forEach>
