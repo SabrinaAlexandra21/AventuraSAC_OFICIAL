@@ -1,6 +1,7 @@
 
 body{
 	 background: linear-gradient(to bottom, #6699ff 0%, #99ffcc 100%);
+         width: 100%;
 	}
 
 h1 img{
@@ -11,32 +12,24 @@ h1 img{
 #Contenedorlogo{
 	background-color: #F5F7FA ;
 	position: 	absolute;
-	margin: -630px 0px 0px 220px;	
-	height: 350px;
-	border-color: #aaaaaa;
-	left: 180px;
+	top: 3em;
+   	left: 18em;
+   	width: 63em;
+   	height: 20em;
+
 }
 
 #Contenedorlogo2{
-	height: 150px;
+	right: 40em;
 }
 
 #imagen{
-	left:80px;
+	margin:5px 70px;
+	bottom: 1em;
 }
 
-#container {
-	margin: 0px 50px;
-	height: 300px; /*Ancho*/
-	width: 1090px;/*Largoo*/
-	opacity: 0.97;
-	position: 	absolute;	
-	bottom: 40px;
-}
-
-
-#logo h1{
-	margin: 35px 0px 30px 0px;
+h1{
+	margin: 0px 0px 30px -170px;
 	height: 210px;
 	position: relative;
   	left: 20px;
@@ -45,7 +38,7 @@ h1 img{
 }
 
 #escritos {
-	margin: 80px -330px;
+	margin: 50px -430px;
 	position: relative;
 	right: 180px;
 	top:120px;
@@ -53,7 +46,7 @@ h1 img{
 
 #fieldset {
 
-	margin: 50px 130px;
+	margin: 20px 170px;
 	padding: 20px 40px;
 	text-align: center;
 	position: relative;
@@ -65,6 +58,7 @@ h1 img{
 
 	width: 10px;
 	height: 25px;
+	background-color: #ffcccc;
 
 }
 
@@ -80,25 +74,27 @@ h1 img{
 	text-align: center;
 }
 
-
 #main{
-	margin: -520px 0px;
+
 	width: 1450px;/*Largoo*/
-	position: 	absolute;
-	top:290px;	
-	left:150px;
+	top: 5em;
+   	left: 8em;
+   	width: 80em;
+   	height: 10em;
+
 }
 
 #main2{
+
+		background-color: #F5F7FA ;
 		position: 	absolute;
 		margin: 0px 0px 0px 60px;	
-		height: 900px;
-		width: 1500px;
+		height: 52em;
 		border-color: #aaaaaa;
 }
 
 #main3{
-	height: 880px;
+	height: 50em;
 }
 
 #fieldset1 {
@@ -192,8 +188,4 @@ table,td  {
 	height: 45px;
 	background-color: #ffcccc;
 
-}
-
-#boton: hover{
-	cursor:pointer;
 }
