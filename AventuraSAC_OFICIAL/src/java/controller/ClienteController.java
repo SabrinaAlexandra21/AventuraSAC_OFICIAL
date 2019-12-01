@@ -91,10 +91,11 @@ public class ClienteController {
         int id = Integer.parseInt(request.getParameter("id"));
         
         model.entities.Cliente obj = repo.findCliente(id);
-
         ModelAndView mv = new ModelAndView();
-        
         mv.addObject("cliente", obj);
+        
+        List<Distrito> distritos = repo1.findDistritoEntities();
+        mv.addObject("listaDistrito", distritos);
         
         mv.setViewName("editarcliente");
         

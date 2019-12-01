@@ -4,6 +4,7 @@
     Author     : CHELLI BONITA
 --%>
 
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
@@ -39,7 +40,12 @@
                             <label for="idDistrito">Distrito:</label><br>
                             <form:select path="idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
-                                    <option value='<% if ( %> ${x.idDistrito == cliente.idDistrito}'>${x.detalle}</option>
+                                    <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
+                                        <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                    </c:if>
+                                    <c:if test="${x.idDistrito != cliente.idDistrito.idDistrito}">
+                                        <option value="${x.idDistrito}">${x.detalle}</option>
+                                    </c:if>
                                 </c:forEach>
                             </form:select > 
                         </div>
