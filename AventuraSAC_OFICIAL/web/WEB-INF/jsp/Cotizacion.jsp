@@ -28,7 +28,7 @@
                                 <div id="Contenedorlogo2" class="content">
                                     <div class="row">
                                         <div class="col" id="imagen">
-                                            <img src="images/LogoAventura.png">
+                                            <img src="webapp/resources/theme1/images/logo.PNG"/>
                                         </div> 
                                         <div class="col" id="escritos">
                                             <center>

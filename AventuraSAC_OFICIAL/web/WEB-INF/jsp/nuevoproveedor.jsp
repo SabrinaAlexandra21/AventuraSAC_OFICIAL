@@ -7,19 +7,28 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous" />
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
+    
     </head>
-    <body>
+    <body id="bodys">
+        
+        <header id="header">
+            <a class="logo" href="menu.htm">Aventura S.A.C.</a>
+            
+        </header>
+
         <div class="container md-8">
-            <div class="card">
+            <div class="card" id="carta">
                 <div class="card-header">
-                    <h2>Nuevo Proveedor</h2>
+                    <h3>Nuevo Proveedor</h3>
                 </div>
                 <div class="card-body">
+                    
                     <form:form method="post" modelAttribute="proveedor">
+                        
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
                             <form:input path="razonSocial" cssClass="form-control" required="required"/>
@@ -29,7 +38,7 @@
                             <form:input path="ruc" cssClass="form-control" required="required"/>
                         </div>
                         <div>
-                            <label for="idDistrito">Distrito:</label><br>
+                            <label for="idDistrito">Distrito:</label>
                             <form:select path="idDistrito.idDistrito" id="idDistrito" >
                                 <c:forEach items="${listarDistrito}" var="x">
                                     <option value="${x.idDistrito}">${x.detalle}</option>

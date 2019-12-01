@@ -35,10 +35,15 @@
                             <label for="ruc">RUC:</label>
                             <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" />
                         </div>
-                        <div class="form-group">
-                            <label for="idDistrito">Distrito:</label>
-                            <form:input path="idDistrito" cssClass="form-control" value="${cliente.idDistrito}" />
+                        <div>
+                            <label for="idDistrito">Distrito:</label><br>
+                            <form:select path="idDistrito" id="idDistrito">
+                                <c:forEach items="${listaDistrito}" var="x">
+                                    <option value='<% if ( %> ${x.idDistrito == cliente.idDistrito}'>${x.detalle}</option>
+                                </c:forEach>
+                            </form:select > 
                         </div>
+                        <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
                             <form:input path="direccion"  cssClass="form-control" value="${cliente.direccion}" />

@@ -12,12 +12,35 @@
     
     </head>
     <body id="bodys">
+         
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="MenuTrabajador.html">Aventura S.A.C.</a>
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
         </header>
+        
+        <nav id="menu">
+            <ul class="links">
+                <li><a href="menu.htm">Home</a></li>
+                <li><a href="quienessomos.htm">Quienes Somos</a></li>
+                <li><a href="#">Mantenimientos</a>
+                    <ul>
+                        <li>
+                            <a href="empleados.htm">Empleados</a>
+                        </li>
+                        <li>
+                            <a href="clientes.htm">Cliente</a>
+                        </li>
+                        <li>
+                            <a href="proveedores.htm">Proveedor</a>
+                        </li>
+                    </ul>
+                <li>
+            </ul>
+        </nav>
+
+         
         <div class="container md-8">
             <div class="card" id="carta">
                 <div class="card-header">
@@ -48,18 +71,15 @@
                                     <td>${item.direccion}</td>
                                     <td>${item.contacto}</td>
                                     <td>${item.telefono}</td>
-                                    <td><a href="editarcliente.htm?id=${item.idProveedor}" class="btn btn-info" role="button"><i class="fas fa-edit"></a> 
-                                        <button type="button" onclick="eliminar('${item.idProveedor}')" class="btn btn-warning"><i class="fas fa-trash-alt"></button>
+                                    <td><a href="editarproveedor.htm?id=${item.idProveedor}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
+                                        <button type="button" onclick="eliminar('${item.idProveedor}')" class="btn btn-warning"><i class="fas fa-trash-alt"></i></button>
                                     </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
-                    
-               
                 </div>
             </div>
         </div>
     </body>
 </html>
-

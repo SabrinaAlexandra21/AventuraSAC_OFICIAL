@@ -1,8 +1,6 @@
 
 package controller;
 
-import model.controllers.ProveedorJpaController;
-import model.entities.Proveedor;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -23,8 +21,6 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class ProveedorController {
-    
-
    
     private EntityManager em;
     private EntityManagerFactory emf;
@@ -32,6 +28,7 @@ public class ProveedorController {
     private DistritoJpaController repo1;
     
      public ProveedorController() {
+         
         em = getEntityManager();
         repo = new ProveedorJpaController(emf);
     }
@@ -127,4 +124,3 @@ public class ProveedorController {
         return new ModelAndView("redirect:/proveedores.htm");
     }
 }
-

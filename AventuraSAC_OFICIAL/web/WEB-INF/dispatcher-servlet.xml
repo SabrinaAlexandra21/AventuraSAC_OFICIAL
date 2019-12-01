@@ -39,7 +39,7 @@
                 <prop key="eliminarempleado.htm">empleadoController</prop>
                 
                 <prop key="proveedores.htm">proveedorController</prop>
-                <prop key="nuevoproveedor.htm">proveedorController</prop>
+                <prop key="nuevoproveedor">proveedorController</prop>
                 <prop key="editarproveedor.htm">proveedorController</prop>
                 <prop key="eliminarproveedor.htm">proveedorController</prop>
                 
