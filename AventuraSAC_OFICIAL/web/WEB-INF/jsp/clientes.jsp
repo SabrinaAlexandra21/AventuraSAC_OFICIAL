@@ -53,7 +53,7 @@
                                     <td>${item.broker}</td>
 
                                     <td><a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
-                                        <input type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning" value="Eliminar"/>
+                                        <button type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning"><i class="fas fa-delete"></i></button>
                                 </tr>
                             </c:forEach>
                         </tbody>

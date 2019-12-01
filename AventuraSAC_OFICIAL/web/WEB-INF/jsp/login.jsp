@@ -30,7 +30,7 @@
                         <form action="validar.htm" method="post">
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-beer"></i></span>
+                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
                                 </div>
                                 <input type="text" name="txtusuario" class="form-control input_user" value="" placeholder="username">
                             </div>
@@ -53,7 +53,7 @@
                         <div class="d-flex justify-content-center links">
                             ¿No tienes una cuenta? <a href="registrausuario.htm" class="ml-2">Regístrate</a>
                         </div>
-                        <div class="d-flex justify-content-center links">
+                        <div class="d-flex justify-content-center links" id="reg">
                             <a href="#">Olvidaste tu contraseña?</a>
                         </div>
                     </div>

@@ -17,7 +17,7 @@
 			width: 350px;
 			margin-top: auto;
 			margin-bottom: auto;
-			background: #17a2b8;
+			background: #669496;
 			position: relative;
 			display: flex;
 			justify-content: center;
@@ -73,5 +73,7 @@
 			outline: 0px !important;
 		}
 		.custom-checkbox .custom-control-input:checked~.custom-control-label::before {
-			background-color: #c0392b !important;
+			background-color: white !important;
 		}
+                
+                
