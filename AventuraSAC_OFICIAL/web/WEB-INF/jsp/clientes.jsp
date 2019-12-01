@@ -21,10 +21,10 @@
         <div class="container md-8">
             <div class="card" id="carta">
                 <div class="card-header">
-                    <h3>Clientes</h3>
+                    <h3>Listado de Clientes</h3>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-primary" href="nuevocliente.htm" role="button">Nuevo</a>
+                    <a class="btn btn-primary" href="nuevocliente.htm" role="button" id="nuevo">Nuevo</a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -52,8 +52,10 @@
                                     <td>${item.correo}</td>
                                     <td>${item.broker}</td>
 
-                                    <td><a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
-                                        <button type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning"><i class="fas fa-delete"></i></button>
+                                    <td scope="col-2">
+                                        <a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
+                                        <button type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning"><i class="fas fa-trash-alt"></i></button>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>

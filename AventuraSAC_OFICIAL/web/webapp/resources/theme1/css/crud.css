@@ -1,6 +1,4 @@
 
-
-
 #bodys {
     margin: 0;
     padding: 0;
@@ -27,17 +25,37 @@
     border-radius: 1.5%;
 }
 
-.card-header h3{
+#nuevo {
     
-    font-family: Arial;
+    display: inline-block;
+    font-size: 1.20em;
+    margin: 0px 0px 15px 0px;
+    width: 100px;
+    height: 45px;
+    padding: 10px 0px;
+    text-decoration: none;
+ 
+}
+
+.card-header h3{
+    font-family: fantasy;
+    font-size: 30px;
+    margin-top: 1%; 
+}
+
+.btn-info {
+
+    width: 40%;
+    height: 40%;
+    background: lightblue;
+    color: black !important;
+    
 }
 
 .btn-warning {
-    width: 50%;
-    background: #632432 !important;
-    color: red !important;
-}
-.login_btn:focus {
-    box-shadow: none !important;
-    outline: 0px !important;
+
+    width: 40%;
+    height: 40%;
+    background: yellow;
+    color: black !important;
 }

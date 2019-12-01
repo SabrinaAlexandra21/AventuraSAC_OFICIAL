@@ -8,6 +8,8 @@
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
+    
     </head>
     <body id="bodys">
         <header id="header">
@@ -19,10 +21,10 @@
         <div class="container md-8">
             <div class="card" id="carta">
                 <div class="card-header">
-                    <h3>Proveedores</h3>
+                    <h3>Listado de Proveedores</h3>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-primary" href="nuevoproveedor.htm" role="button">Nuevo</a>
+                    <a class="btn btn-primary" href="nuevoproveedor.htm" role="button" id="nuevo">Nuevo</a>
                     <table class="table">
                         <thead>
                             <tr>
@@ -33,8 +35,7 @@
                                 <th scope="col">Dirección</th>
                                 <th scope="col">Contacto</th>
                                 <th scope="col">Teléfono</th>
-                                <th scope="col">Correo</th>
-                                
+                                <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -47,10 +48,9 @@
                                     <td>${item.direccion}</td>
                                     <td>${item.contacto}</td>
                                     <td>${item.telefono}</td>
-                                    <td>${item.correo}</td>
-                                    
-                                    <td><a href="editarcliente.htm?id=${item.idProveedor}" class="btn btn-info" role="button">Editar</a> 
-                                        <input type="button" onclick="eliminar('${item.idProveedor}')" class="btn btn-warning" value="Eliminar"/>
+                                    <td><a href="editarcliente.htm?id=${item.idProveedor}" class="btn btn-info" role="button"><i class="fas fa-edit"></a> 
+                                        <button type="button" onclick="eliminar('${item.idProveedor}')" class="btn btn-warning"><i class="fas fa-trash-alt"></button>
+                                    </td>
                                 </tr>
                             </c:forEach>
                         </tbody>
