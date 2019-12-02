@@ -7,17 +7,26 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous" />
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
+    
     </head>
-    <body>
+    <body id="bodys">
+        <header id="header">
+            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            
+        </header>
+        
         <div class="container md-8">
-            <div class="card">
+            
+            <div class="card" id="carta">
+                
                 <div class="card-header">
-                    <h2>Editar Empleado</h2>
+                    <h3>Editar Empleado</h3>
                 </div>
+                
                 <div class="card-body">
                     <form:form method="post" modelAttribute="empleado">
                         
@@ -44,23 +53,34 @@
                         </div>
                         
                         <div>
-                            <label for="idArea">Cargo:</label><br>
-                            <select path="idArea" id="idArea">
+                            <label for="idArea">Área:</label>
+                            <form:select path="idArea" id="idArea">
                                 <c:forEach items="${lista}" var="x">
-                                    <option value="${x.idArea}">${x.detalle}</option>
+                                    <c:if test="${x.idArea == empleado.idArea.idArea}">
+                                        <option value="${x.idArea}" selected="selected">${x.detalle}</option>
+                                    </c:if>
+                                    <c:if test="${x.idArea != empleado.idArea.idArea}">
+                                        <option value="${x.idArea}">${x.detalle}</option>
+                                    </c:if>
                                 </c:forEach>
-                            </select > 
+                            </form:select > 
                         </div>
                         
                         <br>
                         <div>
-                            <label for="idCargo">Cargo:</label><br>
-                            <select path="idCargo" id="idCargo">
+                            <label for="idCargo">Cargo:</label>
+                            <form:select path="idCargo" id="idCargo">
                                 <c:forEach items="${listaCargo}" var="x">
-                                    <option value="${x.idCargo}">${x.detalle}</option>
+                                    <c:if test="${x.idCargo == empleado.idCargo.idCargo}">
+                                        <option value="${x.idCargo}" selected="selected">${x.detalle}</option>
+                                    </c:if>
+                                    <c:if test="${x.idCargo != empleado.idCargo.idCargo}">
+                                        <option value="${x.idCargo}">${x.detalle}</option>
+                                    </c:if>
                                 </c:forEach>
-                            </select > 
+                            </form:select > 
                         </div>
+                        
                         
                         <br>
                         <div class="form-group">
@@ -78,7 +98,7 @@
                             <form:password path="clave" cssClass="form-control" value="${empleado.clave}" />
                         </div>
                         
-                        <input type="submit" class="btn btn-primary"  value="Registrar">
+                        <input type="submit" class="btn btn-primary"  value="Guardar">
                         <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
                         
                     </form:form>

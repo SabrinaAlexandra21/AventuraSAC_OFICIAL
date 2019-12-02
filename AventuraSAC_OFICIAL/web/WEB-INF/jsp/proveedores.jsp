@@ -81,5 +81,14 @@
                 </div>
             </div>
         </div>
+        <script type="text/javascript">
+            function eliminar(id) {
+                if (confirm("¿Desea eliminar el proveedor?")) {
+                    window.location.href = "eliminarproveedor.htm?id=" + id;
+                    return true;
+                }
+                return false;
+            }
+        </script>
     </body>
 </html>

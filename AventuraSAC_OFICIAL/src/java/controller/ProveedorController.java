@@ -31,6 +31,7 @@ public class ProveedorController {
          
         em = getEntityManager();
         repo = new ProveedorJpaController(emf);
+       repo1 = new DistritoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -92,9 +93,13 @@ public class ProveedorController {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        model.entities.Proveedor obj = repo.findProveedor(id);
+        Proveedor obj = repo.findProveedor(id);
 
         ModelAndView mv = new ModelAndView();
+
+        List<Distrito> distritos = repo1.findDistritoEntities();
+        
+        mv.addObject("listaDistrito", distritos);
         
         mv.addObject("proveedor", obj);
         
@@ -106,7 +111,8 @@ public class ProveedorController {
     
     @RequestMapping(value = "editarproveedor.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarProveedor(@ModelAttribute("proveedor") model.entities.Proveedor c) throws Exception {
+    public ModelAndView EditarProveedor(@ModelAttribute("proveedor") Proveedor c ) throws Exception {
+        
         
         repo.edit(c);
 

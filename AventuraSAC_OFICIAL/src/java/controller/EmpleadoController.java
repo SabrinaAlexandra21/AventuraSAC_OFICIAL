@@ -98,6 +98,7 @@ public class EmpleadoController {
         return new ModelAndView("redirect:/empleados.htm");
     }
     
+    
     @RequestMapping(value = "editarempleado.htm", method = RequestMethod.GET)
     
     public ModelAndView EditarEmpleado(HttpServletRequest request) {
@@ -107,6 +108,14 @@ public class EmpleadoController {
         model.entities.Empleado obj = repo.findEmpleado(id);
 
         ModelAndView mv = new ModelAndView();
+        
+        List<Cargo> cargos =  repo1.findCargoEntities();
+        
+        List<Areas> areas = repo2.findAreasEntities();
+
+        mv.addObject("listaCargo", cargos);
+        
+        mv.addObject("lista", areas);
         
         mv.addObject("empleado", obj);
         

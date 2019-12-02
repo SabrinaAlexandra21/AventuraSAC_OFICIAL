@@ -84,19 +84,23 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes.htm");
     }
     
+    
     @RequestMapping(value = "editarcliente.htm", method = RequestMethod.GET)
     
     public ModelAndView EditarCliente(HttpServletRequest request) {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        model.entities.Cliente obj = repo.findCliente(id);
+        Cliente obj = repo.findCliente(id);
+        
         ModelAndView mv = new ModelAndView();
-        mv.addObject("cliente", obj);
         
         List<Distrito> distritos = repo1.findDistritoEntities();
+        
         mv.addObject("listaDistrito", distritos);
         
+        mv.addObject("cliente", obj);
+       
         mv.setViewName("editarcliente");
         
         return mv;
@@ -105,7 +109,7 @@ public class ClienteController {
     
     @RequestMapping(value = "editarcliente.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarCliente(@ModelAttribute("cliente") model.entities.Cliente c) throws Exception {
+    public ModelAndView EditarCliente(@ModelAttribute("cliente") Cliente c) throws Exception {
         
         repo.edit(c);
 

@@ -7,77 +7,76 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        <link rel="stylesheet"
-              href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
-              integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
-              crossorigin="anonymous" />
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
     </head>
-    <body>
+    <body id="bodys">
+        <header id="header">
+            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+
+        </header>
         <div class="container md-8">
-            <div class="card">
+            <div class="card" id="carta">
                 <div class="card-header">
-                    <h2>Editar Proveedor</h2>
+                    <h3>Editar Proveedor</h3>
                 </div>
                 <div class="card-body">
                     <form:form method="post" modelAttribute="proveedor">
-                        
+
                         <form:hidden path="idProveedor" value="${proveedor.idProveedor}"/>
-                        
+
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
                             <form:input path="razonSocial" cssClass="form-control" value="${proveedor.razonSocial}"/>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
                             <form:input path="ruc" cssClass="form-control" value="${proveedor.ruc}"/>
                         </div>
-                        
+
                         <div>
-                            <label for="idDistrito">Distrito:</label><br>
+                            <label for="idDistrito">Distrito:</label>
                             <form:select path="idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
-                                    <option value="${x.idDistrito}">${x.detalle}</option>
+                                    <c:if test="${x.idDistrito == proveedor.idDistrito.idDistrito}">
+                                        <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                    </c:if>
+                                    <c:if test="${x.idDistrito != proveedor.idDistrito.idDistrito}">
+                                        <option value="${x.idDistrito}">${x.detalle}</option>
+                                    </c:if>
                                 </c:forEach>
                             </form:select > 
                         </div>
-                        
+
+                        <br>
                         <div class="form-group">
-                            <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}" />
+                            <label for="direccion">Dirección:</label>
+                            <form:input path="direccion" cssClass="form-control" value="${proveedor.direccion}" />
                         </div>
-                        
-                        
-                        
+
                         <br>
                         <div>
-                            <label for="idCargo">Cargo:</label><br>
-                            <select path="idCargo" id="idCargo">
-                                <c:forEach items="${listaCargo}" var="x">
-                                    <option value="${x.idCargo}">${x.detalle}</option>
-                                </c:forEach>
-                            </select > 
+                            <label for="contacto">Contacto:</label><br>
+                            <form:input path="contacto" cssClass="form-control"  value="${proveedor.contacto}"/>
                         </div>
-                        
+
                         <br>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}"/>
+                            <form:input path="telefono" cssClass="form-control"  value="${proveedor.telefono}"/>
                         </div>
-                        
+
                         <div class="form-group">
-                            <label for="usuario">Usuario:</label>
-                            <form:input path="usuario" cssClass="form-control"  value="${empleado.usuario}"/>
+                            <label for="correo">Correo:</label>
+                            <form:input path="correo" cssClass="form-control"  value="${proveedor.correo}"/>
                         </div>
-                        
-                        <div class="form-group">
-                            <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" value="${empleado.clave}" />
-                        </div>
-                        
-                        <input type="submit" class="btn btn-primary"  value="Registrar">
+
+                        <input type="submit" class="btn btn-primary"  value="Guardar">
                         <a class="btn btn-secondary" href="proveedores.htm" role="button">Regresar</a>
-                        
+
                     </form:form>
                 </div>
             </div>

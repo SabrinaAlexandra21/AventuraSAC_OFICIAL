@@ -40,7 +40,7 @@
                         <div>
                             <label for="idDistrito">Distrito:</label>
                             <form:select path="idDistrito.idDistrito" id="idDistrito" >
-                                <c:forEach items="${listarDistrito}" var="x">
+                                <c:forEach items="${listarDistrito}" var="x" >
                                     <option value="${x.idDistrito}">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
