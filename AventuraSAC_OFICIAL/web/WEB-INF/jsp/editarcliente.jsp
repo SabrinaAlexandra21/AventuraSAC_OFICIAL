@@ -32,7 +32,7 @@
                 </div>
                 <div class="card-body">
                     <form:form method="post" modelAttribute="cliente">
-                        
+
                         <form:hidden path="idCliente" value="${cliente.idCliente}"/>
 
                         <div class="form-group">
@@ -45,7 +45,7 @@
                         </div>
                         <div>
                             <label for="idDistrito">Distrito:</label><br>
-                            <form:select path="idDistrito" id="idDistrito">
+                            <form:select path="idDistrito.idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
                                     <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
                                         <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
@@ -73,8 +73,9 @@
                             <label for="broker">Broker:</label>
                             <form:input path="broker" cssClass="form-control"   value="${cliente.broker}"/>
                         </div>
-                        
-                        
+                        <form:hidden path="usuario" value="${cliente.usuario}" />
+                        <form:hidden path="clave" value="${cliente.clave}" />
+
                         <input type="submit" class="btn btn-primary"  value="Guardar">
                         <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
                     </form:form>
