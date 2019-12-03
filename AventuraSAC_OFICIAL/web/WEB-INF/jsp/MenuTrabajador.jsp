@@ -15,7 +15,7 @@
 
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="MenuTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="menu.htm">Aventura S.A.C.</a>
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
@@ -38,7 +38,7 @@
                             <a href="proveedores.htm">Proveedor</a>
                         </li>
                     </ul>
-                <li>
+                </li>
             </ul>
         </nav>
 

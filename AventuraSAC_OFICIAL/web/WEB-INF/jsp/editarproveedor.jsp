@@ -39,7 +39,7 @@
 
                         <div>
                             <label for="idDistrito">Distrito:</label>
-                            <form:select path="idDistrito" id="idDistrito">
+                            <form:select path="idDistrito.idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
                                     <c:if test="${x.idDistrito == proveedor.idDistrito.idDistrito}">
                                         <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>

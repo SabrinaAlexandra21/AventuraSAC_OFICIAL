@@ -83,6 +83,7 @@ public class EmpleadoJpaController implements Serializable {
                 idAreaNew = em.getReference(idAreaNew.getClass(), idAreaNew.getIdArea());
                 empleado.setIdArea(idAreaNew);
             }
+
             empleado = em.merge(empleado);
             if (idCargoOld != null && !idCargoOld.equals(idCargoNew)) {
                 idCargoOld.getEmpleadoList().remove(empleado);
@@ -193,5 +194,5 @@ public class EmpleadoJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

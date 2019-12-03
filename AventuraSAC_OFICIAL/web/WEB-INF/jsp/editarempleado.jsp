@@ -54,7 +54,7 @@
                         
                         <div>
                             <label for="idArea">Área:</label>
-                            <form:select path="idArea" id="idArea">
+                            <form:select path="idArea.idArea" id="idArea">
                                 <c:forEach items="${lista}" var="x">
                                     <c:if test="${x.idArea == empleado.idArea.idArea}">
                                         <option value="${x.idArea}" selected="selected">${x.detalle}</option>
@@ -69,7 +69,7 @@
                         <br>
                         <div>
                             <label for="idCargo">Cargo:</label>
-                            <form:select path="idCargo" id="idCargo">
+                            <form:select path="idCargo.idCargo" id="idCargo">
                                 <c:forEach items="${listaCargo}" var="x">
                                     <c:if test="${x.idCargo == empleado.idCargo.idCargo}">
                                         <option value="${x.idCargo}" selected="selected">${x.detalle}</option>
@@ -88,15 +88,8 @@
                             <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}"/>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="usuario">Usuario:</label>
-                            <form:input path="usuario" cssClass="form-control"  value="${empleado.usuario}"/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" value="${empleado.clave}" />
-                        </div>
+                        <form:hidden path="usuario" value="${empleado.usuario}" />
+                        <form:hidden path="clave" value="${empleado.clave}" />
                         
                         <input type="submit" class="btn btn-primary"  value="Guardar">
                         <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>

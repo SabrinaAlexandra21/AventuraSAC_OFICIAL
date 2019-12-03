@@ -2775,6 +2775,12 @@ body {
           text-decoration: none; }
           #menu > ul.links > li > a:hover {
             color: #ffffff; }
+          #menu > ul.links > li > ul > li > a{
+              text-decoration: none;
+              color: gray;
+          }
+          #menu > ul.links > li >  ul > li > a:hover {
+            color: #ffffff; }
         #menu > ul.links > li:first-child > a {
           border-top: 0; }
   #menu .close {

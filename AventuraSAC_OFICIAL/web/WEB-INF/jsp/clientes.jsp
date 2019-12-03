@@ -13,7 +13,7 @@
     </head>
     <body id="bodys">
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="menu.htm">Aventura S.A.C.</a>
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
