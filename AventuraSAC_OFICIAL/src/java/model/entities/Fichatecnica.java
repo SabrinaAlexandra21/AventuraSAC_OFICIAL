@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 @Entity
 @Table(name = "fichatecnica")
@@ -62,6 +62,12 @@ public class Fichatecnica implements Serializable {
     private String empaque;
     @OneToMany(mappedBy = "idFicha")
     private List<PedidoDetalle> pedidoDetalleList;
+    @JoinColumn(name = "idTipoPrenda", referencedColumnName = "idTipoPrenda")
+    @ManyToOne
+    private Tipoprenda idTipoPrenda;
+    @JoinColumn(name = "idTalla", referencedColumnName = "idTalla")
+    @ManyToOne
+    private Talla idTalla;
     @JoinColumn(name = "idTipo", referencedColumnName = "idTipo")
     @ManyToOne
     private Tipotela idTipo;
@@ -137,6 +143,22 @@ public class Fichatecnica implements Serializable {
 
     public void setPedidoDetalleList(List<PedidoDetalle> pedidoDetalleList) {
         this.pedidoDetalleList = pedidoDetalleList;
+    }
+
+    public Tipoprenda getIdTipoPrenda() {
+        return idTipoPrenda;
+    }
+
+    public void setIdTipoPrenda(Tipoprenda idTipoPrenda) {
+        this.idTipoPrenda = idTipoPrenda;
+    }
+
+    public Talla getIdTalla() {
+        return idTalla;
+    }
+
+    public void setIdTalla(Talla idTalla) {
+        this.idTalla = idTalla;
     }
 
     public Tipotela getIdTipo() {

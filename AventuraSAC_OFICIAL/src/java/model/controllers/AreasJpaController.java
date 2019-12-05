@@ -20,7 +20,7 @@ import model.entities.Areas;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 public class AreasJpaController implements Serializable {
 

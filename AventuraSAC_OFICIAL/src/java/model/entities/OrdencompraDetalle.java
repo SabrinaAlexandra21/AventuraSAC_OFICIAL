@@ -6,6 +6,7 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -14,12 +15,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 @Entity
 @Table(name = "ordencompra_detalle")
@@ -37,6 +40,8 @@ public class OrdencompraDetalle implements Serializable {
     private String item;
     @Column(name = "Cantidad")
     private Integer cantidad;
+    @OneToMany(mappedBy = "item")
+    private List<Movimientoalmacen> movimientoalmacenList;
     @JoinColumn(name = "idInsumo", referencedColumnName = "idInsumo")
     @ManyToOne
     private Insumohilo idInsumo;
@@ -65,6 +70,15 @@ public class OrdencompraDetalle implements Serializable {
 
     public void setCantidad(Integer cantidad) {
         this.cantidad = cantidad;
+    }
+
+    @XmlTransient
+    public List<Movimientoalmacen> getMovimientoalmacenList() {
+        return movimientoalmacenList;
+    }
+
+    public void setMovimientoalmacenList(List<Movimientoalmacen> movimientoalmacenList) {
+        this.movimientoalmacenList = movimientoalmacenList;
     }
 
     public Insumohilo getIdInsumo() {

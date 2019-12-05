@@ -6,21 +6,23 @@
 package model.controllers;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Cargo;
 import model.entities.Areas;
+import model.entities.Ordencompra;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Empleado;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 public class EmpleadoJpaController implements Serializable {
 
@@ -34,6 +36,9 @@ public class EmpleadoJpaController implements Serializable {
     }
 
     public void create(Empleado empleado) {
+        if (empleado.getOrdencompraList() == null) {
+            empleado.setOrdencompraList(new ArrayList<Ordencompra>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -48,6 +53,12 @@ public class EmpleadoJpaController implements Serializable {
                 idArea = em.getReference(idArea.getClass(), idArea.getIdArea());
                 empleado.setIdArea(idArea);
             }
+            List<Ordencompra> attachedOrdencompraList = new ArrayList<Ordencompra>();
+            for (Ordencompra ordencompraListOrdencompraToAttach : empleado.getOrdencompraList()) {
+                ordencompraListOrdencompraToAttach = em.getReference(ordencompraListOrdencompraToAttach.getClass(), ordencompraListOrdencompraToAttach.getIdOrdenCompra());
+                attachedOrdencompraList.add(ordencompraListOrdencompraToAttach);
+            }
+            empleado.setOrdencompraList(attachedOrdencompraList);
             em.persist(empleado);
             if (idCargo != null) {
                 idCargo.getEmpleadoList().add(empleado);
@@ -56,6 +67,15 @@ public class EmpleadoJpaController implements Serializable {
             if (idArea != null) {
                 idArea.getEmpleadoList().add(empleado);
                 idArea = em.merge(idArea);
+            }
+            for (Ordencompra ordencompraListOrdencompra : empleado.getOrdencompraList()) {
+                Empleado oldIdEmpleadoOfOrdencompraListOrdencompra = ordencompraListOrdencompra.getIdEmpleado();
+                ordencompraListOrdencompra.setIdEmpleado(empleado);
+                ordencompraListOrdencompra = em.merge(ordencompraListOrdencompra);
+                if (oldIdEmpleadoOfOrdencompraListOrdencompra != null) {
+                    oldIdEmpleadoOfOrdencompraListOrdencompra.getOrdencompraList().remove(ordencompraListOrdencompra);
+                    oldIdEmpleadoOfOrdencompraListOrdencompra = em.merge(oldIdEmpleadoOfOrdencompraListOrdencompra);
+                }
             }
             em.getTransaction().commit();
         } finally {
@@ -75,6 +95,8 @@ public class EmpleadoJpaController implements Serializable {
             Cargo idCargoNew = empleado.getIdCargo();
             Areas idAreaOld = persistentEmpleado.getIdArea();
             Areas idAreaNew = empleado.getIdArea();
+            List<Ordencompra> ordencompraListOld = persistentEmpleado.getOrdencompraList();
+            List<Ordencompra> ordencompraListNew = empleado.getOrdencompraList();
             if (idCargoNew != null) {
                 idCargoNew = em.getReference(idCargoNew.getClass(), idCargoNew.getIdCargo());
                 empleado.setIdCargo(idCargoNew);
@@ -83,7 +105,13 @@ public class EmpleadoJpaController implements Serializable {
                 idAreaNew = em.getReference(idAreaNew.getClass(), idAreaNew.getIdArea());
                 empleado.setIdArea(idAreaNew);
             }
-
+            List<Ordencompra> attachedOrdencompraListNew = new ArrayList<Ordencompra>();
+            for (Ordencompra ordencompraListNewOrdencompraToAttach : ordencompraListNew) {
+                ordencompraListNewOrdencompraToAttach = em.getReference(ordencompraListNewOrdencompraToAttach.getClass(), ordencompraListNewOrdencompraToAttach.getIdOrdenCompra());
+                attachedOrdencompraListNew.add(ordencompraListNewOrdencompraToAttach);
+            }
+            ordencompraListNew = attachedOrdencompraListNew;
+            empleado.setOrdencompraList(ordencompraListNew);
             empleado = em.merge(empleado);
             if (idCargoOld != null && !idCargoOld.equals(idCargoNew)) {
                 idCargoOld.getEmpleadoList().remove(empleado);
@@ -100,6 +128,23 @@ public class EmpleadoJpaController implements Serializable {
             if (idAreaNew != null && !idAreaNew.equals(idAreaOld)) {
                 idAreaNew.getEmpleadoList().add(empleado);
                 idAreaNew = em.merge(idAreaNew);
+            }
+            for (Ordencompra ordencompraListOldOrdencompra : ordencompraListOld) {
+                if (!ordencompraListNew.contains(ordencompraListOldOrdencompra)) {
+                    ordencompraListOldOrdencompra.setIdEmpleado(null);
+                    ordencompraListOldOrdencompra = em.merge(ordencompraListOldOrdencompra);
+                }
+            }
+            for (Ordencompra ordencompraListNewOrdencompra : ordencompraListNew) {
+                if (!ordencompraListOld.contains(ordencompraListNewOrdencompra)) {
+                    Empleado oldIdEmpleadoOfOrdencompraListNewOrdencompra = ordencompraListNewOrdencompra.getIdEmpleado();
+                    ordencompraListNewOrdencompra.setIdEmpleado(empleado);
+                    ordencompraListNewOrdencompra = em.merge(ordencompraListNewOrdencompra);
+                    if (oldIdEmpleadoOfOrdencompraListNewOrdencompra != null && !oldIdEmpleadoOfOrdencompraListNewOrdencompra.equals(empleado)) {
+                        oldIdEmpleadoOfOrdencompraListNewOrdencompra.getOrdencompraList().remove(ordencompraListNewOrdencompra);
+                        oldIdEmpleadoOfOrdencompraListNewOrdencompra = em.merge(oldIdEmpleadoOfOrdencompraListNewOrdencompra);
+                    }
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -139,6 +184,11 @@ public class EmpleadoJpaController implements Serializable {
             if (idArea != null) {
                 idArea.getEmpleadoList().remove(empleado);
                 idArea = em.merge(idArea);
+            }
+            List<Ordencompra> ordencompraList = empleado.getOrdencompraList();
+            for (Ordencompra ordencompraListOrdencompra : ordencompraList) {
+                ordencompraListOrdencompra.setIdEmpleado(null);
+                ordencompraListOrdencompra = em.merge(ordencompraListOrdencompra);
             }
             em.remove(empleado);
             em.getTransaction().commit();
@@ -194,5 +244,5 @@ public class EmpleadoJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

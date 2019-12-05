@@ -55,7 +55,7 @@
                  
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 
-                <prop key="Ficha.htm">fichaTecnicaController</prop>
+                <prop key="FichaTecnica.htm">fichaTecnicaController</prop>
                 
                 <prop key="OrdenCompra.htm">ordencompraController</prop>
             </props>

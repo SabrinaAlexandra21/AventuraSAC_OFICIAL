@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 @Entity
 @Table(name = "pedido")
@@ -51,9 +51,13 @@ public class Pedido implements Serializable {
     @OneToMany(mappedBy = "idPedido")
     private List<GuiaremisionDetalle> guiaremisionDetalleList;
     @OneToMany(mappedBy = "idPedido")
+    private List<Pagos> pagosList;
+    @OneToMany(mappedBy = "idPedido")
     private List<PedidoDetalle> pedidoDetalleList;
     @OneToMany(mappedBy = "idPedido")
     private List<Cotizacion> cotizacionList;
+    @OneToMany(mappedBy = "idPedido")
+    private List<Factura> facturaList;
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne
     private Cliente idCliente;
@@ -105,6 +109,15 @@ public class Pedido implements Serializable {
     }
 
     @XmlTransient
+    public List<Pagos> getPagosList() {
+        return pagosList;
+    }
+
+    public void setPagosList(List<Pagos> pagosList) {
+        this.pagosList = pagosList;
+    }
+
+    @XmlTransient
     public List<PedidoDetalle> getPedidoDetalleList() {
         return pedidoDetalleList;
     }
@@ -120,6 +133,15 @@ public class Pedido implements Serializable {
 
     public void setCotizacionList(List<Cotizacion> cotizacionList) {
         this.cotizacionList = cotizacionList;
+    }
+
+    @XmlTransient
+    public List<Factura> getFacturaList() {
+        return facturaList;
+    }
+
+    public void setFacturaList(List<Factura> facturaList) {
+        this.facturaList = facturaList;
     }
 
     public Cliente getIdCliente() {

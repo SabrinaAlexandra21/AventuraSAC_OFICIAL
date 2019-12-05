@@ -10,17 +10,18 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.entities.OrdencompraDetalle;
+import model.entities.Movimientoalmacen;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Insumohilo;
+import model.entities.OrdencompraDetalle;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 public class InsumohiloJpaController implements Serializable {
 
@@ -34,6 +35,9 @@ public class InsumohiloJpaController implements Serializable {
     }
 
     public void create(Insumohilo insumohilo) {
+        if (insumohilo.getMovimientoalmacenList() == null) {
+            insumohilo.setMovimientoalmacenList(new ArrayList<Movimientoalmacen>());
+        }
         if (insumohilo.getOrdencompraDetalleList() == null) {
             insumohilo.setOrdencompraDetalleList(new ArrayList<OrdencompraDetalle>());
         }
@@ -41,6 +45,12 @@ public class InsumohiloJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            List<Movimientoalmacen> attachedMovimientoalmacenList = new ArrayList<Movimientoalmacen>();
+            for (Movimientoalmacen movimientoalmacenListMovimientoalmacenToAttach : insumohilo.getMovimientoalmacenList()) {
+                movimientoalmacenListMovimientoalmacenToAttach = em.getReference(movimientoalmacenListMovimientoalmacenToAttach.getClass(), movimientoalmacenListMovimientoalmacenToAttach.getIdMovimiento());
+                attachedMovimientoalmacenList.add(movimientoalmacenListMovimientoalmacenToAttach);
+            }
+            insumohilo.setMovimientoalmacenList(attachedMovimientoalmacenList);
             List<OrdencompraDetalle> attachedOrdencompraDetalleList = new ArrayList<OrdencompraDetalle>();
             for (OrdencompraDetalle ordencompraDetalleListOrdencompraDetalleToAttach : insumohilo.getOrdencompraDetalleList()) {
                 ordencompraDetalleListOrdencompraDetalleToAttach = em.getReference(ordencompraDetalleListOrdencompraDetalleToAttach.getClass(), ordencompraDetalleListOrdencompraDetalleToAttach.getItem());
@@ -48,6 +58,15 @@ public class InsumohiloJpaController implements Serializable {
             }
             insumohilo.setOrdencompraDetalleList(attachedOrdencompraDetalleList);
             em.persist(insumohilo);
+            for (Movimientoalmacen movimientoalmacenListMovimientoalmacen : insumohilo.getMovimientoalmacenList()) {
+                Insumohilo oldIdInsumoOfMovimientoalmacenListMovimientoalmacen = movimientoalmacenListMovimientoalmacen.getIdInsumo();
+                movimientoalmacenListMovimientoalmacen.setIdInsumo(insumohilo);
+                movimientoalmacenListMovimientoalmacen = em.merge(movimientoalmacenListMovimientoalmacen);
+                if (oldIdInsumoOfMovimientoalmacenListMovimientoalmacen != null) {
+                    oldIdInsumoOfMovimientoalmacenListMovimientoalmacen.getMovimientoalmacenList().remove(movimientoalmacenListMovimientoalmacen);
+                    oldIdInsumoOfMovimientoalmacenListMovimientoalmacen = em.merge(oldIdInsumoOfMovimientoalmacenListMovimientoalmacen);
+                }
+            }
             for (OrdencompraDetalle ordencompraDetalleListOrdencompraDetalle : insumohilo.getOrdencompraDetalleList()) {
                 Insumohilo oldIdInsumoOfOrdencompraDetalleListOrdencompraDetalle = ordencompraDetalleListOrdencompraDetalle.getIdInsumo();
                 ordencompraDetalleListOrdencompraDetalle.setIdInsumo(insumohilo);
@@ -71,8 +90,17 @@ public class InsumohiloJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Insumohilo persistentInsumohilo = em.find(Insumohilo.class, insumohilo.getIdInsumo());
+            List<Movimientoalmacen> movimientoalmacenListOld = persistentInsumohilo.getMovimientoalmacenList();
+            List<Movimientoalmacen> movimientoalmacenListNew = insumohilo.getMovimientoalmacenList();
             List<OrdencompraDetalle> ordencompraDetalleListOld = persistentInsumohilo.getOrdencompraDetalleList();
             List<OrdencompraDetalle> ordencompraDetalleListNew = insumohilo.getOrdencompraDetalleList();
+            List<Movimientoalmacen> attachedMovimientoalmacenListNew = new ArrayList<Movimientoalmacen>();
+            for (Movimientoalmacen movimientoalmacenListNewMovimientoalmacenToAttach : movimientoalmacenListNew) {
+                movimientoalmacenListNewMovimientoalmacenToAttach = em.getReference(movimientoalmacenListNewMovimientoalmacenToAttach.getClass(), movimientoalmacenListNewMovimientoalmacenToAttach.getIdMovimiento());
+                attachedMovimientoalmacenListNew.add(movimientoalmacenListNewMovimientoalmacenToAttach);
+            }
+            movimientoalmacenListNew = attachedMovimientoalmacenListNew;
+            insumohilo.setMovimientoalmacenList(movimientoalmacenListNew);
             List<OrdencompraDetalle> attachedOrdencompraDetalleListNew = new ArrayList<OrdencompraDetalle>();
             for (OrdencompraDetalle ordencompraDetalleListNewOrdencompraDetalleToAttach : ordencompraDetalleListNew) {
                 ordencompraDetalleListNewOrdencompraDetalleToAttach = em.getReference(ordencompraDetalleListNewOrdencompraDetalleToAttach.getClass(), ordencompraDetalleListNewOrdencompraDetalleToAttach.getItem());
@@ -81,6 +109,23 @@ public class InsumohiloJpaController implements Serializable {
             ordencompraDetalleListNew = attachedOrdencompraDetalleListNew;
             insumohilo.setOrdencompraDetalleList(ordencompraDetalleListNew);
             insumohilo = em.merge(insumohilo);
+            for (Movimientoalmacen movimientoalmacenListOldMovimientoalmacen : movimientoalmacenListOld) {
+                if (!movimientoalmacenListNew.contains(movimientoalmacenListOldMovimientoalmacen)) {
+                    movimientoalmacenListOldMovimientoalmacen.setIdInsumo(null);
+                    movimientoalmacenListOldMovimientoalmacen = em.merge(movimientoalmacenListOldMovimientoalmacen);
+                }
+            }
+            for (Movimientoalmacen movimientoalmacenListNewMovimientoalmacen : movimientoalmacenListNew) {
+                if (!movimientoalmacenListOld.contains(movimientoalmacenListNewMovimientoalmacen)) {
+                    Insumohilo oldIdInsumoOfMovimientoalmacenListNewMovimientoalmacen = movimientoalmacenListNewMovimientoalmacen.getIdInsumo();
+                    movimientoalmacenListNewMovimientoalmacen.setIdInsumo(insumohilo);
+                    movimientoalmacenListNewMovimientoalmacen = em.merge(movimientoalmacenListNewMovimientoalmacen);
+                    if (oldIdInsumoOfMovimientoalmacenListNewMovimientoalmacen != null && !oldIdInsumoOfMovimientoalmacenListNewMovimientoalmacen.equals(insumohilo)) {
+                        oldIdInsumoOfMovimientoalmacenListNewMovimientoalmacen.getMovimientoalmacenList().remove(movimientoalmacenListNewMovimientoalmacen);
+                        oldIdInsumoOfMovimientoalmacenListNewMovimientoalmacen = em.merge(oldIdInsumoOfMovimientoalmacenListNewMovimientoalmacen);
+                    }
+                }
+            }
             for (OrdencompraDetalle ordencompraDetalleListOldOrdencompraDetalle : ordencompraDetalleListOld) {
                 if (!ordencompraDetalleListNew.contains(ordencompraDetalleListOldOrdencompraDetalle)) {
                     ordencompraDetalleListOldOrdencompraDetalle.setIdInsumo(null);
@@ -126,6 +171,11 @@ public class InsumohiloJpaController implements Serializable {
                 insumohilo.getIdInsumo();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The insumohilo with id " + id + " no longer exists.", enfe);
+            }
+            List<Movimientoalmacen> movimientoalmacenList = insumohilo.getMovimientoalmacenList();
+            for (Movimientoalmacen movimientoalmacenListMovimientoalmacen : movimientoalmacenList) {
+                movimientoalmacenListMovimientoalmacen.setIdInsumo(null);
+                movimientoalmacenListMovimientoalmacen = em.merge(movimientoalmacenListMovimientoalmacen);
             }
             List<OrdencompraDetalle> ordencompraDetalleList = insumohilo.getOrdencompraDetalleList();
             for (OrdencompraDetalle ordencompraDetalleListOrdencompraDetalle : ordencompraDetalleList) {

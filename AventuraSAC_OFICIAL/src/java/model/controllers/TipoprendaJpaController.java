@@ -16,15 +16,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import model.controllers.exceptions.NonexistentEntityException;
-import model.entities.Tipotela;
+import model.entities.Tipoprenda;
 
 /**
  *
  * @author Administrador
  */
-public class TipotelaJpaController implements Serializable {
+public class TipoprendaJpaController implements Serializable {
 
-    public TipotelaJpaController(EntityManagerFactory emf) {
+    public TipoprendaJpaController(EntityManagerFactory emf) {
         this.emf = emf;
     }
     private EntityManagerFactory emf = null;
@@ -33,28 +33,28 @@ public class TipotelaJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Tipotela tipotela) {
-        if (tipotela.getFichatecnicaList() == null) {
-            tipotela.setFichatecnicaList(new ArrayList<Fichatecnica>());
+    public void create(Tipoprenda tipoprenda) {
+        if (tipoprenda.getFichatecnicaList() == null) {
+            tipoprenda.setFichatecnicaList(new ArrayList<Fichatecnica>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
             List<Fichatecnica> attachedFichatecnicaList = new ArrayList<Fichatecnica>();
-            for (Fichatecnica fichatecnicaListFichatecnicaToAttach : tipotela.getFichatecnicaList()) {
+            for (Fichatecnica fichatecnicaListFichatecnicaToAttach : tipoprenda.getFichatecnicaList()) {
                 fichatecnicaListFichatecnicaToAttach = em.getReference(fichatecnicaListFichatecnicaToAttach.getClass(), fichatecnicaListFichatecnicaToAttach.getIdFicha());
                 attachedFichatecnicaList.add(fichatecnicaListFichatecnicaToAttach);
             }
-            tipotela.setFichatecnicaList(attachedFichatecnicaList);
-            em.persist(tipotela);
-            for (Fichatecnica fichatecnicaListFichatecnica : tipotela.getFichatecnicaList()) {
-                Tipotela oldIdTipoOfFichatecnicaListFichatecnica = fichatecnicaListFichatecnica.getIdTipo();
-                fichatecnicaListFichatecnica.setIdTipo(tipotela);
+            tipoprenda.setFichatecnicaList(attachedFichatecnicaList);
+            em.persist(tipoprenda);
+            for (Fichatecnica fichatecnicaListFichatecnica : tipoprenda.getFichatecnicaList()) {
+                Tipoprenda oldIdTipoPrendaOfFichatecnicaListFichatecnica = fichatecnicaListFichatecnica.getIdTipoPrenda();
+                fichatecnicaListFichatecnica.setIdTipoPrenda(tipoprenda);
                 fichatecnicaListFichatecnica = em.merge(fichatecnicaListFichatecnica);
-                if (oldIdTipoOfFichatecnicaListFichatecnica != null) {
-                    oldIdTipoOfFichatecnicaListFichatecnica.getFichatecnicaList().remove(fichatecnicaListFichatecnica);
-                    oldIdTipoOfFichatecnicaListFichatecnica = em.merge(oldIdTipoOfFichatecnicaListFichatecnica);
+                if (oldIdTipoPrendaOfFichatecnicaListFichatecnica != null) {
+                    oldIdTipoPrendaOfFichatecnicaListFichatecnica.getFichatecnicaList().remove(fichatecnicaListFichatecnica);
+                    oldIdTipoPrendaOfFichatecnicaListFichatecnica = em.merge(oldIdTipoPrendaOfFichatecnicaListFichatecnica);
                 }
             }
             em.getTransaction().commit();
@@ -65,36 +65,36 @@ public class TipotelaJpaController implements Serializable {
         }
     }
 
-    public void edit(Tipotela tipotela) throws NonexistentEntityException, Exception {
+    public void edit(Tipoprenda tipoprenda) throws NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Tipotela persistentTipotela = em.find(Tipotela.class, tipotela.getIdTipo());
-            List<Fichatecnica> fichatecnicaListOld = persistentTipotela.getFichatecnicaList();
-            List<Fichatecnica> fichatecnicaListNew = tipotela.getFichatecnicaList();
+            Tipoprenda persistentTipoprenda = em.find(Tipoprenda.class, tipoprenda.getIdTipoPrenda());
+            List<Fichatecnica> fichatecnicaListOld = persistentTipoprenda.getFichatecnicaList();
+            List<Fichatecnica> fichatecnicaListNew = tipoprenda.getFichatecnicaList();
             List<Fichatecnica> attachedFichatecnicaListNew = new ArrayList<Fichatecnica>();
             for (Fichatecnica fichatecnicaListNewFichatecnicaToAttach : fichatecnicaListNew) {
                 fichatecnicaListNewFichatecnicaToAttach = em.getReference(fichatecnicaListNewFichatecnicaToAttach.getClass(), fichatecnicaListNewFichatecnicaToAttach.getIdFicha());
                 attachedFichatecnicaListNew.add(fichatecnicaListNewFichatecnicaToAttach);
             }
             fichatecnicaListNew = attachedFichatecnicaListNew;
-            tipotela.setFichatecnicaList(fichatecnicaListNew);
-            tipotela = em.merge(tipotela);
+            tipoprenda.setFichatecnicaList(fichatecnicaListNew);
+            tipoprenda = em.merge(tipoprenda);
             for (Fichatecnica fichatecnicaListOldFichatecnica : fichatecnicaListOld) {
                 if (!fichatecnicaListNew.contains(fichatecnicaListOldFichatecnica)) {
-                    fichatecnicaListOldFichatecnica.setIdTipo(null);
+                    fichatecnicaListOldFichatecnica.setIdTipoPrenda(null);
                     fichatecnicaListOldFichatecnica = em.merge(fichatecnicaListOldFichatecnica);
                 }
             }
             for (Fichatecnica fichatecnicaListNewFichatecnica : fichatecnicaListNew) {
                 if (!fichatecnicaListOld.contains(fichatecnicaListNewFichatecnica)) {
-                    Tipotela oldIdTipoOfFichatecnicaListNewFichatecnica = fichatecnicaListNewFichatecnica.getIdTipo();
-                    fichatecnicaListNewFichatecnica.setIdTipo(tipotela);
+                    Tipoprenda oldIdTipoPrendaOfFichatecnicaListNewFichatecnica = fichatecnicaListNewFichatecnica.getIdTipoPrenda();
+                    fichatecnicaListNewFichatecnica.setIdTipoPrenda(tipoprenda);
                     fichatecnicaListNewFichatecnica = em.merge(fichatecnicaListNewFichatecnica);
-                    if (oldIdTipoOfFichatecnicaListNewFichatecnica != null && !oldIdTipoOfFichatecnicaListNewFichatecnica.equals(tipotela)) {
-                        oldIdTipoOfFichatecnicaListNewFichatecnica.getFichatecnicaList().remove(fichatecnicaListNewFichatecnica);
-                        oldIdTipoOfFichatecnicaListNewFichatecnica = em.merge(oldIdTipoOfFichatecnicaListNewFichatecnica);
+                    if (oldIdTipoPrendaOfFichatecnicaListNewFichatecnica != null && !oldIdTipoPrendaOfFichatecnicaListNewFichatecnica.equals(tipoprenda)) {
+                        oldIdTipoPrendaOfFichatecnicaListNewFichatecnica.getFichatecnicaList().remove(fichatecnicaListNewFichatecnica);
+                        oldIdTipoPrendaOfFichatecnicaListNewFichatecnica = em.merge(oldIdTipoPrendaOfFichatecnicaListNewFichatecnica);
                     }
                 }
             }
@@ -102,9 +102,9 @@ public class TipotelaJpaController implements Serializable {
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
             if (msg == null || msg.length() == 0) {
-                Integer id = tipotela.getIdTipo();
-                if (findTipotela(id) == null) {
-                    throw new NonexistentEntityException("The tipotela with id " + id + " no longer exists.");
+                Integer id = tipoprenda.getIdTipoPrenda();
+                if (findTipoprenda(id) == null) {
+                    throw new NonexistentEntityException("The tipoprenda with id " + id + " no longer exists.");
                 }
             }
             throw ex;
@@ -120,19 +120,19 @@ public class TipotelaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Tipotela tipotela;
+            Tipoprenda tipoprenda;
             try {
-                tipotela = em.getReference(Tipotela.class, id);
-                tipotela.getIdTipo();
+                tipoprenda = em.getReference(Tipoprenda.class, id);
+                tipoprenda.getIdTipoPrenda();
             } catch (EntityNotFoundException enfe) {
-                throw new NonexistentEntityException("The tipotela with id " + id + " no longer exists.", enfe);
+                throw new NonexistentEntityException("The tipoprenda with id " + id + " no longer exists.", enfe);
             }
-            List<Fichatecnica> fichatecnicaList = tipotela.getFichatecnicaList();
+            List<Fichatecnica> fichatecnicaList = tipoprenda.getFichatecnicaList();
             for (Fichatecnica fichatecnicaListFichatecnica : fichatecnicaList) {
-                fichatecnicaListFichatecnica.setIdTipo(null);
+                fichatecnicaListFichatecnica.setIdTipoPrenda(null);
                 fichatecnicaListFichatecnica = em.merge(fichatecnicaListFichatecnica);
             }
-            em.remove(tipotela);
+            em.remove(tipoprenda);
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -141,19 +141,19 @@ public class TipotelaJpaController implements Serializable {
         }
     }
 
-    public List<Tipotela> findTipotelaEntities() {
-        return findTipotelaEntities(true, -1, -1);
+    public List<Tipoprenda> findTipoprendaEntities() {
+        return findTipoprendaEntities(true, -1, -1);
     }
 
-    public List<Tipotela> findTipotelaEntities(int maxResults, int firstResult) {
-        return findTipotelaEntities(false, maxResults, firstResult);
+    public List<Tipoprenda> findTipoprendaEntities(int maxResults, int firstResult) {
+        return findTipoprendaEntities(false, maxResults, firstResult);
     }
 
-    private List<Tipotela> findTipotelaEntities(boolean all, int maxResults, int firstResult) {
+    private List<Tipoprenda> findTipoprendaEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Tipotela.class));
+            cq.select(cq.from(Tipoprenda.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -165,20 +165,20 @@ public class TipotelaJpaController implements Serializable {
         }
     }
 
-    public Tipotela findTipotela(Integer id) {
+    public Tipoprenda findTipoprenda(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Tipotela.class, id);
+            return em.find(Tipoprenda.class, id);
         } finally {
             em.close();
         }
     }
 
-    public int getTipotelaCount() {
+    public int getTipoprendaCount() {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Tipotela> rt = cq.from(Tipotela.class);
+            Root<Tipoprenda> rt = cq.from(Tipoprenda.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

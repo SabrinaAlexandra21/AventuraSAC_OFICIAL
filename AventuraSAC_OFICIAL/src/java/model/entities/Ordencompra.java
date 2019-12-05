@@ -13,6 +13,8 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
@@ -22,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 @Entity
 @Table(name = "ordencompra")
@@ -46,6 +48,14 @@ public class Ordencompra implements Serializable {
     @Basic(optional = false)
     @Column(name = "FechaEntrega")
     private String fechaEntrega;
+    @OneToMany(mappedBy = "idOrdenCompra")
+    private List<Movimientoalmacen> movimientoalmacenList;
+    @JoinColumn(name = "idProveedor", referencedColumnName = "idProveedor")
+    @ManyToOne
+    private Proveedor idProveedor;
+    @JoinColumn(name = "idEmpleado", referencedColumnName = "idEmpleado")
+    @ManyToOne
+    private Empleado idEmpleado;
     @OneToMany(mappedBy = "idOrdenCompra")
     private List<OrdencompraDetalle> ordencompraDetalleList;
 
@@ -84,6 +94,31 @@ public class Ordencompra implements Serializable {
 
     public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
+    }
+
+    @XmlTransient
+    public List<Movimientoalmacen> getMovimientoalmacenList() {
+        return movimientoalmacenList;
+    }
+
+    public void setMovimientoalmacenList(List<Movimientoalmacen> movimientoalmacenList) {
+        this.movimientoalmacenList = movimientoalmacenList;
+    }
+
+    public Proveedor getIdProveedor() {
+        return idProveedor;
+    }
+
+    public void setIdProveedor(Proveedor idProveedor) {
+        this.idProveedor = idProveedor;
+    }
+
+    public Empleado getIdEmpleado() {
+        return idEmpleado;
+    }
+
+    public void setIdEmpleado(Empleado idEmpleado) {
+        this.idEmpleado = idEmpleado;
     }
 
     @XmlTransient

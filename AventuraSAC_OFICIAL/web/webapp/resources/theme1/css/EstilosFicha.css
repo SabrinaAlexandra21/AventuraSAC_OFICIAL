@@ -4,9 +4,12 @@ body{
     width:100%;
 }
 
-user_card {
-    height: 900px;
-    justify-content: content;
+.user_card {
+    height: 40%;
+    width: 90%;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
 }
 
 #img img{

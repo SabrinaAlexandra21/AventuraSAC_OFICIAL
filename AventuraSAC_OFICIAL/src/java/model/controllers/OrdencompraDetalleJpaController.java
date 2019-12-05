@@ -6,22 +6,24 @@
 package model.controllers;
 
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.controllers.exceptions.NonexistentEntityException;
-import model.controllers.exceptions.PreexistingEntityException;
 import model.entities.Insumohilo;
 import model.entities.Ordencompra;
+import model.entities.Movimientoalmacen;
+import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import model.controllers.exceptions.NonexistentEntityException;
+import model.controllers.exceptions.PreexistingEntityException;
 import model.entities.OrdencompraDetalle;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 public class OrdencompraDetalleJpaController implements Serializable {
 
@@ -35,6 +37,9 @@ public class OrdencompraDetalleJpaController implements Serializable {
     }
 
     public void create(OrdencompraDetalle ordencompraDetalle) throws PreexistingEntityException, Exception {
+        if (ordencompraDetalle.getMovimientoalmacenList() == null) {
+            ordencompraDetalle.setMovimientoalmacenList(new ArrayList<Movimientoalmacen>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -49,6 +54,12 @@ public class OrdencompraDetalleJpaController implements Serializable {
                 idOrdenCompra = em.getReference(idOrdenCompra.getClass(), idOrdenCompra.getIdOrdenCompra());
                 ordencompraDetalle.setIdOrdenCompra(idOrdenCompra);
             }
+            List<Movimientoalmacen> attachedMovimientoalmacenList = new ArrayList<Movimientoalmacen>();
+            for (Movimientoalmacen movimientoalmacenListMovimientoalmacenToAttach : ordencompraDetalle.getMovimientoalmacenList()) {
+                movimientoalmacenListMovimientoalmacenToAttach = em.getReference(movimientoalmacenListMovimientoalmacenToAttach.getClass(), movimientoalmacenListMovimientoalmacenToAttach.getIdMovimiento());
+                attachedMovimientoalmacenList.add(movimientoalmacenListMovimientoalmacenToAttach);
+            }
+            ordencompraDetalle.setMovimientoalmacenList(attachedMovimientoalmacenList);
             em.persist(ordencompraDetalle);
             if (idInsumo != null) {
                 idInsumo.getOrdencompraDetalleList().add(ordencompraDetalle);
@@ -57,6 +68,15 @@ public class OrdencompraDetalleJpaController implements Serializable {
             if (idOrdenCompra != null) {
                 idOrdenCompra.getOrdencompraDetalleList().add(ordencompraDetalle);
                 idOrdenCompra = em.merge(idOrdenCompra);
+            }
+            for (Movimientoalmacen movimientoalmacenListMovimientoalmacen : ordencompraDetalle.getMovimientoalmacenList()) {
+                OrdencompraDetalle oldItemOfMovimientoalmacenListMovimientoalmacen = movimientoalmacenListMovimientoalmacen.getItem();
+                movimientoalmacenListMovimientoalmacen.setItem(ordencompraDetalle);
+                movimientoalmacenListMovimientoalmacen = em.merge(movimientoalmacenListMovimientoalmacen);
+                if (oldItemOfMovimientoalmacenListMovimientoalmacen != null) {
+                    oldItemOfMovimientoalmacenListMovimientoalmacen.getMovimientoalmacenList().remove(movimientoalmacenListMovimientoalmacen);
+                    oldItemOfMovimientoalmacenListMovimientoalmacen = em.merge(oldItemOfMovimientoalmacenListMovimientoalmacen);
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -81,6 +101,8 @@ public class OrdencompraDetalleJpaController implements Serializable {
             Insumohilo idInsumoNew = ordencompraDetalle.getIdInsumo();
             Ordencompra idOrdenCompraOld = persistentOrdencompraDetalle.getIdOrdenCompra();
             Ordencompra idOrdenCompraNew = ordencompraDetalle.getIdOrdenCompra();
+            List<Movimientoalmacen> movimientoalmacenListOld = persistentOrdencompraDetalle.getMovimientoalmacenList();
+            List<Movimientoalmacen> movimientoalmacenListNew = ordencompraDetalle.getMovimientoalmacenList();
             if (idInsumoNew != null) {
                 idInsumoNew = em.getReference(idInsumoNew.getClass(), idInsumoNew.getIdInsumo());
                 ordencompraDetalle.setIdInsumo(idInsumoNew);
@@ -89,6 +111,13 @@ public class OrdencompraDetalleJpaController implements Serializable {
                 idOrdenCompraNew = em.getReference(idOrdenCompraNew.getClass(), idOrdenCompraNew.getIdOrdenCompra());
                 ordencompraDetalle.setIdOrdenCompra(idOrdenCompraNew);
             }
+            List<Movimientoalmacen> attachedMovimientoalmacenListNew = new ArrayList<Movimientoalmacen>();
+            for (Movimientoalmacen movimientoalmacenListNewMovimientoalmacenToAttach : movimientoalmacenListNew) {
+                movimientoalmacenListNewMovimientoalmacenToAttach = em.getReference(movimientoalmacenListNewMovimientoalmacenToAttach.getClass(), movimientoalmacenListNewMovimientoalmacenToAttach.getIdMovimiento());
+                attachedMovimientoalmacenListNew.add(movimientoalmacenListNewMovimientoalmacenToAttach);
+            }
+            movimientoalmacenListNew = attachedMovimientoalmacenListNew;
+            ordencompraDetalle.setMovimientoalmacenList(movimientoalmacenListNew);
             ordencompraDetalle = em.merge(ordencompraDetalle);
             if (idInsumoOld != null && !idInsumoOld.equals(idInsumoNew)) {
                 idInsumoOld.getOrdencompraDetalleList().remove(ordencompraDetalle);
@@ -105,6 +134,23 @@ public class OrdencompraDetalleJpaController implements Serializable {
             if (idOrdenCompraNew != null && !idOrdenCompraNew.equals(idOrdenCompraOld)) {
                 idOrdenCompraNew.getOrdencompraDetalleList().add(ordencompraDetalle);
                 idOrdenCompraNew = em.merge(idOrdenCompraNew);
+            }
+            for (Movimientoalmacen movimientoalmacenListOldMovimientoalmacen : movimientoalmacenListOld) {
+                if (!movimientoalmacenListNew.contains(movimientoalmacenListOldMovimientoalmacen)) {
+                    movimientoalmacenListOldMovimientoalmacen.setItem(null);
+                    movimientoalmacenListOldMovimientoalmacen = em.merge(movimientoalmacenListOldMovimientoalmacen);
+                }
+            }
+            for (Movimientoalmacen movimientoalmacenListNewMovimientoalmacen : movimientoalmacenListNew) {
+                if (!movimientoalmacenListOld.contains(movimientoalmacenListNewMovimientoalmacen)) {
+                    OrdencompraDetalle oldItemOfMovimientoalmacenListNewMovimientoalmacen = movimientoalmacenListNewMovimientoalmacen.getItem();
+                    movimientoalmacenListNewMovimientoalmacen.setItem(ordencompraDetalle);
+                    movimientoalmacenListNewMovimientoalmacen = em.merge(movimientoalmacenListNewMovimientoalmacen);
+                    if (oldItemOfMovimientoalmacenListNewMovimientoalmacen != null && !oldItemOfMovimientoalmacenListNewMovimientoalmacen.equals(ordencompraDetalle)) {
+                        oldItemOfMovimientoalmacenListNewMovimientoalmacen.getMovimientoalmacenList().remove(movimientoalmacenListNewMovimientoalmacen);
+                        oldItemOfMovimientoalmacenListNewMovimientoalmacen = em.merge(oldItemOfMovimientoalmacenListNewMovimientoalmacen);
+                    }
+                }
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -144,6 +190,11 @@ public class OrdencompraDetalleJpaController implements Serializable {
             if (idOrdenCompra != null) {
                 idOrdenCompra.getOrdencompraDetalleList().remove(ordencompraDetalle);
                 idOrdenCompra = em.merge(idOrdenCompra);
+            }
+            List<Movimientoalmacen> movimientoalmacenList = ordencompraDetalle.getMovimientoalmacenList();
+            for (Movimientoalmacen movimientoalmacenListMovimientoalmacen : movimientoalmacenList) {
+                movimientoalmacenListMovimientoalmacen.setItem(null);
+                movimientoalmacenListMovimientoalmacen = em.merge(movimientoalmacenListMovimientoalmacen);
             }
             em.remove(ordencompraDetalle);
             em.getTransaction().commit();

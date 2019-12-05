@@ -6,6 +6,7 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,12 +17,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 @Entity
 @Table(name = "proveedor")
@@ -59,6 +62,8 @@ public class Proveedor implements Serializable {
     @Basic(optional = false)
     @Column(name = "Correo")
     private String correo;
+    @OneToMany(mappedBy = "idProveedor")
+    private List<Ordencompra> ordencompraList;
     @JoinColumn(name = "idDistrito", referencedColumnName = "idDistrito")
     @ManyToOne
     private Distrito idDistrito;
@@ -132,6 +137,15 @@ public class Proveedor implements Serializable {
 
     public void setCorreo(String correo) {
         this.correo = correo;
+    }
+
+    @XmlTransient
+    public List<Ordencompra> getOrdencompraList() {
+        return ordencompraList;
+    }
+
+    public void setOrdencompraList(List<Ordencompra> ordencompraList) {
+        this.ordencompraList = ordencompraList;
     }
 
     public Distrito getIdDistrito() {

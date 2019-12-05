@@ -17,13 +17,15 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import model.controllers.exceptions.NonexistentEntityException;
+import model.entities.Pagos;
 import model.entities.PedidoDetalle;
 import model.entities.Cotizacion;
+import model.entities.Factura;
 import model.entities.Pedido;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 public class PedidoJpaController implements Serializable {
 
@@ -40,11 +42,17 @@ public class PedidoJpaController implements Serializable {
         if (pedido.getGuiaremisionDetalleList() == null) {
             pedido.setGuiaremisionDetalleList(new ArrayList<GuiaremisionDetalle>());
         }
+        if (pedido.getPagosList() == null) {
+            pedido.setPagosList(new ArrayList<Pagos>());
+        }
         if (pedido.getPedidoDetalleList() == null) {
             pedido.setPedidoDetalleList(new ArrayList<PedidoDetalle>());
         }
         if (pedido.getCotizacionList() == null) {
             pedido.setCotizacionList(new ArrayList<Cotizacion>());
+        }
+        if (pedido.getFacturaList() == null) {
+            pedido.setFacturaList(new ArrayList<Factura>());
         }
         EntityManager em = null;
         try {
@@ -61,6 +69,12 @@ public class PedidoJpaController implements Serializable {
                 attachedGuiaremisionDetalleList.add(guiaremisionDetalleListGuiaremisionDetalleToAttach);
             }
             pedido.setGuiaremisionDetalleList(attachedGuiaremisionDetalleList);
+            List<Pagos> attachedPagosList = new ArrayList<Pagos>();
+            for (Pagos pagosListPagosToAttach : pedido.getPagosList()) {
+                pagosListPagosToAttach = em.getReference(pagosListPagosToAttach.getClass(), pagosListPagosToAttach.getNumeroOperacion());
+                attachedPagosList.add(pagosListPagosToAttach);
+            }
+            pedido.setPagosList(attachedPagosList);
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : pedido.getPedidoDetalleList()) {
                 pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
@@ -73,6 +87,12 @@ public class PedidoJpaController implements Serializable {
                 attachedCotizacionList.add(cotizacionListCotizacionToAttach);
             }
             pedido.setCotizacionList(attachedCotizacionList);
+            List<Factura> attachedFacturaList = new ArrayList<Factura>();
+            for (Factura facturaListFacturaToAttach : pedido.getFacturaList()) {
+                facturaListFacturaToAttach = em.getReference(facturaListFacturaToAttach.getClass(), facturaListFacturaToAttach.getIdFactura());
+                attachedFacturaList.add(facturaListFacturaToAttach);
+            }
+            pedido.setFacturaList(attachedFacturaList);
             em.persist(pedido);
             if (idCliente != null) {
                 idCliente.getPedidoList().add(pedido);
@@ -85,6 +105,15 @@ public class PedidoJpaController implements Serializable {
                 if (oldIdPedidoOfGuiaremisionDetalleListGuiaremisionDetalle != null) {
                     oldIdPedidoOfGuiaremisionDetalleListGuiaremisionDetalle.getGuiaremisionDetalleList().remove(guiaremisionDetalleListGuiaremisionDetalle);
                     oldIdPedidoOfGuiaremisionDetalleListGuiaremisionDetalle = em.merge(oldIdPedidoOfGuiaremisionDetalleListGuiaremisionDetalle);
+                }
+            }
+            for (Pagos pagosListPagos : pedido.getPagosList()) {
+                Pedido oldIdPedidoOfPagosListPagos = pagosListPagos.getIdPedido();
+                pagosListPagos.setIdPedido(pedido);
+                pagosListPagos = em.merge(pagosListPagos);
+                if (oldIdPedidoOfPagosListPagos != null) {
+                    oldIdPedidoOfPagosListPagos.getPagosList().remove(pagosListPagos);
+                    oldIdPedidoOfPagosListPagos = em.merge(oldIdPedidoOfPagosListPagos);
                 }
             }
             for (PedidoDetalle pedidoDetalleListPedidoDetalle : pedido.getPedidoDetalleList()) {
@@ -105,6 +134,15 @@ public class PedidoJpaController implements Serializable {
                     oldIdPedidoOfCotizacionListCotizacion = em.merge(oldIdPedidoOfCotizacionListCotizacion);
                 }
             }
+            for (Factura facturaListFactura : pedido.getFacturaList()) {
+                Pedido oldIdPedidoOfFacturaListFactura = facturaListFactura.getIdPedido();
+                facturaListFactura.setIdPedido(pedido);
+                facturaListFactura = em.merge(facturaListFactura);
+                if (oldIdPedidoOfFacturaListFactura != null) {
+                    oldIdPedidoOfFacturaListFactura.getFacturaList().remove(facturaListFactura);
+                    oldIdPedidoOfFacturaListFactura = em.merge(oldIdPedidoOfFacturaListFactura);
+                }
+            }
             em.getTransaction().commit();
         } finally {
             if (em != null) {
@@ -123,10 +161,14 @@ public class PedidoJpaController implements Serializable {
             Cliente idClienteNew = pedido.getIdCliente();
             List<GuiaremisionDetalle> guiaremisionDetalleListOld = persistentPedido.getGuiaremisionDetalleList();
             List<GuiaremisionDetalle> guiaremisionDetalleListNew = pedido.getGuiaremisionDetalleList();
+            List<Pagos> pagosListOld = persistentPedido.getPagosList();
+            List<Pagos> pagosListNew = pedido.getPagosList();
             List<PedidoDetalle> pedidoDetalleListOld = persistentPedido.getPedidoDetalleList();
             List<PedidoDetalle> pedidoDetalleListNew = pedido.getPedidoDetalleList();
             List<Cotizacion> cotizacionListOld = persistentPedido.getCotizacionList();
             List<Cotizacion> cotizacionListNew = pedido.getCotizacionList();
+            List<Factura> facturaListOld = persistentPedido.getFacturaList();
+            List<Factura> facturaListNew = pedido.getFacturaList();
             if (idClienteNew != null) {
                 idClienteNew = em.getReference(idClienteNew.getClass(), idClienteNew.getIdCliente());
                 pedido.setIdCliente(idClienteNew);
@@ -138,6 +180,13 @@ public class PedidoJpaController implements Serializable {
             }
             guiaremisionDetalleListNew = attachedGuiaremisionDetalleListNew;
             pedido.setGuiaremisionDetalleList(guiaremisionDetalleListNew);
+            List<Pagos> attachedPagosListNew = new ArrayList<Pagos>();
+            for (Pagos pagosListNewPagosToAttach : pagosListNew) {
+                pagosListNewPagosToAttach = em.getReference(pagosListNewPagosToAttach.getClass(), pagosListNewPagosToAttach.getNumeroOperacion());
+                attachedPagosListNew.add(pagosListNewPagosToAttach);
+            }
+            pagosListNew = attachedPagosListNew;
+            pedido.setPagosList(pagosListNew);
             List<PedidoDetalle> attachedPedidoDetalleListNew = new ArrayList<PedidoDetalle>();
             for (PedidoDetalle pedidoDetalleListNewPedidoDetalleToAttach : pedidoDetalleListNew) {
                 pedidoDetalleListNewPedidoDetalleToAttach = em.getReference(pedidoDetalleListNewPedidoDetalleToAttach.getClass(), pedidoDetalleListNewPedidoDetalleToAttach.getIdDetallePedido());
@@ -152,6 +201,13 @@ public class PedidoJpaController implements Serializable {
             }
             cotizacionListNew = attachedCotizacionListNew;
             pedido.setCotizacionList(cotizacionListNew);
+            List<Factura> attachedFacturaListNew = new ArrayList<Factura>();
+            for (Factura facturaListNewFacturaToAttach : facturaListNew) {
+                facturaListNewFacturaToAttach = em.getReference(facturaListNewFacturaToAttach.getClass(), facturaListNewFacturaToAttach.getIdFactura());
+                attachedFacturaListNew.add(facturaListNewFacturaToAttach);
+            }
+            facturaListNew = attachedFacturaListNew;
+            pedido.setFacturaList(facturaListNew);
             pedido = em.merge(pedido);
             if (idClienteOld != null && !idClienteOld.equals(idClienteNew)) {
                 idClienteOld.getPedidoList().remove(pedido);
@@ -175,6 +231,23 @@ public class PedidoJpaController implements Serializable {
                     if (oldIdPedidoOfGuiaremisionDetalleListNewGuiaremisionDetalle != null && !oldIdPedidoOfGuiaremisionDetalleListNewGuiaremisionDetalle.equals(pedido)) {
                         oldIdPedidoOfGuiaremisionDetalleListNewGuiaremisionDetalle.getGuiaremisionDetalleList().remove(guiaremisionDetalleListNewGuiaremisionDetalle);
                         oldIdPedidoOfGuiaremisionDetalleListNewGuiaremisionDetalle = em.merge(oldIdPedidoOfGuiaremisionDetalleListNewGuiaremisionDetalle);
+                    }
+                }
+            }
+            for (Pagos pagosListOldPagos : pagosListOld) {
+                if (!pagosListNew.contains(pagosListOldPagos)) {
+                    pagosListOldPagos.setIdPedido(null);
+                    pagosListOldPagos = em.merge(pagosListOldPagos);
+                }
+            }
+            for (Pagos pagosListNewPagos : pagosListNew) {
+                if (!pagosListOld.contains(pagosListNewPagos)) {
+                    Pedido oldIdPedidoOfPagosListNewPagos = pagosListNewPagos.getIdPedido();
+                    pagosListNewPagos.setIdPedido(pedido);
+                    pagosListNewPagos = em.merge(pagosListNewPagos);
+                    if (oldIdPedidoOfPagosListNewPagos != null && !oldIdPedidoOfPagosListNewPagos.equals(pedido)) {
+                        oldIdPedidoOfPagosListNewPagos.getPagosList().remove(pagosListNewPagos);
+                        oldIdPedidoOfPagosListNewPagos = em.merge(oldIdPedidoOfPagosListNewPagos);
                     }
                 }
             }
@@ -209,6 +282,23 @@ public class PedidoJpaController implements Serializable {
                     if (oldIdPedidoOfCotizacionListNewCotizacion != null && !oldIdPedidoOfCotizacionListNewCotizacion.equals(pedido)) {
                         oldIdPedidoOfCotizacionListNewCotizacion.getCotizacionList().remove(cotizacionListNewCotizacion);
                         oldIdPedidoOfCotizacionListNewCotizacion = em.merge(oldIdPedidoOfCotizacionListNewCotizacion);
+                    }
+                }
+            }
+            for (Factura facturaListOldFactura : facturaListOld) {
+                if (!facturaListNew.contains(facturaListOldFactura)) {
+                    facturaListOldFactura.setIdPedido(null);
+                    facturaListOldFactura = em.merge(facturaListOldFactura);
+                }
+            }
+            for (Factura facturaListNewFactura : facturaListNew) {
+                if (!facturaListOld.contains(facturaListNewFactura)) {
+                    Pedido oldIdPedidoOfFacturaListNewFactura = facturaListNewFactura.getIdPedido();
+                    facturaListNewFactura.setIdPedido(pedido);
+                    facturaListNewFactura = em.merge(facturaListNewFactura);
+                    if (oldIdPedidoOfFacturaListNewFactura != null && !oldIdPedidoOfFacturaListNewFactura.equals(pedido)) {
+                        oldIdPedidoOfFacturaListNewFactura.getFacturaList().remove(facturaListNewFactura);
+                        oldIdPedidoOfFacturaListNewFactura = em.merge(oldIdPedidoOfFacturaListNewFactura);
                     }
                 }
             }
@@ -251,6 +341,11 @@ public class PedidoJpaController implements Serializable {
                 guiaremisionDetalleListGuiaremisionDetalle.setIdPedido(null);
                 guiaremisionDetalleListGuiaremisionDetalle = em.merge(guiaremisionDetalleListGuiaremisionDetalle);
             }
+            List<Pagos> pagosList = pedido.getPagosList();
+            for (Pagos pagosListPagos : pagosList) {
+                pagosListPagos.setIdPedido(null);
+                pagosListPagos = em.merge(pagosListPagos);
+            }
             List<PedidoDetalle> pedidoDetalleList = pedido.getPedidoDetalleList();
             for (PedidoDetalle pedidoDetalleListPedidoDetalle : pedidoDetalleList) {
                 pedidoDetalleListPedidoDetalle.setIdPedido(null);
@@ -260,6 +355,11 @@ public class PedidoJpaController implements Serializable {
             for (Cotizacion cotizacionListCotizacion : cotizacionList) {
                 cotizacionListCotizacion.setIdPedido(null);
                 cotizacionListCotizacion = em.merge(cotizacionListCotizacion);
+            }
+            List<Factura> facturaList = pedido.getFacturaList();
+            for (Factura facturaListFactura : facturaList) {
+                facturaListFactura.setIdPedido(null);
+                facturaListFactura = em.merge(facturaListFactura);
             }
             em.remove(pedido);
             em.getTransaction().commit();

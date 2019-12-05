@@ -21,7 +21,7 @@ import model.entities.Proveedor;
 
 /**
  *
- * @author Sabrina Bv
+ * @author Administrador
  */
 public class DistritoJpaController implements Serializable {
 
