@@ -44,7 +44,7 @@ public class FichaTecnicaController  {
 
         model.addAttribute("fichatecnica", new Fichatecnica());/*Guiaremision es la clase osea la entidad*/
         
-        mv.setViewName("FichaTecnica");
+        mv.setViewName("Ficha");
         
         return mv;
     }
