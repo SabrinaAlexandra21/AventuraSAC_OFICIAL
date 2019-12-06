@@ -4,8 +4,17 @@ body{
     width:100%;
 }
 
-.user_card {
+.card card-header {
+    background : #6699ff;
     height: 40%;
+    width: 90%;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
+}
+
+.card card-body {
+    height: 50%;
     width: 90%;
     justify-content: center;
     flex-direction: column;
@@ -43,11 +52,11 @@ body{
 
 #fieldset {
 
-    margin: 20px 10px;
+    margin: 40px 10px;
     padding: 30px 30px;
     text-align: center;
     position: relative;
-    top: 0px;
+   
 }
 #ngui {
     
