@@ -49,7 +49,7 @@
                                 <fieldset style="border:1px solid black" >
 
                                     <h3> R.U.C. N° 20111807958 </h3>
-                                    <h3><strong>Cotización:</strong></h3>
+                                    <h3><strong>Cotización</strong></h3>
                                     <div class="row" id="ngui">
                                         N° &nbsp;&nbsp;&nbsp;<form:input path="idCotizacion"/>&nbsp;-&nbsp;0000041
                                     </div>
