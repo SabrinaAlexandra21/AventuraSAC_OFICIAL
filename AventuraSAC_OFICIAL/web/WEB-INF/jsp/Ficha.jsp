@@ -23,7 +23,7 @@
                 <a href="#menu">Menu</a>
             </nav>
         </header>
-
+        <br>
         <div class="container md-8">
 
             <div class="card" >
@@ -65,10 +65,12 @@
                 <br />
 
                 <div class="card-body">
-                    
+
                     <form:form method="post" modelAttribute="fichatecnica">
 
                         <div class="card-title"> Ingresar datos de la Prenda</div>
+                        
+                        <div class="flex-">
 
                         <div class="d-flex flex-row" id="fila1">
 
@@ -77,14 +79,11 @@
                                 <form:input path="descripcion"  cssClass="form-control" placeholder="Ingresar descripcion" />
 
                             </div>
+                                
                             <div class="p-4">
                                 <label for="modelo">Modelo:</label>
                                 <form:input path="modelo" cssClass="form-control" placeholder="Ingresar modelo" />
                             </div>
-
-                        </div>
-
-                        <div class="d-flex flex-row" id="fila2">
 
                             <div class="p-4">		
                                 <label for="idTipo">Tela:</label>
@@ -95,6 +94,10 @@
                                 </form:select>
 
                             </div>
+
+                        </div>
+
+                        <div class="d-flex flex-row" id="fila2">
 
                             <div class="p-4">		
                                 <label for="etiqueta">Etiqueta:</label>
@@ -107,7 +110,7 @@
                             </div>
 
                         </div>
-                    </div>
+                </div>
 
                     <hr style="border: 1px solid gray">
 
@@ -177,9 +180,14 @@
 
                     </div>
 
-
-                    <input type="submit" class="btn btn-primary"  value="Registrar">
-                    <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                    <div class="d-flex flex-row">
+                        <div class="p-4">
+                            <input type="submit" class="btn btn-primary"  value="Registrar">
+                        </div>
+                        <div  class="p-4">
+                            <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                        </div>
+                    </div>
                 </form:form>
 
 

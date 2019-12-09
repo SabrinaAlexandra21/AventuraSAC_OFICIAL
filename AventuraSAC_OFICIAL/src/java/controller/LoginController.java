@@ -56,7 +56,7 @@ public class LoginController {
         
         ModelAndView mv = new ModelAndView();
         
-        mv.setViewName("MenuTrabajador");
+        mv.setViewName("MENU");
         
         return mv;
     }
