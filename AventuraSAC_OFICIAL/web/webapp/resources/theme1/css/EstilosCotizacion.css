@@ -1,34 +1,67 @@
 
-#bodys {
-    margin: 0;
-    padding: 0;
-    height: 100%;
-    width: 100%;
-    background: #632432 ;
+body{
+    background: linear-gradient(to bottom, #6699ff 0%, #99ffcc 100%);
+    width:100%;
 }
 
-
-#imagen img{
-    margin: 0% 0% 0% -50%;
+.card card-header {
+    background : #6699ff;
+    height: 40%;
+    width: 90%;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
 }
 
-
-#Contenedorlogo{
-    background-color: #C46B7C ;
-    width: 69%;
-    margin: -7% 0%;
-
+.card card-body {
+    height: 50%;
+    width: 90%;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 5px;
 }
 
-#Contenedorlogo2{
-    margin: 2% 20%;
-    height: 15em;
+#img img{
+    margin:30px 0px;
+    width: 250px;
+    height: 150px;
 }
-
 
 #escritos {
-    margin: 0% 0% 0% -23%;
-    color: white;
+    margin: 0px 0px;
+    position: relative;
+    right: 0px;
+    top:70px;
+}
+
+
+
+#fieldset {
+
+    margin: 40px 10px;
+    padding: 30px 30px;
+    text-align: center;
+    position: relative;
+   
+}
+#ngui {
+    
+    margin: 0px 15px;
+    text-align: center;
+    padding: 15px; 
+}
+
+#ngui input{
+    
+    width: 25px;
+    height: 25px;
+
+}
+
+
+#fieldset h3{
+
+    margin: 10px 10px;
 }
 
 #fieldset {
@@ -63,24 +96,6 @@
 
     margin: 0px 25px;
     text-align: center;
-}
-
-
-#carta  {
-    margin: 7%;
-    height: 100%;
-    width: 80%;
-    margin-bottom: auto;
-    background: #F5F7FA;
-    position: relative;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    padding: 1%;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -webkit-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    -moz-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-    border-radius: 1.5%;
 }
 
 
