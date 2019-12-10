@@ -61,7 +61,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuVentas.html" class="icon fa-vcard-o"><span class="label">Icon</span></a>
+                                <a href="menuventas.htm" class="icon fa-vcard-o"><span class="label">Icon</span></a>
                                 <h2>VENTAS</h2>
                             </header>
                             <p>Gestion de ventas.</p>								
@@ -71,7 +71,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuAlmacen.htm" class="icon fa-floppy-o"><span class="label">Icon</span></a>
+                                <a href="menualmacen.htm" class="icon fa-floppy-o"><span class="label">Icon</span></a>
                                 <h2>ALMACEN</h2>
                             </header>
                             <p>Control del almacén.</p>
@@ -80,7 +80,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="MenuLogistica.html" class="icon fa-line-chart"><span class="label">Icon</span></a>
+                                <a href="menulogistica.htm" class="icon fa-line-chart"><span class="label">Icon</span></a>
                                 <h2>LOGISTICA</h2>
                             </header>
                             <p>Gestion de Adquisición.</p>

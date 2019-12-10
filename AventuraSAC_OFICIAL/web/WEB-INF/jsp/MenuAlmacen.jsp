@@ -68,7 +68,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="#" class="icon fa-file"><span class="label">Icon</span></a>
+                                <a href="GuiaRemision.htm" class="icon fa-file"><span class="label">Icon</span></a>
                                 <h2>GENERAR GUIA DE REMISION</h2>
                             </header>
                             <p>Elabora la guia de remision por cada pedido que sale del almacen.</p>								

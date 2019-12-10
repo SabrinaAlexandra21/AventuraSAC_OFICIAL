@@ -29,7 +29,7 @@
                         <div id="Contenedorlogo2" class="content">
                             <div class="row">
                                 <div class="col" id="imagen">
-                                    <h1><img src="images/LogoAventura.png"></h1>
+                                    <h1><img src="webapp/resources/theme1/images/logo.PNG"></h1>
                                 </div> 
                                 <div class="col" id="escritos">
                                     <center>
@@ -59,17 +59,13 @@
                                 <legend><strong>Ingresar datos</strong></legend>
                                 <div class="row" id="fila1">
                                     <div class="col-sm-4">
-                                        <label for="Fecha">ID Guia Remisión:</label>
-                                        <input type="text" name="Fecha" placeholder="Ingresar Fecha">
-                                    </div>
-                                    <div class="col-sm-4">
                                         <label for="Fecha">Fecha de Emisión:</label>
                                         <input type="text" name="Fecha" placeholder="Ingresar Fecha">
                                     </div>
                                 </div>
                                 <div class="row" id="fila2">
                                     <div class="col-sm-3">	
-                                        <label for="Partida">Punto Partida:</label>
+                                        <label for="Partida">Punto Llegada:</label>
                                         <input type="text" name="Partida" placeholder="Ingresar punto partida">
                                     </div>	
                                     <div class="col-sm-3">  
@@ -93,38 +89,36 @@
                                         <input type="text" name="nomChofer" placeholder="Ingresar nombre ">
                                     </div>
                                     <div class="col-sm-3">		
-                                        <label for="Marca">Marca:</label>
+                                        <label for="Marca">Marca y Placa:</label>
                                         <input type="text" name="Marca" placeholder="Ingresar marca">
                                     </div>
                                     <div class="col-sm-3">      
-                                        <label for="Placa">Placa:</label>
+                                        <label for="Placa">Licencia:</label>
                                         <input type="text" name="Placa" placeholder="Ingresar placa">
                                     </div>
                                 </div>
                             </fieldset>
 
                             <br>
+                            
+                            
+                           <fieldset id="fieldset1" style="border: 1px solid gray">
+                                <legend><strong>Detalles</strong></legend>
+                                <div class="row" id="fila1">
+                                    <div class="col-sm-4">
+                                        <label for="Fecha">Cantidad:</label>
+                                        <input type="text" name="Fecha" placeholder="Ingresar Fecha">
+                                    </div>
+                                </div>
+                                <div class="row" id="fila2">
+                                    <div class="col-sm-2">	
+                                        <label for="Partida">Decripcion:</label>
+                                        <input type="text" name="Partida" placeholder="Ingresar punto partida">
+                                    </div>	
+                                </div>
+                            </fieldset>
 
-                            <table id="tabla">
-                                <tr id="col1">
-                                    <th>ID Detalle Guía Remisión</th>
-                                    <th>ID Guía Remisión</th>
-                                    <th>ID Pedido</th>
-                                    <th>Descripción</th>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                            </table>
+                            
 
 
                             <fieldset id="fieldset4" style="border: 1px solid gray">
