@@ -14,8 +14,8 @@
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/EstilosFicha.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet" />
-        <link href="<c:url value="webapp/resources/theme1/css/colorpicker.css" />" rel="stylesheet" />
-        <script src="<c:url value="webapp/resources/theme1/js/colorpicker.js" />"></script>
+        <link href="https://code.jquery.com/jquery-3.2.1.js" />
+        <!-- <link href="<c:url value="webapp/resources/theme1/css/colorpicker.css" />" rel="stylesheet" type="text/css"/> -->
 
     </head>
     <body>
@@ -197,4 +197,4 @@
 
             </div>
         </div>
-
+ <script src="<c:url value="webapp/resources/theme1/js/colorpicker.js" />"></script>

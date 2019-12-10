@@ -39,10 +39,12 @@
                             <label for="razonSocial">Razón Social:</label>
                             <form:input path="razonSocial" cssClass="form-control" value="${cliente.razonSocial}" />
                         </div>
+                        
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
                             <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" />
                         </div>
+                        
                         <div>
                             <label for="idDistrito">Distrito:</label><br>
                             <form:select path="idDistrito.idDistrito" id="idDistrito">
@@ -56,6 +58,7 @@
                                 </c:forEach>
                             </form:select > 
                         </div>
+                        
                         <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
