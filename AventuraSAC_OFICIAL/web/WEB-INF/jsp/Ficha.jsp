@@ -14,6 +14,8 @@
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/EstilosFicha.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet" />
+        <link href="<c:url value="webapp/resources/theme1/css/colorpicker.css" />" rel="stylesheet" />
+        <script src="<c:url value="webapp/resources/theme1/js/colorpicker.js" />"></script>
 
     </head>
     <body>
@@ -156,8 +158,10 @@
                                         <div  class="p-6">
 
                                             <label for="colores" >Color 1:</label>
-                                            <input type="color" name="colores" >
-
+                                            <input type="text" name="colores" id="c1" value="#0088CC">
+                                            <script>
+                                                $('#c1').colorpicker({format:'rgb'});
+                                            </script>
                                         </div>
 
                                         <div  class="p-6">
