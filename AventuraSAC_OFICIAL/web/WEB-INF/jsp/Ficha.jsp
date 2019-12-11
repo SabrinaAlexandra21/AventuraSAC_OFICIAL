@@ -14,8 +14,9 @@
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/EstilosFicha.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet" />
-        <link href="https://code.jquery.com/jquery-3.2.1.js" />
-        <!-- <link href="<c:url value="webapp/resources/theme1/css/colorpicker.css" />" rel="stylesheet" type="text/css"/> -->
+        <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.minicolors.js"/>"></script>
+        <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.minicolors.css"/>" />
 
     </head>
     <body>
@@ -36,14 +37,14 @@
 
                         <div  class="p-4" id="img">
 
-                            <img src="webapp/resources/theme1/images/logo.PNG" alt="Card image cap">
+                            <img src="webapp/resources/theme1/images/logo2.png" alt="Card image cap">
 
                         </div>
 
                         <div class="p-4"  id="escritos">
 
-                            <p>Cal. Mercaderes Nro. 164 Dpto. 203 </p>
-                            <p>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</p>
+                            <h3>Cal. Mercaderes Nro. 164 Dpto. 203 </h3>
+                            <h3>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</h3>
 
                         </div>
 
@@ -71,8 +72,7 @@
                     <form:form method="post" modelAttribute="fichatecnica">
 
                         <div class="card-title"> Ingresar datos de la Prenda</div>
-                        
-                        <div class="flex-">
+
 
                         <div class="d-flex flex-row" id="fila1">
 
@@ -81,7 +81,7 @@
                                 <form:input path="descripcion"  cssClass="form-control" placeholder="Ingresar descripcion" />
 
                             </div>
-                                
+
                             <div class="p-4">
                                 <label for="modelo">Modelo:</label>
                                 <form:input path="modelo" cssClass="form-control" placeholder="Ingresar modelo" />
@@ -112,7 +112,7 @@
                             </div>
 
                         </div>
-                </div>
+                    </div>
 
                     <hr style="border: 1px solid gray">
 
@@ -158,9 +158,13 @@
                                         <div  class="p-6">
 
                                             <label for="colores" >Color 1:</label>
-                                            <input type="text" name="colores" id="c1" value="#0088CC">
+                                            <input type="text" name="colores" id="c1" value="ffffff" data-wheelcolorpicker>
                                             <script>
-                                                $('#c1').colorpicker({format:'rgb'});
+                                                $(function () {
+                                                    
+                                                    $('#c1').minicolors();
+                                                    
+                                                });
                                             </script>
                                         </div>
 
@@ -197,4 +201,5 @@
 
             </div>
         </div>
- <script src="<c:url value="webapp/resources/theme1/js/colorpicker.js" />"></script>
+
+        

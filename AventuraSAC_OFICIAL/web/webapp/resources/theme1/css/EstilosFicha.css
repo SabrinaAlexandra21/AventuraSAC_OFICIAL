@@ -22,23 +22,9 @@ body{
 }
 
 #img img{
-    margin:30px 0px;
-    width: 250px;
+    margin:40px 0px;
+    width: 255px;
     height: 150px;
-}
-
-#Contenedorlogo{
-    background-color: #F5F7FA ;
-    position: 	absolute;
-    top: 3em;
-    left: 14em;
-    width: 70em;
-    height: 20em;
-
-}
-
-#Contenedorlogo2{
-    right: 50em;
 }
 
 #escritos {
@@ -114,7 +100,7 @@ body{
 
 #fila1 input {
     margin: 20px 0px;
-    width: 250px;
+    width: 200px;
     height: 40px;
 }
 
@@ -205,4 +191,8 @@ table,td  {
     height: 45px;
     background-color: #ffcccc;
 
+}
+
+.form label {
+    width: 50px;
 }

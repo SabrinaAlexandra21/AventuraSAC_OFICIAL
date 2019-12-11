@@ -10,6 +10,7 @@
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/bootstrap.min.js"/>"></script>
     </head>
     <body id="bodys">
         <header id="header">
@@ -53,15 +54,41 @@
                                     <td>${item.broker}</td>
 
                                     <td scope="col-2">
+
                                         <a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
                                         <button type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning"><i class="fas fa-trash-alt"></i></button>
                                     </td>
+
+
+
                                 </tr>
                             </c:forEach>
                         </tbody>
                     </table>
 
+                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
+                        <i>boton</i>
+                    </button>
 
+                    <div class="modal fade" id="modal1" >
+                        <div class="modal-dialog" >
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    ...
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
