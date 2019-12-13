@@ -1,10 +1,12 @@
-<!------ Include the above in your HEAD tag ---------->
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <!DOCTYPE HTML>
 <html>
     <head>
-        <title>Guía de Remisión</title>
+        <title>GuÃ­a de RemisiÃ³n</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
@@ -39,10 +41,10 @@
                                 </div>
                                 <div class="col">
                                     <fieldset style="border:1px solid black" id="fieldset">
-                                        <h3> R.U.C. N° 20111807958 </h3>
-                                        <H3><strong>Guía de Remisión</strong></H3>
+                                        <h3> R.U.C. NÂ° 20111807958 </h3>
+                                        <H3><strong>GuÃ­a de RemisiÃ³n</strong></H3>
                                         <div class="row" id="ngui">
-                                            N° &nbsp;&nbsp;&nbsp;<input type="text" name="nroguia">&nbsp;-&nbsp;0000041
+                                            NÂ° &nbsp;&nbsp;&nbsp;<input type="text" name="nroguia">&nbsp;-&nbsp;0000041
                                         </div>
                                     </fieldset>
                                 </div>
@@ -59,18 +61,18 @@
                                 <legend><strong>Ingresar datos</strong></legend>
                                 <div class="row" id="fila1">
                                     <div class="col-sm-4">
-                                        <label for="Fecha">Fecha de Emisión:</label>
-                                        <input type="text" name="Fecha" placeholder="Ingresar Fecha">
+                                      <label for="fechaEmision">Fecha Emision:</label>
+                                <form:input path="fechaEmision"  cssClass="form-control" placeholder="Ingresar fecha" />
                                     </div>
                                 </div>
                                 <div class="row" id="fila2">
                                     <div class="col-sm-3">	
-                                        <label for="Partida">Punto Llegada:</label>
-                                        <input type="text" name="Partida" placeholder="Ingresar punto partida">
+                                         <label for="puntoLlegada">Punto de Llegada:</label>
+                                <form:input path="puntoLlegada"  cssClass="form-control" placeholder="Ingresar lugar de llegada" />
                                     </div>	
                                     <div class="col-sm-3">  
-                                        <label for="Destinatario">Destinatario:</label>
-                                        <input type="text" name="Destinatario" placeholder="Ingresar destinatario">
+                                        <label for="destinatario">Destinatario:</label>
+                                <form:input path="destinatario"  cssClass="form-control" placeholder="Ingresar Destinatario" />
                                     </div>
                                 </div>
                             </fieldset>
@@ -81,20 +83,20 @@
                                 <legend><strong>Ingresar datos</strong></legend>
                                 <div class="row" id="fila3">
                                     <div class="col-sm-3">
-                                        <label for="rucTransporte" >RUC Transporte:</label>
-                                        <input type="text" name="rucTransporte" placeholder="Ingresar RUC">
+                                        <label for="rUCtransporte" >RUC Transporte:</label>
+                                   <form:input path="rUCtransporte"  cssClass="form-control" />
                                     </div>
                                     <div class="col-sm-3">
-                                        <label for="nomChofer">Nombre de Chofer:</label>
-                                        <input type="text" name="nomChofer" placeholder="Ingresar nombre ">
+                                        <label for="nombreTransportista">Nombre de Chofer:</label>
+                                     <form:input path="nombreTransportista"  cssClass="form-control" />
                                     </div>
                                     <div class="col-sm-3">		
-                                        <label for="Marca">Marca y Placa:</label>
-                                        <input type="text" name="Marca" placeholder="Ingresar marca">
+                                        <label for="marcayPlaca">Marca y Placa:</label>
+                                     <form:input path="marcayPlaca"  cssClass="form-control" />
                                     </div>
                                     <div class="col-sm-3">      
-                                        <label for="Placa">Licencia:</label>
-                                        <input type="text" name="Placa" placeholder="Ingresar placa">
+                                        <label for="licencia">Licencia:</label>
+                                     <form:input path="licencia"  cssClass="form-control" />
                                     </div>
                                 </div>
                             </fieldset>
@@ -106,14 +108,14 @@
                                 <legend><strong>Detalles</strong></legend>
                                 <div class="row" id="fila1">
                                     <div class="col-sm-4">
-                                        <label for="Fecha">Cantidad:</label>
-                                        <input type="text" name="Fecha" placeholder="Ingresar Fecha">
+                                        <label for="cantidad">Cantidad:</label>
+                                        <form:input path="cantidad"  cssClass="form-control" />
                                     </div>
                                 </div>
                                 <div class="row" id="fila2">
                                     <div class="col-sm-2">	
-                                        <label for="Partida">Decripcion:</label>
-                                        <input type="text" name="Partida" placeholder="Ingresar punto partida">
+                                        <label for="descripcion">Descripcion:</label>
+                                        <form:input path="descripcion"  cssClass="form-control" />
                                     </div>	
                                 </div>
                             </fieldset>
@@ -122,7 +124,7 @@
 
 
                             <fieldset id="fieldset4" style="border: 1px solid gray">
-                                <legend>¿Qué acción desea realizar?</legend>
+                                <legend>Â¿QuÃ© acciÃ³n desea realizar?</legend>
                                 <div class="row" id="fila8">
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
                                     &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
