@@ -82,10 +82,14 @@
 
                             </div>
 
-                            <div class="p-4">
-                                <label for="modelo">Modelo:</label>
-                                <form:input path="modelo" cssClass="form-control" placeholder="Ingresar modelo" />
-                            </div>
+                            <div class="p-5">
+                            <label for="idTipoModelo" >Modelo: </label>
+                            <form:select path="idTipoModelo.idTipoModelo" id="idTipoModelo">
+                                <c:forEach items="${listamodelo}" var="x">
+                                    <option value="${x.idTipoModelo}">${x.nombre}</option>
+                                </c:forEach>
+                            </form:select>
+                        </div>
 
                             <div class="p-4">		
                                 <label for="idTipo">Tela:</label>
@@ -106,11 +110,7 @@
                                 <form:input path="etiqueta" cssClass="form-control" placeholder="Ingresar nombres de etiqueta"/>
                             </div>
 
-                            <div class="p-4">		
-                                <label for="empaque">Empaque:</label>
-                                <form:input path="empaque" cssClass="form-control" placeholder="Ingresar empaque" />
-                            </div>
-
+                           
                         </div>
                     </div>
 
@@ -133,16 +133,7 @@
                             </form:select>
                         </div>
                     </div>
-                    <div class="d-flex flex-row">
-                        <div class="p-5">
-                            <label for="idTipoPrenda" >Tipo de Prenda:</label>
-                            <form:select path="idTipoPrenda.idTipoPrenda" id="idTipoPrenda">
-                                <c:forEach items="${listaprendas}" var="x">
-                                    <option value="${x.idTipoPrenda}">${x.nombre}</option>
-                                </c:forEach>
-                            </form:select>
-                        </div>
-                    </div>
+
 
                     <hr style="border: 1px solid gray">
 

@@ -7,11 +7,11 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import model.controllers.FichatecnicaJpaController;
 import model.controllers.TallaJpaController;
-import model.controllers.TipoprendaJpaController;
+import model.controllers.TipomodeloJpaController;
 import model.controllers.TipotelaJpaController;
 import model.entities.Fichatecnica;
 import model.entities.Talla;
-import model.entities.Tipoprenda;
+import model.entities.Tipomodelo;
 import model.entities.Tipotela;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,14 +28,14 @@ public class FichaTecnicaController  {
         private EntityManagerFactory emf;
         private FichatecnicaJpaController repo;
         private TipotelaJpaController repo1;
-        private TipoprendaJpaController repo2;
+        private TipomodeloJpaController repo2;
         private TallaJpaController repo3;
         
         public FichaTecnicaController() {
         em = getEntityManager();
         repo = new FichatecnicaJpaController(emf);
         repo1 = new TipotelaJpaController(emf);
-        repo2 = new TipoprendaJpaController(emf);
+        repo2 = new TipomodeloJpaController(emf);
         repo3 = new TallaJpaController(emf);
     }
 
@@ -57,9 +57,9 @@ public class FichaTecnicaController  {
         
         mv.addObject("tipotelas", telas);
         
-        List<Tipoprenda> prendas = repo2.findTipoprendaEntities();
+        List<Tipomodelo> prendas = repo2.findTipomodeloEntities();
         
-        mv.addObject("listaprendas", prendas);
+        mv.addObject("listamodelo", prendas);
         
         List<Talla> tallas = repo3.findTallaEntities();
         

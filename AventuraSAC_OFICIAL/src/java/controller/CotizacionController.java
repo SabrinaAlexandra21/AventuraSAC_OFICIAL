@@ -8,7 +8,6 @@ import javax.persistence.Persistence;
 import model.controllers.ClienteJpaController;
 import model.controllers.CotizacionJpaController;
 import model.controllers.PedidoJpaController;
-import model.controllers.CotizacionDetalleJpaController;
 import model.controllers.PedidoDetalleJpaController;
 import model.entities.Cliente;
 import model.entities.Cotizacion;
@@ -28,7 +27,7 @@ public class CotizacionController {
     private ClienteJpaController repo;
     private PedidoJpaController repo2;
     private CotizacionJpaController repo3;
-    private CotizacionDetalleJpaController repo4;
+
     private PedidoDetalleJpaController repo5;
     
     public CotizacionController() {

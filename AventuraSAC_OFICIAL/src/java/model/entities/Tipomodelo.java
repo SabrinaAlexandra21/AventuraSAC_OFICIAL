@@ -25,44 +25,44 @@ import javax.xml.bind.annotation.XmlTransient;
  * @author Administrador
  */
 @Entity
-@Table(name = "tipoprenda")
+@Table(name = "tipomodelo")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Tipoprenda.findAll", query = "SELECT t FROM Tipoprenda t")
-    , @NamedQuery(name = "Tipoprenda.findByIdTipoPrenda", query = "SELECT t FROM Tipoprenda t WHERE t.idTipoPrenda = :idTipoPrenda")
-    , @NamedQuery(name = "Tipoprenda.findByNombre", query = "SELECT t FROM Tipoprenda t WHERE t.nombre = :nombre")})
-public class Tipoprenda implements Serializable {
+    @NamedQuery(name = "Tipomodelo.findAll", query = "SELECT t FROM Tipomodelo t")
+    , @NamedQuery(name = "Tipomodelo.findByIdTipoModelo", query = "SELECT t FROM Tipomodelo t WHERE t.idTipoModelo = :idTipoModelo")
+    , @NamedQuery(name = "Tipomodelo.findByNombre", query = "SELECT t FROM Tipomodelo t WHERE t.nombre = :nombre")})
+public class Tipomodelo implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @Column(name = "idTipoPrenda")
-    private Integer idTipoPrenda;
+    @Column(name = "idTipoModelo")
+    private Integer idTipoModelo;
     @Basic(optional = false)
     @Column(name = "Nombre")
     private String nombre;
-    @OneToMany(mappedBy = "idTipoPrenda")
+    @OneToMany(mappedBy = "idTipoModelo")
     private List<Fichatecnica> fichatecnicaList;
 
-    public Tipoprenda() {
+    public Tipomodelo() {
     }
 
-    public Tipoprenda(Integer idTipoPrenda) {
-        this.idTipoPrenda = idTipoPrenda;
+    public Tipomodelo(Integer idTipoModelo) {
+        this.idTipoModelo = idTipoModelo;
     }
 
-    public Tipoprenda(Integer idTipoPrenda, String nombre) {
-        this.idTipoPrenda = idTipoPrenda;
+    public Tipomodelo(Integer idTipoModelo, String nombre) {
+        this.idTipoModelo = idTipoModelo;
         this.nombre = nombre;
     }
 
-    public Integer getIdTipoPrenda() {
-        return idTipoPrenda;
+    public Integer getIdTipoModelo() {
+        return idTipoModelo;
     }
 
-    public void setIdTipoPrenda(Integer idTipoPrenda) {
-        this.idTipoPrenda = idTipoPrenda;
+    public void setIdTipoModelo(Integer idTipoModelo) {
+        this.idTipoModelo = idTipoModelo;
     }
 
     public String getNombre() {
@@ -85,18 +85,18 @@ public class Tipoprenda implements Serializable {
     @Override
     public int hashCode() {
         int hash = 0;
-        hash += (idTipoPrenda != null ? idTipoPrenda.hashCode() : 0);
+        hash += (idTipoModelo != null ? idTipoModelo.hashCode() : 0);
         return hash;
     }
 
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Tipoprenda)) {
+        if (!(object instanceof Tipomodelo)) {
             return false;
         }
-        Tipoprenda other = (Tipoprenda) object;
-        if ((this.idTipoPrenda == null && other.idTipoPrenda != null) || (this.idTipoPrenda != null && !this.idTipoPrenda.equals(other.idTipoPrenda))) {
+        Tipomodelo other = (Tipomodelo) object;
+        if ((this.idTipoModelo == null && other.idTipoModelo != null) || (this.idTipoModelo != null && !this.idTipoModelo.equals(other.idTipoModelo))) {
             return false;
         }
         return true;
@@ -104,7 +104,7 @@ public class Tipoprenda implements Serializable {
 
     @Override
     public String toString() {
-        return "model.entities.Tipoprenda[ idTipoPrenda=" + idTipoPrenda + " ]";
+        return "model.entities.Tipomodelo[ idTipoModelo=" + idTipoModelo + " ]";
     }
     
 }
