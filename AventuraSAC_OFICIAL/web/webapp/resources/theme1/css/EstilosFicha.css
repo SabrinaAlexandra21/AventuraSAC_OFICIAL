@@ -22,9 +22,9 @@ body{
 }
 
 #img img{
-    margin:40px 0px;
-    width: 255px;
-    height: 150px;
+    margin:20px 0px;
+    width: 130px;
+    height: 100px;
 }
 
 #escritos {
@@ -34,11 +34,16 @@ body{
     top:70px;
 }
 
+#escritos h3{
+    font-family: 'Arial', serif;
+    font-size: 10px;
+}
+
 
 
 #fieldset {
 
-    margin: 40px 10px;
+    margin: 20px 10px;
     padding: 30px 30px;
     text-align: center;
     position: relative;
@@ -59,7 +64,7 @@ body{
 }
 
 
-#fieldset h3{
+#fieldset h4{
 
     margin: 10px 10px;
 }
@@ -86,6 +91,11 @@ body{
 
 #main3{
     height: 60em;
+}
+
+#carta2 {
+    width: 33rem;
+    margin: 0px 20px;
 }
 
 #fieldset1 {

@@ -17,6 +17,9 @@
         <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
         <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.minicolors.js"/>"></script>
         <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.minicolors.css"/>" />
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.modal.js"/>"></script>
+        <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.modal.css"/>" />
+
 
     </head>
     <body>
@@ -78,25 +81,39 @@
 
                             <div class="p-4">
                                 <label for="descripcion">Descripción:</label>
+
                                 <form:input path="descripcion"  cssClass="form-control" placeholder="Ingresar descripcion" />
 
                             </div>
 
                             <div class="p-5">
-                            <label for="idTipoModelo" >Modelo: </label>
-                            <form:select path="idTipoModelo.idTipoModelo" id="idTipoModelo">
-                                <c:forEach items="${listamodelo}" var="x">
-                                    <option value="${x.idTipoModelo}">${x.nombre}</option>
-                                </c:forEach>
-                            </form:select>
-                        </div>
+
+                                <label for="idTipoModelo" >Modelo: </label>
+
+                                <form:select path="idTipoModelo.idTipoModelo" id="idTipoModelo">
+
+                                    <c:forEach items="${listamodelo}" var="x">
+
+                                        <option value="${x.idTipoModelo}">${x.nombre}</option>
+
+                                    </c:forEach>
+
+                                </form:select>
+
+                            </div>
 
                             <div class="p-4">		
+
                                 <label for="idTipo">Tela:</label>
+
                                 <form:select path="idTipo.idTipo" id="idTipo">
+
                                     <c:forEach items="${tipotelas}" var="x">
+
                                         <option value="${x.idTipo}">${x.nombre}</option>
+
                                     </c:forEach>
+
                                 </form:select>
 
                             </div>
@@ -105,74 +122,116 @@
 
                         <div class="d-flex flex-row" id="fila2">
 
-                            <div class="p-4">		
+                            <div class="p-4">
+
                                 <label for="etiqueta">Etiqueta:</label>
+
                                 <form:input path="etiqueta" cssClass="form-control" placeholder="Ingresar nombres de etiqueta"/>
+
                             </div>
 
-                           
+
+                            <div class="p-4">
+
+                                <label for="idTalla" >Talla:</label>
+
+                                <form:select path="idTalla.idTalla" id="idTalla">
+
+                                    <c:forEach items="${listatallas}" var="x">
+
+                                        <option value="${x.idTalla}">${x.nombre}</option>
+
+                                    </c:forEach>
+
+                                </form:select>
+
+                            </div>
+
+
                         </div>
                     </div>
 
                     <hr style="border: 1px solid gray">
 
                     <div class="d-flex flex-row">
+
                         <label for="Muestra" class="col-sm-2 col-form-label">Muestra:</label>
-                        <div class="col-sm-3">
-                            <input type="submit" value="ADJUNTAR IMAGEN PNG">
-                        </div>	
-                    </div>
 
-                    <div class="d-flex flex-row" id="fila3">
-                        <div class="p-5">
-                            <label for="idTalla" >Talla:</label>
-                            <form:select path="idTalla.idTalla" id="idTalla">
-                                <c:forEach items="${listatallas}" var="x">
-                                    <option value="${x.idTalla}">${x.nombre}</option>
-                                </c:forEach>
-                            </form:select>
-                        </div>
+                        <div class="col-sm-3">
+
+                            <input type="submit" value="ADJUNTAR IMAGEN PNG">
+
+                        </div>	
+
                     </div>
 
 
                     <hr style="border: 1px solid gray">
 
                     <div class="d-flex flex-row">
+
                         <div  class="p-6">
-                            <div class="card" style="width: 22rem;">
-                                <div class="card-body">
+
+                            <div class="card" id="carta2">
+
+                                <div class="card-body" id="body2">
+
                                     <h5 class="card-title">Combinación de colores:</h5>
+
                                     <h6 class="card-subtitle mb-2 text-muted">Seleccionar..</h6>
 
                                     <div class="d-flex flex-row">
 
-                                        <div  class="p-6">
+                                        <div  class="p-4">
 
-                                            <label for="colores" >Color 1:</label>
-                                            <input type="text" name="colores" id="c1" value="ffffff" data-wheelcolorpicker>
+                                            <label for="color1" >Color 1:</label>
+                                            <input type="text" name="color1" id="c1" value="ffff00" data-wheelcolorpicker>
+
                                             <script>
                                                 $(function () {
-                                                    
+
                                                     $('#c1').minicolors();
-                                                    
+
+                                                });
+
+                                            </script>
+
+                                        </div>
+
+                                        <div  class="p-4">
+
+                                            <label for="color2" >Color 2:</label>
+                                            <input type="text" name="color2" id="c2" value="00ffff" data-wheelcolorpicker>
+
+                                            <script>
+                                                $(function () {
+
+                                                    $('#c2').minicolors();
+
                                                 });
                                             </script>
-                                        </div>
-
-                                        <div  class="p-6">
-
-                                            <label for="colores" >Color 2:</label>
-                                            <input type="color" name="colores" >
 
                                         </div>
 
-                                        <div class="p-4">
-                                            <button type="button">Enviar</button>
+                                        <div  class="p-4">
+
+                                            <label for="color3" >Color 3:</label>
+                                            <input type="text" name="color3" id="c3" value="ff00ff" data-wheelcolorpicker>
+
+                                            <script>
+                                                $(function () {
+
+                                                    $('#c3').minicolors();
+
+                                                });
+                                            </script>
+
                                         </div>
 
                                     </div>
 
                                 </div>
+
                             </div>
 
                         </div>
@@ -180,17 +239,79 @@
                     </div>
 
                     <div class="d-flex flex-row">
+
                         <div class="p-4">
-                            <input type="submit" class="btn btn-primary"  value="Registrar">
+
+                            <input type="submit" class="btn btn-primary"  value="Registrar" >
+
                         </div>
+
                         <div  class="p-4">
-                            <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+
+                            <a class="btn btn-secondary" href="clientes.htm" role="button" >Regresar</a>
+
                         </div>
+
                     </div>
+
                 </form:form>
 
 
+                <!-- Trigger the modal with a button -->
+                <button type="button" class="btn btn-success" id="openBtn">Open Modal</button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="myModal" role="dialog">
+                    
+                    <div class="modal-dialog">
+                        <!-- Modal content-->
+                        <div class="modal-content">
+                            
+                            <div class="modal-header">
+                                
+                                <div class="d-flex flex-row">
+
+                                    <div  class="p-4" id="img">
+
+                                        <img src="webapp/resources/theme1/images/logo2.png" alt="Card image cap">
+
+                                    </div>
+
+ 
+                                    <div class="p-4" id="fieldset">
+
+                                        <fieldset style="border:1px solid black" >
+
+                                            <h4> R.U.C. N° 20111807958 </h4>
+                                            <h4><strong>Ficha Técnica</strong></h4>
+                                            <div class="row" id="ngui">
+                                                N° &nbsp;&nbsp;&nbsp;<input type="text" name="nroguia">&nbsp;-&nbsp;0000041
+                                            </div>
+
+                                        </fieldset>
+                                    </div>
+                                </div>
+
+                            </div>
+                            <div class="modal-body">
+
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <script>
+                    $('#openBtn').on('click', function () {
+                        $('.modal-body').load('content.html', function () {
+                            $('#myModal').modal({show: true});
+                        });
+                    });
+                </script>
             </div>
         </div>
 
-        
+
