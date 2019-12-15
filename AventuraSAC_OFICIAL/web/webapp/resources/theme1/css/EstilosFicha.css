@@ -69,6 +69,15 @@ body{
     margin: 10px 10px;
 }
 
+#myModal {
+    
+    width: 75%;
+}
+
+#content {
+    
+    width: 900px;
+}
 
 #main{
 
