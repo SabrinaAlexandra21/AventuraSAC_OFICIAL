@@ -10,6 +10,8 @@
         <link href="<c:url value="webapp/resources/theme1/css/es.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
         <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.modal.js"/>"></script>
+        <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.modal.css"/>" />
 
 
 
@@ -50,7 +52,7 @@
 
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
-                            ¿No tienes una cuenta? <button id="registrar" type="button" class="btn btn-primary">Regístrate</button>
+                            ¿No tienes una cuenta?  <a href="#" id="registrar" role="button" > Regístrate</a>
                         </div>
                         <div class="d-flex justify-content-center links" id="reg">
                             <a href="#">Olvidaste tu contraseña?</a>
@@ -91,10 +93,10 @@
                                 <select name="idDistrito.idDistrito" id="idDistrito">
                                     <c:forEach items="${listaDistrito}" var="x">
                                         <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
-                                            <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                            <option value="${x.idDistrito}" selected="selected" id="idDistrito">${x.detalle}</option>
                                         </c:if>
                                         <c:if test="${x.idDistrito != cliente.idDistrito.idDistrito}">
-                                            <option value="${x.idDistrito}">${x.detalle}</option>
+                                            <option value="${x.idDistrito}" id="idDistrito">${x.detalle}</option>
                                         </c:if>
                                     </c:forEach>
                                 </select > 

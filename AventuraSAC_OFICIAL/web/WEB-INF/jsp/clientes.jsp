@@ -102,13 +102,13 @@
 
                                     <div>
                                         <label for="idDistrito">Distrito:</label>
-                                        <select name="idDistrito.idDistrito" id="idDistrito">
+                                        <select name="idDistrito.idDistrito" >
                                             <c:forEach items="${listaDistrito}" var="x">
                                                 <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
-                                                    <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                                    <option value="${x.idDistrito}" selected="selected" id="idDistrito">${x.detalle}</option>
                                                 </c:if>
                                                 <c:if test="${x.idDistrito != cliente.idDistrito.idDistrito}">
-                                                    <option value="${x.idDistrito}">${x.detalle}</option>
+                                                    <option value="${x.idDistrito}" id="idDistrito">${x.detalle}</option>
                                                 </c:if>
                                             </c:forEach>
                                         </select > 

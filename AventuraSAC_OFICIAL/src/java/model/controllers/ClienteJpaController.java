@@ -90,10 +90,14 @@ public class ClienteJpaController implements Serializable {
                 cliente.setIdDistrito(idDistritoNew);
             }
             List<Pedido> attachedPedidoListNew = new ArrayList<Pedido>();
-            for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
-                pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getIdPedido());
-                attachedPedidoListNew.add(pedidoListNewPedidoToAttach);
+            
+            if (pedidoListNew != null) {
+                for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
+                    pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getIdPedido());
+                    attachedPedidoListNew.add(pedidoListNewPedidoToAttach);
+                }
             }
+            
             pedidoListNew = attachedPedidoListNew;
             cliente.setPedidoList(pedidoListNew);
             cliente = em.merge(cliente);
@@ -215,5 +219,5 @@ public class ClienteJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
