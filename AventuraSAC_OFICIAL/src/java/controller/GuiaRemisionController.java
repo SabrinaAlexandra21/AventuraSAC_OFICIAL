@@ -53,7 +53,7 @@ public class GuiaRemisionController  {
         
         return mv;
     }
-        
+    @RequestMapping(value = "GuiaRemisionDetalle.htm", method = RequestMethod.GET)    
     public ModelAndView NuevaGuiaRemisionDetalle(Model model) {
         
         ModelAndView mv = new ModelAndView();

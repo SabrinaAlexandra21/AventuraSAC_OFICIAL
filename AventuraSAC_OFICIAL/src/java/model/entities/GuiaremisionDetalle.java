@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "GuiaremisionDetalle.findAll", query = "SELECT g FROM GuiaremisionDetalle g")
     , @NamedQuery(name = "GuiaremisionDetalle.findByIdDetalleGuiaRemision", query = "SELECT g FROM GuiaremisionDetalle g WHERE g.idDetalleGuiaRemision = :idDetalleGuiaRemision")
+    , @NamedQuery(name = "GuiaremisionDetalle.findByCantidad", query = "SELECT g FROM GuiaremisionDetalle g WHERE g.cantidad = :cantidad")
     , @NamedQuery(name = "GuiaremisionDetalle.findByDescripcion", query = "SELECT g FROM GuiaremisionDetalle g WHERE g.descripcion = :descripcion")})
 public class GuiaremisionDetalle implements Serializable {
 
@@ -38,6 +39,8 @@ public class GuiaremisionDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDetalleGuiaRemision")
     private Integer idDetalleGuiaRemision;
+    @Column(name = "cantidad")
+    private Integer cantidad;
     @Column(name = "Descripcion")
     private String descripcion;
     @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
@@ -60,6 +63,14 @@ public class GuiaremisionDetalle implements Serializable {
 
     public void setIdDetalleGuiaRemision(Integer idDetalleGuiaRemision) {
         this.idDetalleGuiaRemision = idDetalleGuiaRemision;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     public String getDescripcion() {

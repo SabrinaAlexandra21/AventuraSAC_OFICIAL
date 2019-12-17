@@ -24,7 +24,7 @@
                 <a href="#menu">Menu</a>
             </nav>
         </header>
-         <form:form method="post" modelAttribute="guiaremision">
+         
             <div id="container">
                 <section id="Contenedor1" class="wrapper" >
                     <div id="Contenedorlogo" class="inner" style="border:9px double">
@@ -52,7 +52,7 @@
                         </div>
                     </div>
                 </section>
-
+<form:form method="post" modelAttribute="guiaremision">
                 <section id="main" class="wrapper" >
                     <div id="main2" class="inner" style="border:9px double">
                         <div id="main3" class="content">
@@ -100,10 +100,10 @@
                                     </div>
                                 </div>
                             </fieldset>
-
+                        </form:form>
                             <br>
                             
-                            
+                 <form:form method="post" modelAttribute="guiaremisionDetalle">          
                            <fieldset id="fieldset1" style="border: 1px solid gray">
                                 <legend><strong>Detalles</strong></legend>
                                 <div class="row" id="fila1">
@@ -119,7 +119,7 @@
                                     </div>	
                                 </div>
                             </fieldset>
-
+                  </form:form>
                             
 
 

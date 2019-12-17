@@ -54,7 +54,7 @@
                 <prop key="menulogistica.htm">loginController</prop>
                  
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
-                
+                <prop key="GuiaRemisionDetalle.htm">guiaremisionController</prop>
                 <prop key="FichaTecnica.htm">fichaTecnicaController</prop>
                 
                 <prop key="OrdenCompra.htm">ordencompraController</prop>
@@ -90,7 +90,7 @@
     
     <bean name="guiaremisionController"
           class="controller.GuiaRemisionController" />
-    
+      
     <bean name="loginController"
           class="controller.LoginController" />
     

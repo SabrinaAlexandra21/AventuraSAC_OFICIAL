@@ -34,9 +34,7 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Fichatecnica.findByIdFicha", query = "SELECT f FROM Fichatecnica f WHERE f.idFicha = :idFicha")
     , @NamedQuery(name = "Fichatecnica.findByDescripcion", query = "SELECT f FROM Fichatecnica f WHERE f.descripcion = :descripcion")
     , @NamedQuery(name = "Fichatecnica.findByEtiqueta", query = "SELECT f FROM Fichatecnica f WHERE f.etiqueta = :etiqueta")
-    , @NamedQuery(name = "Fichatecnica.findByColor1", query = "SELECT f FROM Fichatecnica f WHERE f.color1 = :color1")
-    , @NamedQuery(name = "Fichatecnica.findByColor2", query = "SELECT f FROM Fichatecnica f WHERE f.color2 = :color2")
-    , @NamedQuery(name = "Fichatecnica.findByColor3", query = "SELECT f FROM Fichatecnica f WHERE f.color3 = :color3")})
+    , @NamedQuery(name = "Fichatecnica.findByColores", query = "SELECT f FROM Fichatecnica f WHERE f.colores = :colores")})
 public class Fichatecnica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -51,12 +49,9 @@ public class Fichatecnica implements Serializable {
     @Basic(optional = false)
     @Column(name = "Etiqueta")
     private String etiqueta;
-    @Column(name = "Color1")
-    private String color1;
-    @Column(name = "Color2")
-    private String color2;
-    @Column(name = "Color3")
-    private String color3;
+    @Basic(optional = false)
+    @Column(name = "Colores")
+    private String colores;
     @OneToMany(mappedBy = "idFicha")
     private List<PedidoDetalle> pedidoDetalleList;
     @JoinColumn(name = "idTipoModelo", referencedColumnName = "idTipoModelo")
@@ -76,10 +71,11 @@ public class Fichatecnica implements Serializable {
         this.idFicha = idFicha;
     }
 
-    public Fichatecnica(Integer idFicha, String descripcion, String etiqueta) {
+    public Fichatecnica(Integer idFicha, String descripcion, String etiqueta, String colores) {
         this.idFicha = idFicha;
         this.descripcion = descripcion;
         this.etiqueta = etiqueta;
+        this.colores = colores;
     }
 
     public Integer getIdFicha() {
@@ -106,28 +102,12 @@ public class Fichatecnica implements Serializable {
         this.etiqueta = etiqueta;
     }
 
-    public String getColor1() {
-        return color1;
+    public String getColores() {
+        return colores;
     }
 
-    public void setColor1(String color1) {
-        this.color1 = color1;
-    }
-
-    public String getColor2() {
-        return color2;
-    }
-
-    public void setColor2(String color2) {
-        this.color2 = color2;
-    }
-
-    public String getColor3() {
-        return color3;
-    }
-
-    public void setColor3(String color3) {
-        this.color3 = color3;
+    public void setColores(String colores) {
+        this.colores = colores;
     }
 
     @XmlTransient
