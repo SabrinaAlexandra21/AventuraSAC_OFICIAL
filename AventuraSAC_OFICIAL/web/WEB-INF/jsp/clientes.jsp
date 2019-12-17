@@ -1,4 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -10,7 +12,10 @@
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
-        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/bootstrap.min.js"/>"></script>
+        <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.modal.js"/>"></script>
+        <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.modal.css"/>" />
+
     </head>
     <body id="bodys">
         <header id="header">
@@ -20,6 +25,7 @@
             </nav>
         </header>
         <div class="container md-8">
+
             <div class="card" id="carta">
                 <div class="card-header">
                     <h3>Listado de Clientes</h3>
@@ -44,7 +50,7 @@
                         <tbody>
                             <c:forEach var="item" items="${clientes}">
                                 <tr>
-                                    <th scope="row">${item.idCliente}</th>
+                                    <th scope="row" id="id">${item.idCliente}</th>
                                     <td>${item.razonSocial}</td>
                                     <td>${item.ruc}</td>
                                     <td>${item.idDistrito.detalle}</td>
@@ -55,8 +61,8 @@
 
                                     <td scope="col-2">
 
-                                        <a href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"><i class="fas fa-edit"></i></a> 
-                                        <button type="button" onclick="eliminar('${item.idCliente}')" class="btn btn-warning"><i class="fas fa-trash-alt"></i></button>
+                                        <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}')" ><i class="fas fa-edit"></i></button> 
+                                        <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
                                     </td>
 
 
@@ -65,31 +71,104 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                </div>
 
-                    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#modal1">
-                        <i>boton</i>
-                    </button>
+                <!-- Modal editar -->
 
-                    <div class="modal fade" id="modal1" >
-                        <div class="modal-dialog" >
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalCenterTitle">Modal title</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    ...
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="button" class="btn btn-primary">Save changes</button>
-                                </div>
+
+                <div class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog" >
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalCenterTitle">Editar Cliente</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+
+                                </button>
+                            </div>
+                            <div class="modal-body">
+
+                                <form id="mod">
+                                    <input type="text" name="idCliente" id="idcliente"/>
+
+                                    <div class="form-group">
+                                        <label for="razonSocial">Razón Social:</label>
+                                        <input type="text" name="razonSocial" cssClass="form-control" value="" />
+                                    </div>
+
+                                    <div class="form-group">
+                                        <label for="ruc">RUC:</label>
+                                        <input type="text" name="ruc"  cssClass="form-control" value="" />
+                                    </div>
+
+                                    <div>
+                                        <label for="idDistrito">Distrito:</label>
+                                        <select name="idDistrito.idDistrito" id="idDistrito">
+                                            <c:forEach items="${listaDistrito}" var="x">
+                                                <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
+                                                    <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                                </c:if>
+                                                <c:if test="${x.idDistrito != cliente.idDistrito.idDistrito}">
+                                                    <option value="${x.idDistrito}">${x.detalle}</option>
+                                                </c:if>
+                                            </c:forEach>
+                                        </select > 
+                                    </div>
+
+                                    <br>
+                                    <div class="form-group">
+                                        <label for="direccion">Dirección:</label>
+                                        <input type="text" name="direccion"  cssClass="form-control" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="telefono">Teléfono</label>
+                                        <input type="text" name="telefono" cssClass="form-control" value="" />
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="correo">Correo:</label>
+                                        <input type="text" name="correo" cssClass="form-control" value=""/>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="broker">Broker:</label>
+                                        <input type="text" name="broker" cssClass="form-control"   value=""/>
+                                    </div>
+                                    <input type="hidden" name="usuario" value="" />
+                                    <input type="hidden" name="clave" value="" />
+
+                                    <input type="submit" class="btn btn-primary"  value="Guardar">
+                                    <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                                </form>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
                             </div>
                         </div>
                     </div>
                 </div>
+
+                <script>
+                    function editar(id) {
+
+                        $('#myModal').modal('show');
+                        
+                        $("#idcliente").val(id);
+                        
+                        $.ajax({
+                            type: 'GET',
+                            url: 'clienteController.htm',
+                            dataType: 'html',
+                            success: function (razonsocial, ) {
+                                
+                                $('#idcliente').html(id);
+                                
+                            }
+                        });
+                      
+                    }
+                    ;
+
+                </script>
+
             </div>
         </div>
         <script type="text/javascript">
@@ -101,6 +180,8 @@
                 return false;
             }
         </script>
+
     </body>
+
 </html>
 

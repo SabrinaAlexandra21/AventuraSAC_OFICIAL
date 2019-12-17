@@ -101,7 +101,7 @@ public class ClienteController {
         
         mv.addObject("cliente", obj);
        
-        mv.setViewName("editarcliente");
+        mv.setViewName("clientes");
         
         return mv;
         

@@ -261,9 +261,9 @@
                 <button type="button" class="btn btn-success" id="openBtn">Open Modal</button>
 
                 <!-- Modal -->
-                <div class="modal fade" id="myModal" role="dialog">
+                <div class="modal fade" id="myModal"  role="dialog" aria-labelledby="myModalTitle" aria-hidden="true">
 
-                    <div class="modal-dialog" >
+                    <div class="modal-dialog-scrollable" id="dialog">
                         <!-- Modal content-->
                         <div class="modal-content" id="content">
 
@@ -273,7 +273,12 @@
 
                                     <div class="d-flex flex-row">
 
-                                        <div class="p-4" id="fieldset">
+                                        <div class="p-6" id="titul">
+
+                                            <h2>Ficha Técnica de la Prenda</h2>
+                                        </div>
+
+                                        <div class="p-6" id="fieldset">
 
                                             <fieldset style="border:1px solid black" >
 
@@ -370,82 +375,84 @@
 
 
                                     </div>
-                                </div>
-
-                                <hr style="border: 1px solid gray">
-
-                                <div class="d-flex flex-row">
-
-                                    <label for="Muestra" class="col-sm-2 col-form-label">Muestra:</label>
-
-                                    <div class="col-sm-3">
-
-                                        <input type="submit" value="ADJUNTAR IMAGEN PNG">
-
-                                    </div>	
-
-                                </div>
 
 
-                                <hr style="border: 1px solid gray">
+                                    <hr style="border: 1px solid gray">
 
-                                <div class="d-flex flex-row">
+                                    <div class="d-flex flex-row">
 
-                                    <div  class="p-6">
+                                        <label for="Muestra" class="col-sm-2 col-form-label">Muestra:</label>
 
-                                        <div class="card" id="carta2">
+                                        <div class="col-sm-3">
 
-                                            <div class="card-body" id="body2">
+                                            <input type="submit" value="ADJUNTAR IMAGEN PNG">
 
-                                                <h5 class="card-title">Combinación de colores:</h5>
+                                        </div>	
 
-                                                <h6 class="card-subtitle mb-2 text-muted">Seleccionar..</h6>
+                                    </div>
 
-                                                <div class="d-flex flex-row">
 
-                                                    <div  class="p-4">
+                                    <hr style="border: 1px solid gray">
 
-                                                        <label for="color1" >Color 1:</label>
-                                                        <input type="text" name="color1" id="c1" value="ffff00" data-wheelcolorpicker>
+                                    <div class="d-flex flex-row">
 
-                                                        <script>
-                                                            $(function () {
+                                        <div  class="p-6">
 
-                                                                $('#c1').minicolors();
+                                            <div class="card" id="carta2">
 
-                                                            });
+                                                <div class="card-body" id="body2">
 
-                                                        </script>
+                                                    <h5 class="card-title">Combinación de colores:</h5>
 
-                                                    </div>
+                                                    <h6 class="card-subtitle mb-2 text-muted">Seleccionar..</h6>
 
-                                                    <div  class="p-4">
+                                                    <div class="d-flex flex-row">
 
-                                                        <label for="color2" >Color 2:</label>
-                                                        <input type="text" name="color2" id="c2" value="00ffff" data-wheelcolorpicker>
+                                                        <div  class="p-4">
 
-                                                        <script>
-                                                            $(function () {
+                                                            <label for="color1" >Color 1:</label>
+                                                            <input type="text" name="color1" id="c1" value="ffff00" data-wheelcolorpicker>
 
-                                                                $('#c2').minicolors();
+                                                            <script>
+                                                                $(function () {
 
-                                                            });
-                                                        </script>
+                                                                    $('#c1').minicolors();
 
-                                                    </div>
+                                                                });
 
-                                                    <div  class="p-4">
+                                                            </script>
 
-                                                        <label for="color3" >Color 3:</label>
-                                                        <input type="text" name="color3" id="c3" value="ff00ff" data-wheelcolorpicker>
+                                                        </div>
 
-                                                        <script>
-                                                            $(function () {
+                                                        <div  class="p-4">
 
-                                                                $('#c3').minicolors();
+                                                            <label for="color2" >Color 2:</label>
+                                                            <input type="text" name="color2" id="c2" value="00ffff" data-wheelcolorpicker>
 
-                                                            });
-                                                        </script>
+                                                            <script>
+                                                                $(function () {
+
+                                                                    $('#c2').minicolors();
+
+                                                                });
+                                                            </script>
+
+                                                        </div>
+
+                                                        <div  class="p-4">
+
+                                                            <label for="color3" >Color 3:</label>
+                                                            <input type="text" name="color3" id="c3" value="ff00ff" data-wheelcolorpicker>
+
+                                                            <script>
+                                                                $(function () {
+
+                                                                    $('#c3').minicolors();
+
+                                                                });
+                                                            </script>
+
+                                                        </div>
 
                                                     </div>
 
@@ -457,43 +464,43 @@
 
                                     </div>
 
-                                </div>
+                                    <div class="d-flex flex-row">
 
-                                <div class="d-flex flex-row">
+                                        <div class="p-4">
 
-                                    <div class="p-4">
+                                            <input type="submit" class="btn btn-primary"  value="Registrar" >
 
-                                        <input type="submit" class="btn btn-primary"  value="Registrar" >
+                                        </div>
+
+                                        <div  class="p-4">
+
+                                            <a class="btn btn-secondary" href="clientes.htm" role="button" >Regresar</a>
+
+                                        </div>
 
                                     </div>
 
-                                    <div  class="p-4">
+                                </form:form>
 
-                                        <a class="btn btn-secondary" href="clientes.htm" role="button" >Regresar</a>
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-default" data-dismiss="modal">Close
 
-                                    </div>
-
-                                </div>
-
-                            </form:form>
-
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                </button>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
 
 
-            <script>
-                $('#openBtn').on('click', function () {
-                    $('.modal-body').load('content.html', function () {
-                        $('#myModal').modal({show: true});
+                <script>
+                    $('#openBtn').on('click', function () {
+                        $('.modal-body').load('content.html', function () {
+                            $('#myModal').modal({show: true});
+                        });
                     });
-                });
-            </script>
+                </script>
+            </div>
         </div>
-    </div>
 
 
