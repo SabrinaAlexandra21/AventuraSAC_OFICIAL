@@ -89,7 +89,9 @@ public class ClienteJpaController implements Serializable {
                 idDistritoNew = em.getReference(idDistritoNew.getClass(), idDistritoNew.getIdDistrito());
                 cliente.setIdDistrito(idDistritoNew);
             }
+            
             List<Pedido> attachedPedidoListNew = new ArrayList<Pedido>();
+            
             for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
                 pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getIdPedido());
                 attachedPedidoListNew.add(pedidoListNewPedidoToAttach);

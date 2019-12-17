@@ -51,17 +51,17 @@
                             <c:forEach var="item" items="${clientes}">
                                 <tr>
                                     <th scope="row" id="id">${item.idCliente}</th>
-                                    <td>${item.razonSocial}</td>
-                                    <td>${item.ruc}</td>
-                                    <td>${item.idDistrito.detalle}</td>
-                                    <td>${item.direccion}</td>
-                                    <td>${item.telefono}</td>
-                                    <td>${item.correo}</td>
-                                    <td>${item.broker}</td>
+                                    <td id="razon">${item.razonSocial}</td>
+                                    <td id="ruc">${item.ruc}</td>
+                                    <td id="distrito">${item.idDistrito.detalle}</td>
+                                    <td id="direccion">${item.direccion}</td>
+                                    <td id="telefono">${item.telefono}</td>
+                                    <td id="correo">${item.correo}</td>
+                                    <td id="broker">${item.broker}</td>
 
                                     <td scope="col-2">
 
-                                        <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}')" ><i class="fas fa-edit"></i></button> 
+                                        <a  href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"  href="editarcliente.htm?id=${item.idCliente}"><i class="fas fa-edit"></i></a> 
                                         <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
                                     </td>
 
@@ -92,12 +92,12 @@
 
                                     <div class="form-group">
                                         <label for="razonSocial">Razón Social:</label>
-                                        <input type="text" name="razonSocial" cssClass="form-control" value="" />
+                                        <input type="text" name="razonSocial" id="razonS" />
                                     </div>
 
                                     <div class="form-group">
                                         <label for="ruc">RUC:</label>
-                                        <input type="text" name="ruc"  cssClass="form-control" value="" />
+                                        <input type="text" name="ruc"  id="rucC" value="" />
                                     </div>
 
                                     <div>
@@ -117,19 +117,19 @@
                                     <br>
                                     <div class="form-group">
                                         <label for="direccion">Dirección:</label>
-                                        <input type="text" name="direccion"  cssClass="form-control" value="" />
+                                        <input type="text" name="direccion" id="direccionC" value="" />
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono</label>
-                                        <input type="text" name="telefono" cssClass="form-control" value="" />
+                                        <input type="text" name="telefono" id="telefonoC" value="" />
                                     </div>
                                     <div class="form-group">
                                         <label for="correo">Correo:</label>
-                                        <input type="text" name="correo" cssClass="form-control" value=""/>
+                                        <input type="text" name="correo" id="correoC" value=""/>
                                     </div>
                                     <div class="form-group">
                                         <label for="broker">Broker:</label>
-                                        <input type="text" name="broker" cssClass="form-control"   value=""/>
+                                        <input type="text" name="broker" id="brokerC"   value=""/>
                                     </div>
                                     <input type="hidden" name="usuario" value="" />
                                     <input type="hidden" name="clave" value="" />
@@ -147,26 +147,21 @@
                 </div>
 
                 <script>
-                    function editar(id) {
+                    function editar(id, razon, ruc, distrito, direccion, telefono, correo, broker) {
 
                         $('#myModal').modal('show');
-                        
-                        $("#idcliente").val(id);
-                        
-                        $.ajax({
-                            type: 'GET',
-                            url: 'clienteController.htm',
-                            dataType: 'html',
-                            success: function (razonsocial, ) {
-                                
-                                $('#idcliente').html(id);
-                                
-                            }
-                        });
-                      
-                    }
-                    ;
 
+                        $("#idcliente").val(id);
+                        $("#razonS").val(razon);
+                        $("#rucC").val(ruc);
+                        $("#idDistrito").val(distrito);
+                        $("#direccionC").val(direccion);
+                        $("#telefonoC").val(telefono);
+                        $("#correoC").val(correo);
+                        $("#brokerC").val(broker);
+ 
+
+                    }  
                 </script>
 
             </div>

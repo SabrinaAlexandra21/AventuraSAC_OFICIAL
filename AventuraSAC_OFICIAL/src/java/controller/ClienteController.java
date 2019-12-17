@@ -101,7 +101,7 @@ public class ClienteController {
         
         mv.addObject("cliente", obj);
        
-        mv.setViewName("clientes");
+        mv.setViewName("editarcliente");
         
         return mv;
         
@@ -126,5 +126,7 @@ public class ClienteController {
 
         return new ModelAndView("redirect:/clientes.htm");
     }
+    
+
 
 }
