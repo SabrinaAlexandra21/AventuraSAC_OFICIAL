@@ -98,34 +98,34 @@
                                     <form:input path=""  placeholder="name@example.com"/>
                                 </div>
                             </div>
-                                
+
                         </fieldset>
                         <br>
 
                         <center><h3><strong>Descripción</strong></h3></center>
 
                         <center>
-                        <table id="tabla">
-                            <tr>
-                                <th>ID</th>
-                                <th>Descripción</th>
-                                <th>Cantidad</th>
-                                <th>Subtotal</th>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
-                            <tr>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                                <td></td>
-                            </tr>
+                            <table id="tabla">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Descripción</th>
+                                    <th>Cantidad</th>
+                                    <th>Subtotal</th>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
+                                <tr>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                    <td></td>
+                                </tr>
 
-                        </table>
+                            </table>
                         </center>
 
                         <div class="row">
