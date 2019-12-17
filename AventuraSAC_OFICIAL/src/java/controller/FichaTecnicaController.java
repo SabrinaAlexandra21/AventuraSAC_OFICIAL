@@ -65,7 +65,7 @@ public class FichaTecnicaController  {
         
         mv.addObject("listatallas", tallas);
 
-        model.addAttribute("fichatecnica", new Fichatecnica());/*Guiaremision es la clase osea la entidad*/
+        model.addAttribute("fichatecnica", new Fichatecnica());
         
         mv.setViewName("Ficha");
         

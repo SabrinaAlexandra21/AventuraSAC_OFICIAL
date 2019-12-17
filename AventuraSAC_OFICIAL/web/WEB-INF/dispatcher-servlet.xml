@@ -97,6 +97,7 @@
     <bean name="fichaTecnicaController"
           class="controller.FichaTecnicaController" />
     
+    
     <bean name="ordencompraController"
           class="controller.OrdenCompraController" />
 </beans>
