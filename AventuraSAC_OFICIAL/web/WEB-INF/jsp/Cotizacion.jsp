@@ -64,21 +64,21 @@
                     <br />
 
                     <div class="card-body">
-
-                        <div class="card-title"> Ingresar datos de la Cotización</div>
+                        <center>
+                            <div class="card-title"><h2> Ingresar datos de la Cotización</h2></div>
+                        </center>
 
                         <fieldset id="fieldset1" style="border: 1px solid gray">
-                            <legend><strong><h5>Ingresar datos</h5></strong></legend>
                             <div class="row" id="fila1">
-                                <div class="col-sm-3">
+                                <div class="col-sm-4">
                                     <label for="">Razón Social:</label>
                                     <form:input path="" placeholder="Ingresar razón social"/>
                                 </div>
-                                <div class="col-sm-3">      
+                                <div class="col-sm-4">      
                                     <label for="">RUC:</label>
                                     <form:input path=""  placeholder="Ingresar RUC"/>
                                 </div>
-                                <div class="col-sm-3">      
+                                <div class="col-sm-4">      
                                     <label for="fechaEmision">Fecha de Emision:</label>
                                     <form:input path="fechaEmision" placeholder="Ingresar fecha"/>
                                 </div>
@@ -87,30 +87,24 @@
                             <div class="row" id="fila2">
                                 <div class="col-sm-4">
                                     <label for="direccion">Dirección:</label>
-                                    <form:input path=""  size="38" placeholder="Ingresar dirección"/>
+                                    <form:input path=""  placeholder="Ingresar dirección"/>
                                 </div>
                                 <div class="col-sm-4">
                                     <label for="">Teléfono:</label>
-                                    <form:input path="" size="38" placeholder="Ingresar teléfono"/>
+                                    <form:input path=""  placeholder="Ingresar teléfono"/>
                                 </div>
                                 <div class="col-sm-4">      
                                     <label for="">Correo:</label>
-                                    <form:input path="" size="38" placeholder="name@example.com"/>
+                                    <form:input path=""  placeholder="name@example.com"/>
                                 </div>
                             </div>
+                                
                         </fieldset>
                         <br>
 
-                        <div class="row">
-                            <div class="col-2"></div>
-                            <div class="col-3"></div>
-                            <div class="col-2" id="titulodescripcion">
-                                <h3><STRONG>Descripción</STRONG></h3>
-                            </div>
-                        </div>
+                        <center><h3><strong>Descripción</strong></h3></center>
 
-
-
+                        <center>
                         <table id="tabla">
                             <tr>
                                 <th>ID</th>
@@ -132,13 +126,12 @@
                             </tr>
 
                         </table>
+                        </center>
 
                         <div class="row">
 
                             <div class="col-sm-3" id="col2">
                                 <fieldset id="fieldset3" style="border: 1px solid gray">
-
-                                    <legend><strong><p>Ingresar Datos</p></strong></legend>
 
                                     <div class="row" id="fila6">
                                         <div class="row" class="col-sm-3">

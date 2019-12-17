@@ -113,33 +113,31 @@ body{
 
 #fieldset1 {
     background-color: #ffcccc;
-    margin: 10px 0px 0px -10px;
+    margin: 10px 0px 0px 10px;
     padding: 20px 60px;
-    height: 300px; /*Ancho*/
-    width: 1278px;/*Largoo*/
+    height: 50%; /*Ancho*/
+    width: 98%;/*Largoo*/
     text-align: left;
     font-family: 'Libre Baskerville', serif;
     right: 100px;
 }
 
 #fieldset1 h5{
-    color: white;
+    color: black;
 }
 
 #fila1 input {
+    padding: 0% 17%;
     margin: 20px 0px;
-    width: 250px;
+    width: 240px;
     height: 40px;
-    background-color: white;
+    background-color:  white;
 }
 
-
-#fila2{
-    margin:0px 0px 0px 80px;
-}
 #fila2 input {
+    padding: 0% 17%;
     margin: 20px 0px;
-    width: 250px;
+    width: 240px;
     height: 40px;
     background-color:  white;
 }
@@ -180,26 +178,25 @@ table,td  {
 
 #fieldset3 {
     background-color: #ffcccc;
-    margin: 0px 0px 0px 60px;
-    padding: 0px 20px;
-    height: 225px; /*Ancho*/
-    width: 260px;/*Largoo*/
+    margin: 0% -30%;
+    padding: 10px 20px;
+    height: 100%; /*Ancho*/
+    width: 92%;/*Largoo*/
     text-align: left;
     font-family: 'Libre Baskerville', serif;
 }
 
-#fieldset3 p{
-    color: white;
-}
+
 
 
 #fieldset3 label{
-    margin: 5px 15px;
-    width: 90px;
+    margin: 5px 0px;
+    width: 110px;
 }
 
 #fieldset3 input{
-    margin: 5px 20px;
+    padding: 0% 20%;
+    margin: 5px 0px;
     width: 110px;
     height: 35px;
     background-color: white;
@@ -208,10 +205,10 @@ table,td  {
 
 #fieldset4 {
     background-color: #ffcccc;
-    margin: -110px 0px 0px 970px;
-    padding: 8px 38px;
-    height: 120px; /*Ancho*/
-    width: 255px;/*Largoo*/
+    margin: 0% 70%;
+    padding: 1% 5%;
+    height: 30%; /*Ancho*/
+    width: 25%;/*Largoo*/
     text-align: center;
     font-family: 'Libre Baskerville', serif;
 }
