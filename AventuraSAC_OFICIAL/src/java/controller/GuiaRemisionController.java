@@ -7,6 +7,7 @@ import javax.persistence.Persistence;
 import model.controllers.GuiaremisionJpaController;
 import model.controllers.PedidoJpaController;
 import model.entities.Guiaremision;
+import model.entities.GuiaremisionDetalle;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -52,6 +53,17 @@ public class GuiaRemisionController  {
         
         return mv;
     }
+        
+    public ModelAndView NuevaGuiaRemisionDetalle(Model model) {
+        
+        ModelAndView mv = new ModelAndView();
+
+        model.addAttribute("guiaremisiondetalle", new GuiaremisionDetalle());
+        
+        mv.setViewName("GuiaRemision");
+        
+        return mv;
+    }
     
     @RequestMapping(value = "GuiaRemision.htm", method = RequestMethod.POST)
     
@@ -61,6 +73,8 @@ public class GuiaRemisionController  {
         
         return new ModelAndView("redirect:/menu.htm");
     }
+    
+    
 }   
 
   

@@ -24,7 +24,7 @@
                 <a href="#menu">Menu</a>
             </nav>
         </header>
-        <form>
+         <form:form method="post" modelAttribute="guiaremision">
             <div id="container">
                 <section id="Contenedor1" class="wrapper" >
                     <div id="Contenedorlogo" class="inner" style="border:9px double">
