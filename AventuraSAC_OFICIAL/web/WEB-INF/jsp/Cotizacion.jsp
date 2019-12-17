@@ -46,7 +46,7 @@
 
                             <div class="p-4" id="fieldset">
 
-                                <fieldset style="border:1px solid black" >
+                                <fieldset style="border:1px solid black" id="fld" >
 
                                     <h3> R.U.C. N° 20111807958 </h3>
                                     <h3><strong>Cotización</strong></h3>
@@ -60,12 +60,10 @@
 
                     </div>
 
-                    <br />
-                    <br />
-
+                    <br>
                     <div class="card-body">
                         <center>
-                            <div class="card-title"><h2> Ingresar datos de la Cotización</h2></div>
+                            <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
                         </center>
 
                         <fieldset id="fieldset1" style="border: 1px solid gray">
@@ -162,7 +160,6 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Enviar</button>
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
                             </div>
-
                         </fieldset>
                         <br>
                         <div class="col" id="ultimoparrafo">
