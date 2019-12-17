@@ -90,10 +90,14 @@ public class ProveedorJpaController implements Serializable {
                 proveedor.setIdDistrito(idDistritoNew);
             }
             List<Ordencompra> attachedOrdencompraListNew = new ArrayList<Ordencompra>();
-            for (Ordencompra ordencompraListNewOrdencompraToAttach : ordencompraListNew) {
-                ordencompraListNewOrdencompraToAttach = em.getReference(ordencompraListNewOrdencompraToAttach.getClass(), ordencompraListNewOrdencompraToAttach.getIdOrdenCompra());
-                attachedOrdencompraListNew.add(ordencompraListNewOrdencompraToAttach);
+
+            if (ordencompraListNew != null) {
+                for (Ordencompra ordencompraListNewOrdencompraToAttach : ordencompraListNew) {
+                    ordencompraListNewOrdencompraToAttach = em.getReference(ordencompraListNewOrdencompraToAttach.getClass(), ordencompraListNewOrdencompraToAttach.getIdOrdenCompra());
+                    attachedOrdencompraListNew.add(ordencompraListNewOrdencompraToAttach);
+                }
             }
+            
             ordencompraListNew = attachedOrdencompraListNew;
             proveedor.setOrdencompraList(ordencompraListNew);
             proveedor = em.merge(proveedor);
@@ -215,5 +219,5 @@ public class ProveedorJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

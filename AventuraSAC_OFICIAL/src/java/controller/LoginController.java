@@ -113,6 +113,8 @@ public class LoginController {
 
         String usuario = request.getParameter("txtusuario");
         String clave = request.getParameter("txtclave");
+        String tipo = request.getParameter("txttipo");
+        
 
         List<Empleado> lista = repo1.findEmpleadoEntities();
         List<Cliente> lista1 = repo.findClienteEntities();

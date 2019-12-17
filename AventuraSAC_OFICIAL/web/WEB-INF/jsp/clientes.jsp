@@ -61,7 +61,7 @@
 
                                     <td scope="col-2">
 
-                                        <a  href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button"  href="editarcliente.htm?id=${item.idCliente}"><i class="fas fa-edit"></i></a> 
+                                        <a  href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button" ><i class="fas fa-edit"></i></a> 
                                         <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
                                     </td>
 

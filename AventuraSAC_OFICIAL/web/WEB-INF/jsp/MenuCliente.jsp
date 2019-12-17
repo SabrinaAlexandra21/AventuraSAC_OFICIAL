@@ -8,7 +8,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Menu Principal Trabajador</title>
+        <title>Menu Principal Cliente</title>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
         <meta name="description" content="" />
@@ -19,9 +19,10 @@
 
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="menucliente.html">Aventura S.A.C.</a>
             <nav>
                 <a href="#menu">Menu</a>
+                
             </nav>
         </header>
 

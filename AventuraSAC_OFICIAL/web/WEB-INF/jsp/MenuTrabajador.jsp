@@ -12,18 +12,23 @@
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/js/bootstrap.min.js" />" rel="stylesheet">
-       
+
     </head>
     <body class="is-preload">
 
         <!-- Header -->
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            
+                <a class="logo" href="menu.html">Aventura S.A.C.</a>
+                
+                <div>${usuario.idCargo.detalle}</div>
+         
             <nav>
                 <a href="#menu">Menu</a>
             </nav>
+                
         </header>
-        
+
         <nav id="menu">
             <ul class="links">
                 <li><a href="menucliente.htm">Home</a></li>
