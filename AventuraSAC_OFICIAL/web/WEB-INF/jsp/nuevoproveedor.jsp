@@ -35,11 +35,11 @@
                         </div>
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc" cssClass="form-control" required="required"/>
+                            <form:input path="ruc" cssClass="form-control" required="required" type="number" min="10000000000" maxlength="99999999991"/>
                         </div>
                         <div>
                             <label for="idDistrito">Distrito:</label>
-                            <form:select path="idDistrito.idDistrito" id="idDistrito" >
+                            <form:select path="idDistrito.idDistrito" id="idDistrito" required="required">
                                 <c:forEach items="${listarDistrito}" var="x" >
                                     <option value="${x.idDistrito}">${x.detalle}</option>
                                 </c:forEach>
@@ -56,12 +56,12 @@
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control" required="required"/>
+                            <form:input path="telefono" cssClass="form-control" required="required" type="number" min="0000000" maxlength="999999999"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control"  required="required"/>
+                            <form:input path="correo" cssClass="form-control"  required="required" type="email"/>
                         </div>
                         
                         <input type="submit" class="btn btn-primary"  value="Registrar">

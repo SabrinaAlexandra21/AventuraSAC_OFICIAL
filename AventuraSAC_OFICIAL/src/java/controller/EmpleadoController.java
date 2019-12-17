@@ -105,7 +105,7 @@ public class EmpleadoController {
         
         int id = Integer.parseInt(request.getParameter("id"));
         
-        model.entities.Empleado obj = repo.findEmpleado(id);
+        Empleado obj = repo.findEmpleado(id);
 
         ModelAndView mv = new ModelAndView();
         
@@ -127,7 +127,7 @@ public class EmpleadoController {
     
     @RequestMapping(value = "editarempleado.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarEmpleado(@ModelAttribute("empleado") model.entities.Empleado c) throws Exception {
+    public ModelAndView EditarEmpleado(@ModelAttribute("empleado") Empleado c) throws Exception {
         
         repo.edit(c);
 

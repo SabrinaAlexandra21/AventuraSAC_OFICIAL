@@ -33,16 +33,16 @@
                 <div class="card-body">
                     <form:form method="post" modelAttribute="cliente">
 
-                        <form:hidden path="idCliente" value="${cliente.idCliente}"/>
+                        <form:hidden path="idCliente" value="${cliente.idCliente}" required="required"/>
 
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" value="${cliente.razonSocial}" />
+                            <form:input path="razonSocial" cssClass="form-control" value="${cliente.razonSocial}" required="required"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" />
+                            <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" required="required"/>
                         </div>
                         
                         <div>
@@ -50,7 +50,7 @@
                             <form:select path="idDistrito.idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
                                     <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
-                                        <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                        <option value="${x.idDistrito}" selected="selected" required="required">${x.detalle}</option>
                                     </c:if>
                                     <c:if test="${x.idDistrito != cliente.idDistrito.idDistrito}">
                                         <option value="${x.idDistrito}">${x.detalle}</option>
@@ -62,19 +62,19 @@
                         <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion"  cssClass="form-control" value="${cliente.direccion}" />
+                            <form:input path="direccion"  cssClass="form-control" value="${cliente.direccion}" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <form:input path="telefono" cssClass="form-control" value="${cliente.telefono}" />
+                            <form:input path="telefono" cssClass="form-control" value="${cliente.telefono}" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control" value="${cliente.correo}"/>
+                            <form:input path="correo" cssClass="form-control" value="${cliente.correo}" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="broker">Broker:</label>
-                            <form:input path="broker" cssClass="form-control"   value="${cliente.broker}"/>
+                            <form:input path="broker" cssClass="form-control"   value="${cliente.broker}" required="required"/>
                         </div>
                         <form:hidden path="usuario" value="${cliente.usuario}" />
                         <form:hidden path="clave" value="${cliente.clave}" />

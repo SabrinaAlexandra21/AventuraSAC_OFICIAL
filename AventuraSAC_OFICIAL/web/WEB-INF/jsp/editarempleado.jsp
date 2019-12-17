@@ -15,7 +15,7 @@
     </head>
     <body id="bodys">
         <header id="header">
-            <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
+            <a class="logo" href="menu.html">Aventura S.A.C.</a>
             
         </header>
         
@@ -30,26 +30,26 @@
                 <div class="card-body">
                     <form:form method="post" modelAttribute="empleado">
                         
-                        <form:hidden path="idEmpleado" value="${empleado.idEmpleado}"/>
+                        <form:hidden path="idEmpleado" value="${empleado.idEmpleado}" required="required"/>
                         
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <form:input path="dni" cssClass="form-control" value="${empleado.dni}"/>
+                            <form:input path="dni" cssClass="form-control" value="${empleado.dni}" required="required"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <form:input path="nombre" cssClass="form-control" value="${empleado.nombre}"/>
+                            <form:input path="nombre" cssClass="form-control" value="${empleado.nombre}" required="required"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="apellidoPaterno">Apellido Paterno:</label>
-                            <form:input path="apellidoPaterno" cssClass="form-control"  value="${empleado.apellidoPaterno}"/>
+                            <form:input path="apellidoPaterno" cssClass="form-control"  value="${empleado.apellidoPaterno}" required="required"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}" />
+                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}" required="required"/>
                         </div>
                         
                         <div>
@@ -57,7 +57,7 @@
                             <form:select path="idArea.idArea" id="idArea">
                                 <c:forEach items="${lista}" var="x">
                                     <c:if test="${x.idArea == empleado.idArea.idArea}">
-                                        <option value="${x.idArea}" selected="selected">${x.detalle}</option>
+                                        <option value="${x.idArea}" selected="selected" required="required">${x.detalle}</option>
                                     </c:if>
                                     <c:if test="${x.idArea != empleado.idArea.idArea}">
                                         <option value="${x.idArea}">${x.detalle}</option>
@@ -72,7 +72,7 @@
                             <form:select path="idCargo.idCargo" id="idCargo">
                                 <c:forEach items="${listaCargo}" var="x">
                                     <c:if test="${x.idCargo == empleado.idCargo.idCargo}">
-                                        <option value="${x.idCargo}" selected="selected">${x.detalle}</option>
+                                        <option value="${x.idCargo}" selected="selected" required="required">${x.detalle}</option>
                                     </c:if>
                                     <c:if test="${x.idCargo != empleado.idCargo.idCargo}">
                                         <option value="${x.idCargo}">${x.detalle}</option>
@@ -85,7 +85,7 @@
                         <br>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}"/>
+                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}" required="required"/>
                         </div>
                         
                         <form:hidden path="usuario" value="${empleado.usuario}" />

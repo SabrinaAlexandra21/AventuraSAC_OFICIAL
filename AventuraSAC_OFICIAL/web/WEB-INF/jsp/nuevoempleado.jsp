@@ -29,7 +29,7 @@
                     <form:form method="post" modelAttribute="empleado">
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <form:input path="dni" cssClass="form-control" placeholder="Ingresar DNI"/>
+                            <form:input path="dni" cssClass="form-control" placeholder="Ingresar DNI" type="number" min="00000000" maxlength="99999999"/>
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
@@ -37,15 +37,15 @@
                         </div>
                         <div class="form-group">
                             <label for="apellidoPaterno">Apellido Paterno:</label>
-                            <form:input path="apellidoPaterno" cssClass="form-control"  placeholder="Ingresar apellido paterno"/>
+                            <form:input path="apellidoPaterno" cssClass="form-control"  placeholder="Ingresar apellido paterno" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control"  placeholder="Ingresar apellido materno"/>
+                            <form:input path="apellidoMaterno" cssClass="form-control"  placeholder="Ingresar apellido materno" required="required"/>
                         </div>
                         <div>
                             <label for="idArea">Área</label><br>
-                            <form:select path="idArea.idArea" id="idArea">
+                            <form:select path="idArea.idArea" id="idArea" required="required">
                                 <c:forEach items="${lista}" var="x">
                                     <option value="${x.idArea}">${x.detalle}</option>
                                 </c:forEach>
@@ -54,7 +54,7 @@
                         <br>
                         <div>
                             <label for="idCargo">Cargo:</label><br>
-                            <form:select path="idCargo.idCargo" id="idCargo">
+                            <form:select path="idCargo.idCargo" id="idCargo" required="required">
                                 <c:forEach items="${listaCargo}" var="x">
                                     <option value="${x.idCargo}">${x.detalle}</option>
                                 </c:forEach>
@@ -63,15 +63,15 @@
                         <br>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control" placeholder="Ingresar número de teléfono"/>
+                            <form:input path="telefono" cssClass="form-control" placeholder="Ingresar número de teléfono" type="number" min="0000000" maxlength="999999999"/>
                         </div>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
-                            <form:input path="usuario" cssClass="form-control" placeholder="Ingresar nombre de usuario"/>
+                            <form:input path="usuario" cssClass="form-control" placeholder="Ingresar nombre de usuario" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" placeholder="*********" />
+                            <form:password path="clave" cssClass="form-control" placeholder="*********" required="required"/>
                         </div>
                         <input type="submit" class="btn btn-primary"  value="Registrar">
                         <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
