@@ -25,16 +25,16 @@
                 <div class="card-body">
                     <form:form method="post" modelAttribute="proveedor">
 
-                        <form:hidden path="idProveedor" value="${proveedor.idProveedor}"/>
+                        <form:hidden path="idProveedor" value="${proveedor.idProveedor}" />
 
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" value="${proveedor.razonSocial}"/>
+                            <form:input path="razonSocial" cssClass="form-control" value="${proveedor.razonSocial}" type="text" minlength="3" maxlength="25" required="required"/>
                         </div>
 
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc" cssClass="form-control" value="${proveedor.ruc}"/>
+                            <form:input path="ruc" cssClass="form-control" value="${proveedor.ruc}" min="10000000000" maxlength="99999999999" required="required"/>
                         </div>
 
                         <div>
@@ -42,10 +42,10 @@
                             <form:select path="idDistrito.idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
                                     <c:if test="${x.idDistrito == proveedor.idDistrito.idDistrito}">
-                                        <option value="${x.idDistrito}" selected="selected">${x.detalle}</option>
+                                        <option value="${x.idDistrito}" selected="selected" required="required">${x.detalle}</option>
                                     </c:if>
                                     <c:if test="${x.idDistrito != proveedor.idDistrito.idDistrito}">
-                                        <option value="${x.idDistrito}">${x.detalle}</option>
+                                        <option value="${x.idDistrito}" required="required">${x.detalle}</option>
                                     </c:if>
                                 </c:forEach>
                             </form:select > 
@@ -54,24 +54,24 @@
                         <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion" cssClass="form-control" value="${proveedor.direccion}" />
+                            <form:input path="direccion" cssClass="form-control" value="${proveedor.direccion}" maxlength="30" required="required"/>
                         </div>
 
                         <br>
                         <div>
                             <label for="contacto">Contacto:</label><br>
-                            <form:input path="contacto" cssClass="form-control"  value="${proveedor.contacto}"/>
+                            <form:input path="contacto" cssClass="form-control"  value="${proveedor.contacto}" maxlength="30" required="required"/>
                         </div>
 
                         <br>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"  value="${proveedor.telefono}"/>
+                            <form:input path="telefono" cssClass="form-control"  value="${proveedor.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
                         </div>
 
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control"  value="${proveedor.correo}"/>
+                            <form:input path="correo" cssClass="form-control"  value="${proveedor.correo}" maxlength="30" required="required" type="email"/>
                         </div>
 
                         <input type="submit" class="btn btn-primary"  value="Guardar">

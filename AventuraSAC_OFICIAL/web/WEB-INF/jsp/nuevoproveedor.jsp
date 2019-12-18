@@ -31,7 +31,7 @@
                         
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" required="required"/>
+                            <form:input path="razonSocial" cssClass="form-control" type="text" minlength="3" maxlength="25" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
@@ -39,20 +39,20 @@
                         </div>
                         <div>
                             <label for="idDistrito">Distrito:</label>
-                            <form:select path="idDistrito.idDistrito" id="idDistrito" required="required">
+                            <form:select path="idDistrito.idDistrito" id="idDistrito" >
                                 <c:forEach items="${listarDistrito}" var="x" >
-                                    <option value="${x.idDistrito}">${x.detalle}</option>
+                                    <option value="${x.idDistrito}" required="required">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion" cssClass="form-control" required="required"/>
+                            <form:input path="direccion" cssClass="form-control" maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="contacto">Contacto:</label>
-                            <form:input path="contacto" cssClass="form-control" required="required"/>
+                            <form:input path="contacto" cssClass="form-control" maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
@@ -61,7 +61,7 @@
                         
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control"  required="required" type="email"/>
+                            <form:input path="correo" cssClass="form-control"  maxlength="30" required="required" type="email"/>
                         </div>
                         
                         <input type="submit" class="btn btn-primary"  value="Registrar">

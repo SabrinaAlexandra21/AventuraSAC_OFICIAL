@@ -1,6 +1,7 @@
 
 package controller;
 
+import com.google.gson.Gson;
 import model.controllers.ClienteJpaController;
 import model.entities.Cliente;
 import java.util.ArrayList;
@@ -18,6 +19,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Distrito;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class ClienteController {
@@ -127,6 +130,26 @@ public class ClienteController {
         return new ModelAndView("redirect:/clientes.htm");
     }
     
+    
+    @RequestMapping(value = "obtienecliente.htm", method = RequestMethod.GET)
+    public @ResponseBody
+    String obtenerCliente(@RequestParam(value="id") String id) {
+        // Obtenemos el cliente
+        Cliente c = repo.findCliente(Integer.parseInt(id));
+        // Asignamos nulo a los datos que se refieren a otras tablas
+        c.setPedidoList(null);
+        c.setIdDistrito(null);
+        // Obtenemos la información en formato JSON usando la librería Json
+        return new Gson().toJson(c);
+    }
+    
+    @RequestMapping(value = "obtienecliente.htm", method = RequestMethod.POST)
+    public ModelAndView obtenerCliente(@ModelAttribute("cliente") Cliente c) throws Exception {
+        
+        repo.edit(c);
+
+        return new ModelAndView("redirect:/clientes.htm");
+    }
 
 
 }

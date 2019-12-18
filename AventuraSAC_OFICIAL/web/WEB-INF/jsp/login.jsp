@@ -52,7 +52,7 @@
 
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
-                            ¿No tienes una cuenta?  <a href="#" id="registrar" role="button" > Regístrate</a>
+                            ¿No tienes una cuenta?  <a href="#" id="registrar1" role="button" > Regístrate</a>
                         </div>
                         <div class="d-flex justify-content-center links" id="reg">
                             <a href="#">Olvidaste tu contraseña?</a>
@@ -80,17 +80,17 @@
 
                             <div class="form-group">
                                 <label for="razonSocial">Razón Social:</label>
-                                <input type="text" name="razonSocial" id="razonS" />
+                                <input type="text" name="razonSocial" id="razonSocial" />
                             </div>
 
                             <div class="form-group">
                                 <label for="ruc">RUC:</label>
-                                <input type="text" name="ruc"  id="rucC" value="" />
+                                <input type="text" name="ruc"  id="ruc" />
                             </div>
 
                             <div>
                                 <label for="idDistrito">Distrito:</label>
-                                <select name="idDistrito.idDistrito" id="idDistrito">
+                                <select name="idDistrito.idDistrito" >
                                     <c:forEach items="${listaDistrito}" var="x">
                                         <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
                                             <option value="${x.idDistrito}" selected="selected" id="idDistrito">${x.detalle}</option>
@@ -105,24 +105,24 @@
                             <br>
                             <div class="form-group">
                                 <label for="direccion">Dirección:</label>
-                                <input type="text" name="direccion" id="direccionC" value="" />
+                                <input type="text" name="direccion" id="direccion"  />
                             </div>
                             <div class="form-group">
                                 <label for="telefono">Teléfono</label>
-                                <input type="text" name="telefono" id="telefonoC" value="" />
+                                <input type="text" name="telefono" id="telefono" />
                             </div>
                             <div class="form-group">
                                 <label for="correo">Correo:</label>
-                                <input type="text" name="correo" id="correoC" value=""/>
+                                <input type="text" name="correo" id="correo" />
                             </div>
                             <div class="form-group">
                                 <label for="broker">Broker:</label>
-                                <input type="text" name="broker" id="brokerC"   value=""/>
+                                <input type="text" name="broker" id="broker"  />
                             </div>
                             <input type="hidden" name="usuario" value="" />
                             <input type="hidden" name="clave" value="" />
 
-                            <input type="submit" class="btn btn-primary"  value="Guardar">
+                            <button onclick="registrar()" class="btn btn-primary"  type="button" value="Guardar"></button>
                             <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
                         </form>
                     </div>
@@ -137,11 +137,54 @@
 
 
         <script>
-            $('#registrar').on('click', function(){
+            $('#registrar1').on('click', function () {
 
                 $('#myModal').modal('show');
+                
+                var razonSocial = ${'#razonSocial'}.val();
+                    var ruc = ${'#ruc'}.val();
 
+                    var direccion = ${'#direccion'}.val();
+                    var telefono = ${'#telefono'}.val();
+                    var correo = ${'#correo'}.val();
+                    var broker = ${'#broker'}.val();
+                    var usuario = ${'#usuario'}.val();
+                    var clave = ${'#clave'}.val();
 
+                function registrar() {
+
+                    $.ajax({
+                        type: 'POST',
+                        url: 'nuevo.htm',
+                        data: {
+
+                            'razonSocial': razonSocial,
+                            'ruc': ruc,
+
+                            'direccion': direccion,
+                            'telefono': telefono,
+                            'correo': correo,
+                            'broker': broker,
+                            'usuario': usuario,
+                            'clave': clave
+                        },
+                        success: function (data) {
+                            alert('los datos fueron agrupados con exito');
+            ${'#razonSocial'}.val("");
+            ${'#ruc'}.val("");
+
+            ${'#direccion'}.val("");
+            ${'#telefono'}.val("");
+            ${'#correo'}.val("");
+            ${'#broker'}.val("");
+            ${'#usuario'}.val("");
+            ${'#clave'}.val("");
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            alert("error:" + textStatus + " exception:" + errorThrown);
+                        }
+                    });
+                }
 
             });
         </script>

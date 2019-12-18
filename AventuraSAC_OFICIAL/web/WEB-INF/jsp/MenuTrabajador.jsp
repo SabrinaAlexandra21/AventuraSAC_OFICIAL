@@ -33,12 +33,14 @@
             <ul class="links">
                 <li><a href="menucliente.htm">Home</a></li>
                 <li><a href="quienessomos.htm">Quienes Somos</a></li>
-                <li><a href="#">Mantenimientos</a>
+                <li><a href="#man">Mantenimientos</a>
+                    
                     <ul>
                         <li><a href="clientes.htm">Clientes</a></li>
                         <li><a href="empleados.htm">Empleados</a></li>
                         <li><a href="proveedores.htm">Proveedores</a></li>
                     </ul>
+               
                 </li>
             </ul>
         </nav>

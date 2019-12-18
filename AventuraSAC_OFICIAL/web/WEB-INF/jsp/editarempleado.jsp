@@ -34,22 +34,22 @@
                         
                         <div class="form-group">
                             <label for="dni">DNI:</label>
-                            <form:input path="dni" cssClass="form-control" value="${empleado.dni}" required="required"/>
+                            <form:input path="dni" cssClass="form-control" value="${empleado.dni}" type="number" min="00000000" max="99999999" required="required"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <form:input path="nombre" cssClass="form-control" value="${empleado.nombre}" required="required"/>
+                            <form:input path="nombre" cssClass="form-control" value="${empleado.nombre}" type="text"  maxlength="25" required="required" />
                         </div>
                         
                         <div class="form-group">
                             <label for="apellidoPaterno">Apellido Paterno:</label>
-                            <form:input path="apellidoPaterno" cssClass="form-control"  value="${empleado.apellidoPaterno}" required="required"/>
+                            <form:input path="apellidoPaterno" cssClass="form-control"  value="${empleado.apellidoPaterno}"  maxlength="30" required="required"/>
                         </div>
                         
                         <div class="form-group">
                             <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}" required="required"/>
+                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}"  maxlength="30" required="required"/>
                         </div>
                         
                         <div>
@@ -85,7 +85,7 @@
                         <br>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}" required="required"/>
+                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
                         </div>
                         
                         <form:hidden path="usuario" value="${empleado.usuario}" />

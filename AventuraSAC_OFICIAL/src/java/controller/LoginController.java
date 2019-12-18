@@ -1,5 +1,6 @@
 package controller;
 
+import com.google.gson.Gson;
 import java.util.List;
 import javafx.scene.control.Alert;
 import javax.persistence.EntityManager;
@@ -8,13 +9,17 @@ import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.controllers.ClienteJpaController;
+import model.controllers.DistritoJpaController;
 import model.controllers.EmpleadoJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Cliente;
+import model.entities.Distrito;
 import model.entities.Empleado;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
@@ -24,11 +29,13 @@ public class LoginController {
     private EntityManagerFactory emf;
     private ClienteJpaController repo;
     private EmpleadoJpaController repo1;
+    private DistritoJpaController repo2;
 
     public LoginController() {
         em = getEntityManager();
         repo = new ClienteJpaController(emf);
         repo1 = new EmpleadoJpaController(emf);
+        repo2 = new DistritoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -113,14 +120,14 @@ public class LoginController {
 
         String usuario = request.getParameter("txtusuario");
         String clave = request.getParameter("txtclave");
-        String tipo = request.getParameter("txttipo");
         
 
         List<Empleado> lista = repo1.findEmpleadoEntities();
         List<Cliente> lista1 = repo.findClienteEntities();
 
-        boolean encontrado = false;
-
+        boolean encontrado = true;
+        
+        if(encontrado == true) {
         for (Empleado e : lista) {
             if (e.getUsuario().equals(usuario) && e.getClave().equals(clave)) {
                 encontrado = true;
@@ -129,7 +136,8 @@ public class LoginController {
                 break;
             }
         }
-        if (encontrado == false) {
+        }
+        else if (encontrado == false) {
             for (Cliente c : lista1) {
                 if (c.getUsuario().equals(usuario) && c.getClave().equals(clave)) {
                     mv.addObject("usuario", c);
@@ -149,5 +157,24 @@ public class LoginController {
         }
 
         return mv;
+    }
+    
+    /*@RequestMapping(value = "nuevo.htm", method = RequestMethod.GET)
+    public @ResponseBody
+    String obtenerCliente() {
+        
+        List<Distrito> distritos = repo2.findDistritoEntities();
+
+
+        return new Gson().toJson(c);
+    }*/
+    
+    @RequestMapping(value = "nuevo.htm", method = RequestMethod.POST)
+    
+    public ModelAndView Nuevo(@ModelAttribute("cliente") Cliente c) throws Exception{
+        
+        repo.create(c);
+        
+        return new ModelAndView("redirect:/clientes.htm");
     }
 }

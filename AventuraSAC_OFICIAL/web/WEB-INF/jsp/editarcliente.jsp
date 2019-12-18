@@ -33,20 +33,20 @@
                 <div class="card-body">
                     <form:form method="post" modelAttribute="cliente">
 
-                        <form:hidden path="idCliente" value="${cliente.idCliente}" required="required"/>
+                        <form:hidden path="idCliente" value="${cliente.idCliente}" />
 
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" value="${cliente.razonSocial}" required="required"/>
+                            <form:input path="razonSocial" cssClass="form-control" value="${cliente.razonSocial}" type="text" minlength="3" maxlength="25" required="required" />
                         </div>
                         
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" required="required"/>
+                            <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" type="number" min="10000000000" man="99999999999" required="required"/>
                         </div>
                         
                         <div>
-                            <label for="idDistrito">Distrito:</label><br>
+                            <label for="idDistrito">Distrito:</label>
                             <form:select path="idDistrito.idDistrito" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
                                     <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
@@ -62,19 +62,19 @@
                         <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion"  cssClass="form-control" value="${cliente.direccion}" required="required"/>
+                            <form:input path="direccion"  cssClass="form-control" value="${cliente.direccion}" maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono</label>
-                            <form:input path="telefono" cssClass="form-control" value="${cliente.telefono}" required="required"/>
+                            <form:input path="telefono" cssClass="form-control" value="${cliente.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control" value="${cliente.correo}" required="required"/>
+                            <form:input path="correo" cssClass="form-control" value="${cliente.correo}" maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="broker">Broker:</label>
-                            <form:input path="broker" cssClass="form-control"   value="${cliente.broker}" required="required"/>
+                            <form:input path="broker" cssClass="form-control"   value="${cliente.broker}" maxlength="30" required="required"/>
                         </div>
                         <form:hidden path="usuario" value="${cliente.usuario}" />
                         <form:hidden path="clave" value="${cliente.clave}" />

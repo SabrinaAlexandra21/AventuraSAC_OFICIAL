@@ -33,30 +33,30 @@
                         </div>
                         <div class="form-group">
                             <label for="nombre">Nombre:</label>
-                            <form:input path="nombre" cssClass="form-control" placeholder="Ingresar nombre"/>
+                            <form:input path="nombre" cssClass="form-control" placeholder="Ingresar nombre" maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="apellidoPaterno">Apellido Paterno:</label>
-                            <form:input path="apellidoPaterno" cssClass="form-control"  placeholder="Ingresar apellido paterno" required="required"/>
+                            <form:input path="apellidoPaterno" cssClass="form-control"  placeholder="Ingresar apellido paterno" maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control"  placeholder="Ingresar apellido materno" required="required"/>
+                            <form:input path="apellidoMaterno" cssClass="form-control"  placeholder="Ingresar apellido materno" maxlength="30" required="required"/>
                         </div>
                         <div>
                             <label for="idArea">Área</label><br>
-                            <form:select path="idArea.idArea" id="idArea" required="required">
+                            <form:select path="idArea.idArea" id="idArea" >
                                 <c:forEach items="${lista}" var="x">
-                                    <option value="${x.idArea}">${x.detalle}</option>
+                                    <option value="${x.idArea}" required="required">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
                         </div>
                         <br>
                         <div>
                             <label for="idCargo">Cargo:</label><br>
-                            <form:select path="idCargo.idCargo" id="idCargo" required="required">
+                            <form:select path="idCargo.idCargo" id="idCargo" >
                                 <c:forEach items="${listaCargo}" var="x">
-                                    <option value="${x.idCargo}">${x.detalle}</option>
+                                    <option value="${x.idCargo}" required="required">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
                         </div>
@@ -67,11 +67,11 @@
                         </div>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
-                            <form:input path="usuario" cssClass="form-control" placeholder="Ingresar nombre de usuario" required="required"/>
+                            <form:input path="usuario" cssClass="form-control" placeholder="Ingresar nombre de usuario"  maxlength="20" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" placeholder="*********" required="required"/>
+                            <form:password path="clave" cssClass="form-control" placeholder="*********" maxlength="10" required="required"/>
                         </div>
                         <input type="submit" class="btn btn-primary"  value="Registrar">
                         <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>

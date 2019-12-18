@@ -32,6 +32,7 @@
                 <prop key="nuevocliente.htm">clienteController</prop>
                 <prop key="editarcliente.htm">clienteController</prop>
                 <prop key="eliminarcliente.htm">clienteController</prop>
+                <prop key="obtenercliente.htm">clienteController</prop>
                 
                 <prop key="empleados.htm">empleadoController</prop>
                 <prop key="nuevoempleado.htm">empleadoController</prop>

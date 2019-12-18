@@ -52,44 +52,44 @@
                     <form:form method="post" modelAttribute="cliente">
                         <div class="form-group">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" />
+                            <form:input path="razonSocial" cssClass="form-control" type="text" minlength="3" maxlength="25" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc" type="number" cssClass="form-control" min="10000000000" maxlength="99999999991"/>
+                            <form:input path="ruc" type="number" cssClass="form-control" min="10000000000" maxlength="99999999999" required="required"/>
                         </div>
                         <div>
                             <label for="idDistrito">Distrito:</label>
-                            <form:select path="idDistrito.idDistrito" id="idDistrito" required="required">
+                            <form:select path="idDistrito.idDistrito" id="idDistrito" >
                                 <c:forEach items="${listaDistrito}" var="x">
-                                    <option value="${x.idDistrito}">${x.detalle}</option>
+                                    <option value="${x.idDistrito}" required="required">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
                         </div>
                         <br>
                         <div class="form-group">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion" cssClass="form-control"  required="required"/>
+                            <form:input path="direccion" cssClass="form-control"  maxlength="30" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"   required="required"/>
+                            <form:input path="telefono" cssClass="form-control"  type="number" min="0000000" maxlength="999999999" required="required"/>
                         </div>
                         <div class="form-group">
                             <label for="broker">Broker:</label>
-                            <form:input path="broker" cssClass="form-control" required="required" />
+                            <form:input path="broker" cssClass="form-control" maxlength="30" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control" required="required" type="email"/>
+                            <form:input path="correo" cssClass="form-control" maxlength="30" required="required" type="email"/>
                         </div>
                         <div class="form-group">
                             <label for="usuario">Usuario:</label>
-                            <form:input path="usuario"  cssClass="form-control" required="required" />
+                            <form:input path="usuario"  cssClass="form-control" maxlength="20" required="required" />
                         </div>
                         <div class="form-group">
                             <label for="clave">Clave:</label>
-                            <form:password path="clave" cssClass="form-control" placeholder="*********" />
+                            <form:password path="clave" cssClass="form-control" maxlength="15" required="required" placeholder="*********" />
                         </div>
                         <input type="submit" class="btn btn-primary"  value="Registrar">
                         <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>

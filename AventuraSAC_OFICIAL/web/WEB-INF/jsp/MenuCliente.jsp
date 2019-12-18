@@ -37,7 +37,7 @@
         <!-- Banner -->
         <section id="banner">
             <div class="inner">
-                <h1>BIENVENIDO ${usuario.apellidoPaterno}</h1>
+                <h1>BIENVENIDO ${usuario.razonSocial}</h1>
                 <p>Estas en Aventura S.A.C. una de las empresas lideres en confección<br />
                     a nivel nacional, con la garantia de materiales y acabados de calidad.</p>
             </div>

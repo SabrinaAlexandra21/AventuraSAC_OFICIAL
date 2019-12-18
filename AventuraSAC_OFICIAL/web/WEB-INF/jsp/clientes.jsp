@@ -50,18 +50,19 @@
                         <tbody>
                             <c:forEach var="item" items="${clientes}">
                                 <tr>
-                                    <th scope="row" id="id">${item.idCliente}</th>
-                                    <td id="razon">${item.razonSocial}</td>
-                                    <td id="ruc">${item.ruc}</td>
-                                    <td id="distrito">${item.idDistrito.detalle}</td>
-                                    <td id="direccion">${item.direccion}</td>
-                                    <td id="telefono">${item.telefono}</td>
-                                    <td id="correo">${item.correo}</td>
-                                    <td id="broker">${item.broker}</td>
+                                    <th scope="row" >${item.idCliente}</th>
+                                    <td >${item.razonSocial}</td>
+                                    <td >${item.ruc}</td>
+                                    <td >${item.idDistrito.detalle}</td>
+                                    <td >${item.direccion}</td>
+                                    <td >${item.telefono}</td>
+                                    <td >${item.correo}</td>
+                                    <td >${item.broker}</td>
 
                                     <td scope="col-2">
 
-                                        <a  href="editarcliente.htm?id=${item.idCliente}" class="btn btn-info" role="button" ><i class="fas fa-edit"></i></a> 
+                                        <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
+                                        <!--  <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}', '${item.idDistrito.idDistrito}')" ><i class="fas fa-edit"></i></button>  -->
                                         <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
                                     </td>
 
@@ -87,17 +88,17 @@
                             </div>
                             <div class="modal-body">
 
-                                <form id="mod">
-                                    <input type="text" name="idCliente" id="idcliente"/>
+                                <form id="mod" action="obtienecliente.htm" method="post">
+                                    <input type="hidden" name="idCliente" id="idcliente"/>
 
                                     <div class="form-group">
                                         <label for="razonSocial">Razón Social:</label>
-                                        <input type="text" name="razonSocial" id="razonS" />
+                                        <input type="text" name="razonSocial" id="razonSocial"  minlength="3" maxlength="40" required="required"/>
                                     </div>
 
                                     <div class="form-group">
                                         <label for="ruc">RUC:</label>
-                                        <input type="text" name="ruc"  id="rucC" value="" />
+                                        <input type="text" name="ruc" min="10000000000" man="99999999999" required pattern="[00000000000-99999999999]" />
                                     </div>
 
                                     <div>
@@ -105,10 +106,10 @@
                                         <select name="idDistrito.idDistrito" >
                                             <c:forEach items="${listaDistrito}" var="x">
                                                 <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
-                                                    <option value="${x.idDistrito}" selected="selected" id="idDistrito">${x.detalle}</option>
+                                                    <option value="${x.idDistrito}" selected="selected" id="idDistrito" required>${x.detalle}</option>
                                                 </c:if>
                                                 <c:if test="${x.idDistrito != cliente.idDistrito.idDistrito}">
-                                                    <option value="${x.idDistrito}" id="idDistrito">${x.detalle}</option>
+                                                    <option value="${x.idDistrito}" id="idDistrito" required>${x.detalle}</option>
                                                 </c:if>
                                             </c:forEach>
                                         </select > 
@@ -117,22 +118,22 @@
                                     <br>
                                     <div class="form-group">
                                         <label for="direccion">Dirección:</label>
-                                        <input type="text" name="direccion" id="direccionC" value="" />
+                                        <input type="text" name="direccion" id="direccion" maxlength="30" required="required" />
                                     </div>
                                     <div class="form-group">
                                         <label for="telefono">Teléfono</label>
-                                        <input type="text" name="telefono" id="telefonoC" value="" />
+                                        <input type="number" name="telefono" id="telefono" min="0000000" maxlength="999999999" />
                                     </div>
                                     <div class="form-group">
                                         <label for="correo">Correo:</label>
-                                        <input type="text" name="correo" id="correoC" value=""/>
+                                        <input type="email" name="correo" id="correo" required="required"/>
                                     </div>
                                     <div class="form-group">
                                         <label for="broker">Broker:</label>
-                                        <input type="text" name="broker" id="brokerC"   value=""/>
+                                        <input type="text" name="broker" id="broker" maxlength="20" required="required"/>
                                     </div>
-                                    <input type="hidden" name="usuario" value="" />
-                                    <input type="hidden" name="clave" value="" />
+                                    <input type="hidden" name="usuario" id="usuario" value="" />
+                                    <input type="hidden" name="clave" id="clave" value="" />
 
                                     <input type="submit" class="btn btn-primary"  value="Guardar">
                                     <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
@@ -147,21 +148,31 @@
                 </div>
 
                 <script>
-                    function editar(id, razon, ruc, distrito, direccion, telefono, correo, broker) {
-
-                        $('#myModal').modal('show');
-
+                    function editar(id, iddistrito) {
                         $("#idcliente").val(id);
-                        $("#razonS").val(razon);
-                        $("#rucC").val(ruc);
-                        $("#idDistrito").val(distrito);
-                        $("#direccionC").val(direccion);
-                        $("#telefonoC").val(telefono);
-                        $("#correoC").val(correo);
-                        $("#brokerC").val(broker);
- 
 
-                    }  
+                        $.ajax({
+                            type: 'get',
+                            url: 'obtienecliente.htm',
+                            data: {id: id},
+                            success: function (response) {
+                                var obj = JSON.parse(response.toString('utf8'));
+                                $('#razonSocial').val(obj.razonSocial);
+                                $('#ruc').val(obj.ruc);
+                                $('#direccion').val(obj.direccion);
+                                $('#telefono').val(obj.telefono);
+                                $('#correo').val(obj.correo);
+                                $('#broker').val(obj.broker);
+                                $('#usuario').val(obj.usuario);
+                                $('#clave').val(obj.clave);
+                                $('#idDistrito').val(iddistrito);
+                                $('#myModal').modal('show');
+                            },
+                            error: function (jqXHR, textStatus, errorThrown) {
+                                alert("error:" + textStatus + " exception:" + errorThrown);
+                            }
+                        });
+                    }
                 </script>
 
             </div>
@@ -179,4 +190,3 @@
     </body>
 
 </html>
-
