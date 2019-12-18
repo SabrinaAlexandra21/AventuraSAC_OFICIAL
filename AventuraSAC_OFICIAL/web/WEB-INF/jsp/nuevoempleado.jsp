@@ -23,10 +23,12 @@
         <div class="container md-8">
             <div class="card" id="carta">
                 <div class="card-header">
-                    <h2>Nuevo Empleado</h2>
+                    <h3>Nuevo Empleado</h3>
                 </div>
                 <div class="card-body">
+                    
                     <form:form method="post" modelAttribute="empleado">
+                        
                         <div class="form-group">
                             <label for="dni">DNI:</label>
                             <form:input path="dni" cssClass="form-control" placeholder="Ingresar DNI" type="number" min="00000000" maxlength="99999999"/>
@@ -73,11 +75,20 @@
                             <label for="clave">Clave:</label>
                             <form:password path="clave" cssClass="form-control" placeholder="*********" maxlength="10" required="required"/>
                         </div>
-                        <input type="submit" class="btn btn-primary"  value="Registrar">
-                        <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
+                        <center>
+                            <div id="botones">
+                                <fieldset id="fiel">
+                                    <legend>¿Qué acción desea realizar?</legend>
+                                    <input type="submit" class="btn btn-primary"  value="Registrar">
+                                    <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
+                                </fieldset>
+                            </div>
+
+                        </center>
                     </form:form>
                 </div>
             </div>
+            <br>
         </div>
     </body>
 </html>

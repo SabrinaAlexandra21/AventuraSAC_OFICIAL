@@ -59,3 +59,49 @@
     background: yellow;
     color: black !important;
 }
+
+#regre {
+    
+    text-decoration: none;
+    border-color: #632432;
+}
+
+#fiel {
+    
+   border: 1px solid black;
+   width: 35%;
+   margin: 1% 32%; 
+    
+}
+
+#botones {
+    
+   margin: 15px;
+   text-align: center;  
+}
+
+#nuevo {
+    
+    background: #6699ff !important;
+}
+
+.btn-primary {
+    width: 30%;
+    color: black !important;
+    background: #f1b0b7 !important; 
+    margin: 10px 10px;
+}
+
+.btn-secondary {
+
+    width: 30%;
+    padding: 11px;
+    margin: 10px 20px;
+    height: 47px;
+    background: #f1b0b7 !important;
+    border-color: black;
+    color: black !important;
+    text-decoration: none;
+    text-align: center;
+}
+

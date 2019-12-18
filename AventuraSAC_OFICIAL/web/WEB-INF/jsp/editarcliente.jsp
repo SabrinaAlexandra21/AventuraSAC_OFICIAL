@@ -79,11 +79,21 @@
                         <form:hidden path="usuario" value="${cliente.usuario}" />
                         <form:hidden path="clave" value="${cliente.clave}" />
 
-                        <input type="submit" class="btn btn-primary"  value="Guardar">
-                        <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                        <center>
+                            <div id="botones">
+                                <fieldset id="fiel">
+                                    <legend>¿Qué acción desea realizar?</legend>
+                                    <input type="submit" class="btn btn-primary"  value="Guardar">
+                                    <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                                </fieldset>
+                            </div>
+
+                        </center>
+                    
                     </form:form>
                 </div>
             </div>
+            <br>
         </div>
     </body>
 </html>

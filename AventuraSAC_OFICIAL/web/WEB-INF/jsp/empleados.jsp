@@ -9,13 +9,13 @@
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
-    
+
     </head>
     <body id="bodys">
         <header id="header">
             <a class="logo" href="MenuPrincipalTrabajador.html">Aventura S.A.C.</a>
             <nav>
-                <a href="#menu">Menu</a>
+                <a href="login.htm">Salir</a>
             </nav>
         </header>
         <div class="container md-8">
@@ -37,7 +37,7 @@
                                 <th scope="col">Área</th>
                                 <th scope="col">Teléfono</th>
                                 <th scope="col">Acciones</th>
-                                
+
                             </tr>
                         </thead>
                         <tbody>
@@ -58,8 +58,10 @@
                             </c:forEach>
                         </tbody>
                     </table>
-                    
-               
+
+                    <center>
+                        <button><a href="menu.htm" id="regre">Regresar al Menú</a></button>
+                    </center>
                 </div>
             </div>
         </div>

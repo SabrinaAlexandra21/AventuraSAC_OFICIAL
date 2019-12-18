@@ -64,11 +64,20 @@
                             <form:input path="correo" cssClass="form-control"  maxlength="30" required="required" type="email"/>
                         </div>
                         
-                        <input type="submit" class="btn btn-primary"  value="Registrar">
-                        <a class="btn btn-secondary" href="proveedores.htm" role="button">Regresar</a>
+                        <center>
+                            <div id="botones">
+                                <fieldset id="fiel">
+                                    <legend>¿Qué acción desea realizar?</legend>
+                                    <input type="submit" class="btn btn-primary"  value="Registrar">
+                                    <a class="btn btn-secondary" href="proveedores.htm" role="button">Regresar</a>
+                                </fieldset>
+                            </div>
+
+                        </center>
                     </form:form>
                 </div>
             </div>
+            <br>
         </div>
     </body>
 </html>

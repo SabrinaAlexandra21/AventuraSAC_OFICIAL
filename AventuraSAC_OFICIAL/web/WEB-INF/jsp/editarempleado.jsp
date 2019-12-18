@@ -91,12 +91,21 @@
                         <form:hidden path="usuario" value="${empleado.usuario}" />
                         <form:hidden path="clave" value="${empleado.clave}" />
                         
-                        <input type="submit" class="btn btn-primary"  value="Guardar">
-                        <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
+                        <center>
+                            <div id="botones">
+                                <fieldset id="fiel">
+                                    <legend>¿Qué acción desea realizar?</legend>
+                                    <input type="submit" class="btn btn-primary"  value="Guardar">
+                                    <a class="btn btn-secondary" href="empleados.htm" role="button">Regresar</a>
+                                </fieldset>
+                            </div>
+
+                        </center>
                         
                     </form:form>
                 </div>
             </div>
+            <br>
         </div>
     </body>
 </html>

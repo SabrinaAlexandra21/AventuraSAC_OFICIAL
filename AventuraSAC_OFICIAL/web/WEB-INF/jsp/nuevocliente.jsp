@@ -91,11 +91,22 @@
                             <label for="clave">Clave:</label>
                             <form:password path="clave" cssClass="form-control" maxlength="15" required="required" placeholder="*********" />
                         </div>
-                        <input type="submit" class="btn btn-primary"  value="Registrar">
-                        <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                        
+                        <center>
+                            <div id="botones">
+                                <fieldset id="fiel">
+                                    <legend>¿Qué acción desea realizar?</legend>
+                                    <input type="submit" class="btn btn-primary"  value="Registrar">
+                                    <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
+                                </fieldset>
+                            </div>
+
+                        </center>
+                        
                     </form:form>
                 </div>
             </div>
+            <br>
         </div>
     </body>
 </html>

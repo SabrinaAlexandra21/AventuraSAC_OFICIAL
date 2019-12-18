@@ -16,29 +16,11 @@
         <header id="header">
             <a class="logo" href="MenuTrabajador.html">Aventura S.A.C.</a>
             <nav>
-                <a href="#menu">Menu</a>
+                <a href="login.htm">Salir</a>
             </nav>
         </header>
         
-        <nav id="menu">
-            <ul class="links">
-                <li><a href="menu.htm">Home</a></li>
-                <li><a href="quienessomos.htm">Quienes Somos</a></li>
-                <li><a href="#">Mantenimientos</a>
-                    <ul>
-                        <li>
-                            <a href="empleados.htm">Empleados</a>
-                        </li>
-                        <li>
-                            <a href="clientes.htm">Cliente</a>
-                        </li>
-                        <li>
-                            <a href="proveedores.htm">Proveedor</a>
-                        </li>
-                    </ul>
-                <li>
-            </ul>
-        </nav>
+        
 
          
         <div class="container md-8">
@@ -78,6 +60,10 @@
                             </c:forEach>
                         </tbody>
                     </table>
+                    <center>
+                        <button><a href="menu.htm" id="regre">Regresar al Menú</a></button>
+                    </center>
+
                 </div>
             </div>
         </div>

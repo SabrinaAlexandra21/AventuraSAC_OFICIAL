@@ -63,18 +63,27 @@
                                     <td >${item.broker}</td>
 
                                     <td scope="col-2">
+                                     
 
                                         <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
                                         <!--  <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}', '${item.idDistrito.idDistrito}')" ><i class="fas fa-edit"></i></button>  -->
                                         <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
                                     </td>
 
-
+                                    
 
                                 </tr>
                             </c:forEach>
+                                
+                        
+                        
                         </tbody>
                     </table>
+                    
+                    <center>
+                        <button><a href="menu.htm" id="regre">Regresar al Menú</a></button>
+                    </center>
+
                 </div>
 
                 <!-- Modal editar -->

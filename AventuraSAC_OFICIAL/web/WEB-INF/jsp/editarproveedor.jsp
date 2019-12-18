@@ -57,9 +57,9 @@
                             <form:input path="direccion" cssClass="form-control" value="${proveedor.direccion}" maxlength="30" required="required"/>
                         </div>
 
-                        <br>
+                     
                         <div>
-                            <label for="contacto">Contacto:</label><br>
+                            <label for="contacto">Contacto:</label>
                             <form:input path="contacto" cssClass="form-control"  value="${proveedor.contacto}" maxlength="30" required="required"/>
                         </div>
 
@@ -73,13 +73,22 @@
                             <label for="correo">Correo:</label>
                             <form:input path="correo" cssClass="form-control"  value="${proveedor.correo}" maxlength="30" required="required" type="email"/>
                         </div>
+                        
+                        <center>
+                            <div id="botones">
+                                <fieldset id="fiel">
+                                    <legend>¿Qué acción desea realizar?</legend>
+                                    <input type="submit" class="btn btn-primary"  value="Guardar">
+                                    <a class="btn btn-secondary" href="proveedores.htm" role="button">Regresar</a>
+                                </fieldset>
+                            </div>
 
-                        <input type="submit" class="btn btn-primary"  value="Guardar">
-                        <a class="btn btn-secondary" href="proveedores.htm" role="button">Regresar</a>
-
+                        </center>
+                       
                     </form:form>
                 </div>
             </div>
+            <br>
         </div>
     </body>
 </html>
