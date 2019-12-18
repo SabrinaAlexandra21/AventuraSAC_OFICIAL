@@ -21,9 +21,12 @@
         <header id="header">
             <a class="logo" href="menu.htm">Aventura S.A.C.</a>
             <nav>
-                <a href="#menu">Menu</a>
+                <a href="login.htm">Salir</a>
             </nav>
         </header>
+        
+        
+        
         <div class="container md-8">
 
             <div class="card" id="carta">

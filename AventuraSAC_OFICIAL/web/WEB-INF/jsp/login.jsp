@@ -43,7 +43,8 @@
                                 <input type="password" name="txtclave" class="form-control input_pass" placeholder="password">
                             </div>
 
-
+                            <input type="hidden" name="txtcargo"  >
+                            
                             <div class="d-flex justify-content-center mt-3 login_container">
                                 <button type="submit" name="button" class="btn login_btn">Login</button>
                             </div>
@@ -52,7 +53,7 @@
 
                     <div class="mt-4">
                         <div class="d-flex justify-content-center links">
-                            ¿No tienes una cuenta?  <a href="#" id="registrar1" role="button" > Regístrate</a>
+                            ¿No tienes una cuenta?  <a href="nuevo.htm" id="registrar1" role="button" > Regístrate</a>
                         </div>
                         <div class="d-flex justify-content-center links" id="reg">
                             <a href="#">Olvidaste tu contraseña?</a>

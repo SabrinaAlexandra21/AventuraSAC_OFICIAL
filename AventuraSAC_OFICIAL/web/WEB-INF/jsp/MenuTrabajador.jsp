@@ -42,6 +42,7 @@
                     </ul>
                
                 </li>
+                <li><a href="login.htm">Salir</a>
             </ul>
         </nav>
         <!-- Nav -->

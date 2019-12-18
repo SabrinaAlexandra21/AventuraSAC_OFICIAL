@@ -8,14 +8,17 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import model.controllers.CargoJpaController;
 import model.controllers.ClienteJpaController;
 import model.controllers.DistritoJpaController;
 import model.controllers.EmpleadoJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
+import model.entities.Cargo;
 import model.entities.Cliente;
 import model.entities.Distrito;
 import model.entities.Empleado;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -30,12 +33,14 @@ public class LoginController {
     private ClienteJpaController repo;
     private EmpleadoJpaController repo1;
     private DistritoJpaController repo2;
+    private CargoJpaController repo3;
 
     public LoginController() {
         em = getEntityManager();
         repo = new ClienteJpaController(emf);
         repo1 = new EmpleadoJpaController(emf);
         repo2 = new DistritoJpaController(emf);
+        repo3 = new CargoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -49,116 +54,119 @@ public class LoginController {
     @RequestMapping("login.htm")
 
     public ModelAndView Login() {
-        
+
         ModelAndView mv = new ModelAndView();
-        
+
         mv.setViewName("login");
-        
+
         return mv;
     }
 
     @RequestMapping("menu.htm")
 
     public ModelAndView Menu() {
-        
+
         ModelAndView mv = new ModelAndView();
-        
+
         mv.setViewName("MenuTrabajador");
-        
+
         return mv;
     }
-    
+
     @RequestMapping("menucliente.htm")
 
     public ModelAndView MenuCliente() {
-        
+
         ModelAndView mv = new ModelAndView();
-        
+
         mv.setViewName("MenuCliente");
-        
+
         return mv;
     }
-    
+
     @RequestMapping("menualmacen.htm")
 
     public ModelAndView MenuAlmacen() {
-        
+
         ModelAndView mv = new ModelAndView();
-        
+
         mv.setViewName("MenuAlmacen");
-        
+
         return mv;
     }
-    
+
     @RequestMapping("menuventas.htm")
 
     public ModelAndView MenuVentas() {
-        
+
         ModelAndView mv = new ModelAndView();
-        
+
         mv.setViewName("MenuVentas");
-        
+
         return mv;
     }
-    
+
     @RequestMapping("menulogistica.htm")
 
     public ModelAndView MenuLogistica() {
-        
+
         ModelAndView mv = new ModelAndView();
-        
+
         mv.setViewName("MenuLogistica");
-        
+
         return mv;
     }
 
     @RequestMapping(value = "validar.htm", method = RequestMethod.POST)
 
     public ModelAndView getValidaLogin(HttpServletRequest request, HttpServletResponse response) {
-        
+
         ModelAndView mv = new ModelAndView();
 
         String usuario = request.getParameter("txtusuario");
         String clave = request.getParameter("txtclave");
-        
+        //int cargo = Integer.parseInt(request.getParameter("txtcargo"));
 
         List<Empleado> lista = repo1.findEmpleadoEntities();
         List<Cliente> lista1 = repo.findClienteEntities();
+        //List<Cargo> lista3 = repo3.findCargoEntities();
 
-        boolean encontrado = true;
-        
-        if(encontrado == true) {
+        boolean encontrado = false;
+
         for (Empleado e : lista) {
+
             if (e.getUsuario().equals(usuario) && e.getClave().equals(clave)) {
+
                 encontrado = true;
                 mv.addObject("usuario", e);
                 mv.setViewName("MenuTrabajador");
                 break;
+
             }
+
         }
-        }
-        else if (encontrado == false) {
+
+        if (encontrado == false) {
             for (Cliente c : lista1) {
                 if (c.getUsuario().equals(usuario) && c.getClave().equals(clave)) {
+                    encontrado = true;
                     mv.addObject("usuario", c);
                     mv.setViewName("MenuCliente");
                     break;
                 }
             }
         }
-        
+
         if (encontrado == false) {
             request.setAttribute("mensaje", "No se encuentran los datos");
             mv.setViewName("login");
-        }
-        else 
-        {
-            
+        } else {
+
         }
 
         return mv;
     }
-    
+
     /*@RequestMapping(value = "nuevo.htm", method = RequestMethod.GET)
     public @ResponseBody
     String obtenerCliente() {
@@ -168,13 +176,29 @@ public class LoginController {
 
         return new Gson().toJson(c);
     }*/
-    
+    @RequestMapping(value = "nuevo.htm", method = RequestMethod.GET)
+
+    public ModelAndView NuevoCliente(Model model) {
+
+        ModelAndView mv = new ModelAndView();
+
+        List<Distrito> distritos = repo2.findDistritoEntities();
+
+        mv.addObject("listaDistrito", distritos);
+
+        model.addAttribute("cliente", new Cliente());
+
+        mv.setViewName("Registrarusuariocli");
+
+        return mv;
+    }
+
     @RequestMapping(value = "nuevo.htm", method = RequestMethod.POST)
-    
-    public ModelAndView Nuevo(@ModelAttribute("cliente") Cliente c) throws Exception{
-        
+
+    public ModelAndView NuevoCliente(@ModelAttribute("cliente") Cliente c) throws Exception {
+
         repo.create(c);
-        
-        return new ModelAndView("redirect:/clientes.htm");
+
+        return new ModelAndView("redirect:/login.htm");
     }
 }

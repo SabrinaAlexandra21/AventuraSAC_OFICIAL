@@ -53,6 +53,7 @@
                 <prop key="menualmacen.htm">loginController</prop>
                 <prop key="menuventas.htm">loginController</prop>
                 <prop key="menulogistica.htm">loginController</prop>
+                <prop key="nuevo.htm">loginController</prop>
                  
                 <prop key="GuiaRemision.htm">guiaremisionController</prop>
                 <prop key="GuiaRemisionDetalle.htm">guiaremisionController</prop>

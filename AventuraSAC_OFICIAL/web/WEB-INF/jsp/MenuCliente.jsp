@@ -31,6 +31,7 @@
             <ul class="links">
                 <li><a href="menucliente.htm">Home</a></li>
                 <li><a href="quienessomos.htm">Quienes Somos</a></li>
+                <li><a href="login.htm">Salir</a>
             </ul>
         </nav>
 
