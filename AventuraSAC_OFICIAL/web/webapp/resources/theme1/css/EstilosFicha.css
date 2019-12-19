@@ -23,7 +23,7 @@ body{
 
 #img img{
     margin:20px 0px;
-    width: 130px;
+    width: 200px;
     height: 100px;
 }
 
@@ -36,7 +36,7 @@ body{
 
 #escritos h3{
     font-family: 'Arial', serif;
-    font-size: 10px;
+    font-size: 20px;
 }
 
 
@@ -54,13 +54,13 @@ body{
 #fieldset h4 {
 
     margin: 10px 10px;
-    color: white;
+    color: black;
   
 }
 
 #fieldset h4 > strong {
 
-    color: white;
+    color: black;
     
 }
 
@@ -69,14 +69,14 @@ body{
     margin: 0px 15px;
     text-align: center;
     padding: 15px; 
-    color: white;
+    color: black;
 }
 
 #ngui input{
 
     width: 25px;
     height: 25px;
-    background: white;
+    background: black;
 
 }
 
