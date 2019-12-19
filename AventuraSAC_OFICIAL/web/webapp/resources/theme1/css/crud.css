@@ -37,6 +37,25 @@
  
 }
 
+#fila1{
+    margin: 0% 0% 0% -3%;
+}
+
+#fila2{
+    margin: 0% 0% 0% -3%;
+}
+
+#fila3{
+    margin: 2% 0% 0% -3%;
+}
+
+#ruc{
+    height: 50px;
+}
+
+#telefono{
+    height: 50px;
+}
 .card-header h3{
     font-family: fantasy;
     font-size: 30px;
@@ -76,7 +95,7 @@
 
 #botones {
     
-   margin: 15px;
+   margin: 4% 0%;
    text-align: center;  
 }
 
