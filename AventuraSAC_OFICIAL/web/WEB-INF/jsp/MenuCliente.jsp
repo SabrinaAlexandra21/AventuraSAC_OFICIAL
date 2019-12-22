@@ -56,7 +56,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="#" class="icon fa-tasks"><span class="label">Icon</span></a>
+                                <a href="pedidos.htm" class="icon fa-tasks"><span class="label">Icon</span></a>
                                 <h2>INGRESAR PEDIDO</h2>
                             </header>
                             <p>En este campo podrá ingresar detalles sobre su pedido con el cual podremos enviarle una cotización con el tiempo estimado.</p>								

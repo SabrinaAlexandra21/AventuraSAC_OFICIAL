@@ -12,11 +12,13 @@ import model.controllers.CargoJpaController;
 import model.controllers.ClienteJpaController;
 import model.controllers.DistritoJpaController;
 import model.controllers.EmpleadoJpaController;
+import model.controllers.PedidoJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Cargo;
 import model.entities.Cliente;
 import model.entities.Distrito;
 import model.entities.Empleado;
+import model.entities.Pedido;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -34,6 +36,7 @@ public class LoginController {
     private EmpleadoJpaController repo1;
     private DistritoJpaController repo2;
     private CargoJpaController repo3;
+    private PedidoJpaController repo4;
 
     public LoginController() {
         em = getEntityManager();
@@ -41,6 +44,7 @@ public class LoginController {
         repo1 = new EmpleadoJpaController(emf);
         repo2 = new DistritoJpaController(emf);
         repo3 = new CargoJpaController(emf);
+        repo4 = new PedidoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -81,6 +85,23 @@ public class LoginController {
 
         mv.setViewName("MenuCliente");
 
+        return mv;
+    }
+    
+    @RequestMapping(value = "pedidos.htm", method = RequestMethod.POST)
+
+    public ModelAndView NuevoPedido(Model model) {
+
+        ModelAndView mv = new ModelAndView();
+        
+        List<Cliente> clientes = repo.findClienteEntities();
+        
+        mv.addObject("clientes", clientes);
+        
+        model.addAttribute("pedido", new Pedido());
+        
+        mv.setViewName("pedidos");
+        
         return mv;
     }
 

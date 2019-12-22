@@ -60,6 +60,8 @@
                 <prop key="FichaTecnica.htm">fichaTecnicaController</prop>
                 
                 <prop key="OrdenCompra.htm">ordencompraController</prop>
+                
+                <prop key="pedidos.htm">menuClienteController</prop>
             </props>
         </property>
     </bean>
@@ -101,4 +103,7 @@
       
     <bean name="ordencompraController"
           class="controller.OrdenCompraController" />
+    
+    <bean name="menuClienteController"
+          class="controller.MenuClienteController" />
 </beans>
