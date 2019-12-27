@@ -20,7 +20,7 @@ import model.entities.Tipotela;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class TipotelaJpaController implements Serializable {
 

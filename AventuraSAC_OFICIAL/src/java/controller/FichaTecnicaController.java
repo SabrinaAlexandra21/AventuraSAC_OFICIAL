@@ -1,6 +1,7 @@
 
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -46,6 +47,25 @@ public class FichaTecnicaController  {
         }
         return emf.createEntityManager();
     }
+    
+    
+    @RequestMapping("fichaTec.htm")
+    
+    public ModelAndView Listar() {
+        
+        List<Fichatecnica> ficha = new ArrayList<>();
+        
+        ficha = repo.findFichatecnicaEntities();
+
+        ModelAndView mv = new ModelAndView();
+        
+        mv.addObject("fichatecnica", ficha);
+        
+        mv.setViewName("pedidos");
+        
+        return mv;
+    }
+    
     
     @RequestMapping(value = "FichaTecnica.htm", method = RequestMethod.GET)
     

@@ -20,7 +20,7 @@ import model.entities.CotizacionDetalle;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class CotizacionDetalleJpaController implements Serializable {
 

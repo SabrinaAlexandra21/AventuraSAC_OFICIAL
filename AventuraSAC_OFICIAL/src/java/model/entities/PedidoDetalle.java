@@ -24,15 +24,14 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "pedido_detalle")
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "PedidoDetalle.findAll", query = "SELECT p FROM PedidoDetalle p")
-    , @NamedQuery(name = "PedidoDetalle.findByIdDetallePedido", query = "SELECT p FROM PedidoDetalle p WHERE p.idDetallePedido = :idDetallePedido")
-    , @NamedQuery(name = "PedidoDetalle.findByCantidad", query = "SELECT p FROM PedidoDetalle p WHERE p.cantidad = :cantidad")})
+    , @NamedQuery(name = "PedidoDetalle.findByIdDetallePedido", query = "SELECT p FROM PedidoDetalle p WHERE p.idDetallePedido = :idDetallePedido")})
 public class PedidoDetalle implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -41,9 +40,6 @@ public class PedidoDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDetallePedido")
     private Integer idDetallePedido;
-    @Basic(optional = false)
-    @Column(name = "Cantidad")
-    private int cantidad;
     @OneToMany(mappedBy = "idDetallePedido")
     private List<CotizacionDetalle> cotizacionDetalleList;
     @JoinColumn(name = "idFicha", referencedColumnName = "idFicha")
@@ -60,25 +56,12 @@ public class PedidoDetalle implements Serializable {
         this.idDetallePedido = idDetallePedido;
     }
 
-    public PedidoDetalle(Integer idDetallePedido, int cantidad) {
-        this.idDetallePedido = idDetallePedido;
-        this.cantidad = cantidad;
-    }
-
     public Integer getIdDetallePedido() {
         return idDetallePedido;
     }
 
     public void setIdDetallePedido(Integer idDetallePedido) {
         this.idDetallePedido = idDetallePedido;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(int cantidad) {
-        this.cantidad = cantidad;
     }
 
     @XmlTransient

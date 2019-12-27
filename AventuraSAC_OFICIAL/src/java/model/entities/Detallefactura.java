@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "detallefactura")
@@ -29,6 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 @NamedQueries({
     @NamedQuery(name = "Detallefactura.findAll", query = "SELECT d FROM Detallefactura d")
     , @NamedQuery(name = "Detallefactura.findByIdDetalleFactura", query = "SELECT d FROM Detallefactura d WHERE d.idDetalleFactura = :idDetalleFactura")
+    , @NamedQuery(name = "Detallefactura.findByFecha", query = "SELECT d FROM Detallefactura d WHERE d.fecha = :fecha")
     , @NamedQuery(name = "Detallefactura.findBySubtotal", query = "SELECT d FROM Detallefactura d WHERE d.subtotal = :subtotal")
     , @NamedQuery(name = "Detallefactura.findByIgv", query = "SELECT d FROM Detallefactura d WHERE d.igv = :igv")
     , @NamedQuery(name = "Detallefactura.findByTotal", query = "SELECT d FROM Detallefactura d WHERE d.total = :total")})
@@ -40,6 +41,9 @@ public class Detallefactura implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDetalleFactura")
     private Integer idDetalleFactura;
+    @Basic(optional = false)
+    @Column(name = "fecha")
+    private String fecha;
     // @Max(value=?)  @Min(value=?)//if you know range of your decimal fields consider using these annotations to enforce field validation
     @Column(name = "Subtotal")
     private Double subtotal;
@@ -58,12 +62,25 @@ public class Detallefactura implements Serializable {
         this.idDetalleFactura = idDetalleFactura;
     }
 
+    public Detallefactura(Integer idDetalleFactura, String fecha) {
+        this.idDetalleFactura = idDetalleFactura;
+        this.fecha = fecha;
+    }
+
     public Integer getIdDetalleFactura() {
         return idDetalleFactura;
     }
 
     public void setIdDetalleFactura(Integer idDetalleFactura) {
         this.idDetalleFactura = idDetalleFactura;
+    }
+
+    public String getFecha() {
+        return fecha;
+    }
+
+    public void setFecha(String fecha) {
+        this.fecha = fecha;
     }
 
     public Double getSubtotal() {

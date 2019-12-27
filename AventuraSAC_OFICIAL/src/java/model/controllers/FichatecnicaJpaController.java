@@ -23,7 +23,7 @@ import model.entities.Fichatecnica;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class FichatecnicaJpaController implements Serializable {
 

@@ -21,7 +21,7 @@ import model.entities.Factura;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class FacturaJpaController implements Serializable {
 

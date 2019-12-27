@@ -45,13 +45,9 @@ public class MenuClienteController  {
     
     public ModelAndView NuevoPedido(HttpServletRequest request, HttpServletResponse response) {
         
-        LoginController log = new LoginController();
-        
         ModelAndView mv = new ModelAndView();
         
-        List<Cliente> c = repo1.findClienteEntities();
-        
-        log.getValidaLogin(request, response).addObject("usuario", log);
+        Cliente c = (Cliente)request.getSession().getAttribute("usuario");
         
         mv.addObject("pedido", new Pedido());
         

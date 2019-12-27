@@ -5,7 +5,6 @@
  */
 package model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.io.Serializable;
 import java.util.List;
 import javax.persistence.Basic;
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "cliente")
@@ -73,13 +72,8 @@ public class Cliente implements Serializable {
     @Column(name = "Clave")
     private String clave;
     @JoinColumn(name = "idDistrito", referencedColumnName = "idDistrito")
-    
-    @JsonIgnore
     @ManyToOne
-    
     private Distrito idDistrito;
-    
-    @JsonIgnore
     @OneToMany(mappedBy = "idCliente")
     private List<Pedido> pedidoList;
 

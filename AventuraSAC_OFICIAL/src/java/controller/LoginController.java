@@ -159,6 +159,7 @@ public class LoginController {
             if (e.getUsuario().equals(usuario) && e.getClave().equals(clave)) {
 
                 encontrado = true;
+                
                 mv.addObject("usuario", e);
                 mv.setViewName("MenuTrabajador");
                 break;
@@ -171,6 +172,7 @@ public class LoginController {
             for (Cliente c : lista1) {
                 if (c.getUsuario().equals(usuario) && c.getClave().equals(clave)) {
                     encontrado = true;
+                    request.getSession().setAttribute("usuario", c);
                     mv.addObject("usuario", c);
                     mv.setViewName("MenuCliente");
                     break;

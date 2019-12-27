@@ -12,7 +12,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
-        
+
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
@@ -34,27 +34,44 @@
 
             <div class="card" id="carta">
                 <div class="card-header">
-                    <h3>Agregar Pedido  ${usuario.idCliente}</h3>
+                    <h3>Agregar Pedido</h3>
                 </div>
                 <div class="card-body">
-                    <a class="btn btn-primary" href="fichatecnica.htm" role="button" id="nuevo">Agregar Ficha Técnica</a>
+                    <a class="btn btn-primary" href="FichaTecnica.htm" role="button" id="nuevo">Agregar Ficha Técnica</a>
                     <table class="table">
                         <thead>
                             <tr>
-                                <th scope="col">${usuario.idCliente}</th>
-                                <th scope="col">Razón Social</th>
-                                <th scope="col">RUC</th>
-                                <th scope="col">Distrito</th>
-                                <th scope="col">Dirección</th>
-                                <th scope="col">Teléfono</th>
-                                <th scope="col">Correo</th>
-                                <th scope="col">Broker</th>
+                                <th scope="col">IdCliente</th>
+                                <th scope="col">IdPedido</th>
+                                <th scope="col">Fecha Emitida</th>
+                                <th scope="col">Fecha Entrega</th>
+                        
 
                                 <th scope="col">Acciones</th>
                             </tr>
                         </thead>
                         <tbody>
-                            
+                                <c:forEach var="item" items="${fichatecnica}">
+                                <tr>
+                                    <th scope="row" >${usuario.idCliente}</th>
+                                    <td >${item.descripcion}</td>
+                                    <td >${item.idTipo.detalle}</td>
+                                    <td >${item.etiqueta}</td>
+                        
+
+                                    <td scope="col-2">
+                                     
+
+                                        <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
+                                        <!--  <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}', '${item.idDistrito.idDistrito}')" ><i class="fas fa-edit"></i></button>  -->
+                                        <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
+                                    </td>
+
+                                    
+
+                                </tr>
+                            </c:forEach>
+                                
                         </tbody>
                     </table>
 

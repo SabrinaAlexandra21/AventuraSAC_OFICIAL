@@ -147,6 +147,13 @@
 
                             </div>
 
+                            <div class="p-4">
+
+                                <label for="cantidad" >Talla:</label>
+
+                                <form:input path="cantidad" cssClass="form-control" placeholder="Ingresar cantidad"/>
+
+                            </div>
 
                         </div>
                     </div>
@@ -257,7 +264,7 @@
                 </form:form>
 
 
-                
+
             </div>
         </div>
 

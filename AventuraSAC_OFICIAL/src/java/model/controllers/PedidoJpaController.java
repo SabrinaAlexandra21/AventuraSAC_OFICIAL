@@ -25,7 +25,7 @@ import model.entities.Pedido;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class PedidoJpaController implements Serializable {
 

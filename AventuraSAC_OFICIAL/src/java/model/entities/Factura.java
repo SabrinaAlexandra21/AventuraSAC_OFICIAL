@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "factura")

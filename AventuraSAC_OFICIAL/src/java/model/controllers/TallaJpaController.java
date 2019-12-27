@@ -20,7 +20,7 @@ import model.entities.Talla;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class TallaJpaController implements Serializable {
 

@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "fichatecnica")
@@ -33,8 +33,11 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Fichatecnica.findAll", query = "SELECT f FROM Fichatecnica f")
     , @NamedQuery(name = "Fichatecnica.findByIdFicha", query = "SELECT f FROM Fichatecnica f WHERE f.idFicha = :idFicha")
     , @NamedQuery(name = "Fichatecnica.findByDescripcion", query = "SELECT f FROM Fichatecnica f WHERE f.descripcion = :descripcion")
+    , @NamedQuery(name = "Fichatecnica.findByCantidad", query = "SELECT f FROM Fichatecnica f WHERE f.cantidad = :cantidad")
     , @NamedQuery(name = "Fichatecnica.findByEtiqueta", query = "SELECT f FROM Fichatecnica f WHERE f.etiqueta = :etiqueta")
-    , @NamedQuery(name = "Fichatecnica.findByColores", query = "SELECT f FROM Fichatecnica f WHERE f.colores = :colores")})
+    , @NamedQuery(name = "Fichatecnica.findByColor1", query = "SELECT f FROM Fichatecnica f WHERE f.color1 = :color1")
+    , @NamedQuery(name = "Fichatecnica.findByColor2", query = "SELECT f FROM Fichatecnica f WHERE f.color2 = :color2")
+    , @NamedQuery(name = "Fichatecnica.findByColor3", query = "SELECT f FROM Fichatecnica f WHERE f.color3 = :color3")})
 public class Fichatecnica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -47,11 +50,17 @@ public class Fichatecnica implements Serializable {
     @Column(name = "Descripcion")
     private String descripcion;
     @Basic(optional = false)
+    @Column(name = "Cantidad")
+    private int cantidad;
+    @Basic(optional = false)
     @Column(name = "Etiqueta")
     private String etiqueta;
-    @Basic(optional = false)
-    @Column(name = "Colores")
-    private String colores;
+    @Column(name = "Color1")
+    private String color1;
+    @Column(name = "Color2")
+    private String color2;
+    @Column(name = "Color3")
+    private String color3;
     @OneToMany(mappedBy = "idFicha")
     private List<PedidoDetalle> pedidoDetalleList;
     @JoinColumn(name = "idTipoModelo", referencedColumnName = "idTipoModelo")
@@ -71,11 +80,11 @@ public class Fichatecnica implements Serializable {
         this.idFicha = idFicha;
     }
 
-    public Fichatecnica(Integer idFicha, String descripcion, String etiqueta, String colores) {
+    public Fichatecnica(Integer idFicha, String descripcion, int cantidad, String etiqueta) {
         this.idFicha = idFicha;
         this.descripcion = descripcion;
+        this.cantidad = cantidad;
         this.etiqueta = etiqueta;
-        this.colores = colores;
     }
 
     public Integer getIdFicha() {
@@ -94,6 +103,14 @@ public class Fichatecnica implements Serializable {
         this.descripcion = descripcion;
     }
 
+    public int getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(int cantidad) {
+        this.cantidad = cantidad;
+    }
+
     public String getEtiqueta() {
         return etiqueta;
     }
@@ -102,12 +119,28 @@ public class Fichatecnica implements Serializable {
         this.etiqueta = etiqueta;
     }
 
-    public String getColores() {
-        return colores;
+    public String getColor1() {
+        return color1;
     }
 
-    public void setColores(String colores) {
-        this.colores = colores;
+    public void setColor1(String color1) {
+        this.color1 = color1;
+    }
+
+    public String getColor2() {
+        return color2;
+    }
+
+    public void setColor2(String color2) {
+        this.color2 = color2;
+    }
+
+    public String getColor3() {
+        return color3;
+    }
+
+    public void setColor3(String color3) {
+        this.color3 = color3;
     }
 
     @XmlTransient

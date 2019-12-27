@@ -21,7 +21,7 @@ import model.entities.Cliente;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class ClienteJpaController implements Serializable {
 
@@ -90,14 +90,10 @@ public class ClienteJpaController implements Serializable {
                 cliente.setIdDistrito(idDistritoNew);
             }
             List<Pedido> attachedPedidoListNew = new ArrayList<Pedido>();
-            
-            if (pedidoListNew != null) {
-                for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
-                    pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getIdPedido());
-                    attachedPedidoListNew.add(pedidoListNewPedidoToAttach);
-                }
+            for (Pedido pedidoListNewPedidoToAttach : pedidoListNew) {
+                pedidoListNewPedidoToAttach = em.getReference(pedidoListNewPedidoToAttach.getClass(), pedidoListNewPedidoToAttach.getIdPedido());
+                attachedPedidoListNew.add(pedidoListNewPedidoToAttach);
             }
-            
             pedidoListNew = attachedPedidoListNew;
             cliente.setPedidoList(pedidoListNew);
             cliente = em.merge(cliente);
@@ -219,5 +215,5 @@ public class ClienteJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

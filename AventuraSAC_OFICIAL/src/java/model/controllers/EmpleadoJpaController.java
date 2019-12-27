@@ -22,7 +22,7 @@ import model.entities.Empleado;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class EmpleadoJpaController implements Serializable {
 
@@ -106,12 +106,9 @@ public class EmpleadoJpaController implements Serializable {
                 empleado.setIdArea(idAreaNew);
             }
             List<Ordencompra> attachedOrdencompraListNew = new ArrayList<Ordencompra>();
-
-            if (ordencompraListNew != null) {
-                for (Ordencompra ordencompraListNewOrdencompraToAttach : ordencompraListNew) {
-                    ordencompraListNewOrdencompraToAttach = em.getReference(ordencompraListNewOrdencompraToAttach.getClass(), ordencompraListNewOrdencompraToAttach.getIdOrdenCompra());
-                    attachedOrdencompraListNew.add(ordencompraListNewOrdencompraToAttach);
-                }
+            for (Ordencompra ordencompraListNewOrdencompraToAttach : ordencompraListNew) {
+                ordencompraListNewOrdencompraToAttach = em.getReference(ordencompraListNewOrdencompraToAttach.getClass(), ordencompraListNewOrdencompraToAttach.getIdOrdenCompra());
+                attachedOrdencompraListNew.add(ordencompraListNewOrdencompraToAttach);
             }
             ordencompraListNew = attachedOrdencompraListNew;
             empleado.setOrdencompraList(ordencompraListNew);
@@ -247,5 +244,5 @@ public class EmpleadoJpaController implements Serializable {
             em.close();
         }
     }
-
+    
 }

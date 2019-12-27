@@ -20,7 +20,7 @@ import model.entities.Cargo;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class CargoJpaController implements Serializable {
 

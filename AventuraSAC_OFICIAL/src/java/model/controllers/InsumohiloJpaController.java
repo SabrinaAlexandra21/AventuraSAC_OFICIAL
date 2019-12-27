@@ -21,7 +21,7 @@ import model.entities.OrdencompraDetalle;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class InsumohiloJpaController implements Serializable {
 

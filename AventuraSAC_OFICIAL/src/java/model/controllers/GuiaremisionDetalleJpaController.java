@@ -20,7 +20,7 @@ import model.entities.GuiaremisionDetalle;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class GuiaremisionDetalleJpaController implements Serializable {
 

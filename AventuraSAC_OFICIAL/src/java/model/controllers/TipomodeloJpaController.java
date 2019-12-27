@@ -20,7 +20,7 @@ import model.entities.Tipomodelo;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 public class TipomodeloJpaController implements Serializable {
 
