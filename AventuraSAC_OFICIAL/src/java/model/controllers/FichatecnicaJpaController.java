@@ -10,8 +10,9 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.entities.Tipomodelo;
+import model.entities.Cliente;
 import model.entities.Talla;
+import model.entities.Tipomodelo;
 import model.entities.Tipotela;
 import model.entities.PedidoDetalle;
 import java.util.ArrayList;
@@ -44,15 +45,20 @@ public class FichatecnicaJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Tipomodelo idTipoModelo = fichatecnica.getIdTipoModelo();
-            if (idTipoModelo != null) {
-                idTipoModelo = em.getReference(idTipoModelo.getClass(), idTipoModelo.getIdTipoModelo());
-                fichatecnica.setIdTipoModelo(idTipoModelo);
+            Cliente idCliente = fichatecnica.getIdCliente();
+            if (idCliente != null) {
+                idCliente = em.getReference(idCliente.getClass(), idCliente.getIdCliente());
+                fichatecnica.setIdCliente(idCliente);
             }
             Talla idTalla = fichatecnica.getIdTalla();
             if (idTalla != null) {
                 idTalla = em.getReference(idTalla.getClass(), idTalla.getIdTalla());
                 fichatecnica.setIdTalla(idTalla);
+            }
+            Tipomodelo idTipoModelo = fichatecnica.getIdTipoModelo();
+            if (idTipoModelo != null) {
+                idTipoModelo = em.getReference(idTipoModelo.getClass(), idTipoModelo.getIdTipoModelo());
+                fichatecnica.setIdTipoModelo(idTipoModelo);
             }
             Tipotela idTipo = fichatecnica.getIdTipo();
             if (idTipo != null) {
@@ -66,13 +72,17 @@ public class FichatecnicaJpaController implements Serializable {
             }
             fichatecnica.setPedidoDetalleList(attachedPedidoDetalleList);
             em.persist(fichatecnica);
-            if (idTipoModelo != null) {
-                idTipoModelo.getFichatecnicaList().add(fichatecnica);
-                idTipoModelo = em.merge(idTipoModelo);
+            if (idCliente != null) {
+                idCliente.getFichatecnicaList().add(fichatecnica);
+                idCliente = em.merge(idCliente);
             }
             if (idTalla != null) {
                 idTalla.getFichatecnicaList().add(fichatecnica);
                 idTalla = em.merge(idTalla);
+            }
+            if (idTipoModelo != null) {
+                idTipoModelo.getFichatecnicaList().add(fichatecnica);
+                idTipoModelo = em.merge(idTipoModelo);
             }
             if (idTipo != null) {
                 idTipo.getFichatecnicaList().add(fichatecnica);
@@ -101,21 +111,27 @@ public class FichatecnicaJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Fichatecnica persistentFichatecnica = em.find(Fichatecnica.class, fichatecnica.getIdFicha());
-            Tipomodelo idTipoModeloOld = persistentFichatecnica.getIdTipoModelo();
-            Tipomodelo idTipoModeloNew = fichatecnica.getIdTipoModelo();
+            Cliente idClienteOld = persistentFichatecnica.getIdCliente();
+            Cliente idClienteNew = fichatecnica.getIdCliente();
             Talla idTallaOld = persistentFichatecnica.getIdTalla();
             Talla idTallaNew = fichatecnica.getIdTalla();
+            Tipomodelo idTipoModeloOld = persistentFichatecnica.getIdTipoModelo();
+            Tipomodelo idTipoModeloNew = fichatecnica.getIdTipoModelo();
             Tipotela idTipoOld = persistentFichatecnica.getIdTipo();
             Tipotela idTipoNew = fichatecnica.getIdTipo();
             List<PedidoDetalle> pedidoDetalleListOld = persistentFichatecnica.getPedidoDetalleList();
             List<PedidoDetalle> pedidoDetalleListNew = fichatecnica.getPedidoDetalleList();
-            if (idTipoModeloNew != null) {
-                idTipoModeloNew = em.getReference(idTipoModeloNew.getClass(), idTipoModeloNew.getIdTipoModelo());
-                fichatecnica.setIdTipoModelo(idTipoModeloNew);
+            if (idClienteNew != null) {
+                idClienteNew = em.getReference(idClienteNew.getClass(), idClienteNew.getIdCliente());
+                fichatecnica.setIdCliente(idClienteNew);
             }
             if (idTallaNew != null) {
                 idTallaNew = em.getReference(idTallaNew.getClass(), idTallaNew.getIdTalla());
                 fichatecnica.setIdTalla(idTallaNew);
+            }
+            if (idTipoModeloNew != null) {
+                idTipoModeloNew = em.getReference(idTipoModeloNew.getClass(), idTipoModeloNew.getIdTipoModelo());
+                fichatecnica.setIdTipoModelo(idTipoModeloNew);
             }
             if (idTipoNew != null) {
                 idTipoNew = em.getReference(idTipoNew.getClass(), idTipoNew.getIdTipo());
@@ -129,13 +145,13 @@ public class FichatecnicaJpaController implements Serializable {
             pedidoDetalleListNew = attachedPedidoDetalleListNew;
             fichatecnica.setPedidoDetalleList(pedidoDetalleListNew);
             fichatecnica = em.merge(fichatecnica);
-            if (idTipoModeloOld != null && !idTipoModeloOld.equals(idTipoModeloNew)) {
-                idTipoModeloOld.getFichatecnicaList().remove(fichatecnica);
-                idTipoModeloOld = em.merge(idTipoModeloOld);
+            if (idClienteOld != null && !idClienteOld.equals(idClienteNew)) {
+                idClienteOld.getFichatecnicaList().remove(fichatecnica);
+                idClienteOld = em.merge(idClienteOld);
             }
-            if (idTipoModeloNew != null && !idTipoModeloNew.equals(idTipoModeloOld)) {
-                idTipoModeloNew.getFichatecnicaList().add(fichatecnica);
-                idTipoModeloNew = em.merge(idTipoModeloNew);
+            if (idClienteNew != null && !idClienteNew.equals(idClienteOld)) {
+                idClienteNew.getFichatecnicaList().add(fichatecnica);
+                idClienteNew = em.merge(idClienteNew);
             }
             if (idTallaOld != null && !idTallaOld.equals(idTallaNew)) {
                 idTallaOld.getFichatecnicaList().remove(fichatecnica);
@@ -144,6 +160,14 @@ public class FichatecnicaJpaController implements Serializable {
             if (idTallaNew != null && !idTallaNew.equals(idTallaOld)) {
                 idTallaNew.getFichatecnicaList().add(fichatecnica);
                 idTallaNew = em.merge(idTallaNew);
+            }
+            if (idTipoModeloOld != null && !idTipoModeloOld.equals(idTipoModeloNew)) {
+                idTipoModeloOld.getFichatecnicaList().remove(fichatecnica);
+                idTipoModeloOld = em.merge(idTipoModeloOld);
+            }
+            if (idTipoModeloNew != null && !idTipoModeloNew.equals(idTipoModeloOld)) {
+                idTipoModeloNew.getFichatecnicaList().add(fichatecnica);
+                idTipoModeloNew = em.merge(idTipoModeloNew);
             }
             if (idTipoOld != null && !idTipoOld.equals(idTipoNew)) {
                 idTipoOld.getFichatecnicaList().remove(fichatecnica);
@@ -199,15 +223,20 @@ public class FichatecnicaJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The fichatecnica with id " + id + " no longer exists.", enfe);
             }
-            Tipomodelo idTipoModelo = fichatecnica.getIdTipoModelo();
-            if (idTipoModelo != null) {
-                idTipoModelo.getFichatecnicaList().remove(fichatecnica);
-                idTipoModelo = em.merge(idTipoModelo);
+            Cliente idCliente = fichatecnica.getIdCliente();
+            if (idCliente != null) {
+                idCliente.getFichatecnicaList().remove(fichatecnica);
+                idCliente = em.merge(idCliente);
             }
             Talla idTalla = fichatecnica.getIdTalla();
             if (idTalla != null) {
                 idTalla.getFichatecnicaList().remove(fichatecnica);
                 idTalla = em.merge(idTalla);
+            }
+            Tipomodelo idTipoModelo = fichatecnica.getIdTipoModelo();
+            if (idTipoModelo != null) {
+                idTipoModelo.getFichatecnicaList().remove(fichatecnica);
+                idTipoModelo = em.merge(idTipoModelo);
             }
             Tipotela idTipo = fichatecnica.getIdTipo();
             if (idTipo != null) {

@@ -54,9 +54,13 @@ public class PedidoDetalleJpaController implements Serializable {
                 pedidoDetalle.setIdPedido(idPedido);
             }
             List<CotizacionDetalle> attachedCotizacionDetalleList = new ArrayList<CotizacionDetalle>();
-            for (CotizacionDetalle cotizacionDetalleListCotizacionDetalleToAttach : pedidoDetalle.getCotizacionDetalleList()) {
-                cotizacionDetalleListCotizacionDetalleToAttach = em.getReference(cotizacionDetalleListCotizacionDetalleToAttach.getClass(), cotizacionDetalleListCotizacionDetalleToAttach.getIdDetalleCotizacion());
-                attachedCotizacionDetalleList.add(cotizacionDetalleListCotizacionDetalleToAttach);
+
+            if (pedidoDetalle.getCotizacionDetalleList() != null) {
+
+                for (CotizacionDetalle cotizacionDetalleListCotizacionDetalleToAttach : pedidoDetalle.getCotizacionDetalleList()) {
+                    cotizacionDetalleListCotizacionDetalleToAttach = em.getReference(cotizacionDetalleListCotizacionDetalleToAttach.getClass(), cotizacionDetalleListCotizacionDetalleToAttach.getIdDetalleCotizacion());
+                    attachedCotizacionDetalleList.add(cotizacionDetalleListCotizacionDetalleToAttach);
+                }
             }
             pedidoDetalle.setCotizacionDetalleList(attachedCotizacionDetalleList);
             em.persist(pedidoDetalle);
@@ -106,9 +110,11 @@ public class PedidoDetalleJpaController implements Serializable {
                 pedidoDetalle.setIdPedido(idPedidoNew);
             }
             List<CotizacionDetalle> attachedCotizacionDetalleListNew = new ArrayList<CotizacionDetalle>();
-            for (CotizacionDetalle cotizacionDetalleListNewCotizacionDetalleToAttach : cotizacionDetalleListNew) {
-                cotizacionDetalleListNewCotizacionDetalleToAttach = em.getReference(cotizacionDetalleListNewCotizacionDetalleToAttach.getClass(), cotizacionDetalleListNewCotizacionDetalleToAttach.getIdDetalleCotizacion());
-                attachedCotizacionDetalleListNew.add(cotizacionDetalleListNewCotizacionDetalleToAttach);
+            if (cotizacionDetalleListNew != null) {
+                for (CotizacionDetalle cotizacionDetalleListNewCotizacionDetalleToAttach : cotizacionDetalleListNew) {
+                    cotizacionDetalleListNewCotizacionDetalleToAttach = em.getReference(cotizacionDetalleListNewCotizacionDetalleToAttach.getClass(), cotizacionDetalleListNewCotizacionDetalleToAttach.getIdDetalleCotizacion());
+                    attachedCotizacionDetalleListNew.add(cotizacionDetalleListNewCotizacionDetalleToAttach);
+                }
             }
             cotizacionDetalleListNew = attachedCotizacionDetalleListNew;
             pedidoDetalle.setCotizacionDetalleList(cotizacionDetalleListNew);
@@ -244,5 +250,5 @@ public class PedidoDetalleJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }

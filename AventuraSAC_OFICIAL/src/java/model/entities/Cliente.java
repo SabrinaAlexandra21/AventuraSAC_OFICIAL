@@ -76,6 +76,8 @@ public class Cliente implements Serializable {
     private Distrito idDistrito;
     @OneToMany(mappedBy = "idCliente")
     private List<Pedido> pedidoList;
+    @OneToMany(mappedBy = "idCliente")
+    private List<Fichatecnica> fichatecnicaList;
 
     public Cliente() {
     }
@@ -182,6 +184,15 @@ public class Cliente implements Serializable {
 
     public void setPedidoList(List<Pedido> pedidoList) {
         this.pedidoList = pedidoList;
+    }
+
+    @XmlTransient
+    public List<Fichatecnica> getFichatecnicaList() {
+        return fichatecnicaList;
+    }
+
+    public void setFichatecnicaList(List<Fichatecnica> fichatecnicaList) {
+        this.fichatecnicaList = fichatecnicaList;
     }
 
     @Override

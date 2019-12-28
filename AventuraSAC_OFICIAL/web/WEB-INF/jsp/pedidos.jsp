@@ -33,53 +33,72 @@
         <div class="container md-8">
 
             <div class="card" id="carta">
-                <div class="card-header">
-                    <h3>Agregar Pedido</h3>
-                </div>
-                <div class="card-body">
-                    <a class="btn btn-primary" href="FichaTecnica.htm" role="button" id="nuevo">Agregar Ficha Técnica</a>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th scope="col">IdCliente</th>
-                                <th scope="col">IdPedido</th>
-                                <th scope="col">Fecha Emitida</th>
-                                <th scope="col">Fecha Entrega</th>
-                        
+                <form:form method="post" modelAttribute="pedido">
+                    <div class="card-header">
+                        <div class="d-flex flex-row">
 
-                                <th scope="col">Acciones</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                <c:forEach var="item" items="${fichatecnica}">
-                                <tr>
-                                    <th scope="row" >${usuario.idCliente}</th>
-                                    <td >${item.descripcion}</td>
-                                    <td >${item.idTipo.detalle}</td>
-                                    <td >${item.etiqueta}</td>
-                        
-
-                                    <td scope="col-2">
-                                     
-
-                                        <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
-                                        <!--  <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}', '${item.idDistrito.idDistrito}')" ><i class="fas fa-edit"></i></button>  -->
-                                        <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
-                                    </td>
-
-                                    
-
-                                </tr>
-                            </c:forEach>
+                            <form:input path="idPedido" type="hidden" cssClass="form-control" />
+                            <div class="p-4">
+                                <h3>Agregar Pedido</h3>
+                            </div>
+                            
+                            <div class="p-4">
                                 
-                        </tbody>
-                    </table>
+                                <label for="fechaRegistro">Fecha Emisión: </label>
+                                <form:input path="fechaRegistro" cssClass="form-control" />
+                            </div>
+                            <div class="p-4">
+                                <label for="fechaRegistro">Fecha Entrega: </label>
+                                <form:input path="fechaEntrega" cssClass="form-control" />
+                            </div>
+                        </div>
+                    </div>
 
-                    <center>
-                        <button><a href="menu.htm" id="regre">Regresar al Menú</a></button>
-                    </center>
+                    <div class="card-body">
 
-                </div>
+                        <a class="btn btn-primary" href="FichaTecnica.htm" role="button" id="nuevo">Agregar Ficha</a>
+                        <table class="table">
+
+                            <thead>
+                                <tr>
+                                    <th scope="col">IdCliente</th>
+                                    <th scope="col">Descripción</th>
+                                    <th scope="col">Modelo</th>
+                                    <th scope="col">Etiquetas</th>
+                                    <th scope="col">Acciones</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <c:forEach var="item" items="${ficha}">
+                                    <tr> 
+                                        <th scope="row" >${item.idCliente.razonSocial}</th>
+                                        <td >${item.descripcion}</td>
+                                        <td >${item.idTipoModelo.nombre}</td>
+                                        <td >${item.etiqueta}</td>
+                                        <td scope="col-2">
+
+
+                                            <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idFicha}" ><i class="fas fa-edit"></i></a> 
+
+                                            <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idFicha}')" ><i class="fas fa-trash-alt"></i></button>
+                                        </td>
+
+
+
+                                    </tr>
+                                </c:forEach>
+
+                            </tbody>
+                        </table>
+
+                        <center>
+                            <input type="submit" class="btn btn-secondary" value="Enviar"/>
+                            <button><a href="menucliente.htm" id="regre">Regresar al Menú</a></button>
+                        </center>
+
+                    </div>
+                </form:form>
             </div>
         </div>
     </body>

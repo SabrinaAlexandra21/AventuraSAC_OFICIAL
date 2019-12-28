@@ -63,12 +63,15 @@ public class Fichatecnica implements Serializable {
     private String color3;
     @OneToMany(mappedBy = "idFicha")
     private List<PedidoDetalle> pedidoDetalleList;
-    @JoinColumn(name = "idTipoModelo", referencedColumnName = "idTipoModelo")
+    @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne
-    private Tipomodelo idTipoModelo;
+    private Cliente idCliente;
     @JoinColumn(name = "idTalla", referencedColumnName = "idTalla")
     @ManyToOne
     private Talla idTalla;
+    @JoinColumn(name = "idTipoModelo", referencedColumnName = "idTipoModelo")
+    @ManyToOne
+    private Tipomodelo idTipoModelo;
     @JoinColumn(name = "idTipo", referencedColumnName = "idTipo")
     @ManyToOne
     private Tipotela idTipo;
@@ -152,12 +155,12 @@ public class Fichatecnica implements Serializable {
         this.pedidoDetalleList = pedidoDetalleList;
     }
 
-    public Tipomodelo getIdTipoModelo() {
-        return idTipoModelo;
+    public Cliente getIdCliente() {
+        return idCliente;
     }
 
-    public void setIdTipoModelo(Tipomodelo idTipoModelo) {
-        this.idTipoModelo = idTipoModelo;
+    public void setIdCliente(Cliente idCliente) {
+        this.idCliente = idCliente;
     }
 
     public Talla getIdTalla() {
@@ -166,6 +169,14 @@ public class Fichatecnica implements Serializable {
 
     public void setIdTalla(Talla idTalla) {
         this.idTalla = idTalla;
+    }
+
+    public Tipomodelo getIdTipoModelo() {
+        return idTipoModelo;
+    }
+
+    public void setIdTipoModelo(Tipomodelo idTipoModelo) {
+        this.idTipoModelo = idTipoModelo;
     }
 
     public Tipotela getIdTipo() {

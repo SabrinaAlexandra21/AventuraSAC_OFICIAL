@@ -6,14 +6,17 @@ import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
+import javax.servlet.http.HttpServletRequest;
 import model.controllers.FichatecnicaJpaController;
 import model.controllers.TallaJpaController;
 import model.controllers.TipomodeloJpaController;
 import model.controllers.TipotelaJpaController;
+import model.entities.Cliente;
 import model.entities.Fichatecnica;
 import model.entities.Talla;
 import model.entities.Tipomodelo;
 import model.entities.Tipotela;
+import org.springframework.http.HttpRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -49,24 +52,6 @@ public class FichaTecnicaController  {
     }
     
     
-    @RequestMapping("fichaTec.htm")
-    
-    public ModelAndView Listar() {
-        
-        List<Fichatecnica> ficha = new ArrayList<>();
-        
-        ficha = repo.findFichatecnicaEntities();
-
-        ModelAndView mv = new ModelAndView();
-        
-        mv.addObject("fichatecnica", ficha);
-        
-        mv.setViewName("pedidos");
-        
-        return mv;
-    }
-    
-    
     @RequestMapping(value = "FichaTecnica.htm", method = RequestMethod.GET)
     
     public ModelAndView NuevaFichaTecnica(Model model) {
@@ -92,9 +77,14 @@ public class FichaTecnicaController  {
         return mv;
     }
     
+    
     @RequestMapping(value = "FichaTecnica.htm", method = RequestMethod.POST)
     
-    public ModelAndView NuevaFichaTecnica(@ModelAttribute("fichatecnica") Fichatecnica f) throws Exception{
+    public ModelAndView NuevaFichaTecnica(@ModelAttribute("fichatecnica") Fichatecnica f, HttpServletRequest request) throws Exception{
+        
+        Cliente c = (Cliente)request.getSession().getAttribute("usuario");
+        
+        f.setIdCliente(c);
         
         repo.create(f);
         

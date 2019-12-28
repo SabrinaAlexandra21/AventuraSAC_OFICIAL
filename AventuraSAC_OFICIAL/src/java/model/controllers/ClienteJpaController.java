@@ -18,6 +18,7 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Cliente;
+import model.entities.Fichatecnica;
 
 /**
  *
@@ -38,6 +39,9 @@ public class ClienteJpaController implements Serializable {
         if (cliente.getPedidoList() == null) {
             cliente.setPedidoList(new ArrayList<Pedido>());
         }
+        if (cliente.getFichatecnicaList() == null) {
+            cliente.setFichatecnicaList(new ArrayList<Fichatecnica>());
+        }
         EntityManager em = null;
         try {
             em = getEntityManager();
@@ -53,6 +57,12 @@ public class ClienteJpaController implements Serializable {
                 attachedPedidoList.add(pedidoListPedidoToAttach);
             }
             cliente.setPedidoList(attachedPedidoList);
+            List<Fichatecnica> attachedFichatecnicaList = new ArrayList<Fichatecnica>();
+            for (Fichatecnica fichatecnicaListFichatecnicaToAttach : cliente.getFichatecnicaList()) {
+                fichatecnicaListFichatecnicaToAttach = em.getReference(fichatecnicaListFichatecnicaToAttach.getClass(), fichatecnicaListFichatecnicaToAttach.getIdFicha());
+                attachedFichatecnicaList.add(fichatecnicaListFichatecnicaToAttach);
+            }
+            cliente.setFichatecnicaList(attachedFichatecnicaList);
             em.persist(cliente);
             if (idDistrito != null) {
                 idDistrito.getClienteList().add(cliente);
@@ -65,6 +75,15 @@ public class ClienteJpaController implements Serializable {
                 if (oldIdClienteOfPedidoListPedido != null) {
                     oldIdClienteOfPedidoListPedido.getPedidoList().remove(pedidoListPedido);
                     oldIdClienteOfPedidoListPedido = em.merge(oldIdClienteOfPedidoListPedido);
+                }
+            }
+            for (Fichatecnica fichatecnicaListFichatecnica : cliente.getFichatecnicaList()) {
+                Cliente oldIdClienteOfFichatecnicaListFichatecnica = fichatecnicaListFichatecnica.getIdCliente();
+                fichatecnicaListFichatecnica.setIdCliente(cliente);
+                fichatecnicaListFichatecnica = em.merge(fichatecnicaListFichatecnica);
+                if (oldIdClienteOfFichatecnicaListFichatecnica != null) {
+                    oldIdClienteOfFichatecnicaListFichatecnica.getFichatecnicaList().remove(fichatecnicaListFichatecnica);
+                    oldIdClienteOfFichatecnicaListFichatecnica = em.merge(oldIdClienteOfFichatecnicaListFichatecnica);
                 }
             }
             em.getTransaction().commit();
@@ -85,6 +104,8 @@ public class ClienteJpaController implements Serializable {
             Distrito idDistritoNew = cliente.getIdDistrito();
             List<Pedido> pedidoListOld = persistentCliente.getPedidoList();
             List<Pedido> pedidoListNew = cliente.getPedidoList();
+            List<Fichatecnica> fichatecnicaListOld = persistentCliente.getFichatecnicaList();
+            List<Fichatecnica> fichatecnicaListNew = cliente.getFichatecnicaList();
             if (idDistritoNew != null) {
                 idDistritoNew = em.getReference(idDistritoNew.getClass(), idDistritoNew.getIdDistrito());
                 cliente.setIdDistrito(idDistritoNew);
@@ -96,6 +117,14 @@ public class ClienteJpaController implements Serializable {
             }
             pedidoListNew = attachedPedidoListNew;
             cliente.setPedidoList(pedidoListNew);
+            List<Fichatecnica> attachedFichatecnicaListNew = new ArrayList<Fichatecnica>();
+            if(fichatecnicaListNew != null){
+            for (Fichatecnica fichatecnicaListNewFichatecnicaToAttach : fichatecnicaListNew) {
+                fichatecnicaListNewFichatecnicaToAttach = em.getReference(fichatecnicaListNewFichatecnicaToAttach.getClass(), fichatecnicaListNewFichatecnicaToAttach.getIdFicha());
+                attachedFichatecnicaListNew.add(fichatecnicaListNewFichatecnicaToAttach);
+            }}
+            fichatecnicaListNew = attachedFichatecnicaListNew;
+            cliente.setFichatecnicaList(fichatecnicaListNew);
             cliente = em.merge(cliente);
             if (idDistritoOld != null && !idDistritoOld.equals(idDistritoNew)) {
                 idDistritoOld.getClienteList().remove(cliente);
@@ -119,6 +148,23 @@ public class ClienteJpaController implements Serializable {
                     if (oldIdClienteOfPedidoListNewPedido != null && !oldIdClienteOfPedidoListNewPedido.equals(cliente)) {
                         oldIdClienteOfPedidoListNewPedido.getPedidoList().remove(pedidoListNewPedido);
                         oldIdClienteOfPedidoListNewPedido = em.merge(oldIdClienteOfPedidoListNewPedido);
+                    }
+                }
+            }
+            for (Fichatecnica fichatecnicaListOldFichatecnica : fichatecnicaListOld) {
+                if (!fichatecnicaListNew.contains(fichatecnicaListOldFichatecnica)) {
+                    fichatecnicaListOldFichatecnica.setIdCliente(null);
+                    fichatecnicaListOldFichatecnica = em.merge(fichatecnicaListOldFichatecnica);
+                }
+            }
+            for (Fichatecnica fichatecnicaListNewFichatecnica : fichatecnicaListNew) {
+                if (!fichatecnicaListOld.contains(fichatecnicaListNewFichatecnica)) {
+                    Cliente oldIdClienteOfFichatecnicaListNewFichatecnica = fichatecnicaListNewFichatecnica.getIdCliente();
+                    fichatecnicaListNewFichatecnica.setIdCliente(cliente);
+                    fichatecnicaListNewFichatecnica = em.merge(fichatecnicaListNewFichatecnica);
+                    if (oldIdClienteOfFichatecnicaListNewFichatecnica != null && !oldIdClienteOfFichatecnicaListNewFichatecnica.equals(cliente)) {
+                        oldIdClienteOfFichatecnicaListNewFichatecnica.getFichatecnicaList().remove(fichatecnicaListNewFichatecnica);
+                        oldIdClienteOfFichatecnicaListNewFichatecnica = em.merge(oldIdClienteOfFichatecnicaListNewFichatecnica);
                     }
                 }
             }
@@ -160,6 +206,11 @@ public class ClienteJpaController implements Serializable {
             for (Pedido pedidoListPedido : pedidoList) {
                 pedidoListPedido.setIdCliente(null);
                 pedidoListPedido = em.merge(pedidoListPedido);
+            }
+            List<Fichatecnica> fichatecnicaList = cliente.getFichatecnicaList();
+            for (Fichatecnica fichatecnicaListFichatecnica : fichatecnicaList) {
+                fichatecnicaListFichatecnica.setIdCliente(null);
+                fichatecnicaListFichatecnica = em.merge(fichatecnicaListFichatecnica);
             }
             em.remove(cliente);
             em.getTransaction().commit();
