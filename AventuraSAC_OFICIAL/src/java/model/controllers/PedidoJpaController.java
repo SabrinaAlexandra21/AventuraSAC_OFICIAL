@@ -77,8 +77,10 @@ public class PedidoJpaController implements Serializable {
             pedido.setPagosList(attachedPagosList);
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : pedido.getPedidoDetalleList()) {
+                if(pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido() != null){
                 pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleList.add(pedidoDetalleListPedidoDetalleToAttach);
+                }
             }
             pedido.setPedidoDetalleList(attachedPedidoDetalleList);
             List<Cotizacion> attachedCotizacionList = new ArrayList<Cotizacion>();
@@ -144,7 +146,10 @@ public class PedidoJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } finally {
+        } catch(Exception e){
+            e.printStackTrace();
+        }
+        finally {
             if (em != null) {
                 em.close();
             }

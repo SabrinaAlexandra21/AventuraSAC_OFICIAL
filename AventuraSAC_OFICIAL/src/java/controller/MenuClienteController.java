@@ -86,7 +86,9 @@ public class MenuClienteController {
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
 
         List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
-
+        
+        p.setPedidoDetalleList(new ArrayList<PedidoDetalle>());
+        
         for (Fichatecnica x : ficha) {
 
             if(c.getIdCliente() == x.getIdCliente().getIdCliente()) {
@@ -96,11 +98,12 @@ public class MenuClienteController {
                 detalleP.setIdPedido(p);
                 detalleP.setIdFicha(x);
                 
+                
                 p.getPedidoDetalleList().add(detalleP);
             }
         }
         
-        
+        p.setIdCliente(c);
         repo.create(p);
 
         return new ModelAndView("redirect:/listapedidos.htm");

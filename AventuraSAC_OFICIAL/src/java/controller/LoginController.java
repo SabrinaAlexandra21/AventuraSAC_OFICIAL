@@ -88,22 +88,6 @@ public class LoginController {
         return mv;
     }
     
-    @RequestMapping(value = "pedidos.htm", method = RequestMethod.POST)
-
-    public ModelAndView NuevoPedido(Model model) {
-
-        ModelAndView mv = new ModelAndView();
-        
-        List<Cliente> clientes = repo.findClienteEntities();
-        
-        mv.addObject("clientes", clientes);
-        
-        model.addAttribute("pedido", new Pedido());
-        
-        mv.setViewName("pedidos");
-        
-        return mv;
-    }
 
     @RequestMapping("menualmacen.htm")
 

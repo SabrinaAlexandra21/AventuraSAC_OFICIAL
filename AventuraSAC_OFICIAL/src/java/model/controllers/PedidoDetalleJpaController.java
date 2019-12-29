@@ -64,6 +64,7 @@ public class PedidoDetalleJpaController implements Serializable {
             }
             pedidoDetalle.setCotizacionDetalleList(attachedCotizacionDetalleList);
             em.persist(pedidoDetalle);
+            
             if (idFicha != null) {
                 idFicha.getPedidoDetalleList().add(pedidoDetalle);
                 idFicha = em.merge(idFicha);

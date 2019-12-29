@@ -38,6 +38,7 @@
                         <div class="d-flex flex-row">
 
                             <form:input path="idPedido" type="hidden" cssClass="form-control" />
+                            
                             <div class="p-4">
                                 <h3>Agregar Pedido</h3>
                             </div>
@@ -62,6 +63,7 @@
                             <thead>
                                 <tr>
                                     <th scope="col">IdCliente</th>
+                                    <th scope="col">IdFicha</th>
                                     <th scope="col">Descripción</th>
                                     <th scope="col">Modelo</th>
                                     <th scope="col">Etiquetas</th>
@@ -73,6 +75,7 @@
                                 <c:forEach var="item" items="${ficha}">
                                     <tr> 
                                         <th scope="row" >${item.idCliente.razonSocial}</th>
+                                        <td >${item.idFicha}</td>
                                         <td >${item.descripcion}</td>
                                         <td >${item.idTipoModelo.nombre}</td>
                                         <td >${item.etiqueta}</td>

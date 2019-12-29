@@ -88,7 +88,7 @@ public class FichaTecnicaController  {
         
         repo.create(f);
         
-        return new ModelAndView("redirect:/menu.htm");
+        return new ModelAndView("redirect:/pedidos.htm");
     }
     
 }
