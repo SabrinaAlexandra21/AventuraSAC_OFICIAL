@@ -76,9 +76,10 @@ public class PedidoJpaController implements Serializable {
             }
             pedido.setPagosList(attachedPagosList);
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
+            
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : pedido.getPedidoDetalleList()) {
-                if(pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido() != null){
-                pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
+                if(pedidoDetalleListPedidoDetalleToAttach.getIdPedido() != null){
+                //pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleList.add(pedidoDetalleListPedidoDetalleToAttach);
                 }
             }
