@@ -11,6 +11,7 @@ import model.controllers.FichatecnicaJpaController;
 import model.controllers.TallaJpaController;
 import model.controllers.TipomodeloJpaController;
 import model.controllers.TipotelaJpaController;
+import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Cliente;
 import model.entities.Fichatecnica;
 import model.entities.Talla;
@@ -90,6 +91,57 @@ public class FichaTecnicaController  {
         
         return new ModelAndView("redirect:/pedidos.htm");
     }
+    
+    @RequestMapping(value = "editarficha.htm", method = RequestMethod.GET)
+    
+    public ModelAndView EditarFichatecnica(HttpServletRequest request) {
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        Fichatecnica obj = repo.findFichatecnica(id);
+        
+        ModelAndView mv = new ModelAndView();
+        
+        List<Tipotela> telas = repo1.findTipotelaEntities();
+        
+        mv.addObject("tipotelas", telas);
+        
+        List<Tipomodelo> prendas = repo2.findTipomodeloEntities();
+        
+        mv.addObject("listamodelo", prendas);
+        
+        List<Talla> tallas = repo3.findTallaEntities();
+        
+        mv.addObject("listatallas", tallas);
+        
+        mv.addObject("fichatecnica", obj);
+       
+        mv.setViewName("editarFicha");
+        
+        return mv;
+        
+    }
+    
+    @RequestMapping(value = "editarficha.htm", method = RequestMethod.POST)
+    
+    public ModelAndView EditarFichatecnica(@ModelAttribute("fichatecnica") Fichatecnica f) throws Exception {
+        
+        repo.edit(f);
+
+        return new ModelAndView("redirect:/pedidos.htm");
+    }
+    
+     @RequestMapping(value = "eliminarficha.htm")
+     
+    public ModelAndView EliminarFichatecnica(HttpServletRequest request) throws NonexistentEntityException {
+        
+        int id = Integer.parseInt(request.getParameter("id"));
+        
+        repo.destroy(id);
+
+        return new ModelAndView("redirect:/pedidos.htm");
+    }
+    
     
 }
 

@@ -15,6 +15,7 @@ import model.entities.Cliente;
 import model.entities.Fichatecnica;
 import model.entities.Pedido;
 import model.entities.PedidoDetalle;
+import org.eclipse.persistence.sessions.Session;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -53,25 +54,41 @@ public class MenuClienteController {
 
     public ModelAndView Login() {
 
+        List<Pedido> pedidos = new ArrayList();
+
+        pedidos = repo.findPedidoEntities();
+
         ModelAndView mv = new ModelAndView();
+
+        mv.addObject("pedidos", pedidos);
 
         mv.setViewName("listapedidos");
 
         return mv;
     }
-    
+
     @RequestMapping(value = "pedidos.htm", method = RequestMethod.GET)
 
-    public ModelAndView NuevoPedido(Model model) {
+    public ModelAndView NuevoPedido(Model model, HttpServletRequest request) {
 
         ModelAndView mv = new ModelAndView();
 
-        List<Fichatecnica> ficha = new ArrayList<>();
+        Cliente c = (Cliente) request.getSession().getAttribute("usuario");
+        
+        
+        List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
+        
+        List<Fichatecnica> fichatemporal = new ArrayList();
 
-        ficha = repo2.findFichatecnicaEntities();
+        for (Fichatecnica x : ficha) {
+            if (x.getIdCliente().getIdCliente() == c.getIdCliente() && x.getPedidoDetalleList().size() == 0) {
 
-        mv.addObject("ficha", ficha);
-
+                fichatemporal.add(x);  
+            }    
+        }
+        
+        model.addAttribute("ficha", fichatemporal);
+        
         model.addAttribute("pedido", new Pedido());
 
         mv.setViewName("pedidos");
@@ -84,29 +101,30 @@ public class MenuClienteController {
     public ModelAndView NuevoPedido(@ModelAttribute("pedido") Pedido p, HttpServletRequest request) throws Exception {
 
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
-
+        
         List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
-        
+                
         p.setPedidoDetalleList(new ArrayList<PedidoDetalle>());
-        
-        for (Fichatecnica x : ficha) {
 
-            if(c.getIdCliente() == x.getIdCliente().getIdCliente()) {
-
+        for (Fichatecnica x : ficha){
+            
+            if (c.getIdCliente() == x.getIdCliente().getIdCliente() && x.getPedidoDetalleList().size() == 0) {
+                
                 PedidoDetalle detalleP = new PedidoDetalle();
 
                 detalleP.setIdPedido(p);
                 detalleP.setIdFicha(x);
-                
-                
+
                 p.getPedidoDetalleList().add(detalleP);
             }
-        }
         
-        p.setIdCliente(c);
-        repo.create(p);
+    }
 
-        return new ModelAndView("redirect:/listapedidos.htm");
+    p.setIdCliente (c);
+
+    repo.create (p);
+
+    return new ModelAndView("redirect:/listapedidos.htm");
     }
 
 }

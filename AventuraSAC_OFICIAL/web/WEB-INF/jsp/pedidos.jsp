@@ -13,7 +13,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>JSP Page</title>
 
-        <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/estilospedido.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
         <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
@@ -21,7 +22,7 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.modal.css"/>" />
 
     </head>
-    <body id="bodys">
+    <body id="body">
 
         <header id="header">
             <a class="logo" href="menu.htm">Aventura S.A.C.</a>
@@ -31,26 +32,25 @@
         </header>
 
         <div class="container md-8">
-
+            
             <div class="card" id="carta">
-                <form:form method="post" modelAttribute="pedido">
+                <form:form method="post" modelAttribute="pedido" >
                     <div class="card-header">
                         <div class="d-flex flex-row">
 
-                            <form:input path="idPedido" type="hidden" cssClass="form-control" />
-                            
-                            <div class="p-4">
+                            <div class="p-4" class="form-group">
+                                <br>
                                 <h3>Agregar Pedido</h3>
                             </div>
-                            
-                            <div class="p-4">
-                                
+
+                            <div class="p-4" class="form-group" id="femision">
+
                                 <label for="fechaRegistro">Fecha Emisión: </label>
-                                <form:input path="fechaRegistro" cssClass="form-control" />
+                                <form:input path="fechaRegistro" cssClass="form-control" id="femisionI"/>
                             </div>
-                            <div class="p-4">
+                            <div class="p-4" class="form-group" id="fentrega">
                                 <label for="fechaRegistro">Fecha Entrega: </label>
-                                <form:input path="fechaEntrega" cssClass="form-control" />
+                                <form:input path="fechaEntrega" cssClass="form-control" id="fentregaI"/>
                             </div>
                         </div>
                     </div>
@@ -64,21 +64,15 @@
                                 <tr>
                                     <th scope="col">IdCliente</th>
                                     <th scope="col">IdFicha</th>
-                                    <th scope="col">Descripción</th>
-                                    <th scope="col">Modelo</th>
-                                    <th scope="col">Etiquetas</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
 
                             <tbody>
                                 <c:forEach var="item" items="${ficha}">
-                                    <tr> 
-                                        <th scope="row" >${item.idCliente.razonSocial}</th>
-                                        <td >${item.idFicha}</td>
-                                        <td >${item.descripcion}</td>
-                                        <td >${item.idTipoModelo.nombre}</td>
-                                        <td >${item.etiqueta}</td>
+                                    <tr > 
+                                        <th scope="row">${item.idCliente.idCliente}</th>
+                                        <th >${item.idFicha}</th>
                                         <td scope="col-2">
 
 
@@ -96,13 +90,19 @@
                         </table>
 
                         <center>
-                            <input type="submit" class="btn btn-secondary" value="Enviar"/>
+                            <input type="submit" class="btn btn-secondary" value="Enviar"  />
                             <button><a href="menucliente.htm" id="regre">Regresar al Menú</a></button>
                         </center>
 
                     </div>
                 </form:form>
+
+
             </div>
+               
         </div>
+
+        <br>
+        <br>
     </body>
 </html>

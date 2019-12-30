@@ -66,7 +66,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="#" class="icon fa-list-alt"><span class="label">Icon</span></a>
+                                <a href="listapedidos.htm" class="icon fa-list-alt"><span class="label">Icon</span></a>
                                 <h2>MIS PEDIDOS</h2>
                             </header>
                             <p>En este campo podra ver el estado de sus pedidos, la cotizacion respectiva y podra acceder a pagar por el pedido.</p>

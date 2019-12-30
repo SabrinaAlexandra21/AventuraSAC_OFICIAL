@@ -66,6 +66,7 @@ public class FichatecnicaJpaController implements Serializable {
                 fichatecnica.setIdTipo(idTipo);
             }
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
+            //if(fichatecnica.getPedidoDetalleList() != null){
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : fichatecnica.getPedidoDetalleList()) {
                 pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleList.add(pedidoDetalleListPedidoDetalleToAttach);
