@@ -75,6 +75,8 @@ public class Fichatecnica implements Serializable {
     @JoinColumn(name = "idTipo", referencedColumnName = "idTipo")
     @ManyToOne
     private Tipotela idTipo;
+    
+    
 
     public Fichatecnica() {
     }
@@ -186,6 +188,9 @@ public class Fichatecnica implements Serializable {
     public void setIdTipo(Tipotela idTipo) {
         this.idTipo = idTipo;
     }
+
+  
+
 
     @Override
     public int hashCode() {

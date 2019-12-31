@@ -74,15 +74,22 @@ public class MenuClienteController {
         ModelAndView mv = new ModelAndView();
 
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
-        
+        //repo2 = new FichatecnicaJpaController(emf);
         List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
         
         List<Fichatecnica> fichatemporal = new ArrayList();
 
         for(Fichatecnica x : ficha) {
-            if(x.getIdCliente().getIdCliente() == c.getIdCliente() && x.getPedidoDetalleList().size() == 0) {
+            
+            if(x.getIdCliente().getIdCliente() == c.getIdCliente()) {
+                
+                List<PedidoDetalle> lista = repo3.listadoxficha(x.getIdFicha());
+                
+                if(lista.size() == 0){
 
-                fichatemporal.add(x);  
+                fichatemporal.add(x); 
+                
+                }
             }    
         }
         
@@ -101,22 +108,28 @@ public class MenuClienteController {
 
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
         
-        List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
+        List<Fichatecnica> ficha = new ArrayList<>(repo2.findFichatecnicaEntities());
                 
         p.setPedidoDetalleList(new ArrayList<PedidoDetalle>());
 
         for (Fichatecnica x : ficha){
-            
-            if (c.getIdCliente() == x.getIdCliente().getIdCliente() && x.getPedidoDetalleList().size() == 0) {
+            if(x.getIdCliente().getIdCliente() == c.getIdCliente()) {
                 
+                
+                List<PedidoDetalle> lista = new ArrayList<>(repo3.listadoxficha(x.getIdFicha()));
+                
+                if(lista.size() == 0){
+
                 PedidoDetalle detalleP = new PedidoDetalle();
 
                 detalleP.setIdPedido(p);
                 detalleP.setIdFicha(x);
 
                 p.getPedidoDetalleList().add(detalleP);
-            }
-        
+                
+                }
+            }    
+          
     }
 
     p.setIdCliente (c);

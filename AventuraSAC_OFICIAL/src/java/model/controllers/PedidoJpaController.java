@@ -119,7 +119,8 @@ public class PedidoJpaController implements Serializable {
                     oldIdPedidoOfPagosListPagos = em.merge(oldIdPedidoOfPagosListPagos);
                 }
             }
-            for (PedidoDetalle pedidoDetalleListPedidoDetalle : pedido.getPedidoDetalleList()) {
+            List<PedidoDetalle> detalles = new ArrayList<>(pedido.getPedidoDetalleList());
+            for (PedidoDetalle pedidoDetalleListPedidoDetalle : detalles) {
                 Pedido oldIdPedidoOfPedidoDetalleListPedidoDetalle = pedidoDetalleListPedidoDetalle.getIdPedido();
                 pedidoDetalleListPedidoDetalle.setIdPedido(pedido);
                 pedidoDetalleListPedidoDetalle = em.merge(pedidoDetalleListPedidoDetalle);

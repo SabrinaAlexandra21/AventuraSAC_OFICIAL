@@ -229,6 +229,24 @@ public class PedidoDetalleJpaController implements Serializable {
             em.close();
         }
     }
+    
+    public List<PedidoDetalle> listadoxficha(int idFicha) {
+        EntityManager em = getEntityManager();
+        List<PedidoDetalle> lista = new ArrayList();
+        try {
+            Query q = em.createQuery("SELECT p FROM PedidoDetalle p WHERE p.idFicha.idFicha = :idFicha").setParameter("idFicha",idFicha);
+            lista = (List<PedidoDetalle>)q.getResultList();
+            System.out.println("Listado por ficha" + lista.size());
+            
+        //}catch(Exception e){
+            
+          //  System.out.println(e.getMessage());
+        } 
+        finally {
+            em.close();
+        }
+        return lista;
+    }
 
     public PedidoDetalle findPedidoDetalle(Integer id) {
         EntityManager em = getEntityManager();

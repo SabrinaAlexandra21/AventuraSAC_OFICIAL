@@ -32,7 +32,7 @@
         </header>
 
         <div class="container md-8">
-            
+
             <div class="card" id="carta">
                 <form:form method="post" modelAttribute="pedido" >
                     <div class="card-header">
@@ -99,13 +99,13 @@
 
 
             </div>
-               
+
         </div>
 
         <br>
         <br>
-        
-<script type="text/javascript">
+
+        <script type="text/javascript">
             function eliminar(id) {
                 if (confirm("¿Desea eliminar la ficha técnica?")) {
                     window.location.href = "eliminarficha.htm?id=" + id;

@@ -139,11 +139,11 @@ public class FichatecnicaJpaController implements Serializable {
                 fichatecnica.setIdTipo(idTipoNew);
             }
             List<PedidoDetalle> attachedPedidoDetalleListNew = new ArrayList<PedidoDetalle>();
-            
+            if(pedidoDetalleListNew != null){
             for (PedidoDetalle pedidoDetalleListNewPedidoDetalleToAttach : pedidoDetalleListNew) {
                 pedidoDetalleListNewPedidoDetalleToAttach = em.getReference(pedidoDetalleListNewPedidoDetalleToAttach.getClass(), pedidoDetalleListNewPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleListNew.add(pedidoDetalleListNewPedidoDetalleToAttach);
-            }
+            }}
             pedidoDetalleListNew = attachedPedidoDetalleListNew;
             fichatecnica.setPedidoDetalleList(pedidoDetalleListNew);
             fichatecnica = em.merge(fichatecnica);
