@@ -75,19 +75,18 @@ public class MenuClienteController {
 
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
         
-        
         List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
         
         List<Fichatecnica> fichatemporal = new ArrayList();
 
-        for (Fichatecnica x : ficha) {
-            if (x.getIdCliente().getIdCliente() == c.getIdCliente() && x.getPedidoDetalleList().size() == 0) {
+        for(Fichatecnica x : ficha) {
+            if(x.getIdCliente().getIdCliente() == c.getIdCliente() && x.getPedidoDetalleList().size() == 0) {
 
                 fichatemporal.add(x);  
             }    
         }
         
-        model.addAttribute("ficha", fichatemporal);
+        mv.addObject("ficha", fichatemporal);
         
         model.addAttribute("pedido", new Pedido());
 
@@ -127,4 +126,5 @@ public class MenuClienteController {
     return new ModelAndView("redirect:/listapedidos.htm");
     }
 
+    
 }

@@ -60,7 +60,7 @@
                 
                 <prop key="FichaTecnica.htm">fichaTecnicaController</prop>
                 <prop key="editarficha.htm">fichaTecnicaController</prop>
-                <prop key="eliminarficha">fichaTecnicaController</prop>
+                <prop key="eliminarficha.htm">fichaTecnicaController</prop>
                 
                 <prop key="OrdenCompra.htm">ordencompraController</prop>
                 

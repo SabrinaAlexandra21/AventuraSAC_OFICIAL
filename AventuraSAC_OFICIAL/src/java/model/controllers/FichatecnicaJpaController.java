@@ -66,7 +66,7 @@ public class FichatecnicaJpaController implements Serializable {
                 fichatecnica.setIdTipo(idTipo);
             }
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
-            //if(fichatecnica.getPedidoDetalleList() != null){
+          
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : fichatecnica.getPedidoDetalleList()) {
                 pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleList.add(pedidoDetalleListPedidoDetalleToAttach);
@@ -139,6 +139,7 @@ public class FichatecnicaJpaController implements Serializable {
                 fichatecnica.setIdTipo(idTipoNew);
             }
             List<PedidoDetalle> attachedPedidoDetalleListNew = new ArrayList<PedidoDetalle>();
+            
             for (PedidoDetalle pedidoDetalleListNewPedidoDetalleToAttach : pedidoDetalleListNew) {
                 pedidoDetalleListNewPedidoDetalleToAttach = em.getReference(pedidoDetalleListNewPedidoDetalleToAttach.getClass(), pedidoDetalleListNewPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleListNew.add(pedidoDetalleListNewPedidoDetalleToAttach);

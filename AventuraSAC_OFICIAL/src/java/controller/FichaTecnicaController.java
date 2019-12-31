@@ -96,6 +96,8 @@ public class FichaTecnicaController  {
     
     public ModelAndView EditarFichatecnica(HttpServletRequest request) {
         
+        Cliente c = (Cliente)request.getSession().getAttribute("usuario");
+        
         int id = Integer.parseInt(request.getParameter("id"));
         
         Fichatecnica obj = repo.findFichatecnica(id);
@@ -116,7 +118,7 @@ public class FichaTecnicaController  {
         
         mv.addObject("fichatecnica", obj);
        
-        mv.setViewName("editarFicha");
+        mv.setViewName("editarficha");
         
         return mv;
         
@@ -124,7 +126,11 @@ public class FichaTecnicaController  {
     
     @RequestMapping(value = "editarficha.htm", method = RequestMethod.POST)
     
-    public ModelAndView EditarFichatecnica(@ModelAttribute("fichatecnica") Fichatecnica f) throws Exception {
+    public ModelAndView EditarFichatecnica(@ModelAttribute("fichatecnica") Fichatecnica f, HttpServletRequest request) throws Exception {
+        
+        Cliente c = (Cliente)request.getSession().getAttribute("usuario");
+        
+        f.setIdCliente(c);
         
         repo.edit(f);
 
@@ -141,7 +147,6 @@ public class FichaTecnicaController  {
 
         return new ModelAndView("redirect:/pedidos.htm");
     }
-    
     
 }
 

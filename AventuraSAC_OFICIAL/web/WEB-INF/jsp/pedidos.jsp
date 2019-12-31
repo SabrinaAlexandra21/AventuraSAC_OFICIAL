@@ -72,11 +72,11 @@
                                 <c:forEach var="item" items="${ficha}">
                                     <tr > 
                                         <th scope="row">${item.idCliente.idCliente}</th>
-                                        <th >${item.idFicha}</th>
+                                        <th>${item.idFicha}</th>
                                         <td scope="col-2">
 
 
-                                            <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idFicha}" ><i class="fas fa-edit"></i></a> 
+                                            <a class="btn btn-info" role="button" href="editarficha.htm?id=${item.idFicha}" ><i class="fas fa-edit"></i></a> 
 
                                             <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idFicha}')" ><i class="fas fa-trash-alt"></i></button>
                                         </td>
@@ -104,5 +104,15 @@
 
         <br>
         <br>
+        
+<script type="text/javascript">
+            function eliminar(id) {
+                if (confirm("¿Desea eliminar la ficha técnica?")) {
+                    window.location.href = "eliminarficha.htm?id=" + id;
+                    return true;
+                }
+                return false;
+            }
+        </script>
     </body>
 </html>
