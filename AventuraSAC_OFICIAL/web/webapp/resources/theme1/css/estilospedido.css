@@ -40,3 +40,11 @@
 #fentregaI {
    width: 250px;
 }
+
+#cardheader{
+    background: #C1FCEC ;
+}
+
+.p-4 input{
+    background: white;
+}

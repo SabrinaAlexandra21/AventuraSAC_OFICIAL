@@ -35,7 +35,7 @@
 
             <div class="card" id="carta">
                 <form:form method="post" modelAttribute="pedido" >
-                    <div class="card-header">
+                    <div class="card-header" id="cardheader">
                         <div class="d-flex flex-row">
 
                             <div class="p-4" class="form-group">
