@@ -46,7 +46,7 @@ public class ClienteController {
     
     @RequestMapping("clientes.htm")
     
-    public ModelAndView Listar() {
+    public ModelAndView Listar(HttpServletRequest request) {
         
         List<Cliente> clientes = new ArrayList<>();
         

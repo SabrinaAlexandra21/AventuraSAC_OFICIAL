@@ -87,7 +87,6 @@ public class LoginController {
 
         return mv;
     }
-    
 
     @RequestMapping("menualmacen.htm")
 
@@ -134,7 +133,7 @@ public class LoginController {
 
         List<Empleado> lista = repo1.findEmpleadoEntities();
         List<Cliente> lista1 = repo.findClienteEntities();
-        //List<Cargo> lista3 = repo3.findCargoEntities();
+        List<Cargo> lista3 = repo3.findCargoEntities();
 
         boolean encontrado = false;
 
@@ -143,10 +142,42 @@ public class LoginController {
             if (e.getUsuario().equals(usuario) && e.getClave().equals(clave)) {
 
                 encontrado = true;
-                
+                request.getSession().setAttribute("usuario", e);
                 mv.addObject("usuario", e);
-                mv.setViewName("MenuTrabajador");
-                break;
+
+                for (Cargo x : lista3) {
+
+                    
+                    if (x.getIdCargo().equals(4) == e.getIdCargo().getIdCargo().equals(x)) {
+                        mv.addObject("cargo", x);
+                        mv.setViewName("MenuTrabajador");
+                         break;
+                    }
+                    
+                    if (x.getIdCargo().equals(2) == e.getIdCargo().getIdCargo().equals(x)) {
+                        mv.addObject("cargo", x);
+                        mv.setViewName("MenuVentas");
+                         break;
+                    }
+                    
+                    
+                    if (x.getIdCargo().equals(3) == e.getIdCargo().getIdCargo().equals(x)) {
+                        mv.addObject("cargo", x);
+                        mv.setViewName("MenuLogistica");
+                         break;
+                    }
+                    
+                    if (x.getIdCargo().equals(1) == e.getIdCargo().getIdCargo().equals(x)) {
+                        mv.addObject("cargo", x);
+                        mv.setViewName("MenuAlmacen");
+                         break;
+
+                    }
+                    
+                     
+                    
+                   
+                }
 
             }
 
@@ -172,6 +203,7 @@ public class LoginController {
         }
 
         return mv;
+
     }
 
     /*@RequestMapping(value = "nuevo.htm", method = RequestMethod.GET)

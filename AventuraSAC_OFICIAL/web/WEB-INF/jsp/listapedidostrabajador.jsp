@@ -8,6 +8,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="<c:url value="webapp/resources/theme1/css/main.css"/>" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
         <title>JSP Page</title>
     </head>
     <body id="body">
@@ -57,10 +58,7 @@
                                     <td >${item.fechaRegistro}</td>
                                     <td >${item.fechaEntrega}</td>
                                     <td>
-                                        <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
-                                    <!--  <button  class="btn btn-info" type="button" id="editar" onclick="editar('${item.idCliente}', '${item.idDistrito.idDistrito}')" ><i class="fas fa-edit"></i></button>  -->
-                                        <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
-
+                                        <a class="btn btn-info" role="button" href="Cotizacion.htm" ><i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

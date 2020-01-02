@@ -54,7 +54,7 @@
                     <section>
                         <div class="content">
                             <header>
-                                <a href="#" class="icon fa-list"><span class="label">Icon</span></a>
+                                <a href="listapedidostrabajador.htm" class="icon fa-list"><span class="label">Icon</span></a>
                                 <h2>PEDIDOS</h2>
                             </header>
                             <p>Lista los pedidos con toda la informacion , adicionalmente podras generar su respectiva cotizacion con esta herramienta.</p>								

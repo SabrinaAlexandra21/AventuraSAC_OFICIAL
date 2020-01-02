@@ -64,8 +64,9 @@
                 
                 <prop key="OrdenCompra.htm">ordencompraController</prop>
                 
-                <prop key="pedidos.htm">menuClienteController</prop>
-                <prop key="listapedidos.htm">menuClienteController</prop>
+                <prop key="pedidos.htm">pedidoController</prop>
+                <prop key="listapedidos.htm">pedidoController</prop>
+                <prop key="listapedidostrabajador.htm">pedidoController</prop>
             </props>
         </property>
     </bean>
@@ -108,6 +109,6 @@
     <bean name="ordencompraController"
           class="controller.OrdenCompraController" />
     
-    <bean name="menuClienteController"
-          class="controller.MenuClienteController" />
+    <bean name="pedidoController"
+          class="controller.PedidoController" />
 </beans>

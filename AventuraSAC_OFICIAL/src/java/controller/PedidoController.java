@@ -24,7 +24,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 @Controller
-public class MenuClienteController {
+public class PedidoController {
 
     private EntityManager em;
     private EntityManagerFactory emf;
@@ -33,7 +33,7 @@ public class MenuClienteController {
     private FichatecnicaJpaController repo2;
     private PedidoDetalleJpaController repo3;
 
-    public MenuClienteController() {
+    public PedidoController() {
         em = getEntityManager();
         repo = new PedidoJpaController(emf);
         repo1 = new ClienteJpaController(emf);
@@ -52,21 +52,52 @@ public class MenuClienteController {
 
     @RequestMapping("listapedidos.htm")
 
-    public ModelAndView Login() {
+    public ModelAndView ListaPedidos(HttpServletRequest request) {
+        
+        Cliente c = (Cliente) request.getSession().getAttribute("usuario");
+
+        List<Pedido> pedidos = repo.findPedidoEntities();
+        
+        List<Pedido> pedidostemporal = new ArrayList();
+        
+        ModelAndView mv = new ModelAndView();
+        
+        for(Pedido x: pedidos){
+            
+            if(x.getIdCliente().getIdCliente() == c.getIdCliente()){
+                
+                pedidostemporal.add(x);
+                
+            }
+        }
+
+        mv.addObject("pedidos", pedidostemporal);
+        
+        mv.setViewName("listapedidos");
+
+        return mv;
+    }
+    
+        
+    @RequestMapping("listapedidostrabajador.htm")
+
+    public ModelAndView ListaPedidosTrabajador(HttpServletRequest request) {
 
         List<Pedido> pedidos = new ArrayList();
 
         pedidos = repo.findPedidoEntities();
 
         ModelAndView mv = new ModelAndView();
+        
+        request.getSession().setAttribute("pedidos", pedidos);
 
         mv.addObject("pedidos", pedidos);
 
-        mv.setViewName("listapedidos");
+        mv.setViewName("listapedidostrabajador");
 
         return mv;
     }
-
+    
     @RequestMapping(value = "pedidos.htm", method = RequestMethod.GET)
 
     public ModelAndView NuevoPedido(Model model, HttpServletRequest request) {
@@ -93,6 +124,7 @@ public class MenuClienteController {
             }    
         }
         
+        
         mv.addObject("ficha", fichatemporal);
         
         model.addAttribute("pedido", new Pedido());
@@ -107,6 +139,9 @@ public class MenuClienteController {
     public ModelAndView NuevoPedido(@ModelAttribute("pedido") Pedido p, HttpServletRequest request) throws Exception {
 
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
+       
+        
+        
         
         List<Fichatecnica> ficha = new ArrayList<>(repo2.findFichatecnicaEntities());
                 

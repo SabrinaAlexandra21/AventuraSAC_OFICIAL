@@ -26,80 +26,80 @@
 
         <div class="container md-8">
             <div class="card">
-                <form:form method="post" modelAttribute="cotizacion">
-                    <div class="card-header">
 
-                        <div class="d-flex flex-row">
+                <div class="card-header">
 
-                            <div  class="p-4" id="img">
+                    <div class="d-flex flex-row">
 
-                                <img src="webapp/resources/theme1/images/logo.PNG" alt="Card image cap">
+                        <div  class="p-4" id="img">
 
+                            <img src="webapp/resources/theme1/images/logo.PNG" alt="Card image cap">
+
+                        </div>
+
+                        <div class="p-4"  id="escritos">
+
+                            <p>Cal. Mercaderes Nro. 164 Dpto. 203 </p>
+                            <p>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</p>
+
+                        </div>
+
+                        <div class="p-4" id="fieldset">
+
+                            <fieldset style="border:1px solid black" id="fld" >
+
+                                <h3> R.U.C. N° 20111807958 </h3>
+                                <h3><strong>Cotización</strong></h3>
+                                <div class="row" id="ngui">
+                                    N° &nbsp;&nbsp;&nbsp;<input name="idCotizacion">&nbsp;-&nbsp;0000041
+                                </div>
+
+                            </fieldset>
+                        </div>
+                    </div>
+
+                </div>
+
+                <br>
+                <div class="card-body">
+                    <center>
+                        <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
+                    </center>
+
+                    <fieldset id="fieldset1" style="border: 1px solid gray">
+                        <div class="row" id="fila1">
+                            <div class="col-sm-4">
+                                <label for="">Razón Social:</label>
+                                <input type="text" value="${clientes.idCliente}" > 
                             </div>
-
-                            <div class="p-4"  id="escritos">
-
-                                <p>Cal. Mercaderes Nro. 164 Dpto. 203 </p>
-                                <p>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</p>
-
+                            <div class="col-sm-4">      
+                                <label for="">RUC:</label>
+                                <input type="text" value="${pedidos.idPedido}"/>
                             </div>
-
-                            <div class="p-4" id="fieldset">
-
-                                <fieldset style="border:1px solid black" id="fld" >
-
-                                    <h3> R.U.C. N° 20111807958 </h3>
-                                    <h3><strong>Cotización</strong></h3>
-                                    <div class="row" id="ngui">
-                                        N° &nbsp;&nbsp;&nbsp;<form:input path="idCotizacion"/>&nbsp;-&nbsp;0000041
-                                    </div>
-
-                                </fieldset>
+                            <div class="col-sm-4">      
+                                <label for="fechaEmision">Fecha de Emision:</label>
+                                <input type="text" placeholder="Ingresar fecha"/>
                             </div>
                         </div>
 
-                    </div>
+                        <div class="row" id="fila2">
+                            <div class="col-sm-4">
+                                <label for="direccion">Dirección:</label>
+                                <input type="text" value=""/>
+                            </div>
+                            <div class="col-sm-4">
+                                <label for="">Teléfono:</label>
+                                <input type="text" value=""/>
+                            </div>
+                            <div class="col-sm-4">      
+                                <label for="">Correo:</label>
+                                <input type="text"  value=""/>
+                            </div>
+                        </div>
 
+                    </fieldset>
                     <br>
-                    <div class="card-body">
-                        <center>
-                            <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
-                        </center>
-
-                        <fieldset id="fieldset1" style="border: 1px solid gray">
-                            <div class="row" id="fila1">
-                                <div class="col-sm-4">
-                                    <label for="">Razón Social:</label>
-                                    <form:input path="" placeholder="Ingresar razón social"/>
-                                </div>
-                                <div class="col-sm-4">      
-                                    <label for="">RUC:</label>
-                                    <form:input path=""  placeholder="Ingresar RUC"/>
-                                </div>
-                                <div class="col-sm-4">      
-                                    <label for="fechaEmision">Fecha de Emision:</label>
-                                    <form:input path="fechaEmision" placeholder="Ingresar fecha"/>
-                                </div>
-                            </div>
-
-                            <div class="row" id="fila2">
-                                <div class="col-sm-4">
-                                    <label for="direccion">Dirección:</label>
-                                    <form:input path=""  placeholder="Ingresar dirección"/>
-                                </div>
-                                <div class="col-sm-4">
-                                    <label for="">Teléfono:</label>
-                                    <form:input path=""  placeholder="Ingresar teléfono"/>
-                                </div>
-                                <div class="col-sm-4">      
-                                    <label for="">Correo:</label>
-                                    <form:input path=""  placeholder="name@example.com"/>
-                                </div>
-                            </div>
-
-                        </fieldset>
-                        <br>
-
+                    <form:form method="post" modelAttribute="cotizacion">
                         <center><h3><strong>Descripción</strong></h3></center>
 
                         <center>
@@ -116,12 +116,7 @@
                                     <td></td>
                                     <td></td>
                                 </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
+                                
 
                             </table>
                         </center>
@@ -165,8 +160,10 @@
                         <div class="col" id="ultimoparrafo">
                             <p id="ultimoparrafo"><STRONG>Se tiene que pagar el 50% como adelanto inicial</STRONG></p><!--Letra negrita-->
                         </div>
-                    </div>
-                </form:form>
+
+                    </form:form>
+                </div>
+
             </div>
         </div>
     </body>
