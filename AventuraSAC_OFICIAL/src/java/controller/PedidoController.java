@@ -166,7 +166,9 @@ public class PedidoController {
             }    
           
     }
-
+        
+    request.getSession().setAttribute("pedido", p);
+    
     p.setIdCliente (c);
 
     repo.create (p);

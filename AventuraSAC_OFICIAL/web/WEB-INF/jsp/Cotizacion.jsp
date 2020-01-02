@@ -38,7 +38,6 @@
                         </div>
 
                         <div class="p-4"  id="escritos">
-
                             <p>Cal. Mercaderes Nro. 164 Dpto. 203 </p>
                             <p>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</p>
 
@@ -70,11 +69,11 @@
                         <div class="row" id="fila1">
                             <div class="col-sm-4">
                                 <label for="">Razón Social:</label>
-                                <input type="text" value="${clientes.idCliente}" > 
+                                <input type="text"  > 
                             </div>
                             <div class="col-sm-4">      
                                 <label for="">RUC:</label>
-                                <input type="text" value="${pedidos.idPedido}"/>
+                                <input type="text" value="${pedido.idPedido}"/>
                             </div>
                             <div class="col-sm-4">      
                                 <label for="fechaEmision">Fecha de Emision:</label>

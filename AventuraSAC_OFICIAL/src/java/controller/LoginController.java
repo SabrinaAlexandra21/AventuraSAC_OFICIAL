@@ -144,40 +144,36 @@ public class LoginController {
                 encontrado = true;
                 request.getSession().setAttribute("usuario", e);
                 mv.addObject("usuario", e);
+                System.out.println("US: " + e.getIdCargo().getDetalle());
 
-                for (Cargo x : lista3) {
-
+                //for (Cargo x : lista3) {
                     
-                    if (x.getIdCargo().equals(4) == e.getIdCargo().getIdCargo().equals(x)) {
-                        mv.addObject("cargo", x);
+                    if (e.getIdCargo().getIdCargo().equals(4)) {
+                        //mv.addObject("cargo", x);
+                        mv.setViewName("MenuAlmacen");
+                         break;
+                    }
+                    
+                     if (e.getIdCargo().getIdCargo().equals(3)) {
+                        //mv.addObject("cargo", x);
                         mv.setViewName("MenuTrabajador");
                          break;
                     }
                     
-                    if (x.getIdCargo().equals(2) == e.getIdCargo().getIdCargo().equals(x)) {
-                        mv.addObject("cargo", x);
+                    if (e.getIdCargo().getIdCargo().equals(1)) {
+                        //mv.addObject("cargo", x);
                         mv.setViewName("MenuVentas");
-                         break;
-                    }
-                    
-                    
-                    if (x.getIdCargo().equals(3) == e.getIdCargo().getIdCargo().equals(x)) {
-                        mv.addObject("cargo", x);
-                        mv.setViewName("MenuLogistica");
-                         break;
-                    }
-                    
-                    if (x.getIdCargo().equals(1) == e.getIdCargo().getIdCargo().equals(x)) {
-                        mv.addObject("cargo", x);
-                        mv.setViewName("MenuAlmacen");
                          break;
 
                     }
                     
-                     
+                    if (e.getIdCargo().getIdCargo().equals(2)) {
+                        //mv.addObject("cargo", x);
+                        mv.setViewName("MenuLogistica");
+                         break;
+                    }
                     
-                   
-                }
+                //}
 
             }
 
@@ -198,10 +194,7 @@ public class LoginController {
         if (encontrado == false) {
             request.setAttribute("mensaje", "No se encuentran los datos");
             mv.setViewName("login");
-        } else {
-
-        }
-
+        } 
         return mv;
 
     }

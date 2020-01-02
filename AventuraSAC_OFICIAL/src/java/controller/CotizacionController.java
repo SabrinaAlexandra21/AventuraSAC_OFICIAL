@@ -7,11 +7,13 @@ import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import model.controllers.ClienteJpaController;
+import model.controllers.CotizacionDetalleJpaController;
 import model.controllers.CotizacionJpaController;
 import model.controllers.PedidoJpaController;
 import model.controllers.PedidoDetalleJpaController;
 import model.entities.Cliente;
 import model.entities.Cotizacion;
+import model.entities.CotizacionDetalle;
 import model.entities.Empleado;
 import model.entities.Pedido;
 import org.springframework.stereotype.Controller;
@@ -29,12 +31,17 @@ public class CotizacionController {
     private ClienteJpaController repo;
     private PedidoJpaController repo2;
     private CotizacionJpaController repo3;
-
+    private CotizacionDetalleJpaController repo4;
     private PedidoDetalleJpaController repo5;
 
     public CotizacionController() {
         em = getEntityManager();
+        repo = new ClienteJpaController(emf);
+        repo2 = new PedidoJpaController(emf);
         repo3 = new CotizacionJpaController(emf);
+        repo4 = new CotizacionDetalleJpaController(emf);
+        repo5 = new PedidoDetalleJpaController(emf);
+        
     }
 
     private EntityManager getEntityManager() {
@@ -52,28 +59,18 @@ public class CotizacionController {
         ModelAndView mv = new ModelAndView();
 
         Empleado e = (Empleado) request.getSession().getAttribute("usuario");
-
-        //List<Cliente> cli = new ArrayList();
         
-        //cli = repo.findClienteEntities();
+        Cotizacion co = new Cotizacion();
+        
+        List<Cliente> cliente = repo.findClienteEntities();
 
-        //Pedido p = (Pedido) request.getSession().getAttribute("pedidos");
-         List<Pedido> pedido = repo2.findPedidoEntities();
-         
-         for(Pedido p : pedido){
-             
-             
-             
-         }
-
-        /*for(Cliente x : cli){
+        List<Pedido> pedido = repo2.findPedidoEntities();
+        
+       // if(p.getIdPedido() == co.getIdPedido().getIdPedido()){
             
-            if (p.getIdCliente().getIdCliente() == x.getIdCliente()) {
-
-                request.getSession().getAttribute("clientes");
-
-           }
-        }*/
+           // List<CotizacionDetalle> cotdetalle = repo5.findPedidoDetalleEntities()
+            
+        //}
 
         mv.addObject("cotizacion", new Cotizacion());
 
