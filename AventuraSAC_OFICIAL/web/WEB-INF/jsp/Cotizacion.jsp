@@ -103,19 +103,35 @@
 
                         <center>
                             <table id="tabla">
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Descripción</th>
-                                    <th>Cantidad</th>
-                                    <th>Subtotal</th>
-                                </tr>
-                                <tr>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                    <td></td>
-                                </tr>
-                                
+                                <thead>
+                                    <tr>
+                                        <th>ID</th>
+                                        <th>Descripción</th>
+                                        <th>Cantidad</th>
+                                        <th>Acciones</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <c:forEach var="item" items="${detalle}">
+                                        <tr>
+                                            <th scope="row" >${item.idDetallePedido}</th>
+                                            <td >${item.idCliente.idPedido}</td>
+                                            <td >${item.idFicha}</td>
+
+                                            <td scope="col-2">
+
+
+                                                <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
+                                                
+                                                <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
+                                            </td>
+
+
+
+                                        </tr>
+                                    </c:forEach>
+
+                                </tbody>
 
                             </table>
                         </center>

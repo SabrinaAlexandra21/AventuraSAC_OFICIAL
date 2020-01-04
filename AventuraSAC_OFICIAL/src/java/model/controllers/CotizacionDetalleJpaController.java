@@ -6,6 +6,7 @@
 package model.controllers;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -170,6 +171,24 @@ public class CotizacionDetalleJpaController implements Serializable {
         } finally {
             em.close();
         }
+    }
+    
+    public List<CotizacionDetalle> listadoxpedido(int idDetallePedido) {
+        EntityManager em = getEntityManager();
+        List<CotizacionDetalle> lista = new ArrayList();
+        try {
+            Query q = em.createQuery("SELECT c FROM CotizacionDetalle c WHERE c.idDetallePedido.idDetallePedido = :idDetallePedido").setParameter("idDetallePedido",idDetallePedido);
+            lista = (List<CotizacionDetalle>)q.getResultList();
+            System.out.println("Listado por detalle pedido" + lista.size());
+            
+        //}catch(Exception e){
+            
+          //  System.out.println(e.getMessage());
+        } 
+        finally {
+            em.close();
+        }
+        return lista;
     }
 
     public CotizacionDetalle findCotizacionDetalle(Integer id) {

@@ -139,9 +139,6 @@ public class PedidoController {
     public ModelAndView NuevoPedido(@ModelAttribute("pedido") Pedido p, HttpServletRequest request) throws Exception {
 
         Cliente c = (Cliente) request.getSession().getAttribute("usuario");
-       
-        
-        
         
         List<Fichatecnica> ficha = new ArrayList<>(repo2.findFichatecnicaEntities());
                 

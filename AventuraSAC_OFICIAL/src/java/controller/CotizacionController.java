@@ -16,6 +16,8 @@ import model.entities.Cotizacion;
 import model.entities.CotizacionDetalle;
 import model.entities.Empleado;
 import model.entities.Pedido;
+import model.entities.PedidoDetalle;
+import model.entities.PedidoDetalle_;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -57,21 +59,26 @@ public class CotizacionController {
     public ModelAndView NuevoCotizacion(Model model, HttpServletRequest request) {
 
         ModelAndView mv = new ModelAndView();
-
-        Empleado e = (Empleado) request.getSession().getAttribute("usuario");
         
-        Cotizacion co = new Cotizacion();
+        List<PedidoDetalle> pd = repo5.findPedidoDetalleEntities();
         
-        List<Cliente> cliente = repo.findClienteEntities();
-
-        List<Pedido> pedido = repo2.findPedidoEntities();
+        List<PedidoDetalle> pdtem = new ArrayList();
         
-       // if(p.getIdPedido() == co.getIdPedido().getIdPedido()){
+        Pedido p = (Pedido) request.getSession().getAttribute("pedido");
+              
+        for (PedidoDetalle d : pd){
             
-           // List<CotizacionDetalle> cotdetalle = repo5.findPedidoDetalleEntities()
-            
-        //}
+            if(d.getIdPedido().getIdPedido() == p.getIdPedido()){
+               List<CotizacionDetalle> detalle = repo4.listadoxpedido(d.getIdDetallePedido());
+               
+               if(detalle.size() == 0){
+                   pdtem.add(d);
+               }
+            }
+        }
 
+        mv.addObject("detalle", pdtem);
+        
         mv.addObject("cotizacion", new Cotizacion());
 
         mv.setViewName("Cotizacion");
