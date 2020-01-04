@@ -1,7 +1,10 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
@@ -64,11 +67,17 @@ public class CotizacionController {
         
         List<PedidoDetalle> pdtem = new ArrayList();
         
-        Pedido p = (Pedido) request.getSession().getAttribute("pedido");
+        int id = Integer.parseInt(request.getParameter("idPedido"));
+        
+        List<Pedido> p = repo2.findPedidoEntities();
+        
+        List<Cliente> cl = repo.findClienteEntities();
+        
+        List<Cliente> clt = new ArrayList();
               
         for (PedidoDetalle d : pd){
             
-            if(d.getIdPedido().getIdPedido() == p.getIdPedido()){
+            if(d.getIdPedido().getIdPedido() == id){
                List<CotizacionDetalle> detalle = repo4.listadoxpedido(d.getIdDetallePedido());
                
                if(detalle.size() == 0){
@@ -76,8 +85,22 @@ public class CotizacionController {
                }
             }
         }
-
+        
+        for (Pedido pr : p){
+            
+            if(pr.getIdPedido() == id){
+               
+                for(Cliente c : cl){
+                    
+                    if(c.getIdCliente() == pr.getIdPedido()){
+                        clt.add(c);
+                    }
+                }
+            }
+        }
         mv.addObject("detalle", pdtem);
+        
+        mv.addObject("clientes", clt);
         
         mv.addObject("cotizacion", new Cotizacion());
 

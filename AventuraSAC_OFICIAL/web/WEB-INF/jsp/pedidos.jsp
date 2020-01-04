@@ -42,7 +42,7 @@
                                 <br>
                                 <h3>Agregar Pedido</h3>
                             </div>
-
+                            <form:hidden path="idPedido" id="idPedido"/>
                             <div class="p-4" class="form-group" id="femision">
 
                                 <label for="fechaRegistro">Fecha Emisión: </label>

@@ -6,6 +6,7 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -63,7 +64,11 @@ public class Cotizacion implements Serializable {
     private Pedido idPedido;
 
     public Cotizacion() {
+        
+        this.fechaEmision = LocalDate.now().toString();
+        
     }
+    
 
     public Cotizacion(Integer idCotizacion) {
         this.idCotizacion = idCotizacion;
@@ -76,7 +81,7 @@ public class Cotizacion implements Serializable {
         this.igv = igv;
         this.total = total;
     }
-
+    
     public Integer getIdCotizacion() {
         return idCotizacion;
     }

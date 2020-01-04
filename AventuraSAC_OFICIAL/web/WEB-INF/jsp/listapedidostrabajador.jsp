@@ -58,7 +58,7 @@
                                     <td >${item.fechaRegistro}</td>
                                     <td >${item.fechaEntrega}</td>
                                     <td>
-                                        <a class="btn btn-info" role="button" href="Cotizacion.htm" ><i class="fas fa-edit"></i></a>
+                                        <a class="btn btn-info" role="button" href="Cotizacion.htm?idPedido=${item.idPedido}" ><i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

@@ -64,39 +64,40 @@
                     <center>
                         <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
                     </center>
-
+                    <c:forEach var="item1" items="${clientes}">
                     <fieldset id="fieldset1" style="border: 1px solid gray">
                         <div class="row" id="fila1">
                             <div class="col-sm-4">
                                 <label for="">Razón Social:</label>
-                                <input type="text"  > 
+                                <input type="text"  value="${item1.razonSocial}"> 
                             </div>
                             <div class="col-sm-4">      
                                 <label for="">RUC:</label>
-                                <input type="text" value="${pedido.idPedido}"/>
+                                <input type="text" value="${item1.ruc}"/>
                             </div>
                             <div class="col-sm-4">      
                                 <label for="fechaEmision">Fecha de Emision:</label>
-                                <input type="text" placeholder="Ingresar fecha"/>
+                                <input type="text" name="txtfechaactual"/>
                             </div>
                         </div>
 
                         <div class="row" id="fila2">
                             <div class="col-sm-4">
                                 <label for="direccion">Dirección:</label>
-                                <input type="text" value=""/>
+                                <input type="text" value="${item1.direccion}"/>
                             </div>
                             <div class="col-sm-4">
                                 <label for="">Teléfono:</label>
-                                <input type="text" value=""/>
+                                <input type="text" value="${item1.telefono}"/>
                             </div>
                             <div class="col-sm-4">      
                                 <label for="">Correo:</label>
-                                <input type="text"  value=""/>
+                                <input type="text"  value="${item1.correo}"/>
                             </div>
                         </div>
 
                     </fieldset>
+                    </c:forEach>
                     <br>
                     <form:form method="post" modelAttribute="cotizacion">
                         <center><h3><strong>Descripción</strong></h3></center>
@@ -115,16 +116,13 @@
                                     <c:forEach var="item" items="${detalle}">
                                         <tr>
                                             <th scope="row" >${item.idDetallePedido}</th>
-                                            <td >${item.idCliente.idPedido}</td>
-                                            <td >${item.idFicha}</td>
+                                            <td >${item.idPedido.idPedido}</td>
+                                            <td >${item.idFicha.descripcion}</td>
 
                                             <td scope="col-2">
 
 
-                                                <a class="btn btn-info" role="button" href="editarcliente.htm?id=${item.idCliente}" ><i class="fas fa-edit"></i></a> 
-                                                
-                                                <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idCliente}')" ><i class="fas fa-trash-alt"></i></button>
-                                            </td>
+                                               </td>
 
 
 
