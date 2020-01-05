@@ -148,11 +148,15 @@
 }
 
 table,th  {
+    width: 230px;
     border: 1px solid black;
+    text-align: center !important;
 }
 
 table,td  {
+    width: 250px;
     border: 1px solid black;
+    text-align: center;
     
 }
 
@@ -211,4 +215,10 @@ table,td  {
 
 #ultimoparrafo p{
     color:white;
+}
+
+#txtsubtotal{
+    width: 200px !important;
+    text-align: center !important;
+    margin-left: 10px;
 }

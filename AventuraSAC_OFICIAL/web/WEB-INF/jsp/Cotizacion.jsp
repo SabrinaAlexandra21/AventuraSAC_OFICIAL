@@ -60,7 +60,9 @@
                 </div>
 
                 <br>
+                
                 <div class="card-body">
+                    <form:form method="post" modelAttribute="cotizacion">
                     <center>
                         <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
                     </center>
@@ -77,7 +79,7 @@
                             </div>
                             <div class="col-sm-4">      
                                 <label for="fechaEmision">Fecha de Emision:</label>
-                                <input type="text" name="txtfechaactual"/>
+                                <form:input path="fechaEmision" id="txtfechaactual" />
                             </div>
                         </div>
 
@@ -99,33 +101,29 @@
                     </fieldset>
                     </c:forEach>
                     <br>
-                    <form:form method="post" modelAttribute="cotizacion">
+                    
                         <center><h3><strong>Descripción</strong></h3></center>
 
                         <center>
-                            <table id="tabla">
-                                <thead>
+                            <table class="table">
+                                <thead class="thead-dark">
                                     <tr>
-                                        <th>ID</th>
-                                        <th>Descripción</th>
+                                        <th>IdPedido</th>
+                                        <th>IdFicha</th>
+                                        <th>Descripcion</th>
                                         <th>Cantidad</th>
-                                        <th>Acciones</th>
+                                        <th>Subtotal</th>
                                     </tr>
                                 </thead>
                                 <tbody>
                                     <c:forEach var="item" items="${detalle}">
                                         <tr>
-                                            <th scope="row" >${item.idDetallePedido}</th>
-                                            <td >${item.idPedido.idPedido}</td>
+                                            <th scope="row" >${item.idPedido.idPedido}</th>
+                                            <td >${item.idDetallePedido}</td>
                                             <td >${item.idFicha.descripcion}</td>
-
-                                            <td scope="col-2">
-
-
-                                               </td>
-
-
-
+                                            <td >${item.idFicha.cantidad}</td>
+                                            <td ><input type="text" name="subTotal" id="subTotal" style="text-align: center;"/></td>
+                                            
                                         </tr>
                                     </c:forEach>
 
@@ -142,7 +140,7 @@
                                     <div class="row" id="fila6">
                                         <div class="row" class="col-sm-3">
                                             <label for="importe" >Importe:</label>
-                                            <form:input path="importe" placeholder="Importe"/>
+                                            <form:input path="importe" placeholder="Importe" />
                                         </div>
                                     </div>
                                     <div class="row" id="fila7">

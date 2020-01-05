@@ -46,7 +46,7 @@ public class CotizacionController {
         repo3 = new CotizacionJpaController(emf);
         repo4 = new CotizacionDetalleJpaController(emf);
         repo5 = new PedidoDetalleJpaController(emf);
-        
+
     }
 
     private EntityManager getEntityManager() {
@@ -62,46 +62,72 @@ public class CotizacionController {
     public ModelAndView NuevoCotizacion(Model model, HttpServletRequest request) {
 
         ModelAndView mv = new ModelAndView();
-        
+
         List<PedidoDetalle> pd = repo5.findPedidoDetalleEntities();
-        
+
         List<PedidoDetalle> pdtem = new ArrayList();
-        
+
         int id = Integer.parseInt(request.getParameter("idPedido"));
-        
+
         List<Pedido> p = repo2.findPedidoEntities();
-        
+
         List<Cliente> cl = repo.findClienteEntities();
-        
-        List<Cliente> clt = new ArrayList();
-              
-        for (PedidoDetalle d : pd){
-            
-            if(d.getIdPedido().getIdPedido() == id){
-               List<CotizacionDetalle> detalle = repo4.listadoxpedido(d.getIdDetallePedido());
-               
-               if(detalle.size() == 0){
-                   pdtem.add(d);
-               }
-            }
-        }
-        
-        for (Pedido pr : p){
-            
-            if(pr.getIdPedido() == id){
-               
-                for(Cliente c : cl){
-                    
-                    if(c.getIdCliente() == pr.getIdPedido()){
-                        clt.add(c);
-                    }
+
+        List<Cliente> clty = new ArrayList();
+
+        boolean en = false;
+
+        for (PedidoDetalle d : pd) {
+
+            if (d.getIdPedido().getIdPedido() == id) {
+
+                List<CotizacionDetalle> detalle = repo4.listadoxpedido(d.getIdDetallePedido());
+
+                if (detalle.size() == 0) {
+                    pdtem.add(d);
                 }
+
+            }
+
+        }
+
+        for (PedidoDetalle d : pd) {
+
+            if (d.getIdPedido().getIdPedido() == id) {
+
+                for (Cliente c : cl) {
+
+                    if (d.getIdPedido().getIdCliente().getIdCliente() == c.getIdCliente()) {
+                        en = true;
+                        clty.add(c);
+
+                    }
+
+                }
+                break;
             }
         }
+
+        // List<Cotizacion> coti = repo3.findCotizacionEntities();
+        double subtotal = Double.parseDouble(request.getParameter("subTotal"));
+
+        //double importe = Double.parseDouble(request.getParameter("importe"));
+        double cont = 0;
+
+        if (subtotal > 0) {
+
+            for (int sub = 1; sub <= subtotal; sub++) {
+
+                cont = cont + subtotal;
+            }
+        }
+
+        mv.addObject("sub", subtotal);
+
         mv.addObject("detalle", pdtem);
-        
-        mv.addObject("clientes", clt);
-        
+
+        mv.addObject("clientes", clty);
+
         mv.addObject("cotizacion", new Cotizacion());
 
         mv.setViewName("Cotizacion");

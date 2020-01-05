@@ -64,6 +64,8 @@
                                 <tr>
                                     <th scope="col">IdCliente</th>
                                     <th scope="col">IdFicha</th>
+                                    <th scope="col">Descripcion</th>
+                                    <th scope="col">Cantidad</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -73,6 +75,8 @@
                                     <tr > 
                                         <th scope="row">${item.idCliente.idCliente}</th>
                                         <th>${item.idFicha}</th>
+                                        <th>${item.descripcion}</th>
+                                        <th>${item.cantidad}</th>
                                         <td scope="col-2">
 
 
@@ -90,8 +94,8 @@
                         </table>
 
                         <center>
-                            <input type="submit" class="btn btn-secondary" value="Enviar"  />
-                            <button><a href="menucliente.htm" id="regre">Regresar al Menú</a></button>
+                            <input type="submit" class="btn btn-dark"value="Enviar"/>
+                            <a class="btn btn-dark" href="menucliente.htm" role="button">Regresar al Menú</a> 
                         </center>
 
                     </div>
