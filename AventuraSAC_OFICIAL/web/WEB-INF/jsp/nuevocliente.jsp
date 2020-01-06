@@ -83,7 +83,7 @@
                             <div id="botones">
                                 <fieldset id="fiel">
                                     <legend>¿Qué acción desea realizar?</legend>
-                                    <input type="submit" class="btn btn-primary" value="Registrar">
+                                    <input type="submit" class="btn btn-primary" value="Registrar" onclick="nif(${ruc})">
                                     <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
                                 </fieldset>
                             </div>
@@ -95,5 +95,31 @@
             </div>
             <br>
         </div>
+
+        <script>
+            function nif(dni) {
+                var numero
+                var letr
+                var letra
+                var expresion_regular_dni
+
+                expresion_regular_dni = /^\d{8}[a-zA-Z]$/;
+
+                if (expresion_regular_dni.test(dni) == true) {
+                    numero = dni.substr(0, dni.length - 1);
+                    letr = dni.substr(dni.length - 1, 1);
+                    numero = numero % 23;
+                    letra = 'TRWAGMYFPDXBNJZSQVHLCKET';
+                    letra = letra.substring(numero, numero + 1);
+                    if (letra != letr.toUpperCase()) {
+                        alert('Dni erroneo, la letra del NIF no se corresponde');
+                    } else {
+                        alert('Dni correcto');
+                    }
+                } else {
+                    alert('Dni erroneo, formato no válido');
+                }
+            }
+        </script>
     </body>
 </html>

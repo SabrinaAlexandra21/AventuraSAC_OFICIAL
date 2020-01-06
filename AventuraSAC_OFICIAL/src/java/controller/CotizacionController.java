@@ -109,7 +109,7 @@ public class CotizacionController {
         }
 
         // List<Cotizacion> coti = repo3.findCotizacionEntities();
-        double subtotal = Double.parseDouble(request.getParameter("subTotal"));
+        /*double subtotal = Double.parseDouble(request.getParameter("subTotal"));
 
         //double importe = Double.parseDouble(request.getParameter("importe"));
         double cont = 0;
@@ -120,9 +120,9 @@ public class CotizacionController {
 
                 cont = cont + subtotal;
             }
-        }
+        }*/
 
-        mv.addObject("sub", subtotal);
+       // mv.addObject("sub", subtotal);
 
         mv.addObject("detalle", pdtem);
 

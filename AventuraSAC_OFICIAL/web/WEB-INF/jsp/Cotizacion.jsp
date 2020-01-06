@@ -13,6 +13,7 @@
         <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/EstilosCotizacion.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet" />
+        <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
 
     </head>
     <body id="bodys">
@@ -60,54 +61,54 @@
                 </div>
 
                 <br>
-                
+
                 <div class="card-body">
                     <form:form method="post" modelAttribute="cotizacion">
-                    <center>
-                        <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
-                    </center>
-                    <c:forEach var="item1" items="${clientes}">
-                    <fieldset id="fieldset1" style="border: 1px solid gray">
-                        <div class="row" id="fila1">
-                            <div class="col-sm-4">
-                                <label for="">Razón Social:</label>
-                                <input type="text"  value="${item1.razonSocial}"> 
-                            </div>
-                            <div class="col-sm-4">      
-                                <label for="">RUC:</label>
-                                <input type="text" value="${item1.ruc}"/>
-                            </div>
-                            <div class="col-sm-4">      
-                                <label for="fechaEmision">Fecha de Emision:</label>
-                                <form:input path="fechaEmision" id="txtfechaactual" />
-                            </div>
-                        </div>
+                        <center>
+                            <div class="card-title"><h2><strong>Datos de la Cotización</strong></h2></div>
+                        </center>
+                        <c:forEach var="item1" items="${clientes}">
+                            <fieldset id="fieldset1" style="border: 1px solid gray">
+                                <div class="row" id="fila1">
+                                    <div class="col-sm-4">
+                                        <label for="">Razón Social:</label>
+                                        <input type="text"  value="${item1.razonSocial}"> 
+                                    </div>
+                                    <div class="col-sm-4">      
+                                        <label for="">RUC:</label>
+                                        <input type="text" value="${item1.ruc}"/>
+                                    </div>
+                                    <div class="col-sm-4">      
+                                        <label for="fechaEmision">Fecha de Emision:</label>
+                                        <form:input path="fechaEmision" id="txtfechaactual" />
+                                    </div>
+                                </div>
 
-                        <div class="row" id="fila2">
-                            <div class="col-sm-4">
-                                <label for="direccion">Dirección:</label>
-                                <input type="text" value="${item1.direccion}"/>
-                            </div>
-                            <div class="col-sm-4">
-                                <label for="">Teléfono:</label>
-                                <input type="text" value="${item1.telefono}"/>
-                            </div>
-                            <div class="col-sm-4">      
-                                <label for="">Correo:</label>
-                                <input type="text"  value="${item1.correo}"/>
-                            </div>
-                        </div>
+                                <div class="row" id="fila2">
+                                    <div class="col-sm-4">
+                                        <label for="direccion">Dirección:</label>
+                                        <input type="text" value="${item1.direccion}"/>
+                                    </div>
+                                    <div class="col-sm-4">
+                                        <label for="">Teléfono:</label>
+                                        <input type="text" value="${item1.telefono}"/>
+                                    </div>
+                                    <div class="col-sm-4">      
+                                        <label for="">Correo:</label>
+                                        <input type="text"  value="${item1.correo}"/>
+                                    </div>
+                                </div>
 
-                    </fieldset>
-                    </c:forEach>
-                    <br>
-                    
+                            </fieldset>
+                        </c:forEach>
+                        <br>
+
                         <center><h3><strong>Descripción</strong></h3></center>
 
                         <center>
-                            <table class="table">
+                            <table class="table" id="table">
                                 <thead class="thead-dark">
-                                    <tr>
+                                    <tr class="encabezado">
                                         <th>IdPedido</th>
                                         <th>IdFicha</th>
                                         <th>Descripcion</th>
@@ -118,15 +119,15 @@
                                 <tbody>
                                     <c:forEach var="item" items="${detalle}">
                                         <tr>
-                                            <th scope="row" >${item.idPedido.idPedido}</th>
+                                            <td scope="row" >${item.idPedido.idPedido}</td>
                                             <td >${item.idDetallePedido}</td>
                                             <td >${item.idFicha.descripcion}</td>
                                             <td >${item.idFicha.cantidad}</td>
-                                            <td ><input type="text" name="subTotal" id="subTotal" style="text-align: center;"/></td>
-                                            
+                                            <td ><input type="text" name="subTotal" class="monto" style="text-align: center;" onkeyup="sumar()"/></td>
+
                                         </tr>
                                     </c:forEach>
-
+                                 
                                 </tbody>
 
                             </table>
@@ -134,25 +135,27 @@
 
                         <div class="row">
 
-                            <div class="col-sm-3" id="col2">
+                            <div class="col-sm-4" id="col2">
                                 <fieldset id="fieldset3" style="border: 1px solid gray">
 
                                     <div class="row" id="fila6">
-                                        <div class="row" class="col-sm-3">
-                                            <label for="importe" >Importe:</label>
-                                            <form:input path="importe" placeholder="Importe" />
+                                        <div class="col-sm-3">
+                                            <label for="importe" >Importe(S/):</label>
+                                            <span id="imp" ></span> 
+                                            
                                         </div>
                                     </div>
                                     <div class="row" id="fila7">
-                                        <div class="row" class="col-sm-3">
-                                            <label for="igv" >IGV:</label>
-                                            <form:input path="igv" placeholder="IGV"/>
+                                        <div class="col-sm-3">
+                                            <label for="igv" >IGV(%18):</label>
+                                            <span id="igv" ></span>
                                         </div>	
                                     </div>
                                     <div class="row" id="fila8">
-                                        <div class="row" class="col-sm-3">
-                                            <label for="total" >Total:</label>
-                                            <form:input path="total" placeholder="Total"/>
+                                        <div  class="col-sm-3">
+                                            <label for="total" >Total(S/):</label>
+                                            <span id="total" ></span>
+                                            
                                         </div>	
                                     </div>
                                 </fieldset>
@@ -177,5 +180,38 @@
 
             </div>
         </div>
+        
+        <script>
+            
+            function sumar() {
+
+                var total = 0;
+                var igv = 0.0;
+                var total1 = 0.0;
+
+                $(".monto").each(function () {
+
+                    if (isNaN(parseFloat($(this).val()))) {
+
+                        total += 0;
+                        
+
+                    } else {
+
+                        total += parseFloat($(this).val());
+                        igv = Number((total * 0.18).toFixed(2));
+                        total1 = Number((total + igv).toFixed(2));
+                    }
+
+                });
+
+                //alert(total);
+                document.getElementById('imp').innerHTML = total;
+                document.getElementById('igv').innerHTML = igv;
+                document.getElementById('total').innerHTML = total1;
+
+            }
+
+        </script>
     </body>
 </html>
