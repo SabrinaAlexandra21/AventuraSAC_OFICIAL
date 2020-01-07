@@ -29,32 +29,30 @@
                 
                 <div class="card-body">
                     <form:form method="post" modelAttribute="empleado">
-                        
                         <form:hidden path="idEmpleado" value="${empleado.idEmpleado}" required="required"/>
-                        
-                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6" style="left:10%;">
                             <label for="dni">DNI:</label>
-                            <form:input path="dni" cssClass="form-control" value="${empleado.dni}" type="number" min="00000000" max="99999999" required="required"/>
+                            <form:input path="dni" style="height:55%; width:80%;" cssClass="form-control" value="${empleado.dni}" type="number" min="00000000" max="99999999" required="required"/>
                         </div>
-                        
-                        <div class="form-group">
+                        <div class="col-sm-6" style="right:2%;">
                             <label for="nombre">Nombre:</label>
-                            <form:input path="nombre" cssClass="form-control" value="${empleado.nombre}" type="text"  maxlength="25" required="required" />
+                            <form:input path="nombre" style="width:80%;" cssClass="form-control" value="${empleado.nombre}" type="text"  maxlength="25" required="required" />
                         </div>
-                        
-                        <div class="form-group">
+                        <br>
+                        </div>
+                        <div class="row">
+                        <div class="col-sm-4" style="left:10%;">
                             <label for="apellidoPaterno">Apellido Paterno:</label>
-                            <form:input path="apellidoPaterno" cssClass="form-control"  value="${empleado.apellidoPaterno}"  maxlength="30" required="required"/>
+                            <form:input path="apellidoPaterno" style="width:80%;" cssClass="form-control"  value="${empleado.apellidoPaterno}"  maxlength="30" required="required"/>
                         </div>
-                        
-                        <div class="form-group">
+                        <div class="col-sm-4" style="left:2%;">
                             <label for="apellidoMaterno">Apellido Materno:</label>
-                            <form:input path="apellidoMaterno" cssClass="form-control" value="${empleado.apellidoMaterno}"  maxlength="30" required="required"/>
+                            <form:input path="apellidoMaterno" style="width:80%;" cssClass="form-control" value="${empleado.apellidoMaterno}"  maxlength="30" required="required"/>
                         </div>
-                        
-                        <div>
+                        <div class="col-sm-4" style="right:5%;">
                             <label for="idArea">Área:</label>
-                            <form:select path="idArea.idArea" id="idArea">
+                            <form:select path="idArea.idArea" style="width:79%;" id="idArea">
                                 <c:forEach items="${lista}" var="x">
                                     <c:if test="${x.idArea == empleado.idArea.idArea}">
                                         <option value="${x.idArea}" selected="selected" required="required">${x.detalle}</option>
@@ -65,11 +63,12 @@
                                 </c:forEach>
                             </form:select > 
                         </div>
-                        
+                        </div>
                         <br>
-                        <div>
+                        <div class="row">
+                        <div class="col-sm-6" style="left:10%;">
                             <label for="idCargo">Cargo:</label>
-                            <form:select path="idCargo.idCargo" id="idCargo">
+                            <form:select path="idCargo.idCargo" style="width:80%;" id="idCargo">
                                 <c:forEach items="${listaCargo}" var="x">
                                     <c:if test="${x.idCargo == empleado.idCargo.idCargo}">
                                         <option value="${x.idCargo}" selected="selected" required="required">${x.detalle}</option>
@@ -80,12 +79,10 @@
                                 </c:forEach>
                             </form:select > 
                         </div>
-                        
-                        
-                        <br>
-                        <div class="form-group">
+                        <div class="col-sm-6" style="right:2%;">
                             <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control"  value="${empleado.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
+                            <form:input path="telefono" style="width:80%;" cssClass="form-control"  value="${empleado.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
+                        </div>
                         </div>
                         
                         <form:hidden path="usuario" value="${empleado.usuario}" />

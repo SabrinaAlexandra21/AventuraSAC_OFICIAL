@@ -35,19 +35,23 @@
 
                         <form:hidden path="idCliente" value="${cliente.idCliente}" />
 
-                        <div class="form-group">
+                        <div class="row">
+                            <div class="col-sm-6" style="left:10%;">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" value="${cliente.razonSocial}" type="text" minlength="3" maxlength="25" required="required" />
-                        </div>
-                        
-                        <div class="form-group">
+                            <form:input path="razonSocial" style="width:80%;" cssClass="form-control" value="${cliente.razonSocial}" type="text" minlength="3" maxlength="25" required="required" />
+                            </div>
+                            <div class="col-sm-6" style="right: 2%;">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc"  cssClass="form-control" value="${cliente.ruc}" type="number" min="10000000000" man="99999999999" required="required"/>
+                            <form:input path="ruc"   style="width:80%;" cssClass="form-control" value="${cliente.ruc}" type="number" min="10000000000" man="99999999999" required="required"/>
+                            </div>
                         </div>
-                        
-                        <div>
+                            
+                            <br>
+                            
+                        <div class="row">
+                            <div class="col-sm-4"style="left:10%;" style="left:10%;">
                             <label for="idDistrito">Distrito:</label>
-                            <form:select path="idDistrito.idDistrito" id="idDistrito">
+                            <form:select path="idDistrito.idDistrito" style="width:80%;" id="idDistrito">
                                 <c:forEach items="${listaDistrito}" var="x">
                                     <c:if test="${x.idDistrito == cliente.idDistrito.idDistrito}">
                                         <option value="${x.idDistrito}" selected="selected" required="required">${x.detalle}</option>
@@ -58,24 +62,29 @@
                                 </c:forEach>
                             </form:select > 
                         </div>
+                        <div class="col-sm-4" style="left:2%;">
+                            <label for="direccion">Dirección:</label>
+                            <form:input path="direccion" style="width:80%;" cssClass="form-control" value="${cliente.direccion}" maxlength="30" required="required"/>
+                        </div>
+                        <div class="col-sm-4" style="right: 6%;">
+                            <label for="telefono">Teléfono</label>
+                            <form:input path="telefono" style="width:82%;" cssClass="form-control" value="${cliente.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
+                        </div>
+                    </div>
                         
                         <br>
-                        <div class="form-group">
-                            <label for="direccion">Dirección:</label>
-                            <form:input path="direccion"  cssClass="form-control" value="${cliente.direccion}" maxlength="30" required="required"/>
-                        </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono</label>
-                            <form:input path="telefono" cssClass="form-control" value="${cliente.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
-                        </div>
-                        <div class="form-group">
+                        
+                    <div class="row">
+                        <div class="col-sm-6" style="left:10%;">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control" value="${cliente.correo}" maxlength="30" required="required"/>
+                            <form:input path="correo" style="width:80%;" cssClass="form-control" value="${cliente.correo}" maxlength="30" required="required"/>
                         </div>
-                        <div class="form-group">
+                        <div class="col-sm-6" style="right:2%;">
                             <label for="broker">Broker:</label>
-                            <form:input path="broker" cssClass="form-control"   value="${cliente.broker}" maxlength="30" required="required"/>
+                            <form:input path="broker" style="width:80%;" cssClass="form-control"   value="${cliente.broker}" maxlength="30" required="required"/>
                         </div>
+                    </div>
+                        
                         <form:hidden path="usuario" value="${cliente.usuario}" />
                         <form:hidden path="clave" value="${cliente.clave}" />
 
