@@ -66,7 +66,7 @@
                         </tbody>
                     </table>
 
-                    <button><a href="menucliente.htm" id="regre">Regresar al Menú</a></button>
+                    <button><a href="menu.htm" id="regre">Regresar al Menú</a></button>
 
 
                 </div>

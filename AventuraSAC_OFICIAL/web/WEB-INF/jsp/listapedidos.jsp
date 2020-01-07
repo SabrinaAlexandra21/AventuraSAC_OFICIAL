@@ -37,9 +37,9 @@
                 <br>
                     <div class="card-body">
 
-                        <table class="table-bordered" style="width: 100%; height: 70%;">
+                        <table class="table" style="width: 100%; height: 100%;">
 
-                            <thead>
+                            <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center;"><h3><strong>IdPedido</strong></h3></th>
                                     <th style="text-align: center;"><h3><strong>IdCliente</strong></h3></th>
@@ -61,7 +61,7 @@
                             </tbody>
                         </table>
                         <center>
-                             <a class="btn btn-dark" href="Menu.htm" role="button">Regresar al Menú</a> 
+                             <a class="btn btn-dark" href="menucliente.htm" role="button">Regresar al Menú</a> 
                              
                         </center>
 
