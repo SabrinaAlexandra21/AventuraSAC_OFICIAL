@@ -22,7 +22,7 @@
 
 
     </head>
-    <body>
+    <body style="background: #adb5bd;">
         <header id="header">
             <a class="logo" href="index.html">Aventura S.A.C.</a>
             <nav>
@@ -34,25 +34,16 @@
 
             <div class="card" >
 
-                <div class="card-header">
-
+                <div class="card-header" style="background: #C1FCEC ;">
                     <div class="d-flex flex-row">
-
                         <div  class="p-4" id="img">
-
                             <img src="webapp/resources/theme1/images/logo2.png" alt="Card image cap">
-
                         </div>
-
                         <div class="p-4"  id="escritos">
-
                             <h3>Cal. Mercaderes Nro. 164 Dpto. 203 </h3>
                             <h3>Urb. Las Gardenias (Alt. Cuadra 50 de la Avenida Benavides)</h3>
-
                         </div>
-
                         <div class="p-4" id="fieldset">
-
                             <fieldset style="border:1px solid black" >
 
                                 <h3> R.U.C. N° 20111807958 </h3>
@@ -74,126 +65,71 @@
 
                     <form:form method="post" modelAttribute="fichatecnica">
 
-                        <div class="card-title"> Ingresar datos de la Prenda</div>
+                        <center><h3><strong>Ingresar datos de la Prenda</strong></h3></center>
 
-
-                        <div class="d-flex flex-row" id="fila1">
-
-                            <div class="p-4">
+                        <div class="row" style="text-align: center;">
+                            <div class="col-sm-3" style="left:15%;">
                                 <label for="descripcion">Descripción:</label>
-
-                                <form:input path="descripcion"  cssClass="form-control" placeholder="Ingresar descripcion" />
-
+                                <form:input path="descripcion" style="width: 100%;" cssClass="form-control" placeholder="Ingresar descripcion" />
                             </div>
-
-                            <div class="p-5">
-
+                            <div class="col-sm-3" style="left:12%;">
                                 <label for="idTipoModelo" >Modelo: </label>
-
-                                <form:select path="idTipoModelo.idTipoModelo" id="idTipoModelo">
-
+                                <form:select path="idTipoModelo.idTipoModelo" style="width: 100%;" id="idTipoModelo">
                                     <c:forEach items="${listamodelo}" var="x">
-
                                         <option value="${x.idTipoModelo}">${x.nombre}</option>
-
                                     </c:forEach>
-
                                 </form:select>
-
                             </div>
-
-                            <div class="p-4">		
-
+                            <div class="col-sm-3" style="left:9%;">	
                                 <label for="idTipo">Tela:</label>
-
-                                <form:select path="idTipo.idTipo" id="idTipo">
-
+                                <form:select path="idTipo.idTipo" style="width: 100%;" id="idTipo">
                                     <c:forEach items="${tipotelas}" var="x">
-
                                         <option value="${x.idTipo}">${x.nombre}</option>
-
                                     </c:forEach>
-
                                 </form:select>
-
                             </div>
-
-                        </div>
-
-                        <div class="d-flex flex-row" id="fila2">
-
-                            <div class="p-4">
-
+                         </div>
+                            <br>
+                        <div class="row" style="text-align: center;">  
+                            <div class="col-sm-3" style="left:15%;"> 
                                 <label for="etiqueta">Etiqueta:</label>
-
-                                <form:input path="etiqueta" cssClass="form-control" placeholder="Ingresar nombres de etiqueta"/>
-
+                                <form:input path="etiqueta" style="width: 100%;" cssClass="form-control" placeholder="Ingresar nombres de etiqueta"/>
                             </div>
-
-
-                            <div class="p-4">
-
+                            <div class="col-sm-3" style="left:12%;">
                                 <label for="idTalla" >Talla:</label>
-
-                                <form:select path="idTalla.idTalla" id="idTalla">
-
+                                <form:select path="idTalla.idTalla" style="width: 100%;" id="idTalla">
                                     <c:forEach items="${listatallas}" var="x">
-
                                         <option value="${x.idTalla}">${x.nombre}</option>
-
                                     </c:forEach>
-
                                 </form:select>
-
                             </div>
-
-                            <div class="p-4">
-
+                            <div class="col-sm-3" style="left:9%;">
                                 <label for="cantidad" >Talla:</label>
-
-                                <form:input path="cantidad" cssClass="form-control" placeholder="Ingresar cantidad"/>
-
+                                <form:input path="cantidad"  style="width: 100%;" cssClass="form-control" placeholder="Ingresar cantidad"/>
                             </div>
-
                         </div>
-                    </div>
 
                     <hr style="border: 1px solid gray">
-
-                    <div class="d-flex flex-row">
-
-                        <label for="Muestra" class="col-sm-2 col-form-label">Muestra:</label>
-
-                        <div class="col-sm-3">
-
-                            <input type="submit" value="ADJUNTAR IMAGEN PNG">
-
+                    
+                    <div class="d-flex flex-row" style="left: 5%;">
+                        <label for="Muestra" style="left: 35%;" class="col-sm-2 col-form-label">Muestra:</label>
+                        <div class="col-sm-3" style="left: 28%;">
+                           <input type="submit" value="ADJUNTAR IMAGEN PNG">
                         </div>	
-
                     </div>
 
 
                     <hr style="border: 1px solid gray">
-
                     <div class="d-flex flex-row">
-
                         <div  class="p-6">
-
-                            <div class="card" id="carta2">
-
+                            <div class="card" id="carta2" style="left: 55%;">
                                 <div class="card-body" id="body2">
-
                                     <h5 class="card-title">Combinación de colores:</h5>
-
                                     <h6 class="card-subtitle mb-2 text-muted">Seleccionar..</h6>
-
                                     <div class="d-flex flex-row">
-
-                                        <div  class="p-4">
-
+                                        <div  class="p-3">
                                             <label for="color1" >Color 1:</label>
-                                            <input type="text" name="color1" id="c1" value="ffff00" data-wheelcolorpicker>
-
+                                            <input type="text" name="color1" id="c1" style="height: 40%;" value="ffff00" data-wheelcolorpicker>
                                             <script>
                                                 $(function () {
 
@@ -205,10 +141,10 @@
 
                                         </div>
 
-                                        <div  class="p-4">
+                                        <div  class="p-3">
 
                                             <label for="color2" >Color 2:</label>
-                                            <input type="text" name="color2" id="c2" value="00ffff" data-wheelcolorpicker>
+                                            <input type="text" name="color2" id="c2" style="height: 40%;" value="00ffff" data-wheelcolorpicker>
 
                                             <script>
                                                 $(function () {
@@ -220,10 +156,10 @@
 
                                         </div>
 
-                                        <div  class="p-4">
+                                        <div  class="p-3">
 
                                             <label for="color3" >Color 3:</label>
-                                            <input type="text" name="color3" id="c3" value="ff00ff" data-wheelcolorpicker>
+                                            <input type="text" name="color3" id="c3" style="height: 40%;" value="ff00ff" data-wheelcolorpicker>
 
                                             <script>
                                                 $(function () {
@@ -232,39 +168,18 @@
 
                                                 });
                                             </script>
-
                                         </div>
-
                                     </div>
-
                                 </div>
-
                             </div>
-
                         </div>
-
                     </div>
-
-                    <div class="d-flex flex-row">
-
-                        <div class="p-4">
-
-                            <input type="submit" class="btn btn-primary"  value="Registrar" >
-
-                        </div>
-
-                        <div  class="p-4">
-
-                            <a class="btn btn-secondary" href="clientes.htm" role="button" >Regresar</a>
-
-                        </div>
-
-                    </div>
-
+                    <hr style="border: 1px solid gray">
+                    <center>
+                            <input type="submit" class="btn btn-dark"  value="Registrar" >
+                            <a class="btn btn-dark" href="clientes.htm">Regresar</a>
+                    </center>
                 </form:form>
-
-
-
             </div>
         </div>
 

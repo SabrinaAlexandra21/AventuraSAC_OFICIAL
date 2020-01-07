@@ -31,12 +31,12 @@ body{
     margin: 0px 0px;
     position: relative;
     right: 0px;
-    top:70px;
+    top:30px;
 }
 
 #escritos h3{
     font-family: 'Arial', serif;
-    font-size: 20px;
+    font-size: 100%;
 }
 
 
@@ -47,6 +47,7 @@ body{
     padding: 30px 30px;
     text-align: center;
     position: relative;
+    width: 30%;
 
 
 }
@@ -66,7 +67,7 @@ body{
 
 #ngui {
 
-    margin: 0px 15px;
+    margin: -10px 45px;
     text-align: center;
     padding: 15px; 
     color: black;
@@ -76,7 +77,7 @@ body{
 
     width: 25px;
     height: 25px;
-    background: black;
+    background: white;
 
 }
 
@@ -141,111 +142,3 @@ body{
     margin: 0px 20px;
 }
 
-#fieldset1 {
-    margin: 0px 0px 0px 0px;
-    padding: 0px 70px;
-    height: 270px; /*Ancho*/
-    width: 1000px;/*Largoo*/
-    text-align: left;
-    font-family: 'Libre Baskerville', serif;
-}
-
-
-#fila1 input {
-    margin: 20px 0px;
-    width: 200px;
-    height: 40px;
-}
-
-#fila2 input {
-    margin: 20px 0px;
-    width: 250px;
-    height: 40px;
-}
-
-
-#fieldset2 {
-    margin: 0px 0px 0px 350px;
-    padding: 0px 30px;
-    height: 185px; /*Ancho*/
-    width: 280px;/*Largoo*/
-    text-align: left;
-    font-family: 'Libre Baskerville', serif;
-}
-
-#fila3{
-    margin: -20px 3px 0px 0px;
-}
-#fila4{
-    margin: 0px 3px 0px 0px;
-}
-
-#fieldset2 label{
-    margin: 0px 50px 0px 0px;
-    width: 190px;
-}
-
-#fieldset2 select{
-    margin: 3px 50px;
-    padding: 0px 11px;
-    width: 150px;
-    height: 30px;
-}
-
-
-#fieldset3 {
-    margin: 0px 0px 0px 400px;
-    padding: 0px 17px;
-    height: 210px; /*Ancho*/
-    width: 320px;/*Largoo*/
-    text-align: left;
-    font-family: 'Libre Baskerville', serif;
-}
-
-#fieldset3 input{
-    padding: 10px 97px;
-    width: 160px;
-    height: 30px;
-}
-
-#fieldset3 button{
-    margin: 0px 0px 0px 5px;
-    width: 260px;
-}
-
-
-#tabla th{
-    text-align: center;
-    background-color: #ffcccc;
-}
-
-table,th  {
-    border: 1px solid black;
-}
-
-table,td  {
-    border: 1px solid black;
-}
-
-
-#fieldset4 {
-
-    margin: -100px 0px 0px 970px;
-    padding: 5px 51px;
-    height: 120px; /*Ancho*/
-    width: 260px;/*Largoo*/
-    text-align: center;
-    font-family: 'Libre Baskerville', serif;
-}
-
-#fieldset4 button{
-    margin: 0px 0px 0px 5px;
-    padding: 0px 10px;
-    height: 45px;
-    background-color: #ffcccc;
-
-}
-
-.form label {
-    width: 50px;
-}
