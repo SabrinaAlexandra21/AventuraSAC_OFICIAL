@@ -29,40 +29,46 @@
                     
                     <form:form method="post" modelAttribute="proveedor">
                         
-                        <div class="form-group">
+                        <div class="row" id="fila1">
+                            <div class="col-sm-6" style="left:10%;">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" cssClass="form-control" type="text" minlength="3" maxlength="25" required="required"/>
-                        </div>
-                        <div class="form-group">
+                            <form:input path="razonSocial" style="width:80%;" cssClass="form-control" type="text" minlength="3" maxlength="25" required="required"/>
+                            </div>
+                            <div class="col-sm-6" style="right: 2%;">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc" cssClass="form-control" required="required" type="number" min="10000000000" maxlength="99999999991"/>
+                            <form:input path="ruc" style="width:80%;" cssClass="form-control" required="required" type="number" min="10000000000" maxlength="99999999991"/>
+                            </div>
                         </div>
-                        <div>
+                        <br>
+                        <div class="row" id="fila2">
+                            <div class="col-sm-4" style="left:10%;">                     
                             <label for="idDistrito">Distrito:</label>
-                            <form:select path="idDistrito.idDistrito" id="idDistrito" >
+                            <form:select path="idDistrito.idDistrito" style="width:80%;" id="idDistrito" >
                                 <c:forEach items="${listarDistrito}" var="x" >
                                     <option value="${x.idDistrito}" required="required">${x.detalle}</option>
                                 </c:forEach>
                             </form:select>
-                        </div>
-                        <br>
-                        <div class="form-group">
+                            </div>
+                            <div class="col-sm-4" style="left:2%;">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion" cssClass="form-control" maxlength="30" required="required"/>
-                        </div>
-                        <div class="form-group">
+                            <form:input path="direccion" style="width:80%;" cssClass="form-control" required="required"/>
+                            </div>
+                            <div class="col-sm-4" style="right: 5%;">
                             <label for="contacto">Contacto:</label>
-                            <form:input path="contacto" cssClass="form-control" maxlength="30" required="required"/>
+                            <form:input path="contacto" style="width:80%;" cssClass="form-control" required="required"/>
+                            </div>
                         </div>
-                        <div class="form-group">
-                            <label for="telefono">Teléfono:</label>
-                            <form:input path="telefono" cssClass="form-control" required="required" type="number" min="0000000" maxlength="999999999"/>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="correo">Correo:</label>
-                            <form:input path="correo" cssClass="form-control"  maxlength="30" required="required" type="email"/>
-                        </div>
+                            <br>
+                            <div class="row">
+                                <div class="col-sm-6" style="left:11%;">
+                                    <label for="telefono">Teléfono:</label>
+                                    <form:input path="telefono" style="width:80%;" cssClass="form-control" required="required" type="number" min="0000000" maxlength="999999999"/>
+                                </div>
+                                <div class="col-sm-6" style="right:1%;">
+                                    <label for="correo">Correo:</label>
+                                    <form:input path="correo" style="width:76%;" cssClass="form-control"  required="required" type="email"/>
+                                </div>
+                            </div>
                         
                         <center>
                             <div id="botones">
