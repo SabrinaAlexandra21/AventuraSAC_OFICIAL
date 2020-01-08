@@ -127,7 +127,7 @@
 
                                         </tr>
                                     </c:forEach>
-                                 
+
                                 </tbody>
 
                             </table>
@@ -135,27 +135,34 @@
 
                         <div class="row">
 
-                            <div class="col-sm-4" id="col2">
+                            <div class="col-sm-3" id="col2">
                                 <fieldset id="fieldset3" style="border: 1px solid gray">
 
-                                    <div class="row" id="fila6">
-                                        <div class="col-sm-3">
+                                    <div class="d-flex flex-row" >
+                                        <div class="p-6">
+
                                             <label for="importe" >Importe(S/):</label>
-                                            <span id="imp" ></span> 
-                                            
+                                        </div>
+                                        <div class="p-6">
+                                            <span id="imp"></span> 
+
                                         </div>
                                     </div>
-                                    <div class="row" id="fila7">
-                                        <div class="col-sm-3">
+                                    <div class="d-flex flex-row" >
+                                        <div class="p-6">
                                             <label for="igv" >IGV(%18):</label>
+                                        </div>
+                                        <div class="p-6">
                                             <span id="igv" ></span>
                                         </div>	
                                     </div>
-                                    <div class="row" id="fila8">
-                                        <div  class="col-sm-3">
+                                    <div class="d-flex flex-row" >
+                                        <div  class="p-6">
                                             <label for="total" >Total(S/):</label>
+                                        </div>
+                                        <div  class="p-6">
                                             <span id="total" ></span>
-                                            
+
                                         </div>	
                                     </div>
                                 </fieldset>
@@ -180,9 +187,9 @@
 
             </div>
         </div>
-        
+
         <script>
-            
+
             function sumar() {
 
                 var total = 0;
@@ -194,7 +201,7 @@
                     if (isNaN(parseFloat($(this).val()))) {
 
                         total += 0;
-                        
+
 
                     } else {
 

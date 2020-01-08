@@ -11,6 +11,7 @@
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
         <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
         <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.modal.js"/>"></script>
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.validate.min.js"/>"></script>
         <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.modal.css"/>" />
 
 
@@ -29,24 +30,27 @@
                         </div>
                     </div>
                     <div class="d-flex justify-content-center form_container">
-                        <form action="validar.htm" method="post">
+                        <form action="validar.htm" method="post" id="formulario">
                             <div class="input-group mb-3">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                    <div class="input-group-text"><i class="fas fa-user"></i></div>
                                 </div>
-                                <input type="text" name="txtusuario" class="form-control input_user" placeholder="username">
+                                <div>
+                                    <input type="text" class="form-control input_user" placeholder="username" name="txtusuario" id="txtusuario">
+                                </div>
                             </div>
                             <div class="input-group mb-2">
                                 <div class="input-group-append">
-                                    <span class="input-group-text"><i class="fas fa-key"></i></span>
+                                    <div class="input-group-text"><i class="fas fa-key"></i></div>
                                 </div>
-                                <input type="password" name="txtclave" class="form-control input_pass" placeholder="password">
+                                <div>
+                                    <input type="password" name="txtclave" class="form-control input_pass" placeholder="password">
+                                </div>
                             </div>
 
-                            <input type="hidden" name="txtcargo"  >
-                            
+
                             <div class="d-flex justify-content-center mt-3 login_container">
-                                <button type="submit" name="button" class="btn login_btn">Login</button>
+                                <button type="submit" name="button" class="btn login_btn" id="btn">Login</button>
                             </div>
                         </form>
                     </div>
@@ -141,16 +145,16 @@
             $('#registrar1').on('click', function () {
 
                 $('#myModal').modal('show');
-                
-                var razonSocial = ${'#razonSocial'}.val();
-                    var ruc = ${'#ruc'}.val();
 
-                    var direccion = ${'#direccion'}.val();
-                    var telefono = ${'#telefono'}.val();
-                    var correo = ${'#correo'}.val();
-                    var broker = ${'#broker'}.val();
-                    var usuario = ${'#usuario'}.val();
-                    var clave = ${'#clave'}.val();
+                var razonSocial = ${'#razonSocial'}.val();
+                var ruc = ${'#ruc'}.val();
+
+                var direccion = ${'#direccion'}.val();
+                var telefono = ${'#telefono'}.val();
+                var correo = ${'#correo'}.val();
+                var broker = ${'#broker'}.val();
+                var usuario = ${'#usuario'}.val();
+                var clave = ${'#clave'}.val();
 
                 function registrar() {
 
@@ -190,18 +194,41 @@
             });
         </script>
 
+        <script>
+            $(function () {
+                $("#btn").on("click", function () {
+                    $("#formulario").validate({
+                        rules:
+                                {
+                                    txtusuario: {required: true, minlength: 5, maxlength: 20, lettersonly: true},
+                                    txtclave: {required: true, minlength: 6, maxlength: 15, numbersonly: true}
+                                },
+                        messages:
+                                {
+                                    txtusuario: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 5 caracteres.',
+                                        maxlength: 'El máximo permitido son 20 caracteres.'},
+                                    txtclave: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 6 caracteres.',
+                                        maxlength: 'El máximo permitido son 15 caracteres.'}
+                                }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {      //DOM manipulation code  
+                jQuery.validator.addMethod("lettersonly", function (value, element) {
+                    return this.optional(element) || /^[a-z]+$/i.test(value);
+                }, "Por favor, solo letras");
+                jQuery.validator.addMethod("numbersonly", function (value, element) {
+                    return this.optional(element) || /^[0-9]+$/i.test(value);
+                }, "Por favor, solo números");
+            });
+        </script>
+
 
 
     </body>
-    <script>
-        <%
-            if (request.getAttribute("mensaje") != null) {
-                String mensaje = request.getAttribute("mensaje").toString();
-        %>
-        alert("<%=mensaje%>");
-        <%
-            }
-        %>
-    </script>
+
 </html>
 
