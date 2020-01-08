@@ -200,12 +200,12 @@
                     $("#formulario").validate({
                         rules:
                                 {
-                                    txtusuario: {required: true, minlength: 5, maxlength: 20, lettersonly: true},
+                                    txtusuario: {required: true, minlength: 3, maxlength: 20, lettersonly: true},
                                     txtclave: {required: true, minlength: 6, maxlength: 15, numbersonly: true}
                                 },
                         messages:
                                 {
-                                    txtusuario: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 5 caracteres.',
+                                    txtusuario: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 3 caracteres.',
                                         maxlength: 'El máximo permitido son 20 caracteres.'},
                                     txtclave: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 6 caracteres.',
                                         maxlength: 'El máximo permitido son 15 caracteres.'}
