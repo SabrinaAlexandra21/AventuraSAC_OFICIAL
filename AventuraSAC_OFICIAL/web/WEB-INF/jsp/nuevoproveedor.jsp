@@ -93,6 +93,7 @@
                     $("#formulario").validate({
                         rules:
                                 {
+                                    dni: {required: true, minlength: 8, maxlength:8 },
                                     razonSocial: {required: true, minlength: 5, maxlength: 30, lettersonly: true},
                                     ruc: {required: true, maxlength: 11, numbersonly: true},
                                     direccion: {required: true, minlength: 15, maxlength: 50},
@@ -101,7 +102,7 @@
                                 },
                         messages:
                                 {
-                                    dni: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 8 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
+                                    dni: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 8 caracteres' , maxlength: 'El máximo permitido son 8 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
                                     razonSocial: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 5 caracteres', maxlength: 'El máximo permitido son 30 caracteres', lettersonly: 'Porfavor, solo ingrese números'},
                                     ruc: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 11 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
                                     direccion: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 15 caracteres', maxlength: 'El máximo permitido son 50 caracteres'},

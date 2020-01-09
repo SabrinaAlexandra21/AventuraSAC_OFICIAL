@@ -110,6 +110,7 @@
                     $("#formulario").validate({
                         rules:
                                 {
+                                    dni: {required: true, minlength: 8, maxlength:8 },
                                     nombre: {required: true, maxlength: 25, lettersonly: true},
                                     apellidoPaterno: {required: true, minlength: 5, maxlength: 20, lettersonly: true},
                                     apellidoMaterno: {required: true, minlength: 5, maxlength: 10, lettersonly: true},
@@ -119,7 +120,7 @@
                                 },
                         messages:
                                 {
-                                    dni: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 8 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
+                                    dni: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 8 caracteres', maxlength: 'El máximo permitido son 8 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
                                     nombre: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 25 caracteres', lettersonly: 'Porfavor, solo ingrese letras'},
                                     apellidoPaterno: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 5 caracteres', maxlength: 'El máximo permitido son 20 caracteres', lettersonly: 'Porfavor, solo ingrese letras'},
                                     apellidoMaterno: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 5 caracteres', maxlength: 'El máximo permitido son 20 caracteres', lettersonly: 'Porfavor, solo ingrese letras'},
