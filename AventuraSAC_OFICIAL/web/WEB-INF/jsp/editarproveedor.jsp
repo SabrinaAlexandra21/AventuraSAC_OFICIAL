@@ -64,6 +64,8 @@
                         </div>
                         </div>
                         <br>
+                        DALE PUY
+                        MICHEEE LE DOY PULL? XD
                         <div class="row">
                         <div class="col-sm-6" style="left:10%">
                             <label for="telefono">Teléfono:</label>
