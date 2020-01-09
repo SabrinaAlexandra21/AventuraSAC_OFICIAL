@@ -109,19 +109,25 @@
                                     direccion: {required: true, maxlength: 30},
                                     telefono: {required: true, minlength: 7, maxlength: 9, numbersonly: true},
                                     broker: {required: true, minlength: 15, maxlength: 30, lettersonly: true},
-                                    correo: {required: true, email: true, minlength: 15, maxlength: 30}
+                                    correo: {required: true, email: true, minlength: 15, maxlength: 30},
+                                    usuario: {required: true, minlength: 5, maxlength: 20},
+                                    clave: {required: true, minlength: 7, maxlength: 9, numbersonly: true}
                                 },
                         messages:
                                 {
                                     razonSocial: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 3 caracteres',
                                         maxlength: 'El máximo permitido son 20 caracteres'},
                                     direccion: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 30 caracteres'},
-                                    telefono: {required: 'El campo es requerido', minlength: 'El máximo permitido son 7 caracteres para teléfono',
+                                    telefono: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 7 caracteres para teléfono',
                                         maxlength: 'El máximo permitido son 9 caracteres para celular',
                                         numbersonly: 'Por favor, solo ingrese números'},
                                     broker: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 15 caracteres',
                                         maxlength: 'El máximo permitido son 30 caracteres'},
-                                    correo: {required: 'El campo es requerido', email: 'El caracter "@" es requerido', minlength: 'El mínimo permitido son 15 caracteres', maxlength: ''}
+                                    correo: {required: 'El campo es requerido', email: 'El caracter "@" es requerido', minlength: 'El mínimo permitido son 15 caracteres', maxlength: 'El máximo permitido son 30 caracteres'},
+                                    usuario: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 20 caracteres',
+                                        maxlength: 'El máximo permitido son 5 caracteres'},
+                                    clave: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 7 caracteres', maxlength: 'El máximo permitido son 20 caracteres',
+                                        numbersonly: 'Por favor, solo ingrese números'}
                                 }
                     });
                 });
