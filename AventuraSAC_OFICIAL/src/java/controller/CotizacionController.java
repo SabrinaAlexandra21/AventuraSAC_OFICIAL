@@ -107,22 +107,6 @@ public class CotizacionController {
             }
         }
 
-        // List<Cotizacion> coti = repo3.findCotizacionEntities();
-        /*double subtotal = Double.parseDouble(request.getParameter("subTotal"));
-
-        //double importe = Double.parseDouble(request.getParameter("importe"));
-        double cont = 0;
-
-        if (subtotal > 0) {
-
-            for (int sub = 1; sub <= subtotal; sub++) {
-
-                cont = cont + subtotal;
-            }
-        }*/
-
-       // mv.addObject("sub", subtotal);
-
         mv.addObject("detalle", pdtem);
 
         mv.addObject("clientes", clty);
@@ -136,7 +120,9 @@ public class CotizacionController {
 
     @RequestMapping(value = "Cotizacion.htm", method = RequestMethod.POST)
 
-    public ModelAndView NuevoCliente(@ModelAttribute("cotizacion") Cliente c) throws Exception {
+    public ModelAndView NuevoCliente(@ModelAttribute("cotizacion") Cliente c, HttpServletRequest request) throws Exception {
+        
+        
 
         repo.create(c);
 

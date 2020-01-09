@@ -144,7 +144,7 @@
                                         <div  class="p-3">
 
                                             <label for="color2" >Color 2:</label>
-                                            <form:input path="color2" id="c2" style="height: 40%;" value="00ffff" />
+                                            <form:input path="color2" id="c2" style="height: 40%;" value="00ffff" cssClass="form-control"/>
 
                                             <script>
                                                 $(function () {
@@ -159,7 +159,7 @@
                                         <div  class="p-3">
 
                                             <label for="color3" >Color 3:</label>
-                                            <input type="text" name="color3" id="c3" style="height: 40%;" value="ff00ff" data-wheelcolorpicker>
+                                            <form:input path="color3" id="c3" style="height: 40%;" value="ff00ff" cssClass="form-control"/>
 
                                             <script>
                                                 $(function () {

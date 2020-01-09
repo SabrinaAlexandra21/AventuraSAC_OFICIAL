@@ -26,7 +26,6 @@
     <class>model.entities.Guiaremision</class>
     <class>model.entities.GuiaremisionDetalle</class>
     <class>model.entities.Insumohilo</class>
-    <class>model.entities.OrdencompraDetalle</class>
     <class>model.entities.Ordencompra</class>
     <class>model.entities.Detallefactura</class>
     <class>model.entities.Factura</class>

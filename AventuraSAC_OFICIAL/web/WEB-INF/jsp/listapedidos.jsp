@@ -29,7 +29,7 @@
                        
                             
                             <div class="p-4">
-                                <h2><strong><center>Lista de Pedidos</strong></center></h2>
+                                <h2><center>Lista de Pedidos</center></h2>
                             </div>
                             
                  

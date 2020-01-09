@@ -9,6 +9,8 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="<c:url value="webapp/resources/theme1/css/main.css"/>" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
+        <link href="<c:url value="webapp/resources/theme1/css/bootstrap.min.css" />" rel="stylesheet">
+        <link href="../../webapp/resources/theme1/css/estilolistapedido.css" rel="stylesheet" type="text/css"/>
         <title>JSP Page</title>
     </head>
     <body id="body">
@@ -24,11 +26,11 @@
             <br>
             <div class="card" id="carta">
 
-                <div class="card-header">
+                <div class="card-header" style="background: #C1FCEC ;">
 
 
-                    <div class="p-4">
-                        <h3>Lista de Pedidos</h3>
+                    <div class="p-4" style="font-family: Segoe UI">
+                        <h2><center>Lista de Pedidos</center></h2>
                     </div>
 
 
@@ -39,13 +41,13 @@
 
                     <table class="table">
 
-                        <thead>
+                        <thead class="thead-dark" > 
                             <tr>
-                                <th scope="col">IdPedido</th>
-                                <th scope="col">IdCliente</th>
-                                <th scope="col">Fecha Registro</th>
-                                <th scope="col">Fecha Entrega</th>
-                                <th scope="col">Acciones</th>
+                                <th scope="col" style="text-align: center">IdPedido</th>
+                                <th scope="col" style="text-align: center">IdCliente</th>
+                                <th scope="col" style="text-align: center">Fecha Registro</th>
+                                <th scope="col" style="text-align: center">Fecha Entrega</th>
+                                <th scope="col" style="text-align: center">Acciones</th>
 
                             </tr>
                         </thead>
@@ -53,12 +55,12 @@
                         <tbody>
                             <c:forEach var="item" items="${pedidos}">
                                 <tr> 
-                                    <th scope="row" >${item.idPedido}</th>
-                                    <td >${item.idCliente.idCliente}</td>
-                                    <td >${item.fechaRegistro}</td>
-                                    <td >${item.fechaEntrega}</td>
-                                    <td>
-                                        <a class="btn btn-info" role="button" href="Cotizacion.htm?idPedido=${item.idPedido}" ><i class="fas fa-edit"></i></a>
+                                    <th scope="row" style="text-align: center">${item.idPedido}</th>
+                                    <td style="text-align: center">${item.idCliente.idCliente}</td>
+                                    <td style="text-align: center">${item.fechaRegistro}</td>
+                                    <td style="text-align: center">${item.fechaEntrega}</td>
+                                    <td style="text-align: center">
+                                        <a class="btn btn-info" role="button" href="Cotizacion.htm?idPedido=${item.idPedido}" >Generar Cotización <i class="fas fa-edit"></i></a>
                                     </td>
                                 </tr>
                             </c:forEach>

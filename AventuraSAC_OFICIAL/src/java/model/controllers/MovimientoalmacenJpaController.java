@@ -5,23 +5,22 @@
  */
 package model.controllers;
 
+import model.controllers.exceptions.NonexistentEntityException;
+import model.entities.Movimientoalmacen;
 import java.io.Serializable;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import model.controllers.exceptions.NonexistentEntityException;
-import model.entities.Insumohilo;
-import model.entities.Movimientoalmacen;
-import model.entities.Ordencompra;
 import model.entities.OrdencompraDetalle;
+import model.entities.Ordencompra;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 public class MovimientoalmacenJpaController implements Serializable {
 
@@ -39,33 +38,24 @@ public class MovimientoalmacenJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Insumohilo idInsumo = movimientoalmacen.getIdInsumo();
-            if (idInsumo != null) {
-                idInsumo = em.getReference(idInsumo.getClass(), idInsumo.getIdInsumo());
-                movimientoalmacen.setIdInsumo(idInsumo);
+            OrdencompraDetalle item = movimientoalmacen.getItem();
+            if (item != null) {
+                item = em.getReference(item.getClass(), item.getItem());
+                movimientoalmacen.setItem(item);
             }
             Ordencompra idOrdenCompra = movimientoalmacen.getIdOrdenCompra();
             if (idOrdenCompra != null) {
                 idOrdenCompra = em.getReference(idOrdenCompra.getClass(), idOrdenCompra.getIdOrdenCompra());
                 movimientoalmacen.setIdOrdenCompra(idOrdenCompra);
             }
-            OrdencompraDetalle item = movimientoalmacen.getItem();
-            if (item != null) {
-                item = em.getReference(item.getClass(), item.getItem());
-                movimientoalmacen.setItem(item);
-            }
             em.persist(movimientoalmacen);
-            if (idInsumo != null) {
-                idInsumo.getMovimientoalmacenList().add(movimientoalmacen);
-                idInsumo = em.merge(idInsumo);
+            if (item != null) {
+                item.getMovimientoalmacenList().add(movimientoalmacen);
+                item = em.merge(item);
             }
             if (idOrdenCompra != null) {
                 idOrdenCompra.getMovimientoalmacenList().add(movimientoalmacen);
                 idOrdenCompra = em.merge(idOrdenCompra);
-            }
-            if (item != null) {
-                item.getMovimientoalmacenList().add(movimientoalmacen);
-                item = em.merge(item);
             }
             em.getTransaction().commit();
         } finally {
@@ -81,32 +71,26 @@ public class MovimientoalmacenJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Movimientoalmacen persistentMovimientoalmacen = em.find(Movimientoalmacen.class, movimientoalmacen.getIdMovimiento());
-            Insumohilo idInsumoOld = persistentMovimientoalmacen.getIdInsumo();
-            Insumohilo idInsumoNew = movimientoalmacen.getIdInsumo();
-            Ordencompra idOrdenCompraOld = persistentMovimientoalmacen.getIdOrdenCompra();
-            Ordencompra idOrdenCompraNew = movimientoalmacen.getIdOrdenCompra();
             OrdencompraDetalle itemOld = persistentMovimientoalmacen.getItem();
             OrdencompraDetalle itemNew = movimientoalmacen.getItem();
-            if (idInsumoNew != null) {
-                idInsumoNew = em.getReference(idInsumoNew.getClass(), idInsumoNew.getIdInsumo());
-                movimientoalmacen.setIdInsumo(idInsumoNew);
+            Ordencompra idOrdenCompraOld = persistentMovimientoalmacen.getIdOrdenCompra();
+            Ordencompra idOrdenCompraNew = movimientoalmacen.getIdOrdenCompra();
+            if (itemNew != null) {
+                itemNew = em.getReference(itemNew.getClass(), itemNew.getItem());
+                movimientoalmacen.setItem(itemNew);
             }
             if (idOrdenCompraNew != null) {
                 idOrdenCompraNew = em.getReference(idOrdenCompraNew.getClass(), idOrdenCompraNew.getIdOrdenCompra());
                 movimientoalmacen.setIdOrdenCompra(idOrdenCompraNew);
             }
-            if (itemNew != null) {
-                itemNew = em.getReference(itemNew.getClass(), itemNew.getItem());
-                movimientoalmacen.setItem(itemNew);
-            }
             movimientoalmacen = em.merge(movimientoalmacen);
-            if (idInsumoOld != null && !idInsumoOld.equals(idInsumoNew)) {
-                idInsumoOld.getMovimientoalmacenList().remove(movimientoalmacen);
-                idInsumoOld = em.merge(idInsumoOld);
+            if (itemOld != null && !itemOld.equals(itemNew)) {
+                itemOld.getMovimientoalmacenList().remove(movimientoalmacen);
+                itemOld = em.merge(itemOld);
             }
-            if (idInsumoNew != null && !idInsumoNew.equals(idInsumoOld)) {
-                idInsumoNew.getMovimientoalmacenList().add(movimientoalmacen);
-                idInsumoNew = em.merge(idInsumoNew);
+            if (itemNew != null && !itemNew.equals(itemOld)) {
+                itemNew.getMovimientoalmacenList().add(movimientoalmacen);
+                itemNew = em.merge(itemNew);
             }
             if (idOrdenCompraOld != null && !idOrdenCompraOld.equals(idOrdenCompraNew)) {
                 idOrdenCompraOld.getMovimientoalmacenList().remove(movimientoalmacen);
@@ -115,14 +99,6 @@ public class MovimientoalmacenJpaController implements Serializable {
             if (idOrdenCompraNew != null && !idOrdenCompraNew.equals(idOrdenCompraOld)) {
                 idOrdenCompraNew.getMovimientoalmacenList().add(movimientoalmacen);
                 idOrdenCompraNew = em.merge(idOrdenCompraNew);
-            }
-            if (itemOld != null && !itemOld.equals(itemNew)) {
-                itemOld.getMovimientoalmacenList().remove(movimientoalmacen);
-                itemOld = em.merge(itemOld);
-            }
-            if (itemNew != null && !itemNew.equals(itemOld)) {
-                itemNew.getMovimientoalmacenList().add(movimientoalmacen);
-                itemNew = em.merge(itemNew);
             }
             em.getTransaction().commit();
         } catch (Exception ex) {
@@ -153,20 +129,15 @@ public class MovimientoalmacenJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The movimientoalmacen with id " + id + " no longer exists.", enfe);
             }
-            Insumohilo idInsumo = movimientoalmacen.getIdInsumo();
-            if (idInsumo != null) {
-                idInsumo.getMovimientoalmacenList().remove(movimientoalmacen);
-                idInsumo = em.merge(idInsumo);
+            OrdencompraDetalle item = movimientoalmacen.getItem();
+            if (item != null) {
+                item.getMovimientoalmacenList().remove(movimientoalmacen);
+                item = em.merge(item);
             }
             Ordencompra idOrdenCompra = movimientoalmacen.getIdOrdenCompra();
             if (idOrdenCompra != null) {
                 idOrdenCompra.getMovimientoalmacenList().remove(movimientoalmacen);
                 idOrdenCompra = em.merge(idOrdenCompra);
-            }
-            OrdencompraDetalle item = movimientoalmacen.getItem();
-            if (item != null) {
-                item.getMovimientoalmacenList().remove(movimientoalmacen);
-                item = em.merge(item);
             }
             em.remove(movimientoalmacen);
             em.getTransaction().commit();

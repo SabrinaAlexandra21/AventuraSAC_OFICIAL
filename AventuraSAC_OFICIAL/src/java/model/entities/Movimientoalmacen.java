@@ -21,7 +21,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "movimientoalmacen")
@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlRootElement;
     @NamedQuery(name = "Movimientoalmacen.findAll", query = "SELECT m FROM Movimientoalmacen m")
     , @NamedQuery(name = "Movimientoalmacen.findByIdMovimiento", query = "SELECT m FROM Movimientoalmacen m WHERE m.idMovimiento = :idMovimiento")
     , @NamedQuery(name = "Movimientoalmacen.findByTipoMovimiento", query = "SELECT m FROM Movimientoalmacen m WHERE m.tipoMovimiento = :tipoMovimiento")
+    , @NamedQuery(name = "Movimientoalmacen.findByDescripcion", query = "SELECT m FROM Movimientoalmacen m WHERE m.descripcion = :descripcion")
     , @NamedQuery(name = "Movimientoalmacen.findByFecha", query = "SELECT m FROM Movimientoalmacen m WHERE m.fecha = :fecha")})
 public class Movimientoalmacen implements Serializable {
 
@@ -42,17 +43,17 @@ public class Movimientoalmacen implements Serializable {
     @Column(name = "TipoMovimiento")
     private String tipoMovimiento;
     @Basic(optional = false)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Basic(optional = false)
     @Column(name = "fecha")
     private String fecha;
-    @JoinColumn(name = "idInsumo", referencedColumnName = "idInsumo")
-    @ManyToOne
-    private Insumohilo idInsumo;
-    @JoinColumn(name = "idOrdenCompra", referencedColumnName = "idOrdenCompra")
-    @ManyToOne
-    private Ordencompra idOrdenCompra;
     @JoinColumn(name = "Item", referencedColumnName = "Item")
     @ManyToOne
     private OrdencompraDetalle item;
+    @JoinColumn(name = "idOrdenCompra", referencedColumnName = "idOrdenCompra")
+    @ManyToOne
+    private Ordencompra idOrdenCompra;
 
     public Movimientoalmacen() {
     }
@@ -61,8 +62,9 @@ public class Movimientoalmacen implements Serializable {
         this.idMovimiento = idMovimiento;
     }
 
-    public Movimientoalmacen(Integer idMovimiento, String fecha) {
+    public Movimientoalmacen(Integer idMovimiento, String descripcion, String fecha) {
         this.idMovimiento = idMovimiento;
+        this.descripcion = descripcion;
         this.fecha = fecha;
     }
 
@@ -82,6 +84,14 @@ public class Movimientoalmacen implements Serializable {
         this.tipoMovimiento = tipoMovimiento;
     }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
     public String getFecha() {
         return fecha;
     }
@@ -90,12 +100,12 @@ public class Movimientoalmacen implements Serializable {
         this.fecha = fecha;
     }
 
-    public Insumohilo getIdInsumo() {
-        return idInsumo;
+    public OrdencompraDetalle getItem() {
+        return item;
     }
 
-    public void setIdInsumo(Insumohilo idInsumo) {
-        this.idInsumo = idInsumo;
+    public void setItem(OrdencompraDetalle item) {
+        this.item = item;
     }
 
     public Ordencompra getIdOrdenCompra() {
@@ -104,14 +114,6 @@ public class Movimientoalmacen implements Serializable {
 
     public void setIdOrdenCompra(Ordencompra idOrdenCompra) {
         this.idOrdenCompra = idOrdenCompra;
-    }
-
-    public OrdencompraDetalle getItem() {
-        return item;
-    }
-
-    public void setItem(OrdencompraDetalle item) {
-        this.item = item;
     }
 
     @Override
@@ -136,7 +138,7 @@ public class Movimientoalmacen implements Serializable {
 
     @Override
     public String toString() {
-        return "model.entities.Movimientoalmacen[ idMovimiento=" + idMovimiento + " ]";
+        return "entities.Movimientoalmacen[ idMovimiento=" + idMovimiento + " ]";
     }
     
 }

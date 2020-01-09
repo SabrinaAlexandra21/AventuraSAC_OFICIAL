@@ -22,7 +22,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "ordencompra_detalle")
@@ -30,6 +30,7 @@ import javax.xml.bind.annotation.XmlTransient;
 @NamedQueries({
     @NamedQuery(name = "OrdencompraDetalle.findAll", query = "SELECT o FROM OrdencompraDetalle o")
     , @NamedQuery(name = "OrdencompraDetalle.findByItem", query = "SELECT o FROM OrdencompraDetalle o WHERE o.item = :item")
+    , @NamedQuery(name = "OrdencompraDetalle.findByDescripcion", query = "SELECT o FROM OrdencompraDetalle o WHERE o.descripcion = :descripcion")
     , @NamedQuery(name = "OrdencompraDetalle.findByCantidad", query = "SELECT o FROM OrdencompraDetalle o WHERE o.cantidad = :cantidad")})
 public class OrdencompraDetalle implements Serializable {
 
@@ -38,13 +39,14 @@ public class OrdencompraDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "Item")
     private String item;
+    @Basic(optional = false)
+    @Column(name = "descripcion")
+    private String descripcion;
+    @Basic(optional = false)
     @Column(name = "Cantidad")
-    private Integer cantidad;
+    private int cantidad;
     @OneToMany(mappedBy = "item")
     private List<Movimientoalmacen> movimientoalmacenList;
-    @JoinColumn(name = "idInsumo", referencedColumnName = "idInsumo")
-    @ManyToOne
-    private Insumohilo idInsumo;
     @JoinColumn(name = "idOrdenCompra", referencedColumnName = "idOrdenCompra")
     @ManyToOne
     private Ordencompra idOrdenCompra;
@@ -56,6 +58,12 @@ public class OrdencompraDetalle implements Serializable {
         this.item = item;
     }
 
+    public OrdencompraDetalle(String item, String descripcion, int cantidad) {
+        this.item = item;
+        this.descripcion = descripcion;
+        this.cantidad = cantidad;
+    }
+
     public String getItem() {
         return item;
     }
@@ -64,11 +72,19 @@ public class OrdencompraDetalle implements Serializable {
         this.item = item;
     }
 
-    public Integer getCantidad() {
+    public String getDescripcion() {
+        return descripcion;
+    }
+
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
+
+    public int getCantidad() {
         return cantidad;
     }
 
-    public void setCantidad(Integer cantidad) {
+    public void setCantidad(int cantidad) {
         this.cantidad = cantidad;
     }
 
@@ -79,14 +95,6 @@ public class OrdencompraDetalle implements Serializable {
 
     public void setMovimientoalmacenList(List<Movimientoalmacen> movimientoalmacenList) {
         this.movimientoalmacenList = movimientoalmacenList;
-    }
-
-    public Insumohilo getIdInsumo() {
-        return idInsumo;
-    }
-
-    public void setIdInsumo(Insumohilo idInsumo) {
-        this.idInsumo = idInsumo;
     }
 
     public Ordencompra getIdOrdenCompra() {
@@ -119,7 +127,7 @@ public class OrdencompraDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "model.entities.OrdencompraDetalle[ item=" + item + " ]";
+        return "entities.OrdencompraDetalle[ item=" + item + " ]";
     }
     
 }

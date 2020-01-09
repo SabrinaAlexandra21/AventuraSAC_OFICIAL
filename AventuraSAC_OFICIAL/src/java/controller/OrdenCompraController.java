@@ -4,7 +4,6 @@ package controller;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import model.controllers.InsumohiloJpaController;
 import model.controllers.OrdencompraDetalleJpaController;
 import model.controllers.OrdencompraJpaController;
 import model.entities.Ordencompra;
@@ -26,7 +25,7 @@ public class OrdenCompraController  {
     private EntityManagerFactory emf;
     private OrdencompraJpaController repo;
     private OrdencompraDetalleJpaController repo1;
-    private InsumohiloJpaController repo2;
+
     
     public OrdenCompraController() {
         em = getEntityManager();
