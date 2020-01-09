@@ -32,6 +32,9 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "GuiaremisionDetalle.findByDescripcion", query = "SELECT g FROM GuiaremisionDetalle g WHERE g.descripcion = :descripcion")})
 public class GuiaremisionDetalle implements Serializable {
 
+    @Column(name = "cantidad")
+    private Integer cantidad;
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,6 +112,14 @@ public class GuiaremisionDetalle implements Serializable {
     @Override
     public String toString() {
         return "model.entities.GuiaremisionDetalle[ idDetalleGuiaRemision=" + idDetalleGuiaRemision + " ]";
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
     
 }

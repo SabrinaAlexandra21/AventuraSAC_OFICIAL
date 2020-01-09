@@ -33,6 +33,7 @@
     <class>model.entities.Talla</class>
     <class>model.entities.Pagos</class>
     <class>model.entities.Tipomodelo</class>
+    <class>modelentities1.Insumohilo</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Aventura?zeroDateTimeBehavior=convertToNull"/>

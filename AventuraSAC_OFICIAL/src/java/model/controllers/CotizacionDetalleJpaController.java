@@ -149,13 +149,10 @@ public class CotizacionDetalleJpaController implements Serializable {
         EntityManager em = getEntityManager();
         List<CotizacionDetalle> lista = new ArrayList();
         try {
-            Query q = em.createQuery("SELECT c FROM CotizacionDetalle c WHERE c.idDetallePedido.idDetallePedido = :idDetallePedido").setParameter("idDetallePedido",idDetallePedido);
+            Query q = em.createQuery("SELECT c FROM CotizacionDetalle c WHERE c.idDetalleCotizacion.idDetalleCotizacion = :idDetallePedido").setParameter("idDetalleCotizacion",idDetallePedido);
             lista = (List<CotizacionDetalle>)q.getResultList();
             System.out.println("Listado por detalle pedido" + lista.size());
-            
-        //}catch(Exception e){
-            
-          //  System.out.println(e.getMessage());
+
         } 
         finally {
             em.close();

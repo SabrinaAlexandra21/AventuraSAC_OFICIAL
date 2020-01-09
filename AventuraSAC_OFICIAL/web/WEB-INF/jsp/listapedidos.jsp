@@ -26,12 +26,9 @@
             <div class="card" id="carta">
              
                     <div class="card-header" style="background: #C1FCEC ;"> 
-                       
-                            
-                            <div class="p-4">
+                        <br>
+ 
                                 <h2><center>Lista de Pedidos</center></h2>
-                            </div>
-                            
                  
                     </div>
                 <br>
@@ -41,10 +38,10 @@
 
                             <thead class="thead-dark">
                                 <tr>
-                                    <th style="text-align: center;"><h3><strong>IdPedido</strong></h3></th>
-                                    <th style="text-align: center;"><h3><strong>IdCliente</strong></h3></th>
-                                    <th style="text-align: center;"><h3><strong>Fecha Registro</strong></h3></th>
-                                    <th style="text-align: center;"><h3><strong>Fecha Entrega</strong></h3></th>
+                                    <th style="text-align: center;">IdPedido</th>
+                                    <th style="text-align: center;">IdCliente</th>
+                                    <th style="text-align: center;">Fecha Registro</th>
+                                    <th style="text-align: center;">Fecha Entrega</th>
                                 </tr>
                             </thead>
 

@@ -48,9 +48,11 @@ public class CotizacionJpaController implements Serializable {
                 cotizacion.setIdPedido(idPedido);
             }
             List<CotizacionDetalle> attachedCotizacionDetalleList = new ArrayList<CotizacionDetalle>();
-            for (CotizacionDetalle cotizacionDetalleListCotizacionDetalleToAttach : cotizacion.getCotizacionDetalleList()) {
-                cotizacionDetalleListCotizacionDetalleToAttach = em.getReference(cotizacionDetalleListCotizacionDetalleToAttach.getClass(), cotizacionDetalleListCotizacionDetalleToAttach.getIdDetalleCotizacion());
-                attachedCotizacionDetalleList.add(cotizacionDetalleListCotizacionDetalleToAttach);
+            if (cotizacion.getCotizacionDetalleList() != null) {
+                for (CotizacionDetalle cotizacionDetalleListCotizacionDetalleToAttach : cotizacion.getCotizacionDetalleList()) {
+                    cotizacionDetalleListCotizacionDetalleToAttach = em.getReference(cotizacionDetalleListCotizacionDetalleToAttach.getClass(), cotizacionDetalleListCotizacionDetalleToAttach.getIdDetalleCotizacion());
+                    attachedCotizacionDetalleList.add(cotizacionDetalleListCotizacionDetalleToAttach);
+                }
             }
             cotizacion.setCotizacionDetalleList(attachedCotizacionDetalleList);
             em.persist(cotizacion);
@@ -215,5 +217,5 @@ public class CotizacionJpaController implements Serializable {
             em.close();
         }
     }
-    
+
 }
