@@ -20,7 +20,6 @@ import model.entities.CotizacionDetalle;
 import model.entities.Empleado;
 import model.entities.Pedido;
 import model.entities.PedidoDetalle;
-import model.entities.PedidoDetalle_;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;

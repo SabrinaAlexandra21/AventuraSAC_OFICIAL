@@ -129,7 +129,7 @@
                                     <div class="d-flex flex-row">
                                         <div  class="p-3">
                                             <label for="color1" >Color 1:</label>
-                                            <input type="text" name="color1" id="c1" style="height: 40%;" value="ffff00" data-wheelcolorpicker>
+                                            <form:input path="color1" id="c1" style="height: 40%;" cssClass="form-control" value="ffff00"/>
                                             <script>
                                                 $(function () {
 
@@ -144,7 +144,7 @@
                                         <div  class="p-3">
 
                                             <label for="color2" >Color 2:</label>
-                                            <input type="text" name="color2" id="c2" style="height: 40%;" value="00ffff" data-wheelcolorpicker>
+                                            <form:input path="color2" id="c2" style="height: 40%;" value="00ffff" />
 
                                             <script>
                                                 $(function () {
