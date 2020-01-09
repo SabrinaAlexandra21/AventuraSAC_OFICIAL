@@ -62,7 +62,7 @@
 
                             <thead>
                                 <tr>
-                                    <th scope="col">IdCliente</th>
+
                                     <th scope="col">IdFicha</th>
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Cantidad</th>
@@ -74,11 +74,10 @@
                             <tbody>
                                 <c:forEach var="item" items="${ficha}">
                                     <tr > 
-                                        <th scope="row">${item.idCliente.idCliente}</th>
                                         <th>${item.idFicha}</th>
                                         <th>${item.descripcion}</th>
                                         <th>${item.cantidad}</th>
-                                        <th><form:input path="estado" cssClass="form-control" id="fentregaI"/></th>
+                                        <th><form:checkbox path="estado" value="hola"/></th>
                                         <td scope="col-2">
 
                                             

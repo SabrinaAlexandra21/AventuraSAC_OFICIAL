@@ -106,10 +106,11 @@ public class EmpleadoJpaController implements Serializable {
                 empleado.setIdArea(idAreaNew);
             }
             List<Ordencompra> attachedOrdencompraListNew = new ArrayList<Ordencompra>();
+            if(ordencompraListNew != null){
             for (Ordencompra ordencompraListNewOrdencompraToAttach : ordencompraListNew) {
                 ordencompraListNewOrdencompraToAttach = em.getReference(ordencompraListNewOrdencompraToAttach.getClass(), ordencompraListNewOrdencompraToAttach.getIdOrdenCompra());
                 attachedOrdencompraListNew.add(ordencompraListNewOrdencompraToAttach);
-            }
+            }}
             ordencompraListNew = attachedOrdencompraListNew;
             empleado.setOrdencompraList(ordencompraListNew);
             empleado = em.merge(empleado);

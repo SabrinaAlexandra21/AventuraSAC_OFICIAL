@@ -39,7 +39,7 @@
                             <thead class="thead-dark">
                                 <tr>
                                     <th style="text-align: center;">IdPedido</th>
-                                    <th style="text-align: center;">IdCliente</th>
+
                                     <th style="text-align: center;">Fecha Registro</th>
                                     <th style="text-align: center;">Fecha Entrega</th>
                                     <th style="text-align: center;">Estado</th>
@@ -50,7 +50,7 @@
                                 <c:forEach var="item" items="${pedidos}">
                                     <tr> 
                                         <th scope="row" style="text-align: center;">${item.idPedido}</th>
-                                        <td style="text-align: center;">${item.idCliente.idCliente}</td>
+
                                         <td style="text-align: center;">${item.fechaRegistro}</td>
                                         <td style="text-align: center;">${item.fechaEntrega}</td>
                                         <td style="text-align: center;">${item.estado}</td>
@@ -59,6 +59,9 @@
 
                             </tbody>
                         </table>
+                        <select name="estados">
+                            <option value="pendiente">Pendiente</option>
+                        </select>
                         <center>
                              <a class="btn btn-dark" href="menucliente.htm" role="button">Regresar al Menú</a> 
                              

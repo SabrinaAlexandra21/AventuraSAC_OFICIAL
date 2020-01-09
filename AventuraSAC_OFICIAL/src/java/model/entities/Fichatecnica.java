@@ -62,9 +62,8 @@ public class Fichatecnica implements Serializable {
     private String color2;
     @Column(name = "Color3")
     private String color3;
-    @Basic(optional = false)
     @Column(name = "Estado")
-    private String estado;
+    private Boolean estado = true;
     @OneToMany(mappedBy = "idFicha")
     private List<PedidoDetalle> pedidoDetalleList;
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
@@ -81,18 +80,18 @@ public class Fichatecnica implements Serializable {
     private Tipotela idTipo;
 
     public Fichatecnica() {
+        estado = true;
     }
 
     public Fichatecnica(Integer idFicha) {
         this.idFicha = idFicha;
     }
 
-    public Fichatecnica(Integer idFicha, String descripcion, int cantidad, String etiqueta, String estado) {
+    public Fichatecnica(Integer idFicha, String descripcion, int cantidad, String etiqueta) {
         this.idFicha = idFicha;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.etiqueta = etiqueta;
-        this.estado = estado;
     }
 
     public Integer getIdFicha() {
@@ -151,11 +150,11 @@ public class Fichatecnica implements Serializable {
         this.color3 = color3;
     }
 
-    public String getEstado() {
+    public Boolean getEstado() {
         return estado;
     }
 
-    public void setEstado(String estado) {
+    public void setEstado(Boolean estado) {
         this.estado = estado;
     }
 

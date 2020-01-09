@@ -2,6 +2,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <html>
@@ -119,7 +120,7 @@
                     </div>
                     <div>
                         <label for="estado" style="left: 35%;">Estado:</label>
-                        <form:input path="estado"  style="width: 100%;" cssClass="form-control" placeholder="Ingresar estado"/>
+                        <form:checkbox path="estado" />
                     </div>
 
                     <hr style="border: 1px solid gray">
