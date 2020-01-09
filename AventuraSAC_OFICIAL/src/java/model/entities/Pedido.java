@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "pedido")
@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p")
     , @NamedQuery(name = "Pedido.findByIdPedido", query = "SELECT p FROM Pedido p WHERE p.idPedido = :idPedido")
     , @NamedQuery(name = "Pedido.findByFechaRegistro", query = "SELECT p FROM Pedido p WHERE p.fechaRegistro = :fechaRegistro")
-    , @NamedQuery(name = "Pedido.findByFechaEntrega", query = "SELECT p FROM Pedido p WHERE p.fechaEntrega = :fechaEntrega")})
+    , @NamedQuery(name = "Pedido.findByFechaEntrega", query = "SELECT p FROM Pedido p WHERE p.fechaEntrega = :fechaEntrega")
+    , @NamedQuery(name = "Pedido.findByEstado", query = "SELECT p FROM Pedido p WHERE p.estado = :estado")})
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -48,6 +49,9 @@ public class Pedido implements Serializable {
     @Basic(optional = false)
     @Column(name = "FechaEntrega")
     private String fechaEntrega;
+    @Basic(optional = false)
+    @Column(name = "Estado")
+    private String estado;
     @OneToMany(mappedBy = "idPedido")
     private List<GuiaremisionDetalle> guiaremisionDetalleList;
     @OneToMany(mappedBy = "idPedido")
@@ -69,10 +73,11 @@ public class Pedido implements Serializable {
         this.idPedido = idPedido;
     }
 
-    public Pedido(Integer idPedido, String fechaRegistro, String fechaEntrega) {
+    public Pedido(Integer idPedido, String fechaRegistro, String fechaEntrega, String estado) {
         this.idPedido = idPedido;
         this.fechaRegistro = fechaRegistro;
         this.fechaEntrega = fechaEntrega;
+        this.estado = estado;
     }
 
     public Integer getIdPedido() {
@@ -97,6 +102,14 @@ public class Pedido implements Serializable {
 
     public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
+    }
+
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
     }
 
     @XmlTransient

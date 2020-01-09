@@ -6,6 +6,7 @@
 package model.entities;
 
 import java.io.Serializable;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -16,8 +17,10 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -37,6 +40,8 @@ public class PedidoDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "idDetallePedido")
     private Integer idDetallePedido;
+    @OneToMany(mappedBy = "idDetallePedido")
+    private List<CotizacionDetalle> cotizacionDetalleList;
     @JoinColumn(name = "idFicha", referencedColumnName = "idFicha")
     @ManyToOne
     private Fichatecnica idFicha;
@@ -57,6 +62,15 @@ public class PedidoDetalle implements Serializable {
 
     public void setIdDetallePedido(Integer idDetallePedido) {
         this.idDetallePedido = idDetallePedido;
+    }
+
+    @XmlTransient
+    public List<CotizacionDetalle> getCotizacionDetalleList() {
+        return cotizacionDetalleList;
+    }
+
+    public void setCotizacionDetalleList(List<CotizacionDetalle> cotizacionDetalleList) {
+        this.cotizacionDetalleList = cotizacionDetalleList;
     }
 
     public Fichatecnica getIdFicha() {

@@ -66,6 +66,7 @@
                                     <th scope="col">IdFicha</th>
                                     <th scope="col">Descripcion</th>
                                     <th scope="col">Cantidad</th>
+                                    <th scope="col">Estado</th>
                                     <th scope="col">Acciones</th>
                                 </tr>
                             </thead>
@@ -77,9 +78,10 @@
                                         <th>${item.idFicha}</th>
                                         <th>${item.descripcion}</th>
                                         <th>${item.cantidad}</th>
+                                        <th><form:input path="estado" cssClass="form-control" id="fentregaI"/></th>
                                         <td scope="col-2">
 
-
+                                            
                                             <a class="btn btn-info" role="button" href="editarficha.htm?id=${item.idFicha}" ><i class="fas fa-edit"></i></a> 
 
                                             <button  class="btn btn-warning" type="button" onclick="eliminar('${item.idFicha}')" ><i class="fas fa-trash-alt"></i></button>

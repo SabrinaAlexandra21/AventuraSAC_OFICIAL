@@ -113,6 +113,7 @@
                                         <th>IdFicha</th>
                                         <th>Descripcion</th>
                                         <th>Cantidad</th>
+                                        <th>Estado</th>
                                         <th>Subtotal</th>
                                     </tr>
                                 </thead>
@@ -123,6 +124,7 @@
                                             <td >${item.idDetallePedido}</td>
                                             <td >${item.idFicha.descripcion}</td>
                                             <td >${item.idFicha.cantidad}</td>
+                                            <td ><input type="text" name="estado" style="text-align: center;" value="${item.idFicha.estado}"/></td>
                                             <td ><input type="text" name="subTotal" class="monto" style="text-align: center;" onkeyup="sumar()"/></td>
 
                                         </tr>
@@ -169,6 +171,11 @@
 
                             </div>
                         </div>
+                        
+                        <div class="col" >
+                           <label for="observacion" >Observaciones:</label>
+                           <form:textarea path="observacion" cssClass="form-control" id="observacion"/>
+                        </div>
 
                         <fieldset id="fieldset4" style="border: 1px solid gray">
                             <legend><p>¿Qué acción desea realizar?</p></legend>
@@ -177,11 +184,7 @@
                                 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button type="button" class="btn btn-outline-secondary">Cancelar</button>
                             </div>
                         </fieldset>
-                        <br>
-                        <div class="col" id="ultimoparrafo">
-                            <p id="ultimoparrafo"><STRONG>Se tiene que pagar el 50% como adelanto inicial</STRONG></p><!--Letra negrita-->
-                        </div>
-
+                    
                     </form:form>
                 </div>
 

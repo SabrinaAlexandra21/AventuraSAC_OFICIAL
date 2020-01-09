@@ -41,6 +41,9 @@ public class CotizacionDetalle implements Serializable {
     @Basic(optional = false)
     @Column(name = "SubTotal")
     private double subTotal;
+    @JoinColumn(name = "idDetallePedido", referencedColumnName = "idDetallePedido")
+    @ManyToOne
+    private PedidoDetalle idDetallePedido;
     @JoinColumn(name = "idCotizacion", referencedColumnName = "idCotizacion")
     @ManyToOne
     private Cotizacion idCotizacion;
@@ -73,6 +76,14 @@ public class CotizacionDetalle implements Serializable {
         this.subTotal = subTotal;
     }
 
+    public PedidoDetalle getIdDetallePedido() {
+        return idDetallePedido;
+    }
+
+    public void setIdDetallePedido(PedidoDetalle idDetallePedido) {
+        this.idDetallePedido = idDetallePedido;
+    }
+
     public Cotizacion getIdCotizacion() {
         return idCotizacion;
     }
@@ -103,7 +114,7 @@ public class CotizacionDetalle implements Serializable {
 
     @Override
     public String toString() {
-        return "entites.CotizacionDetalle[ idDetalleCotizacion=" + idDetalleCotizacion + " ]";
+        return "model.entities.CotizacionDetalle[ idDetalleCotizacion=" + idDetalleCotizacion + " ]";
     }
     
 }

@@ -42,6 +42,7 @@
                                     <th style="text-align: center;">IdCliente</th>
                                     <th style="text-align: center;">Fecha Registro</th>
                                     <th style="text-align: center;">Fecha Entrega</th>
+                                    <th style="text-align: center;">Estado</th>
                                 </tr>
                             </thead>
 
@@ -52,6 +53,7 @@
                                         <td style="text-align: center;">${item.idCliente.idCliente}</td>
                                         <td style="text-align: center;">${item.fechaRegistro}</td>
                                         <td style="text-align: center;">${item.fechaEntrega}</td>
+                                        <td style="text-align: center;">${item.estado}</td>
                                     </tr>
                                 </c:forEach>
 

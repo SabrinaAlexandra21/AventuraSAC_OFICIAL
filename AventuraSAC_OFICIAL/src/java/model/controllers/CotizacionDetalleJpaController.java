@@ -5,19 +5,19 @@
  */
 package model.controllers;
 
-import model.controllers.exceptions.NonexistentEntityException;
 import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.List;
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
 import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import model.controllers.exceptions.NonexistentEntityException;
+import model.entities.PedidoDetalle;
 import model.entities.Cotizacion;
 import model.entities.CotizacionDetalle;
-import java.util.List;
-import javax.persistence.EntityManager;
-import javax.persistence.EntityManagerFactory;
-import model.entities.PedidoDetalle;
 
 /**
  *
@@ -39,12 +39,21 @@ public class CotizacionDetalleJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            PedidoDetalle idDetallePedido = cotizacionDetalle.getIdDetallePedido();
+            if (idDetallePedido != null) {
+                idDetallePedido = em.getReference(idDetallePedido.getClass(), idDetallePedido.getIdDetallePedido());
+                cotizacionDetalle.setIdDetallePedido(idDetallePedido);
+            }
             Cotizacion idCotizacion = cotizacionDetalle.getIdCotizacion();
             if (idCotizacion != null) {
                 idCotizacion = em.getReference(idCotizacion.getClass(), idCotizacion.getIdCotizacion());
                 cotizacionDetalle.setIdCotizacion(idCotizacion);
             }
             em.persist(cotizacionDetalle);
+            if (idDetallePedido != null) {
+                idDetallePedido.getCotizacionDetalleList().add(cotizacionDetalle);
+                idDetallePedido = em.merge(idDetallePedido);
+            }
             if (idCotizacion != null) {
                 idCotizacion.getCotizacionDetalleList().add(cotizacionDetalle);
                 idCotizacion = em.merge(idCotizacion);
@@ -63,13 +72,27 @@ public class CotizacionDetalleJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             CotizacionDetalle persistentCotizacionDetalle = em.find(CotizacionDetalle.class, cotizacionDetalle.getIdDetalleCotizacion());
+            PedidoDetalle idDetallePedidoOld = persistentCotizacionDetalle.getIdDetallePedido();
+            PedidoDetalle idDetallePedidoNew = cotizacionDetalle.getIdDetallePedido();
             Cotizacion idCotizacionOld = persistentCotizacionDetalle.getIdCotizacion();
             Cotizacion idCotizacionNew = cotizacionDetalle.getIdCotizacion();
+            if (idDetallePedidoNew != null) {
+                idDetallePedidoNew = em.getReference(idDetallePedidoNew.getClass(), idDetallePedidoNew.getIdDetallePedido());
+                cotizacionDetalle.setIdDetallePedido(idDetallePedidoNew);
+            }
             if (idCotizacionNew != null) {
                 idCotizacionNew = em.getReference(idCotizacionNew.getClass(), idCotizacionNew.getIdCotizacion());
                 cotizacionDetalle.setIdCotizacion(idCotizacionNew);
             }
             cotizacionDetalle = em.merge(cotizacionDetalle);
+            if (idDetallePedidoOld != null && !idDetallePedidoOld.equals(idDetallePedidoNew)) {
+                idDetallePedidoOld.getCotizacionDetalleList().remove(cotizacionDetalle);
+                idDetallePedidoOld = em.merge(idDetallePedidoOld);
+            }
+            if (idDetallePedidoNew != null && !idDetallePedidoNew.equals(idDetallePedidoOld)) {
+                idDetallePedidoNew.getCotizacionDetalleList().add(cotizacionDetalle);
+                idDetallePedidoNew = em.merge(idDetallePedidoNew);
+            }
             if (idCotizacionOld != null && !idCotizacionOld.equals(idCotizacionNew)) {
                 idCotizacionOld.getCotizacionDetalleList().remove(cotizacionDetalle);
                 idCotizacionOld = em.merge(idCotizacionOld);
@@ -106,6 +129,11 @@ public class CotizacionDetalleJpaController implements Serializable {
                 cotizacionDetalle.getIdDetalleCotizacion();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The cotizacionDetalle with id " + id + " no longer exists.", enfe);
+            }
+            PedidoDetalle idDetallePedido = cotizacionDetalle.getIdDetallePedido();
+            if (idDetallePedido != null) {
+                idDetallePedido.getCotizacionDetalleList().remove(cotizacionDetalle);
+                idDetallePedido = em.merge(idDetallePedido);
             }
             Cotizacion idCotizacion = cotizacionDetalle.getIdCotizacion();
             if (idCotizacion != null) {
@@ -145,11 +173,11 @@ public class CotizacionDetalleJpaController implements Serializable {
         }
     }
     
-    public List<CotizacionDetalle> listadoxpedido(int idDetallePedido) {
+     public List<CotizacionDetalle> listadoxpedido(int idDetallePedido) {
         EntityManager em = getEntityManager();
         List<CotizacionDetalle> lista = new ArrayList();
         try {
-            Query q = em.createQuery("SELECT c FROM CotizacionDetalle c WHERE c.idDetalleCotizacion.idDetalleCotizacion = :idDetallePedido").setParameter("idDetalleCotizacion",idDetallePedido);
+            Query q = em.createQuery("SELECT c FROM CotizacionDetalle c WHERE c.idDetallePedido.idDetallePedido = :idDetallePedido").setParameter("idDetallePedido",idDetallePedido);
             lista = (List<CotizacionDetalle>)q.getResultList();
             System.out.println("Listado por detalle pedido" + lista.size());
 
@@ -159,7 +187,6 @@ public class CotizacionDetalleJpaController implements Serializable {
         }
         return lista;
     }
-
 
     public CotizacionDetalle findCotizacionDetalle(Integer id) {
         EntityManager em = getEntityManager();

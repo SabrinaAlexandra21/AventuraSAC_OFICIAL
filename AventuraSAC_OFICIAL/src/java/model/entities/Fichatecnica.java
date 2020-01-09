@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "fichatecnica")
@@ -37,7 +37,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Fichatecnica.findByEtiqueta", query = "SELECT f FROM Fichatecnica f WHERE f.etiqueta = :etiqueta")
     , @NamedQuery(name = "Fichatecnica.findByColor1", query = "SELECT f FROM Fichatecnica f WHERE f.color1 = :color1")
     , @NamedQuery(name = "Fichatecnica.findByColor2", query = "SELECT f FROM Fichatecnica f WHERE f.color2 = :color2")
-    , @NamedQuery(name = "Fichatecnica.findByColor3", query = "SELECT f FROM Fichatecnica f WHERE f.color3 = :color3")})
+    , @NamedQuery(name = "Fichatecnica.findByColor3", query = "SELECT f FROM Fichatecnica f WHERE f.color3 = :color3")
+    , @NamedQuery(name = "Fichatecnica.findByEstado", query = "SELECT f FROM Fichatecnica f WHERE f.estado = :estado")})
 public class Fichatecnica implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -61,6 +62,9 @@ public class Fichatecnica implements Serializable {
     private String color2;
     @Column(name = "Color3")
     private String color3;
+    @Basic(optional = false)
+    @Column(name = "Estado")
+    private String estado;
     @OneToMany(mappedBy = "idFicha")
     private List<PedidoDetalle> pedidoDetalleList;
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
@@ -75,8 +79,6 @@ public class Fichatecnica implements Serializable {
     @JoinColumn(name = "idTipo", referencedColumnName = "idTipo")
     @ManyToOne
     private Tipotela idTipo;
-    
-    
 
     public Fichatecnica() {
     }
@@ -85,11 +87,12 @@ public class Fichatecnica implements Serializable {
         this.idFicha = idFicha;
     }
 
-    public Fichatecnica(Integer idFicha, String descripcion, int cantidad, String etiqueta) {
+    public Fichatecnica(Integer idFicha, String descripcion, int cantidad, String etiqueta, String estado) {
         this.idFicha = idFicha;
         this.descripcion = descripcion;
         this.cantidad = cantidad;
         this.etiqueta = etiqueta;
+        this.estado = estado;
     }
 
     public Integer getIdFicha() {
@@ -148,6 +151,14 @@ public class Fichatecnica implements Serializable {
         this.color3 = color3;
     }
 
+    public String getEstado() {
+        return estado;
+    }
+
+    public void setEstado(String estado) {
+        this.estado = estado;
+    }
+
     @XmlTransient
     public List<PedidoDetalle> getPedidoDetalleList() {
         return pedidoDetalleList;
@@ -188,9 +199,6 @@ public class Fichatecnica implements Serializable {
     public void setIdTipo(Tipotela idTipo) {
         this.idTipo = idTipo;
     }
-
-  
-
 
     @Override
     public int hashCode() {

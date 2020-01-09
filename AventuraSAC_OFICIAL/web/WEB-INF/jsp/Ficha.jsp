@@ -117,7 +117,10 @@
                            <input type="submit" value="ADJUNTAR IMAGEN PNG">
                         </div>	
                     </div>
-
+                    <div>
+                        <label for="estado" style="left: 35%;">Estado:</label>
+                        <form:input path="estado"  style="width: 100%;" cssClass="form-control" placeholder="Ingresar estado"/>
+                    </div>
 
                     <hr style="border: 1px solid gray">
                     <div class="d-flex flex-row">

@@ -123,7 +123,7 @@ public class CotizacionController {
     public ModelAndView NuevoCliente(@ModelAttribute("cotizacion") Cliente c, HttpServletRequest request) throws Exception {
         
         
-
+        
         repo.create(c);
 
         return new ModelAndView("redirect:/menu.htm");

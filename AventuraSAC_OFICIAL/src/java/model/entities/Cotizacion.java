@@ -6,7 +6,6 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.time.LocalDate;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -25,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author CHELLI BONITA
+ * @author Administrador
  */
 @Entity
 @Table(name = "cotizacion")
@@ -36,7 +35,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Cotizacion.findByFechaEmision", query = "SELECT c FROM Cotizacion c WHERE c.fechaEmision = :fechaEmision")
     , @NamedQuery(name = "Cotizacion.findByImporte", query = "SELECT c FROM Cotizacion c WHERE c.importe = :importe")
     , @NamedQuery(name = "Cotizacion.findByIgv", query = "SELECT c FROM Cotizacion c WHERE c.igv = :igv")
-    , @NamedQuery(name = "Cotizacion.findByTotal", query = "SELECT c FROM Cotizacion c WHERE c.total = :total")})
+    , @NamedQuery(name = "Cotizacion.findByTotal", query = "SELECT c FROM Cotizacion c WHERE c.total = :total")
+    , @NamedQuery(name = "Cotizacion.findByObservacion", query = "SELECT c FROM Cotizacion c WHERE c.observacion = :observacion")})
 public class Cotizacion implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -57,6 +57,8 @@ public class Cotizacion implements Serializable {
     @Basic(optional = false)
     @Column(name = "Total")
     private double total;
+    @Column(name = "Observacion")
+    private String observacion;
     @OneToMany(mappedBy = "idCotizacion")
     private List<CotizacionDetalle> cotizacionDetalleList;
     @JoinColumn(name = "idPedido", referencedColumnName = "idPedido")
@@ -64,11 +66,7 @@ public class Cotizacion implements Serializable {
     private Pedido idPedido;
 
     public Cotizacion() {
-        
-        this.fechaEmision = LocalDate.now().toString();
-        
     }
-    
 
     public Cotizacion(Integer idCotizacion) {
         this.idCotizacion = idCotizacion;
@@ -81,7 +79,7 @@ public class Cotizacion implements Serializable {
         this.igv = igv;
         this.total = total;
     }
-    
+
     public Integer getIdCotizacion() {
         return idCotizacion;
     }
@@ -120,6 +118,14 @@ public class Cotizacion implements Serializable {
 
     public void setTotal(double total) {
         this.total = total;
+    }
+
+    public String getObservacion() {
+        return observacion;
+    }
+
+    public void setObservacion(String observacion) {
+        this.observacion = observacion;
     }
 
     @XmlTransient
