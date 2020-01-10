@@ -18,7 +18,8 @@
         <link href="<c:url value="webapp/resources/theme1/css/crud.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/css/main.css" />" rel="stylesheet">
         <link href="<c:url value="webapp/resources/theme1/fonts/font.awesome.css" />" rel="stylesheet">
-
+        <script src="<c:url value="webapp/resources/theme1/js/jquery.min.js" />"></script>
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.validate.min.js"/>"></script>
     </head>
     <body id="bodys">
         <header id="header">
@@ -31,18 +32,18 @@
                     <h3>Editar Cliente</h3>
                 </div>
                 <div class="card-body">
-                    <form:form method="post" modelAttribute="cliente">
+                    <form:form method="post" modelAttribute="cliente" id="formulario">
 
                         <form:hidden path="idCliente" value="${cliente.idCliente}" />
 
                         <div class="row">
                             <div class="col-sm-6" style="left:10%;">
                             <label for="razonSocial">Razón Social:</label>
-                            <form:input path="razonSocial" style="width:80%;" cssClass="form-control" value="${cliente.razonSocial}" type="text" minlength="3" maxlength="25" required="required" />
+                            <form:input path="razonSocial" style="width:80%;" cssClass="form-control" value="${cliente.razonSocial}"/>
                             </div>
                             <div class="col-sm-6" style="right: 2%;">
                             <label for="ruc">RUC:</label>
-                            <form:input path="ruc"   style="width:80%;" cssClass="form-control" value="${cliente.ruc}" type="number" min="10000000000" man="99999999999" required="required"/>
+                            <form:input path="ruc"   style="width:80%;" cssClass="form-control" value="${cliente.ruc}"/>
                             </div>
                         </div>
                             
@@ -64,11 +65,11 @@
                         </div>
                         <div class="col-sm-4" style="left:2%;">
                             <label for="direccion">Dirección:</label>
-                            <form:input path="direccion" style="width:80%;" cssClass="form-control" value="${cliente.direccion}" maxlength="30" required="required"/>
+                            <form:input path="direccion" style="width:80%;" cssClass="form-control" value="${cliente.direccion}"/>
                         </div>
                         <div class="col-sm-4" style="right: 6%;">
                             <label for="telefono">Teléfono</label>
-                            <form:input path="telefono" style="width:82%;" cssClass="form-control" value="${cliente.telefono}" type="number" min="0000000" maxlength="999999999" required="required"/>
+                            <form:input path="telefono" style="width:82%;" cssClass="form-control" value="${cliente.telefono}"/>
                         </div>
                     </div>
                         
@@ -77,11 +78,11 @@
                     <div class="row">
                         <div class="col-sm-6" style="left:10%;">
                             <label for="correo">Correo:</label>
-                            <form:input path="correo" style="width:80%;" cssClass="form-control" value="${cliente.correo}" maxlength="30" required="required"/>
+                            <form:input path="correo" style="width:80%;" cssClass="form-control" value="${cliente.correo}"/>
                         </div>
                         <div class="col-sm-6" style="right:2%;">
                             <label for="broker">Broker:</label>
-                            <form:input path="broker" style="width:80%;" cssClass="form-control"   value="${cliente.broker}" maxlength="30" required="required"/>
+                            <form:input path="broker" style="width:80%;" cssClass="form-control"   value="${cliente.broker}"/>
                         </div>
                     </div>
                         
@@ -92,7 +93,7 @@
                             <div id="botones">
                                 <fieldset id="fiel">
                                     <legend>¿Qué acción desea realizar?</legend>
-                                    <input type="submit" class="btn btn-primary"  value="Guardar">
+                                    <input type="submit" class="btn btn-primary"  value="Guardar" id="btn">
                                     <a class="btn btn-secondary" href="clientes.htm" role="button">Regresar</a>
                                 </fieldset>
                             </div>
@@ -104,6 +105,54 @@
             </div>
             <br>
         </div>
+        
+                <script>
+            $(function () {
+                $("#btn").on("click", function () {
+                    $("#formulario").validate({
+                        rules:
+                                {
+                                    razonSocial: {required: true, minlength: 3, maxlength: 20, lettersonly: true},
+                                    direccion: {required: true, maxlength: 30},
+                                    telefono: {required: true, minlength: 7, maxlength: 9, numbersonly: true},
+                                    broker: {required: true, minlength: 15, maxlength: 30, lettersonly: true},
+                                    correo: {required: true, email: true, minlength: 15, maxlength: 30},
+                                    usuario: {required: true, minlength: 5, maxlength: 20},
+                                    clave: {required: true, minlength: 7, maxlength: 9, numbersonly: true}
+                                },
+                        messages:
+                                {
+                                    razonSocial: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 3 caracteres',
+                                        maxlength: 'El máximo permitido son 20 caracteres'},
+                                    direccion: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 30 caracteres'},
+                                    telefono: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 7 caracteres para teléfono',
+                                        maxlength: 'El máximo permitido son 9 caracteres para celular',
+                                        numbersonly: 'Por favor, solo ingrese números'},
+                                    broker: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 15 caracteres',
+                                        maxlength: 'El máximo permitido son 30 caracteres'},
+                                    correo: {required: 'El campo es requerido', email: 'El caracter "@" es requerido', minlength: 'El mínimo permitido son 15 caracteres', maxlength: 'El máximo permitido son 30 caracteres'},
+                                    usuario: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 20 caracteres',
+                                        maxlength: 'El máximo permitido son 5 caracteres'},
+                                    clave: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 7 caracteres', maxlength: 'El máximo permitido son 20 caracteres',
+                                        numbersonly: 'Por favor, solo ingrese números'}
+                                }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {      //DOM manipulation code  
+                jQuery.validator.addMethod("lettersonly", function (value, element) {
+                    return this.optional(element) || /^[a-z]+$/i.test(value);
+                }, "Por favor, solo letras");
+                jQuery.validator.addMethod("numbersonly", function (value, element) {
+                    return this.optional(element) || /^[0-9]+$/i.test(value);
+                }, "Por favor, solo números");
+            });
+        </script>
+
+        
     </body>
 </html>
 

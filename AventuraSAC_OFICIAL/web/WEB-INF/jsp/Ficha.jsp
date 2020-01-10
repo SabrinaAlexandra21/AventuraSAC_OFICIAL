@@ -19,8 +19,8 @@
         <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.minicolors.js"/>"></script>
         <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.minicolors.css"/>" />
         <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.modal.js"/>"></script>
-        <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.modal.css"/>" />
-
+        <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.validate.min.js"/>"></script>
+        
 
     </head>
     <body style="background: #adb5bd;">
@@ -64,12 +64,13 @@
 
                 <div class="card-body">
 
-                    <form:form method="post" modelAttribute="fichatecnica">
+                    <form:form method="post" modelAttribute="fichatecnica" id="formulario">
 
-                        <center><h3><strong>Ingresar datos de la Prenda</strong></h3></center>
+                        <center><h2><strong>Ingresar datos de la Prenda</strong></h2></center>
+                        <br>
 
                         <div class="row" style="text-align: center;">
-                            <div class="col-sm-3" style="left:15%;">
+                            <div class="col-sm-3" style="left:10%;">
                                 <label for="descripcion">Descripción:</label>
                                 <form:input path="descripcion" style="width: 100%;" cssClass="form-control" placeholder="Ingresar descripcion" />
                             </div>
@@ -81,7 +82,7 @@
                                     </c:forEach>
                                 </form:select>
                             </div>
-                            <div class="col-sm-3" style="left:9%;">	
+                            <div class="col-sm-3" style="left:14%;">	
                                 <label for="idTipo">Tela:</label>
                                 <form:select path="idTipo.idTipo" style="width: 100%;" id="idTipo">
                                     <c:forEach items="${tipotelas}" var="x">
@@ -92,7 +93,7 @@
                          </div>
                             <br>
                         <div class="row" style="text-align: center;">  
-                            <div class="col-sm-3" style="left:15%;"> 
+                            <div class="col-sm-3" style="left:10%;"> 
                                 <label for="etiqueta">Etiqueta:</label>
                                 <form:input path="etiqueta" style="width: 100%;" cssClass="form-control" placeholder="Ingresar nombres de etiqueta"/>
                             </div>
@@ -104,14 +105,15 @@
                                     </c:forEach>
                                 </form:select>
                             </div>
-                            <div class="col-sm-3" style="left:9%;">
-                                <label for="cantidad" >Talla:</label>
+                            <div class="col-sm-3" style="left:14%;">
+                                <label for="cantidad" >Cantidad:</label>
                                 <form:input path="cantidad"  style="width: 100%;" cssClass="form-control" placeholder="Ingresar cantidad"/>
                             </div>
                         </div>
 
                     <hr style="border: 1px solid gray">
                     
+                    <br>
                     <div class="d-flex flex-row" style="left: 5%;">
                         <label for="Muestra" style="left: 35%;" class="col-sm-2 col-form-label">Muestra:</label>
                         <div class="col-sm-3" style="left: 28%;">
@@ -120,7 +122,7 @@
                     </div>
                     <div>
                         <label for="estado" style="left: 35%;">Estado:</label>
-                        <form:checkbox path="estado" />
+                        <form:checkbox path="estado" id="estado"/>
                     </div>
 
                     <hr style="border: 1px solid gray">
@@ -133,7 +135,7 @@
                                     <div class="d-flex flex-row">
                                         <div  class="p-3">
                                             <label for="color1" >Color 1:</label>
-                                            <form:input path="color1" id="c1" style="height: 40%;" cssClass="form-control" value="ffff00"/>
+                                            <form:input path="color1" id="c1" style="height: 35px;" cssClass="form-control" value="ffff00"/>
                                             <script>
                                                 $(function () {
 
@@ -148,7 +150,7 @@
                                         <div  class="p-3">
 
                                             <label for="color2" >Color 2:</label>
-                                            <form:input path="color2" id="c2" style="height: 40%;" value="00ffff" cssClass="form-control"/>
+                                            <form:input path="color2" id="c2" style="height: 35px;" value="00ffff" cssClass="form-control"/>
 
                                             <script>
                                                 $(function () {
@@ -163,7 +165,7 @@
                                         <div  class="p-3">
 
                                             <label for="color3" >Color 3:</label>
-                                            <form:input path="color3" id="c3" style="height: 40%;" value="ff00ff" cssClass="form-control"/>
+                                            <form:input path="color3" id="c3" style="height: 35px;" value="ff00ff" cssClass="form-control"/>
 
                                             <script>
                                                 $(function () {
@@ -180,11 +182,50 @@
                     </div>
                     <hr style="border: 1px solid gray">
                     <center>
-                            <input type="submit" class="btn btn-dark"  value="Registrar" >
+                            <input type="submit" class="btn btn-dark"  value="Registrar" id="btn">
                             <a class="btn btn-dark" href="clientes.htm">Regresar</a>
                     </center>
                 </form:form>
             </div>
         </div>
+        </div>
+        
+                <script>
+            $(function () {
+                $("#btn").on("click", function () {
+                    $("#formulario").validate({
+                        rules:
+                                {
+                                    descripcion: {required: true, minlength: 20, maxlength: 100, lettersonly: true},     
+                                    cantidad: {required: true, numbersonly: true},
+                                    etiqueta: {required: true, minlength: 20, maxlength: 100, lettersonly: true}, 
+
+                                },
+                        messages:
+                                {
+                                    descripcion: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 20 caracteres',
+                                        maxlength: 'El máximo permitido son 100 caracteres', lettersonly: 'Porfavor, solo letras'},
+                                    cantidad: {required: 'El campo es requerido', numbersonly: 'Por favor, solo ingrese números'},
+                                    etiqueta: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 20 caracteres',
+                                        maxlength: 'El máximo permitido son 100 caracteres', lettersonly: 'Porfavor, solo letras'},
+                                }
+                    });
+                });
+            });
+        </script>
+
+        <script>
+            $(document).ready(function () {      //DOM manipulation code  
+                jQuery.validator.addMethod("lettersonly", function (value, element) {
+                    return this.optional(element) || /^[a-z]+$/i.test(value);
+                }, "Por favor, solo letras");
+                jQuery.validator.addMethod("numbersonly", function (value, element) {
+                    return this.optional(element) || /^[0-9]+$/i.test(value);
+                }, "Por favor, solo números");
+            });
+        </script>
+        
+    </body>
+</html>
 
 

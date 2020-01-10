@@ -64,8 +64,6 @@
                         </div>
                         </div>
                         <br>
-                        DALE PUY
-                        MICHEEE LE DOY PULL? XD
                         <div class="row">
                         <div class="col-sm-6" style="left:10%">
                             <label for="telefono">Teléfono:</label>
@@ -102,16 +100,16 @@
                                 {
                                     dni: {required: true, minlength: 8, maxlength:8 },
                                     razonSocial: {required: true, minlength: 5, maxlength: 30, lettersonly: true},
-                                    ruc: {required: true, maxlength: 11, numbersonly: true},
+                                    ruc: {required: true, minlength: 11, maxlength: 11, numbersonly: true},
                                     direccion: {required: true, minlength: 15, maxlength: 50},
                                     contacto: {required: true, minlength: 10, maxlength: 20},
                                     correo: {required: true, email: true, minlength: 15, maxlength: 30}
-                                },
+                                }, 
                         messages:
                                 {
                                     dni: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 8 caracteres' , maxlength: 'El máximo permitido son 8 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
                                     razonSocial: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 5 caracteres', maxlength: 'El máximo permitido son 30 caracteres', lettersonly: 'Porfavor, solo ingrese números'},
-                                    ruc: {required: 'El campo es requerido', maxlength: 'El máximo permitido son 11 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
+                                    ruc: {required: 'El campo es requerido', minlength: 'El minimo permitido son 11 caracteres',maxlength: 'El máximo permitido son 11 caracteres', numbersonly: 'Porfavor, solo ingrese números'},
                                     direccion: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 15 caracteres', maxlength: 'El máximo permitido son 50 caracteres'},
                                     telefono: {required: 'El campo es requerido', minlength: 'El mínimo permitido son 7 caracteres para teléfono',
                                         maxlength: 'El máximo permitido son 9 caracteres para celular',
