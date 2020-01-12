@@ -2,19 +2,10 @@
 <persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
   <persistence-unit name="AventuraSAC_OFICIALPU" transaction-type="RESOURCE_LOCAL">
     <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
-    <class>modelo.entities.Cliente</class>
-    <class>modelo.entities.Proveedor</class>
-    <class>modelo.entities.Empleado</class>
-    <class>modelo.entities.Cotizacion</class>
-    <class>modelo.entities.DetalleCotización</class>
-    <class>modelo.entities.Areas</class>
-    <class>modelo.entities.Cargo</class>
-    <class>modelo.entities.Area</class>
-    <class>modelo.entities.Distrito</class>
+    <class>model.entities.Areas</class>
     <class>model.entities.Proveedor</class>
     <class>model.entities.CotizacionDetalle</class>
     <class>model.entities.PedidoDetalle</class>
-    <class>model.entities.Cotizacion</class>
     <class>model.entities.Cliente</class>
     <class>model.entities.Empleado</class>
     <class>model.entities.Fichatecnica</class>
@@ -22,7 +13,6 @@
     <class>model.entities.Cargo</class>
     <class>model.entities.Tipotela</class>
     <class>model.entities.Distrito</class>
-    <class>model.entities.Areas</class>
     <class>model.entities.Guiaremision</class>
     <class>model.entities.GuiaremisionDetalle</class>
     <class>model.entities.Insumohilo</class>
@@ -33,7 +23,7 @@
     <class>model.entities.Talla</class>
     <class>model.entities.Pagos</class>
     <class>model.entities.Tipomodelo</class>
-    <class>modelentities1.Insumohilo</class>
+    <class>model.entities.Estado</class>
     <exclude-unlisted-classes>false</exclude-unlisted-classes>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/Aventura?zeroDateTimeBehavior=convertToNull"/>

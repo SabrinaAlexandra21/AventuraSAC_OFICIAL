@@ -17,7 +17,6 @@ import model.controllers.PedidoDetalleJpaController;
 import model.entities.Cliente;
 import model.entities.Cotizacion;
 import model.entities.CotizacionDetalle;
-import model.entities.Empleado;
 import model.entities.Pedido;
 import model.entities.PedidoDetalle;
 import org.springframework.stereotype.Controller;

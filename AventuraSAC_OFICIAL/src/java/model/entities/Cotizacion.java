@@ -6,8 +6,6 @@
 package model.entities;
 
 import java.io.Serializable;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -26,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "cotizacion")
@@ -68,7 +66,6 @@ public class Cotizacion implements Serializable {
     private Pedido idPedido;
 
     public Cotizacion() {
-        this.fechaEmision = LocalDateTime.now().format(DateTimeFormatter.ISO_DATE);
     }
 
     public Cotizacion(Integer idCotizacion) {
