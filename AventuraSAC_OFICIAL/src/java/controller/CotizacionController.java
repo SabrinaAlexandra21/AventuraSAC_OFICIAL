@@ -122,6 +122,8 @@ public class CotizacionController {
 
     public ModelAndView NuevoCliente(@ModelAttribute("cotizacion") Cliente c, HttpServletRequest request) throws Exception {
         
+        int id = Integer.parseInt(request.getParameter("idPedido"));
+        
         
         
         repo.create(c);

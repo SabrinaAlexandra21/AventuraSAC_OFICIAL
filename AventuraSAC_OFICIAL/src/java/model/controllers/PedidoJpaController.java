@@ -10,6 +10,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
+import model.entities.Estado;
 import model.entities.Cliente;
 import model.entities.GuiaremisionDetalle;
 import java.util.ArrayList;
@@ -58,6 +59,11 @@ public class PedidoJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
+            Estado idEstado = pedido.getIdEstado();
+            if (idEstado != null) {
+                idEstado = em.getReference(idEstado.getClass(), idEstado.getIdEstado());
+                pedido.setIdEstado(idEstado);
+            }
             Cliente idCliente = pedido.getIdCliente();
             if (idCliente != null) {
                 idCliente = em.getReference(idCliente.getClass(), idCliente.getIdCliente());
@@ -76,7 +82,6 @@ public class PedidoJpaController implements Serializable {
             }
             pedido.setPagosList(attachedPagosList);
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
-            
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : pedido.getPedidoDetalleList()) {
                 if(pedidoDetalleListPedidoDetalleToAttach.getIdPedido() != null){
                 //pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
@@ -97,6 +102,10 @@ public class PedidoJpaController implements Serializable {
             }
             pedido.setFacturaList(attachedFacturaList);
             em.persist(pedido);
+            if (idEstado != null) {
+                idEstado.getPedidoList().add(pedido);
+                idEstado = em.merge(idEstado);
+            }
             if (idCliente != null) {
                 idCliente.getPedidoList().add(pedido);
                 idCliente = em.merge(idCliente);
@@ -119,8 +128,7 @@ public class PedidoJpaController implements Serializable {
                     oldIdPedidoOfPagosListPagos = em.merge(oldIdPedidoOfPagosListPagos);
                 }
             }
-            List<PedidoDetalle> detalles = new ArrayList<>(pedido.getPedidoDetalleList());
-            for (PedidoDetalle pedidoDetalleListPedidoDetalle : detalles) {
+            for (PedidoDetalle pedidoDetalleListPedidoDetalle : pedido.getPedidoDetalleList()) {
                 Pedido oldIdPedidoOfPedidoDetalleListPedidoDetalle = pedidoDetalleListPedidoDetalle.getIdPedido();
                 pedidoDetalleListPedidoDetalle.setIdPedido(pedido);
                 pedidoDetalleListPedidoDetalle = em.merge(pedidoDetalleListPedidoDetalle);
@@ -148,10 +156,7 @@ public class PedidoJpaController implements Serializable {
                 }
             }
             em.getTransaction().commit();
-        } catch(Exception e){
-            e.printStackTrace();
-        }
-        finally {
+        } finally {
             if (em != null) {
                 em.close();
             }
@@ -164,6 +169,8 @@ public class PedidoJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Pedido persistentPedido = em.find(Pedido.class, pedido.getIdPedido());
+            Estado idEstadoOld = persistentPedido.getIdEstado();
+            Estado idEstadoNew = pedido.getIdEstado();
             Cliente idClienteOld = persistentPedido.getIdCliente();
             Cliente idClienteNew = pedido.getIdCliente();
             List<GuiaremisionDetalle> guiaremisionDetalleListOld = persistentPedido.getGuiaremisionDetalleList();
@@ -176,6 +183,10 @@ public class PedidoJpaController implements Serializable {
             List<Cotizacion> cotizacionListNew = pedido.getCotizacionList();
             List<Factura> facturaListOld = persistentPedido.getFacturaList();
             List<Factura> facturaListNew = pedido.getFacturaList();
+            if (idEstadoNew != null) {
+                idEstadoNew = em.getReference(idEstadoNew.getClass(), idEstadoNew.getIdEstado());
+                pedido.setIdEstado(idEstadoNew);
+            }
             if (idClienteNew != null) {
                 idClienteNew = em.getReference(idClienteNew.getClass(), idClienteNew.getIdCliente());
                 pedido.setIdCliente(idClienteNew);
@@ -216,6 +227,14 @@ public class PedidoJpaController implements Serializable {
             facturaListNew = attachedFacturaListNew;
             pedido.setFacturaList(facturaListNew);
             pedido = em.merge(pedido);
+            if (idEstadoOld != null && !idEstadoOld.equals(idEstadoNew)) {
+                idEstadoOld.getPedidoList().remove(pedido);
+                idEstadoOld = em.merge(idEstadoOld);
+            }
+            if (idEstadoNew != null && !idEstadoNew.equals(idEstadoOld)) {
+                idEstadoNew.getPedidoList().add(pedido);
+                idEstadoNew = em.merge(idEstadoNew);
+            }
             if (idClienteOld != null && !idClienteOld.equals(idClienteNew)) {
                 idClienteOld.getPedidoList().remove(pedido);
                 idClienteOld = em.merge(idClienteOld);
@@ -337,6 +356,11 @@ public class PedidoJpaController implements Serializable {
                 pedido.getIdPedido();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The pedido with id " + id + " no longer exists.", enfe);
+            }
+            Estado idEstado = pedido.getIdEstado();
+            if (idEstado != null) {
+                idEstado.getPedidoList().remove(pedido);
+                idEstado = em.merge(idEstado);
             }
             Cliente idCliente = pedido.getIdCliente();
             if (idCliente != null) {

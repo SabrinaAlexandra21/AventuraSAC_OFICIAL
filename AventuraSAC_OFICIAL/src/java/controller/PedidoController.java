@@ -8,10 +8,12 @@ import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import model.controllers.ClienteJpaController;
+import model.controllers.EstadoJpaController;
 import model.controllers.FichatecnicaJpaController;
 import model.controllers.PedidoDetalleJpaController;
 import model.controllers.PedidoJpaController;
 import model.entities.Cliente;
+import model.entities.Estado;
 import model.entities.Fichatecnica;
 import model.entities.Pedido;
 import model.entities.PedidoDetalle;
@@ -32,6 +34,7 @@ public class PedidoController {
     private ClienteJpaController repo1;
     private FichatecnicaJpaController repo2;
     private PedidoDetalleJpaController repo3;
+    private EstadoJpaController repo4;
 
     public PedidoController() {
         em = getEntityManager();
@@ -39,6 +42,7 @@ public class PedidoController {
         repo1 = new ClienteJpaController(emf);
         repo2 = new FichatecnicaJpaController(emf);
         repo3 = new PedidoDetalleJpaController(emf);
+        repo4 = new EstadoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -109,6 +113,8 @@ public class PedidoController {
         List<Fichatecnica> ficha = repo2.findFichatecnicaEntities();
         
         List<Fichatecnica> fichatemporal = new ArrayList();
+        
+        List<Estado> estado = repo4.findEstadoEntities();
 
         for(Fichatecnica x : ficha) {
             
@@ -123,7 +129,7 @@ public class PedidoController {
                 }
             }    
         }
-        
+        mv.addObject("estado", estado);
         
         mv.addObject("ficha", fichatemporal);
         

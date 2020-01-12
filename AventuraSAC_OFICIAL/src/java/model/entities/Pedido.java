@@ -24,7 +24,7 @@ import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
- * @author Administrador
+ * @author CHELLI BONITA
  */
 @Entity
 @Table(name = "pedido")
@@ -33,8 +33,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Pedido.findAll", query = "SELECT p FROM Pedido p")
     , @NamedQuery(name = "Pedido.findByIdPedido", query = "SELECT p FROM Pedido p WHERE p.idPedido = :idPedido")
     , @NamedQuery(name = "Pedido.findByFechaRegistro", query = "SELECT p FROM Pedido p WHERE p.fechaRegistro = :fechaRegistro")
-    , @NamedQuery(name = "Pedido.findByFechaEntrega", query = "SELECT p FROM Pedido p WHERE p.fechaEntrega = :fechaEntrega")
-    , @NamedQuery(name = "Pedido.findByEstado", query = "SELECT p FROM Pedido p WHERE p.estado = :estado")})
+    , @NamedQuery(name = "Pedido.findByFechaEntrega", query = "SELECT p FROM Pedido p WHERE p.fechaEntrega = :fechaEntrega")})
 public class Pedido implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -49,9 +48,6 @@ public class Pedido implements Serializable {
     @Basic(optional = false)
     @Column(name = "FechaEntrega")
     private String fechaEntrega;
-    @Basic(optional = false)
-    @Column(name = "Estado")
-    private String estado;
     @OneToMany(mappedBy = "idPedido")
     private List<GuiaremisionDetalle> guiaremisionDetalleList;
     @OneToMany(mappedBy = "idPedido")
@@ -62,6 +58,9 @@ public class Pedido implements Serializable {
     private List<Cotizacion> cotizacionList;
     @OneToMany(mappedBy = "idPedido")
     private List<Factura> facturaList;
+    @JoinColumn(name = "idEstado", referencedColumnName = "idEstado")
+    @ManyToOne(optional = false)
+    private Estado idEstado;
     @JoinColumn(name = "idCliente", referencedColumnName = "idCliente")
     @ManyToOne
     private Cliente idCliente;
@@ -73,11 +72,10 @@ public class Pedido implements Serializable {
         this.idPedido = idPedido;
     }
 
-    public Pedido(Integer idPedido, String fechaRegistro, String fechaEntrega, String estado) {
+    public Pedido(Integer idPedido, String fechaRegistro, String fechaEntrega) {
         this.idPedido = idPedido;
         this.fechaRegistro = fechaRegistro;
         this.fechaEntrega = fechaEntrega;
-        this.estado = estado;
     }
 
     public Integer getIdPedido() {
@@ -102,14 +100,6 @@ public class Pedido implements Serializable {
 
     public void setFechaEntrega(String fechaEntrega) {
         this.fechaEntrega = fechaEntrega;
-    }
-
-    public String getEstado() {
-        return estado;
-    }
-
-    public void setEstado(String estado) {
-        this.estado = estado;
     }
 
     @XmlTransient
@@ -155,6 +145,14 @@ public class Pedido implements Serializable {
 
     public void setFacturaList(List<Factura> facturaList) {
         this.facturaList = facturaList;
+    }
+
+    public Estado getIdEstado() {
+        return idEstado;
+    }
+
+    public void setIdEstado(Estado idEstado) {
+        this.idEstado = idEstado;
     }
 
     public Cliente getIdCliente() {

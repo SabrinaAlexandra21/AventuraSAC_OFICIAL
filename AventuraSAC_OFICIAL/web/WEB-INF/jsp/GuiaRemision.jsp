@@ -109,13 +109,13 @@
                                 <div class="row" id="fila1">
                                     <div class="col-sm-4">
                                         <label for="cantidad">Cantidad:</label>
-                                        <form:input path="cantidad"  cssClass="form-control" />
+                                        <input type=""  />
                                     </div>
                                 </div>
                                 <div class="row" id="fila2">
                                     <div class="col-sm-2">	
                                         <label for="descripcion">Descripcion:</label>
-                                        <form:input path="descripcion"  cssClass="form-control" />
+                                        <input type="text" name="descripcion"  cssClass="form-control" />
                                     </div>	
                                 </div>
                             </fieldset>

@@ -11,6 +11,7 @@ import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import model.entities.Cliente;
+import model.entities.Estado;
 import model.entities.Talla;
 import model.entities.Tipomodelo;
 import model.entities.Tipotela;
@@ -50,6 +51,11 @@ public class FichatecnicaJpaController implements Serializable {
                 idCliente = em.getReference(idCliente.getClass(), idCliente.getIdCliente());
                 fichatecnica.setIdCliente(idCliente);
             }
+            Estado idEstado = fichatecnica.getIdEstado();
+            if (idEstado != null) {
+                idEstado = em.getReference(idEstado.getClass(), idEstado.getIdEstado());
+                fichatecnica.setIdEstado(idEstado);
+            }
             Talla idTalla = fichatecnica.getIdTalla();
             if (idTalla != null) {
                 idTalla = em.getReference(idTalla.getClass(), idTalla.getIdTalla());
@@ -66,7 +72,6 @@ public class FichatecnicaJpaController implements Serializable {
                 fichatecnica.setIdTipo(idTipo);
             }
             List<PedidoDetalle> attachedPedidoDetalleList = new ArrayList<PedidoDetalle>();
-          
             for (PedidoDetalle pedidoDetalleListPedidoDetalleToAttach : fichatecnica.getPedidoDetalleList()) {
                 pedidoDetalleListPedidoDetalleToAttach = em.getReference(pedidoDetalleListPedidoDetalleToAttach.getClass(), pedidoDetalleListPedidoDetalleToAttach.getIdDetallePedido());
                 attachedPedidoDetalleList.add(pedidoDetalleListPedidoDetalleToAttach);
@@ -76,6 +81,10 @@ public class FichatecnicaJpaController implements Serializable {
             if (idCliente != null) {
                 idCliente.getFichatecnicaList().add(fichatecnica);
                 idCliente = em.merge(idCliente);
+            }
+            if (idEstado != null) {
+                idEstado.getFichatecnicaList().add(fichatecnica);
+                idEstado = em.merge(idEstado);
             }
             if (idTalla != null) {
                 idTalla.getFichatecnicaList().add(fichatecnica);
@@ -114,6 +123,8 @@ public class FichatecnicaJpaController implements Serializable {
             Fichatecnica persistentFichatecnica = em.find(Fichatecnica.class, fichatecnica.getIdFicha());
             Cliente idClienteOld = persistentFichatecnica.getIdCliente();
             Cliente idClienteNew = fichatecnica.getIdCliente();
+            Estado idEstadoOld = persistentFichatecnica.getIdEstado();
+            Estado idEstadoNew = fichatecnica.getIdEstado();
             Talla idTallaOld = persistentFichatecnica.getIdTalla();
             Talla idTallaNew = fichatecnica.getIdTalla();
             Tipomodelo idTipoModeloOld = persistentFichatecnica.getIdTipoModelo();
@@ -125,6 +136,10 @@ public class FichatecnicaJpaController implements Serializable {
             if (idClienteNew != null) {
                 idClienteNew = em.getReference(idClienteNew.getClass(), idClienteNew.getIdCliente());
                 fichatecnica.setIdCliente(idClienteNew);
+            }
+            if (idEstadoNew != null) {
+                idEstadoNew = em.getReference(idEstadoNew.getClass(), idEstadoNew.getIdEstado());
+                fichatecnica.setIdEstado(idEstadoNew);
             }
             if (idTallaNew != null) {
                 idTallaNew = em.getReference(idTallaNew.getClass(), idTallaNew.getIdTalla());
@@ -154,6 +169,14 @@ public class FichatecnicaJpaController implements Serializable {
             if (idClienteNew != null && !idClienteNew.equals(idClienteOld)) {
                 idClienteNew.getFichatecnicaList().add(fichatecnica);
                 idClienteNew = em.merge(idClienteNew);
+            }
+            if (idEstadoOld != null && !idEstadoOld.equals(idEstadoNew)) {
+                idEstadoOld.getFichatecnicaList().remove(fichatecnica);
+                idEstadoOld = em.merge(idEstadoOld);
+            }
+            if (idEstadoNew != null && !idEstadoNew.equals(idEstadoOld)) {
+                idEstadoNew.getFichatecnicaList().add(fichatecnica);
+                idEstadoNew = em.merge(idEstadoNew);
             }
             if (idTallaOld != null && !idTallaOld.equals(idTallaNew)) {
                 idTallaOld.getFichatecnicaList().remove(fichatecnica);
@@ -229,6 +252,11 @@ public class FichatecnicaJpaController implements Serializable {
             if (idCliente != null) {
                 idCliente.getFichatecnicaList().remove(fichatecnica);
                 idCliente = em.merge(idCliente);
+            }
+            Estado idEstado = fichatecnica.getIdEstado();
+            if (idEstado != null) {
+                idEstado.getFichatecnicaList().remove(fichatecnica);
+                idEstado = em.merge(idEstado);
             }
             Talla idTalla = fichatecnica.getIdTalla();
             if (idTalla != null) {

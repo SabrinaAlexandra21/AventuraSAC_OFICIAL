@@ -7,12 +7,14 @@ import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
 import javax.servlet.http.HttpServletRequest;
+import model.controllers.EstadoJpaController;
 import model.controllers.FichatecnicaJpaController;
 import model.controllers.TallaJpaController;
 import model.controllers.TipomodeloJpaController;
 import model.controllers.TipotelaJpaController;
 import model.controllers.exceptions.NonexistentEntityException;
 import model.entities.Cliente;
+import model.entities.Estado;
 import model.entities.Fichatecnica;
 import model.entities.Talla;
 import model.entities.Tipomodelo;
@@ -35,6 +37,7 @@ public class FichaTecnicaController  {
         private TipotelaJpaController repo1;
         private TipomodeloJpaController repo2;
         private TallaJpaController repo3;
+        private EstadoJpaController repo4;
         
         public FichaTecnicaController() {
         em = getEntityManager();
@@ -42,6 +45,7 @@ public class FichaTecnicaController  {
         repo1 = new TipotelaJpaController(emf);
         repo2 = new TipomodeloJpaController(emf);
         repo3 = new TallaJpaController(emf);
+        repo4 = new EstadoJpaController(emf);
     }
 
     private EntityManager getEntityManager() {
@@ -70,6 +74,10 @@ public class FichaTecnicaController  {
         List<Talla> tallas = repo3.findTallaEntities();
         
         mv.addObject("listatallas", tallas);
+        
+        List<Estado> estado = repo4.findEstadoEntities();
+        
+        mv.addObject("estado", estado);
 
         model.addAttribute("fichatecnica", new Fichatecnica());
         

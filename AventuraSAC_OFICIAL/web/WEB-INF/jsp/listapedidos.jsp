@@ -59,9 +59,7 @@
 
                             </tbody>
                         </table>
-                        <select name="estados">
-                            <option value="pendiente">Pendiente</option>
-                        </select>
+                        
                         <center>
                              <a class="btn btn-dark" href="menucliente.htm" role="button">Regresar al Menú</a> 
                              

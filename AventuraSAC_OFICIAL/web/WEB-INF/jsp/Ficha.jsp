@@ -20,7 +20,7 @@
         <link type="text/css" rel="stylesheet" href="<c:url value="webapp/resources/theme1/css/jquery.minicolors.css"/>" />
         <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.modal.js"/>"></script>
         <script type="text/javascript" src="<c:url value="webapp/resources/theme1/js/jquery.validate.min.js"/>"></script>
-        
+
 
     </head>
     <body style="background: #adb5bd;">
@@ -30,6 +30,7 @@
                 <a href="#menu">Menu</a>
             </nav>
         </header>
+        <br>
         <br>
         <div class="container md-8">
 
@@ -58,6 +59,8 @@
                     </div>
 
                 </div>
+
+
 
                 <br />
                 <br />
@@ -90,8 +93,8 @@
                                     </c:forEach>
                                 </form:select>
                             </div>
-                         </div>
-                            <br>
+                        </div>
+                        <br>
                         <div class="row" style="text-align: center;">  
                             <div class="col-sm-3" style="left:10%;"> 
                                 <label for="etiqueta">Etiqueta:</label>
@@ -111,94 +114,98 @@
                             </div>
                         </div>
 
-                    <hr style="border: 1px solid gray">
-                    
-                    <br>
-                    <div class="d-flex flex-row" style="left: 5%;">
-                        <label for="Muestra" style="left: 35%;" class="col-sm-2 col-form-label">Muestra:</label>
-                        <div class="col-sm-3" style="left: 28%;">
-                           <input type="submit" value="ADJUNTAR IMAGEN PNG">
-                        </div>	
-                    </div>
-                    <div>
-                        <label for="estado" style="left: 35%;">Estado:</label>
-                        <form:checkbox path="estado" id="estado"/>
-                    </div>
+                        <hr style="border: 1px solid gray">
 
-                    <hr style="border: 1px solid gray">
-                    <div class="d-flex flex-row">
-                        <div  class="p-6">
-                            <div class="card" id="carta2" style="left: 55%;">
-                                <div class="card-body" id="body2">
-                                    <h5 class="card-title">Combinación de colores:</h5>
-                                    <h6 class="card-subtitle mb-2 text-muted">Seleccionar..</h6>
-                                    <div class="d-flex flex-row">
-                                        <div  class="p-3">
-                                            <label for="color1" >Color 1:</label>
-                                            <form:input path="color1" id="c1" style="height: 35px;" cssClass="form-control" value="ffff00"/>
-                                            <script>
-                                                $(function () {
+                        <br>
+                        <div class="d-flex flex-row" style="left: 5%;">
+                            <label for="Muestra" style="left: 35%;" class="col-sm-2 col-form-label">Muestra:</label>
+                            <div class="col-sm-3" style="left: 28%;">
+                                <input type="submit" value="ADJUNTAR IMAGEN PNG">
+                            </div>	
+                        </div>
+                        <div>
+                            <label for="idEstado" >Estado:</label>
+                            <form:select path="idEstado.idEstado" id="fentregaI">
+                                <c:forEach items="${estado}" var="x">
+                                    <option value="${x.idEstado}">${x.nombre}</option>
+                                </c:forEach>
+                            </form:select>
+                        </div>
 
-                                                    $('#c1').minicolors();
+                        <hr style="border: 1px solid gray">
+                        <div class="d-flex flex-row">
+                            <div  class="p-6">
+                                <div class="card" id="carta2" style="left: 55%;">
+                                    <div class="card-body" id="body2">
+                                        <h5 class="card-title">Combinación de colores:</h5>
+                                        <h6 class="card-subtitle mb-2 text-muted">Seleccionar..</h6>
+                                        <div class="d-flex flex-row">
+                                            <div  class="p-3">
+                                                <label for="color1" >Color 1:</label>
+                                                <form:input path="color1" id="c1" style="height: 35px;" cssClass="form-control" value="ffff00"/>
+                                                <script>
+                                                    $(function () {
 
-                                                });
+                                                        $('#c1').minicolors();
 
-                                            </script>
+                                                    });
 
-                                        </div>
+                                                </script>
 
-                                        <div  class="p-3">
+                                            </div>
 
-                                            <label for="color2" >Color 2:</label>
-                                            <form:input path="color2" id="c2" style="height: 35px;" value="00ffff" cssClass="form-control"/>
+                                            <div  class="p-3">
 
-                                            <script>
-                                                $(function () {
+                                                <label for="color2" >Color 2:</label>
+                                                <form:input path="color2" id="c2" style="height: 35px;" value="00ffff" cssClass="form-control"/>
 
-                                                    $('#c2').minicolors();
+                                                <script>
+                                                    $(function () {
 
-                                                });
-                                            </script>
+                                                        $('#c2').minicolors();
 
-                                        </div>
+                                                    });
+                                                </script>
 
-                                        <div  class="p-3">
+                                            </div>
 
-                                            <label for="color3" >Color 3:</label>
-                                            <form:input path="color3" id="c3" style="height: 35px;" value="ff00ff" cssClass="form-control"/>
+                                            <div  class="p-3">
 
-                                            <script>
-                                                $(function () {
+                                                <label for="color3" >Color 3:</label>
+                                                <form:input path="color3" id="c3" style="height: 35px;" value="ff00ff" cssClass="form-control"/>
 
-                                                    $('#c3').minicolors();
+                                                <script>
+                                                    $(function () {
 
-                                                });
-                                            </script>
+                                                        $('#c3').minicolors();
+
+                                                    });
+                                                </script>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                    <hr style="border: 1px solid gray">
-                    <center>
+                        <hr style="border: 1px solid gray">
+                        <center>
                             <input type="submit" class="btn btn-dark"  value="Registrar" id="btn">
-                            <a class="btn btn-dark" href="clientes.htm">Regresar</a>
-                    </center>
-                </form:form>
+                            <a class="btn btn-dark" href="pedidos.htm">Regresar</a>
+                        </center>
+                    </form:form>
+                </div>
             </div>
         </div>
-        </div>
-        
-                <script>
+
+        <script>
             $(function () {
                 $("#btn").on("click", function () {
                     $("#formulario").validate({
                         rules:
                                 {
-                                    descripcion: {required: true, minlength: 20, maxlength: 100, lettersonly: true},     
+                                    descripcion: {required: true, minlength: 20, maxlength: 100, lettersonly: true},
                                     cantidad: {required: true, numbersonly: true},
-                                    etiqueta: {required: true, minlength: 20, maxlength: 100, lettersonly: true}, 
+                                    etiqueta: {required: true, minlength: 20, maxlength: 100, lettersonly: true},
 
                                 },
                         messages:
@@ -224,7 +231,7 @@
                 }, "Por favor, solo números");
             });
         </script>
-        
+
     </body>
 </html>
 
